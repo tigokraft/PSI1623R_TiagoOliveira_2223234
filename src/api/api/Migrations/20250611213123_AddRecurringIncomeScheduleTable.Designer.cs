@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinSync.Migrations
 {
     [DbContext(typeof(FinSyncContext))]
-    [Migration("20250521090031_AddIncomeTable")]
-    partial class AddIncomeTable
+    [Migration("20250611213123_AddRecurringIncomeScheduleTable")]
+    partial class AddRecurringIncomeScheduleTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -194,19 +194,69 @@ namespace FinSync.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IncomeId"));
 
                     b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Descr")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<int?>("RecurringScheduleId")
+                        .HasColumnType("int");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("IncomeId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("RecurringScheduleId", "Date")
+                        .IsUnique()
+                        .HasFilter("[RecurringScheduleId] IS NOT NULL");
 
                     b.ToTable("Incomes");
+                });
+
+            modelBuilder.Entity("FinSync.Models.RecurringIncomeSchedule", b =>
+                {
+                    b.Property<int>("ScheduleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ScheduleId"));
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<string>("Descr")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("NextOccurrenceDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Recurrence")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ScheduleId");
+
+                    b.ToTable("RecurringIncomeSchedules");
                 });
 
             modelBuilder.Entity("FinSync.Models.User", b =>
@@ -288,13 +338,12 @@ namespace FinSync.Migrations
 
             modelBuilder.Entity("FinSync.Models.Income", b =>
                 {
-                    b.HasOne("FinSync.Models.User", "User")
+                    b.HasOne("FinSync.Models.RecurringIncomeSchedule", "RecurringSchedule")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RecurringScheduleId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
-                    b.Navigation("User");
+                    b.Navigation("RecurringSchedule");
                 });
 
             modelBuilder.Entity("FinSync.Models.Category", b =>

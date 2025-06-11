@@ -23,48 +23,83 @@ namespace FinSync.Jobs
 
         public async Task Execute(IJobExecutionContext ctx)
         {
-            _log.LogInformation("Recurring income check started at {Time}", DateTime.Now);
+            _log.LogInformation("Recurring income generation job started at {Time}", DateTime.Now);
 
-            var recurring = await _context.Incomes.Where(i => i.IsRecurring).ToListAsync();
+            var today = DateTime.UtcNow.Date; // Using UTC for consistency
 
-            foreach (var inc in recurring)
+            var dueSchedules = await _context.RecurringIncomeSchedules // This will now be recognized
+                .Where(s => s.IsActive && s.NextOccurrenceDate.Date <= today)
+                .ToListAsync();
+
+            _log.LogInformation("Found {Count} recurring income schedules due for generation.", dueSchedules.Count);
+
+            foreach (var schedule in dueSchedules)
             {
-                bool shouldGenerate = inc.Recurrence switch
+                try
                 {
-                    "daily" => inc.Date.Date < DateTime.Today,
-                    "weekly" => inc.Date.Date.AddDays(7) <= DateTime.Today,
-                    "monthly" => inc.Date.Date.AddMonths(1) <= DateTime.Today,
-                    _ => false
-                };
+                    var existingIncome = await _context.Incomes.FirstOrDefaultAsync(
+                        i => i.RecurringScheduleId == schedule.ScheduleId && i.Date.Date == schedule.NextOccurrenceDate.Date
+                    );
 
-                if (shouldGenerate)
-                {
-                    var nextDate = inc.Recurrence switch
+                    if (existingIncome != null)
                     {
-                        "daily" => inc.Date.AddDays(1),
-                        "weekly" => inc.Date.AddDays(7),
-                        "monthly" => inc.Date.AddMonths(1),
-                        _ => inc.Date
+                        _log.LogWarning("Income for schedule {ScheduleId} on {Date} already exists. Skipping generation.", schedule.ScheduleId, schedule.NextOccurrenceDate.Date);
+                        UpdateScheduleNextOccurrence(schedule); // Still advance the schedule's next date
+                        continue;
+                    }
+
+                    var newIncome = new Income
+                    {
+                        UserId = schedule.UserId,
+                        Amount = schedule.Amount,
+                        Date = schedule.NextOccurrenceDate.Date,
+                        Descr = schedule.Descr + " (recurring)",
+                        RecurringScheduleId = schedule.ScheduleId
                     };
 
-                    var next = new Income
+                    _context.Incomes.Add(newIncome);
+                    _log.LogInformation("Generated new income for user {UserId} from schedule {ScheduleId} for {Date} (Amount: {Amount})", 
+                                        newIncome.UserId, schedule.ScheduleId, newIncome.Date, newIncome.Amount);
+
+                    UpdateScheduleNextOccurrence(schedule);
+
+                    if (schedule.EndDate.HasValue && schedule.NextOccurrenceDate.Date > schedule.EndDate.Value.Date)
                     {
-                        UserId = inc.UserId,
-                        Amount = inc.Amount,
-                        Date = nextDate,
-                        Descr = inc.Descr + " (recurring)",
-                        IsRecurring = true,
-                        Recurrence = inc.Recurrence
-                    };
-
-                    _context.Incomes.Add(next);
-                    inc.Date = nextDate;
-
-                    _log.LogInformation("Recurring income generated for user {UserId} at {Date}", inc.UserId, nextDate);
+                        schedule.IsActive = false;
+                        _log.LogInformation("Recurring schedule {ScheduleId} deactivated as it passed its end date {EndDate}.", schedule.ScheduleId, schedule.EndDate.Value.Date);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _log.LogError(ex, "Error processing recurring income schedule {ScheduleId}: {Message}", schedule.ScheduleId, ex.Message);
                 }
             }
 
             await _context.SaveChangesAsync();
+            _log.LogInformation("Recurring income generation job finished at {Time}", DateTime.Now);
+        }
+
+        private void UpdateScheduleNextOccurrence(RecurringIncomeSchedule schedule)
+        {
+            switch (schedule.Recurrence.ToLower())
+            {
+                case "daily":
+                    schedule.NextOccurrenceDate = schedule.NextOccurrenceDate.AddDays(1);
+                    break;
+                case "weekly":
+                    schedule.NextOccurrenceDate = schedule.NextOccurrenceDate.AddDays(7);
+                    break;
+                case "monthly":
+                    schedule.NextOccurrenceDate = schedule.NextOccurrenceDate.AddMonths(1);
+                    break;
+                case "yearly":
+                    schedule.NextOccurrenceDate = schedule.NextOccurrenceDate.AddYears(1);
+                    break;
+                default:
+                    _log.LogWarning("Unknown recurrence type '{Recurrence}' for schedule {ScheduleId}. Schedule will not advance.", schedule.Recurrence, schedule.ScheduleId);
+                    schedule.IsActive = false;
+                    break;
+            }
         }
     }
 }

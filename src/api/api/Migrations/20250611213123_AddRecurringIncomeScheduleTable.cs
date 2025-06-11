@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FinSync.Migrations
 {
     /// <inheritdoc />
-    public partial class AddIncomeTable : Migration
+    public partial class AddRecurringIncomeScheduleTable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -42,6 +42,26 @@ namespace FinSync.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "RecurringIncomeSchedules",
+                columns: table => new
+                {
+                    ScheduleId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Descr = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    Recurrence = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    NextOccurrenceDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RecurringIncomeSchedules", x => x.ScheduleId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -54,6 +74,29 @@ namespace FinSync.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.UserId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Incomes",
+                columns: table => new
+                {
+                    IncomeId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Descr = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    RecurringScheduleId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Incomes", x => x.IncomeId);
+                    table.ForeignKey(
+                        name: "FK_Incomes_RecurringIncomeSchedules_RecurringScheduleId",
+                        column: x => x.RecurringScheduleId,
+                        principalTable: "RecurringIncomeSchedules",
+                        principalColumn: "ScheduleId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -136,27 +179,6 @@ namespace FinSync.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Incomes",
-                columns: table => new
-                {
-                    IncomeId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Incomes", x => x.IncomeId);
-                    table.ForeignKey(
-                        name: "FK_Incomes_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.InsertData(
                 table: "Categories",
                 columns: new[] { "CategoryId", "CategoryName" },
@@ -200,9 +222,11 @@ namespace FinSync.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Incomes_UserId",
+                name: "IX_Incomes_RecurringScheduleId_Date",
                 table: "Incomes",
-                column: "UserId");
+                columns: new[] { "RecurringScheduleId", "Date" },
+                unique: true,
+                filter: "[RecurringScheduleId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_Username",
@@ -234,6 +258,9 @@ namespace FinSync.Migrations
 
             migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "RecurringIncomeSchedules");
         }
     }
 }
