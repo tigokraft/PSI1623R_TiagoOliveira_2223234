@@ -8,7 +8,7 @@ namespace FinSync.Models
         public int UserId { get; set; }
         public decimal Amount { get; set; }
         public DateTime Date { get; set; }
-    
+        public string Descr { get; set; }
         public User User { get; set; }
     }
 }
