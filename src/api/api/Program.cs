@@ -5,7 +5,10 @@ using Microsoft.OpenApi.Models;
 using Serilog;
 using AspNetCoreRateLimit;
 using System.Text;
+using FinSync.Jobs;
 using FinSync.Data;
+using Quartz;
+using Quartz.Spi;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,6 +42,17 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]))
         };
     });
+
+builder.Services.AddQuartz(opts =>
+{
+    opts.UseMicrosoftDependencyInjectionJobFactory();
+    opts.AddJob<RecurringIncomeJob>(optsJob => optsJob.WithIdentity("RecurringIncomeJob"));
+    opts.AddTrigger(optsTr => optsTr
+        .ForJob("RecurringIncomeJob")
+        .WithIdentity("RecurringIncomeTrigger")
+        .WithSimpleSchedule(s => s.WithIntervalInMinutes(1).RepeatForever()));
+});
+builder.Services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);
 
 // ✅ Rate Limiting
 builder.Services.AddMemoryCache();
