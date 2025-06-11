@@ -119,17 +119,21 @@ namespace FinSync.Controllers
             // Fetch incomes, ordered by date descending
             var incomes = await _context.Incomes
                 .Where(i => i.UserId == userId.Value)
+                // ⭐ Eager load the RecurringSchedule to access its properties ⭐
+                .Include(i => i.RecurringSchedule) 
                 .OrderByDescending(i => i.Date)
                 .Select(i => new IncomeDto
                 {
                     IncomeId = i.IncomeId,
                     Amount = i.Amount,
                     Date = i.Date,
-                    Descr = i.Descr
-                    // Note: IncomeDto currently doesn't include IsRecurring/Recurrence.
-                    // If needed for display, you would modify IncomeDto and include these from RecurringScheduleId.
+                    Descr = i.Descr,
+                    // ⭐ Map new properties ⭐
+                    IsRecurringSource = i.RecurringScheduleId.HasValue, // True if a schedule ID exists
+                    RecurrenceType = i.RecurringSchedule != null ? i.RecurringSchedule.Recurrence : null // Get type from schedule if it exists
                 })
                 .ToListAsync();
+
 
             return Ok(incomes);
         }
