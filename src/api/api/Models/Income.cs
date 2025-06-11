@@ -9,6 +9,8 @@ namespace FinSync.Models
         public decimal Amount { get; set; }
         public DateTime Date { get; set; }
         public string Descr { get; set; }
-        public User User { get; set; }
+    
+        public bool IsRecurring { get; set; }
+        public string? Recurrence { get; set; } // "daily", "weekly", "monthly"
     }
 }
