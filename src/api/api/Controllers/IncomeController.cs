@@ -107,7 +107,7 @@ namespace FinSync.Controllers
         }
 
         /// <summary>
-        /// Retrieves all income entries for the authenticated user.
+        /// Retrieves all income entries for the authenticated user, including recurrence details.
         /// </summary>
         /// <returns>A list of IncomeDto objects.</returns>
         [HttpGet]
@@ -116,10 +116,8 @@ namespace FinSync.Controllers
             var userId = GetUserId();
             if (userId == null) return Unauthorized("Invalid token. User ID not found.");
 
-            // Fetch incomes, ordered by date descending
             var incomes = await _context.Incomes
                 .Where(i => i.UserId == userId.Value)
-                // ⭐ Eager load the RecurringSchedule to access its properties ⭐
                 .Include(i => i.RecurringSchedule) 
                 .OrderByDescending(i => i.Date)
                 .Select(i => new IncomeDto
@@ -128,18 +126,17 @@ namespace FinSync.Controllers
                     Amount = i.Amount,
                     Date = i.Date,
                     Descr = i.Descr,
-                    // ⭐ Map new properties ⭐
-                    IsRecurringSource = i.RecurringScheduleId.HasValue, // True if a schedule ID exists
-                    RecurrenceType = i.RecurringSchedule != null ? i.RecurringSchedule.Recurrence : null // Get type from schedule if it exists
+                    IsRecurringSource = i.RecurringScheduleId.HasValue,
+                    RecurrenceType = i.RecurringSchedule != null ? i.RecurringSchedule.Recurrence : null
                 })
                 .ToListAsync();
-
 
             return Ok(incomes);
         }
 
         /// <summary>
-        /// Retrieves a summary of income for the authenticated user based on a specified period.
+        /// Retrieves a summary of income for the authenticated user based on a specified period,
+        /// including recurrence details for each income.
         /// </summary>
         /// <param name="period">The period for summary (daily, weekly, monthly).</param>
         /// <returns>An object containing the summary and list of incomes.</returns>
@@ -157,7 +154,7 @@ namespace FinSync.Controllers
                     startDate = DateTime.Today; // Start of today
                     break;
                 case "weekly":
-                    // Start of the current week (Sunday as DayOfWeek.Sunday is 0)
+                    // Start of the current week (Sunday as DayOfWeek.Sunday is 0), adjust if your week starts on Monday
                     startDate = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek);
                     break;
                 case "monthly":
@@ -170,14 +167,19 @@ namespace FinSync.Controllers
 
             // Fetch incomes within the specified period for the user
             var incomes = await _context.Incomes
-                .Where(i => i.UserId == userId.Value && i.Date.Date >= startDate) // Compare date parts only
+                .Where(i => i.UserId == userId.Value && i.Date.Date >= startDate)
+                // Eager load the RecurringSchedule to access its properties
+                .Include(i => i.RecurringSchedule)
                 .OrderByDescending(i => i.Date)
                 .Select(i => new IncomeDto
                 {
                     IncomeId = i.IncomeId,
                     Amount = i.Amount,
                     Date = i.Date,
-                    Descr = i.Descr
+                    Descr = i.Descr,
+                    // Map new properties
+                    IsRecurringSource = i.RecurringScheduleId.HasValue,
+                    RecurrenceType = i.RecurringSchedule != null ? i.RecurringSchedule.Recurrence : null
                 })
                 .ToListAsync();
 
