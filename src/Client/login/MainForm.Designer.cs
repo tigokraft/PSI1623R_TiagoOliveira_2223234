@@ -1,6 +1,6 @@
 ﻿namespace login
 {
-    partial class Overview
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -40,20 +40,11 @@
             this.OvBtn = new Guna.UI2.WinForms.Guna2Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
-            this.label2 = new System.Windows.Forms.Label();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.BalanceTxt = new Guna.UI.WinForms.GunaLabel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.ExpensesPanel = new Guna.UI2.WinForms.Guna2Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.ChartPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.former = new Guna.UI2.WinForms.Guna2Panel();
+            this.closeapp = new Guna.UI2.WinForms.Guna2ControlBox();
             this.panel1.SuspendLayout();
-            this.guna2GradientPanel1.SuspendLayout();
-            this.guna2GradientPanel2.SuspendLayout();
+            this.former.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Elipse1
@@ -213,18 +204,6 @@
             this.panel2.Size = new System.Drawing.Size(1, 601);
             this.panel2.TabIndex = 1;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Inter SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(225, 30);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 27);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Overview";
-            // 
             // guna2ControlBox1
             // 
             this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -242,151 +221,49 @@
             this.guna2ControlBox1.Size = new System.Drawing.Size(45, 29);
             this.guna2ControlBox1.TabIndex = 7;
             // 
-            // guna2GradientPanel1
+            // former
             // 
-            this.guna2GradientPanel1.AutoRoundedCorners = true;
-            this.guna2GradientPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.guna2GradientPanel1.BorderRadius = 15;
-            this.guna2GradientPanel1.BorderThickness = 1;
-            this.guna2GradientPanel1.Controls.Add(this.BalanceTxt);
-            this.guna2GradientPanel1.Controls.Add(this.label3);
-            this.guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
-            this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.guna2GradientPanel1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
-            this.guna2GradientPanel1.Location = new System.Drawing.Point(230, 80);
-            this.guna2GradientPanel1.Name = "guna2GradientPanel1";
-            this.guna2GradientPanel1.ShadowDecoration.Parent = this.guna2GradientPanel1;
-            this.guna2GradientPanel1.Size = new System.Drawing.Size(200, 100);
-            this.guna2GradientPanel1.TabIndex = 9;
+            this.former.Controls.Add(this.closeapp);
+            this.former.Location = new System.Drawing.Point(200, 0);
+            this.former.Name = "former";
+            this.former.ShadowDecoration.Parent = this.former;
+            this.former.Size = new System.Drawing.Size(900, 600);
+            this.former.TabIndex = 8;
             // 
-            // BalanceTxt
+            // closeapp
             // 
-            this.BalanceTxt.AutoSize = true;
-            this.BalanceTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BalanceTxt.ForeColor = System.Drawing.Color.Transparent;
-            this.BalanceTxt.Location = new System.Drawing.Point(3, 54);
-            this.BalanceTxt.MaximumSize = new System.Drawing.Size(200, 35);
-            this.BalanceTxt.MinimumSize = new System.Drawing.Size(194, 35);
-            this.BalanceTxt.Name = "BalanceTxt";
-            this.BalanceTxt.Size = new System.Drawing.Size(194, 35);
-            this.BalanceTxt.TabIndex = 1;
-            this.BalanceTxt.Text = "$balance";
-            this.BalanceTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.BalanceTxt.Click += new System.EventHandler(this.BalanceTxt_Click);
+            this.closeapp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.closeapp.BackColor = System.Drawing.Color.Transparent;
+            this.closeapp.FillColor = System.Drawing.Color.Transparent;
+            this.closeapp.HoverState.BorderColor = System.Drawing.Color.Transparent;
+            this.closeapp.HoverState.FillColor = System.Drawing.Color.Transparent;
+            this.closeapp.HoverState.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.closeapp.HoverState.Parent = this.closeapp;
+            this.closeapp.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(160)))), ((int)(((byte)(160)))));
+            this.closeapp.Location = new System.Drawing.Point(855, 0);
+            this.closeapp.Name = "closeapp";
+            this.closeapp.PressedColor = System.Drawing.Color.Transparent;
+            this.closeapp.ShadowDecoration.Parent = this.closeapp;
+            this.closeapp.Size = new System.Drawing.Size(45, 29);
+            this.closeapp.TabIndex = 16;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(48, 13);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(108, 17);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Total Balance";
-            // 
-            // guna2GradientPanel2
-            // 
-            this.guna2GradientPanel2.AutoRoundedCorners = true;
-            this.guna2GradientPanel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.guna2GradientPanel2.BorderRadius = 15;
-            this.guna2GradientPanel2.BorderThickness = 1;
-            this.guna2GradientPanel2.Controls.Add(this.gunaLabel1);
-            this.guna2GradientPanel2.Controls.Add(this.label4);
-            this.guna2GradientPanel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
-            this.guna2GradientPanel2.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.guna2GradientPanel2.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
-            this.guna2GradientPanel2.Location = new System.Drawing.Point(470, 80);
-            this.guna2GradientPanel2.Name = "guna2GradientPanel2";
-            this.guna2GradientPanel2.ShadowDecoration.Parent = this.guna2GradientPanel2;
-            this.guna2GradientPanel2.Size = new System.Drawing.Size(200, 100);
-            this.guna2GradientPanel2.TabIndex = 10;
-            // 
-            // gunaLabel1
-            // 
-            this.gunaLabel1.AutoSize = true;
-            this.gunaLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel1.ForeColor = System.Drawing.Color.Transparent;
-            this.gunaLabel1.Location = new System.Drawing.Point(3, 54);
-            this.gunaLabel1.MaximumSize = new System.Drawing.Size(200, 35);
-            this.gunaLabel1.MinimumSize = new System.Drawing.Size(194, 35);
-            this.gunaLabel1.Name = "gunaLabel1";
-            this.gunaLabel1.Size = new System.Drawing.Size(194, 35);
-            this.gunaLabel1.TabIndex = 1;
-            this.gunaLabel1.Text = "$spent";
-            this.gunaLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.label4.ForeColor = System.Drawing.Color.Transparent;
-            this.label4.Location = new System.Drawing.Point(35, 13);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(135, 17);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Spent This Month";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
-            // 
-            // ExpensesPanel
-            // 
-            this.ExpensesPanel.BackColor = System.Drawing.Color.Transparent;
-            this.ExpensesPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.ExpensesPanel.BorderRadius = 10;
-            this.ExpensesPanel.Location = new System.Drawing.Point(229, 237);
-            this.ExpensesPanel.Name = "ExpensesPanel";
-            this.ExpensesPanel.ShadowDecoration.Parent = this.ExpensesPanel;
-            this.ExpensesPanel.Size = new System.Drawing.Size(440, 310);
-            this.ExpensesPanel.TabIndex = 11;
-            this.ExpensesPanel.UseTransparentBackground = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Inter Medium", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Transparent;
-            this.label5.Location = new System.Drawing.Point(233, 213);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(108, 21);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Last expenses";
-            // 
-            // ChartPanel
-            // 
-            this.ChartPanel.ForeColor = System.Drawing.Color.Transparent;
-            this.ChartPanel.Location = new System.Drawing.Point(700, 80);
-            this.ChartPanel.Name = "ChartPanel";
-            this.ChartPanel.ShadowDecoration.Parent = this.ChartPanel;
-            this.ChartPanel.Size = new System.Drawing.Size(360, 465);
-            this.ChartPanel.TabIndex = 13;
-            // 
-            // Overview
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.ClientSize = new System.Drawing.Size(1100, 600);
-            this.Controls.Add(this.ChartPanel);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.ExpensesPanel);
-            this.Controls.Add(this.guna2GradientPanel2);
-            this.Controls.Add(this.guna2GradientPanel1);
+            this.Controls.Add(this.former);
             this.Controls.Add(this.guna2ControlBox1);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Overview";
+            this.Name = "MainForm";
             this.Text = "Overview";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.guna2GradientPanel1.ResumeLayout(false);
-            this.guna2GradientPanel1.PerformLayout();
-            this.guna2GradientPanel2.ResumeLayout(false);
-            this.guna2GradientPanel2.PerformLayout();
+            this.former.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -398,21 +275,13 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
-        private System.Windows.Forms.Label label2;
         private Guna.UI2.WinForms.Guna2Button OvBtn;
         private Guna.UI2.WinForms.Guna2Button GoalsBtn;
         private Guna.UI2.WinForms.Guna2Button ExpensesBtn;
         private Guna.UI2.WinForms.Guna2Button budgetBtn;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
-        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
-        private System.Windows.Forms.Label label3;
-        private Guna.UI.WinForms.GunaLabel BalanceTxt;
-        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel2;
-        private Guna.UI.WinForms.GunaLabel gunaLabel1;
-        private System.Windows.Forms.Label label4;
-        private Guna.UI2.WinForms.Guna2Panel ExpensesPanel;
-        private System.Windows.Forms.Label label5;
-        private Guna.UI2.WinForms.Guna2Panel ChartPanel;
+        private Guna.UI2.WinForms.Guna2Panel former;
+        private Guna.UI2.WinForms.Guna2ControlBox closeapp;
     }
 }

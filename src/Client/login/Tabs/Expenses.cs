@@ -45,10 +45,10 @@ namespace login.Tabs
         private readonly HttpClient _http;
         private FlowLayoutPanel expensePanel;
 
-        private int column1Width = 110;
+        private int column1Width = 150;
         private int column2Width = 150;
-        private int column3Width = 240; // This will be dynamically updated in ListLoader
-        private int column4Width = 90;
+        private int column3Width = 350;
+        private int column4Width = 150;
 
         public Expenses(HttpClient http)
         {
@@ -307,6 +307,7 @@ namespace login.Tabs
 
         private Guna2Panel CreateTableRow(string dateText, string categoryText, string descriptionText, string amountText, bool isHeader = false, Color? categoryColor = null, int totalWidth = 600)
         {
+           
             var rowPanel = new Guna2Panel
             {
                 Size = new Size(totalWidth, 40),
@@ -326,6 +327,11 @@ namespace login.Tabs
                 Margin = new Padding(0),
             };
             rowPanel.Controls.Add(innerFlowPanel);
+            rowPanel.HorizontalScroll.Maximum = 0;
+            rowPanel.AutoScroll = false;
+            rowPanel.VerticalScroll.Visible = false;
+            rowPanel.AutoScroll = true;
+
 
             int internalPadding = 10;
 

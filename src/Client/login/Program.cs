@@ -63,7 +63,7 @@ namespace login
 
             if (tokenValidAndUsed)
             {
-                Application.Run(new Overview(httpClient));
+                Application.Run(new MainForm(httpClient));
             }
             else
             {
@@ -73,7 +73,7 @@ namespace login
 
                 if (loginResult == DialogResult.OK)
                 {
-                    Application.Run(new Overview(httpClient));
+                    Application.Run(new MainForm(httpClient));
                 }
                 else if (loginResult == DialogResult.No)
                 {
@@ -82,7 +82,7 @@ namespace login
 
                     if (registerResult == DialogResult.OK)
                     {
-                        Application.Run(new Overview(httpClient));
+                        Application.Run(new MainForm(httpClient));
                     }
                 }
             }
@@ -109,5 +109,7 @@ namespace login
 
             return false;
         }
+
+
     }
 }

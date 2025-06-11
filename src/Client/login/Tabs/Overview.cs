@@ -11,22 +11,23 @@ using login.Helpers;
 using login.Tabs;
 using System.Runtime.InteropServices;
 
-namespace login
+namespace login.Tabs
 {
     public partial class Overview : Form
     {
         private readonly HttpClient _http;
-
         public Overview(HttpClient httpClient)
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.None;
             _http = httpClient;
+
             Loader();
-            this.BackColor = System.Drawing.Color.FromArgb(16, 20, 20);
-
             this.ChartPanel.BackColor = System.Drawing.Color.FromArgb(16, 20, 20);
-        }
 
+            
+
+        }
         private async void Loader()
         {
             var balance = await GetBalanceAsync();
@@ -46,54 +47,6 @@ namespace login
             expList.Show();
             //this.ChartPanel.Controls.Add(ovChart); // Chart added to ChartPanel
             ChartPanel.Controls.Add(ovChart); // Chart added to the main form
-        }
-
-        private void guna2Button2_Click(object sender, EventArgs e)
-        {
-            ExpensesBtn.FillColor = Color.FromArgb(100, 27, 43, 48);
-            OvBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
-            budgetBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
-            GoalsBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
-
-            new Expenses(_http).Show();
-        }
-
-        private void OvBtn_Click(object sender, EventArgs e)
-        {
-            OvBtn.FillColor = Color.FromArgb(100, 27, 43, 48);
-            ExpensesBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
-            budgetBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
-            GoalsBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
-        }
-
-        private void budgetBtn_Click(object sender, EventArgs e)
-        {
-            budgetBtn.FillColor = Color.FromArgb(100, 27, 43, 48);
-            ExpensesBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
-            OvBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
-            GoalsBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
-        }
-
-        private void GoalsBtn_Click(object sender, EventArgs e)
-        {
-            GoalsBtn.FillColor = Color.FromArgb(100, 27, 43, 48);
-            ExpensesBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
-            OvBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
-            budgetBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
-        }
-
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            if (File.Exists("auth.token"))
-            {
-                File.Delete("auth.token");
-                Application.Exit();
-            }
-        }
-
-        private void BalanceTxt_Click(object sender, EventArgs e)
-        {
-
         }
 
         public async Task<decimal> GetBalanceAsync()
@@ -132,8 +85,10 @@ namespace login
             }
         }
 
+        private void label4_Click(object sender, EventArgs e)
+        {
 
-
+        }
 
         public static string LoadToken()
         {
@@ -143,11 +98,6 @@ namespace login
                 return File.ReadAllText(tokenPath);
 
             return null;
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

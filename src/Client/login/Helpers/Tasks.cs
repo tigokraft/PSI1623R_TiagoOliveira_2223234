@@ -5,10 +5,11 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
+using System.IO;
 
 namespace login.Helpers
 {
-    internal class Tasks : Overview
+    internal class Tasks : MainForm
     {
         public Tasks(HttpClient httpClient) : base(httpClient)
         {
@@ -98,6 +99,14 @@ namespace login.Helpers
             }
         }
 
+        public static string LoadToken()
+        {
+            string tokenPath = "auth.token";
 
+            if (File.Exists(tokenPath))
+                return File.ReadAllText(tokenPath);
+
+            return null;
+        }
     }
 }
