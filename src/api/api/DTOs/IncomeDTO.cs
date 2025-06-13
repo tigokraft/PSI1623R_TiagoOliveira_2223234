@@ -7,10 +7,10 @@ namespace FinSync.DTOs
         public int IncomeId { get; set; }
         public decimal Amount { get; set; }
         public DateTime Date { get; set; }
-        public string Descr { get; set; }
+        public string? Descr { get; set; } // Marked as nullable to address CS8618 warning
 
-        // New properties to indicate if it's from a recurring source and its type
         public bool IsRecurringSource { get; set; }
-        public string? RecurrenceType { get; set; } // Nullable, as one-time incomes won't have this
+        public string? RecurrenceType { get; set; }
+        public string CategoryName { get; set; } = null!; // Null-forgiving operator, as it will be populated.
     }
 }

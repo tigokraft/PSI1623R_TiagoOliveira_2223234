@@ -10,17 +10,20 @@ namespace FinSync.DTOs
         public decimal Amount { get; set; }
 
         [Required]
-        public DateTime Date { get; set; } // This will be the StartDate for recurring incomes, or the Date for one-time incomes
+        public DateTime Date { get; set; }
 
         [Required]
         [StringLength(255, ErrorMessage = "Description cannot exceed 255 characters.")]
         public string Descr { get; set; }
 
-        public bool IsRecurring { get; set; } = false; // Default to false
+        public bool IsRecurring { get; set; } = false;
 
-        // Only required if IsRecurring is true
-        public string? Recurrence { get; set; } // "daily", "weekly", "monthly", "yearly"
+        public string? Recurrence { get; set; }
 
-        public DateTime? EndDate { get; set; } // Only for recurring incomes, can be null
+        public DateTime? EndDate { get; set; }
+
+        [Required]
+        [Range(1, int.MaxValue, ErrorMessage = "Category ID must be a positive integer.")]
+        public int CategoryId { get; set; } 
     }
 }

@@ -4,6 +4,7 @@ using FinSync.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinSync.Migrations
 {
     [DbContext(typeof(FinSyncContext))]
-    partial class FinSyncContextModelSnapshot : ModelSnapshot
+    [Migration("20250613212221_RemoveIncomeCategoryNavigationProperty")]
+    partial class RemoveIncomeCategoryNavigationProperty
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

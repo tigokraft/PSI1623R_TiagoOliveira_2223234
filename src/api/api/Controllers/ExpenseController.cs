@@ -108,6 +108,28 @@ namespace FinSync.Controllers
             return Ok(result);
         }
 
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateExpense(int id, [FromBody] CreateExpenseDto dto)
+        {
+            var userId = GetUserId();
+            if (userId == null) return Unauthorized("Invalid token.");
+        
+            var expense = await _context.Expenses
+                .FirstOrDefaultAsync(e => e.ExpenseId == id && e.UserId == userId.Value);
+        
+            if (expense == null)
+                return NotFound("Expense not found.");
+        
+            expense.Amount = dto.Amount;
+            expense.Tags = dto.Tags;
+            expense.Description = dto.Description;
+            expense.Date = dto.Date;
+            expense.CategoryId = dto.CategoryId;
+        
+            await _context.SaveChangesAsync();
+        
+            return Ok(new { message = "Expense updated successfully." });
+        }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteExpense(int id)

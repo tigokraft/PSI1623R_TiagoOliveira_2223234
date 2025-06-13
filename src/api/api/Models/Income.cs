@@ -9,15 +9,15 @@ namespace FinSync.Models
         [Key]
         public int IncomeId { get; set; }
 
-        public int UserId { get; set; } // Foreign key to User
-        // public User User { get; set; } // Navigation property
+        public int UserId { get; set; }
+        // public User User { get; set; } // Navigation property if you have a User model
 
         [Required]
-        [Column(TypeName = "decimal(18,2)")] // Ensure correct precision for currency
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Amount { get; set; }
 
         [Required]
-        public DateTime Date { get; set; } // The actual date this specific income occurrence happened
+        public DateTime Date { get; set; }
 
         [Required]
         [StringLength(255)]
@@ -27,5 +27,9 @@ namespace FinSync.Models
         public int? RecurringScheduleId { get; set; } 
         [ForeignKey("RecurringScheduleId")]
         public RecurringIncomeSchedule? RecurringSchedule { get; set; } // Navigation property
+
+        public int CategoryId { get; set; } // Foreign key to Category
+        [ForeignKey("CategoryId")]
+        public Category Category { get; set; } = null!; // Navigation property. Null-forgiving operator as it will be required.
     }
 }
