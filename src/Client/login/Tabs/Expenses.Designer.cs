@@ -30,6 +30,7 @@
         {
             this.label2 = new System.Windows.Forms.Label();
             this.AddBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.closeapp = new Guna.UI2.WinForms.Guna2ControlBox();
             this.SuspendLayout();
             // 
             // label2
@@ -65,6 +66,23 @@
             this.AddBtn.Text = "Add Expense";
             this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
             // 
+            // closeapp
+            // 
+            this.closeapp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.closeapp.BackColor = System.Drawing.Color.Transparent;
+            this.closeapp.FillColor = System.Drawing.Color.Transparent;
+            this.closeapp.HoverState.BorderColor = System.Drawing.Color.Transparent;
+            this.closeapp.HoverState.FillColor = System.Drawing.Color.Transparent;
+            this.closeapp.HoverState.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.closeapp.HoverState.Parent = this.closeapp;
+            this.closeapp.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(160)))), ((int)(((byte)(160)))));
+            this.closeapp.Location = new System.Drawing.Point(850, 3);
+            this.closeapp.Name = "closeapp";
+            this.closeapp.PressedColor = System.Drawing.Color.Transparent;
+            this.closeapp.ShadowDecoration.Parent = this.closeapp;
+            this.closeapp.Size = new System.Drawing.Size(45, 29);
+            this.closeapp.TabIndex = 17;
+            // 
             // Expenses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -72,6 +90,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.AddBtn);
+            this.Controls.Add(this.closeapp);
             this.Controls.Add(this.label2);
             this.ForeColor = System.Drawing.Color.Coral;
             this.Name = "Expenses";
@@ -85,5 +104,6 @@
 
         private System.Windows.Forms.Label label2;
         private Guna.UI2.WinForms.Guna2Button AddBtn;
+        private Guna.UI2.WinForms.Guna2ControlBox closeapp;
     }
 }

@@ -10,6 +10,7 @@ using LiveCharts.WinForms;
 using login.Helpers;
 using login.Tabs;
 using System.Runtime.InteropServices;
+using Guna.UI2.WinForms;
 
 namespace login
 {
@@ -22,12 +23,14 @@ namespace login
             InitializeComponent();
             _http = httpClient;    
 
+
             // load default state
             Overview overview = new Overview(_http);
             overview.TopLevel = false;
             former.Controls.Clear();
             former.Controls.Add(overview);
             overview.Show();
+
         }
 
         

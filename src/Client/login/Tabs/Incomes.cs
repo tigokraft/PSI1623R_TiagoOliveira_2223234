@@ -34,10 +34,11 @@ namespace login.Tabs
                 FillColor = Color.FromArgb(18, 20, 20),
                 ForeColor = Color.Transparent,
                 Size = new Size(350, 450),
-                Location = new Point((this.ClientSize.Width - 300) / 2, 50),
+                Location = new Point((this.ClientSize.Width - 500) / 2, 50),
                 Anchor = AnchorStyles.Top,
                 BackColor = Color.Transparent,
                 Name = "OverlayCard",
+                //Font = new Font("Segoe UI", 9, FontStyle.Regular),
             };
 
             var descr = new Guna2TextBox
@@ -48,6 +49,7 @@ namespace login.Tabs
                 BorderColor = Color.FromArgb(67, 79, 82),
                 ForeColor = Color.White,
                 BackColor = Color.FromArgb(18, 20, 20),
+                //Font = new Font("Segoe UI", 9, FontStyle.Regular),
                 FillColor = Color.FromArgb(18, 20, 20),
                 FocusedState =
                 {
@@ -85,8 +87,8 @@ namespace login.Tabs
             var recurring = new Guna2CheckBox
             {
                 Text = "Recurring",
-                Size = new Size(300, 20),
-                Location = new Point(25, 170),
+                Size = new Size(300, 30),
+                Location = new Point(25, 190),
                 ForeColor = Color.White,
                 BackColor = Color.Transparent,
                 CheckedState =
@@ -96,9 +98,10 @@ namespace login.Tabs
                 },
                 UncheckedState =
                 {
-                    FillColor = Color.FromArgb(18, 20, 20),
+                    FillColor = Color.FromArgb(125, 137, 149),
                     BorderColor = Color.FromArgb(67, 79, 82),
                 },
+                Font = new Font("Segoe UI", 9, FontStyle.Regular),
             };
 
             var recurrence = new Guna2ComboBox
@@ -127,7 +130,7 @@ namespace login.Tabs
             var endDate = new Guna2DateTimePicker
             {
                 Size = new Size(300, 40),
-                Location = new Point(25, 250),
+                Location = new Point(25, 280),
                 BorderColor = Color.FromArgb(67, 79, 82),
                 ForeColor = Color.White,
                 BackColor = Color.FromArgb(18, 20, 20),
@@ -178,6 +181,8 @@ namespace login.Tabs
                 ForeColor = Color.Transparent,
             };
 
+            recurrence.Visible = false;
+            endDate.Visible = false;
 
             bool isRecurring = false;
             recurring.CheckedChanged += (s, ev) =>

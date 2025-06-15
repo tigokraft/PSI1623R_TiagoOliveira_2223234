@@ -113,7 +113,7 @@ namespace login.Tabs
                 FillColor = Color.FromArgb(18, 20, 20),
                 ForeColor = Color.Transparent,
                 Size = new Size(350, 450),
-                Location = new Point((this.ClientSize.Width - 300) / 2, 50),
+                Location = new Point((this.ClientSize.Width - 500) / 2, 50),
                 Anchor = AnchorStyles.Top,
                 BackColor = Color.Transparent,
                 Name = "OverlayCard",

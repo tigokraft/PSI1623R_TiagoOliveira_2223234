@@ -38,6 +38,7 @@
             this.ChartPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.ExpensesPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.closeapp = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2GradientPanel1.SuspendLayout();
             this.guna2GradientPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -171,12 +172,30 @@
             this.ExpensesPanel.TabIndex = 13;
             this.ExpensesPanel.UseTransparentBackground = true;
             // 
+            // closeapp
+            // 
+            this.closeapp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.closeapp.BackColor = System.Drawing.Color.Transparent;
+            this.closeapp.FillColor = System.Drawing.Color.Transparent;
+            this.closeapp.HoverState.BorderColor = System.Drawing.Color.Transparent;
+            this.closeapp.HoverState.FillColor = System.Drawing.Color.Transparent;
+            this.closeapp.HoverState.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.closeapp.HoverState.Parent = this.closeapp;
+            this.closeapp.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(160)))), ((int)(((byte)(160)))));
+            this.closeapp.Location = new System.Drawing.Point(850, 3);
+            this.closeapp.Name = "closeapp";
+            this.closeapp.PressedColor = System.Drawing.Color.Transparent;
+            this.closeapp.ShadowDecoration.Parent = this.closeapp;
+            this.closeapp.Size = new System.Drawing.Size(45, 29);
+            this.closeapp.TabIndex = 18;
+            // 
             // Overview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.ClientSize = new System.Drawing.Size(884, 561);
+            this.Controls.Add(this.closeapp);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.ChartPanel);
             this.Controls.Add(this.ExpensesPanel);
@@ -206,5 +225,6 @@
         private Guna.UI2.WinForms.Guna2Panel ChartPanel;
         private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2Panel ExpensesPanel;
+        private Guna.UI2.WinForms.Guna2ControlBox closeapp;
     }
 }
