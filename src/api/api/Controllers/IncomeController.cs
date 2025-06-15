@@ -168,6 +168,7 @@ namespace FinSync.Controllers
                 Incomes = incomes
             });
         }
+        
         [HttpGet("non-recurring")]
         public async Task<ActionResult<IEnumerable<IncomeDto>>> GetNonRecurringIncomes()
         {
