@@ -1,90 +1,155 @@
-using System.Diagnostics;
+using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace FinSync.Panel;
-
-public static class ConsolePanel
+namespace FinSync.Panel
 {
-    public static void Start()
+    public static class ConsolePanel
     {
-        Task.Run(() => RunMenu());
-    }
-
-    private static void RunMenu()
-    {
-        while (true)
+        public static void Start()
         {
-            Console.Clear();
-            Console.WriteLine("============================");
-            Console.WriteLine("         FINSYNC API        ");
-            Console.WriteLine("============================");
-            Console.WriteLine("1 -> Requests check");
-            Console.WriteLine("2 -> Admin Panel");
-            Console.WriteLine("3 -> STOP");
-            Console.WriteLine("4 -> Restart");
-            Console.WriteLine("============================");
-            Console.Write("Select an option: ");
+            Task.Run(() => RunMenu());
+        }
 
-            var key = Console.ReadKey().Key;
-            Console.WriteLine();
-
-            switch (key)
+        private static void RunMenu()
+        {
+            while (true)
             {
-                case ConsoleKey.D1:
-                    CheckRequests().Wait();
-                    break;
-                case ConsoleKey.D2:
-                    ShowAdminPanel();
-                    break;
-                case ConsoleKey.D3:
-                    StopAPI();
-                    break;
-                case ConsoleKey.D4:
-                    RestartAPI();
-                    break;
-                default:
-                    Console.WriteLine("Invalid option.");
-                    break;
+                Console.Clear();
+                Render();
+
+                string[] menuItems = new[]
+                {
+                    "1 -> Requests check",
+                    "2 -> Admin Panel",
+                    "3 -> STOP",
+                    "4 -> Restart"
+                };
+
+                centerBlock(menuItems);
+
+                Console.CursorVisible = false;
+
+                var key = Console.ReadKey(true).Key;
+                Console.Clear();
+
+                switch (key)
+                {
+                    case ConsoleKey.D1:
+                        CheckRequests().Wait();
+                        break;
+                    case ConsoleKey.D2:
+                        ShowAdminPanel();
+                        break;
+                    case ConsoleKey.D3:
+                        StopAPI();
+                        break;
+                    case ConsoleKey.D4:
+                        RestartAPI();
+                        break;
+                    default:
+                        centerBlock(new[] { "Invalid option." });
+                        break;
+                }
+
+                centerBlock(new[] { "\nPress any key to return to menu..." });
+                Console.ReadKey(true);
+            }
+        }
+
+        // Centers the entire block of strings as a group horizontally
+        private static void centerBlock(string[] lines)
+        {
+            int consoleWidth = Console.WindowWidth;
+            int maxLength = 0;
+
+            foreach (var line in lines)
+                if (line.Length > maxLength)
+                    maxLength = line.Length;
+
+            int leftPadding = (consoleWidth - maxLength) / 2;
+            if (leftPadding < 0) leftPadding = 0;
+
+            foreach (var line in lines)
+                Console.WriteLine(new string(' ', leftPadding) + line);
+        }
+
+        private static async Task CheckRequests()
+        {
+            try
+            {
+                using var client = new HttpClient();
+                var response = await client.GetAsync("http://localhost:5000/health");
+                centerBlock(new[] { response.IsSuccessStatusCode ? "✅ API is healthy." : $"❌ API error: {response.StatusCode}" });
+            }
+            catch (Exception ex)
+            {
+                centerBlock(new[] { $"❌ Failed to check API: {ex.Message}" });
+            }
+        }
+
+        private static void ShowAdminPanel()
+        {
+            centerBlock(new[]
+            {
+                "🛠️ Admin Panel:",
+                "- Alerts count: TODO",
+                "- Jobs running: TODO",
+                "- Users online: TODO"
+            });
+        }
+
+        private static void StopAPI()
+        {
+            centerBlock(new[] { "🛑 Stopping FinSync..." });
+            Environment.Exit(0);
+        }
+
+        private static void RestartAPI()
+        {
+            centerBlock(new[] { "🔄 Triggering restart..." });
+            Environment.Exit(100);
+        }
+
+        private const string AsciiArt = @"
+            ·▄▄▄▪   ▐ ▄ .▄▄ ·  ▄· ▄▌ ▐ ▄  ▄▄·      ▄▄▄·  ▄▄▄·▪  
+            ▐▄▄·██ •█▌▐█▐█ ▀. ▐█▪██▌•█▌▐█▐█ ▌▪    ▐█ ▀█ ▐█ ▄███ 
+            ██▪ ▐█·▐█▐▐▌▄▀▀▀█▄▐█▌▐█▪▐█▐▐▌██ ▄▄    ▄█▀▀█  ██▀·▐█·
+            ██▌.▐█▌██▐█▌▐█▄▪▐█ ▐█▀·.██▐█▌▐███▌    ▐█ ▪▐▌▐█▪·•▐█▌
+            ▀▀▀ ▀▀▀▀▀ █▪ ▀▀▀▀   ▀ • ▀▀ █▪·▀▀▀      ▀  ▀ .▀   ▀▀▀
+        ";
+
+        public static void Render()
+        {
+            var startColor = (R: 0, G: 255, B: 0);
+            var endColor = (R: 0, G: 0, B: 255);
+
+            string[] lines = AsciiArt.Split('\n');
+            int maxWidth = 0;
+            foreach (var line in lines)
+                if (line.Length > maxWidth)
+                    maxWidth = line.Length;
+
+            foreach (var line in lines)
+            {
+                int spaces = (Console.WindowWidth - line.Length) / 2;
+                if (spaces < 0) spaces = 0;
+
+                Console.Write(new string(' ', spaces - 5));
+
+                for (int i = 0; i < line.Length; i++)
+                {
+                    double ratio = (double)i / maxWidth;
+                    int r = (int)(startColor.R + (endColor.R - startColor.R) * ratio);
+                    int g = (int)(startColor.G + (endColor.G - startColor.G) * ratio);
+                    int b = (int)(startColor.B + (endColor.B - startColor.B) * ratio);
+
+                    Console.Write($"\x1b[38;2;{r};{g};{b}m{line[i]}");
+                }
+                Console.WriteLine();
             }
 
-            Console.WriteLine("\nPress any key to return to menu...");
-            Console.ReadKey();
+            Console.Write("\x1b[0m");
         }
-    }
-
-    private static async Task CheckRequests()
-    {
-        try
-        {
-            using var client = new HttpClient();
-            var response = await client.GetAsync("http://localhost:5000/health"); // Adjust port as needed
-            Console.WriteLine(response.IsSuccessStatusCode
-                ? "✅ API is healthy."
-                : $"❌ API error: {response.StatusCode}");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"❌ Failed to check API: {ex.Message}");
-        }
-    }
-
-    private static void ShowAdminPanel()
-    {
-        Console.WriteLine("🛠️ Admin Panel:");
-        Console.WriteLine("- Alerts count: TODO");
-        Console.WriteLine("- Jobs running: TODO");
-        Console.WriteLine("- Users online: TODO");
-    }
-
-    private static void StopAPI()
-    {
-        Console.WriteLine("🛑 Stopping FinSync...");
-        Environment.Exit(0);
-    }
-
-    private static void RestartAPI()
-    {
-        Console.WriteLine("🔄 Triggering restart...");
-        Environment.Exit(100); // Trigger loop in start.bat
     }
 }
