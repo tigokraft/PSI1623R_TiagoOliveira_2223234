@@ -6,6 +6,9 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.IO;
+using static System.Net.WebRequestMethods;
+using System.Text;
+using File = System.IO.File;
 
 namespace login.Helpers
 {
@@ -14,6 +17,17 @@ namespace login.Helpers
         public Tasks(HttpClient httpClient) : base(httpClient)
         {
 
+        }
+
+        // request classes
+        public class IncomeRequest
+        {
+            public decimal amount { get; set; }
+            public DateTime date { get; set; }
+            public string descr { get; set; }
+            public bool isRecurring { get; set; }
+            public string recurrence { get; set; }
+            public string endDate { get; set; }
         }
 
         public class ExpenseRequest
@@ -97,6 +111,36 @@ namespace login.Helpers
             {
                 MessageBox.Show($"Error fetching expenses: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        public async Task PostIncome(string description, decimal amt, string endTime, decimal catId, bool isRec, string rec, HttpClient http)
+        {
+            var payload = new IncomeRequest
+            {
+                amount = amt,
+                date = DateTime.Now,
+                descr = description,
+                isRecurring = isRec,
+                recurrence = rec,
+                endDate = endTime
+            };
+
+            var json = JsonSerializer.Serialize(payload);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await http.PostAsync("api/income/", content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadAsStringAsync();
+                //return Cards.
+            }
+            else
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                MessageBox.Show($"Failed: {response.StatusCode} - {error}");
+            }
+
         }
 
         public static string LoadToken()

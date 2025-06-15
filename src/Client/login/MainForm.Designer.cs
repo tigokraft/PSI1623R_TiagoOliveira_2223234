@@ -43,6 +43,7 @@
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.former = new Guna.UI2.WinForms.Guna2Panel();
             this.closeapp = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.IncomeBtn = new Guna.UI2.WinForms.Guna2Button();
             this.panel1.SuspendLayout();
             this.former.SuspendLayout();
             this.SuspendLayout();
@@ -71,6 +72,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.panel1.Controls.Add(this.IncomeBtn);
             this.panel1.Controls.Add(this.guna2Button1);
             this.panel1.Controls.Add(this.budgetBtn);
             this.panel1.Controls.Add(this.ExpensesBtn);
@@ -117,7 +119,7 @@
             this.budgetBtn.HoverState.Parent = this.budgetBtn;
             this.budgetBtn.Image = global::login.Properties.Resources.budget;
             this.budgetBtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.budgetBtn.Location = new System.Drawing.Point(12, 190);
+            this.budgetBtn.Location = new System.Drawing.Point(12, 300);
             this.budgetBtn.Name = "budgetBtn";
             this.budgetBtn.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
             this.budgetBtn.ShadowDecoration.Parent = this.budgetBtn;
@@ -247,6 +249,28 @@
             this.closeapp.Size = new System.Drawing.Size(45, 29);
             this.closeapp.TabIndex = 16;
             // 
+            // IncomeBtn
+            // 
+            this.IncomeBtn.Animated = true;
+            this.IncomeBtn.BorderRadius = 8;
+            this.IncomeBtn.CheckedState.Parent = this.IncomeBtn;
+            this.IncomeBtn.CustomImages.Parent = this.IncomeBtn;
+            this.IncomeBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.IncomeBtn.Font = new System.Drawing.Font("Inter", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IncomeBtn.ForeColor = System.Drawing.Color.White;
+            this.IncomeBtn.HoverState.Parent = this.IncomeBtn;
+            this.IncomeBtn.Image = global::login.Properties.Resources.budget;
+            this.IncomeBtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.IncomeBtn.Location = new System.Drawing.Point(12, 190);
+            this.IncomeBtn.Name = "IncomeBtn";
+            this.IncomeBtn.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
+            this.IncomeBtn.ShadowDecoration.Parent = this.IncomeBtn;
+            this.IncomeBtn.Size = new System.Drawing.Size(175, 40);
+            this.IncomeBtn.TabIndex = 10;
+            this.IncomeBtn.Text = "Incomes";
+            this.IncomeBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.IncomeBtn.Click += new System.EventHandler(this.IncomeBtn_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -283,5 +307,6 @@
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
         private Guna.UI2.WinForms.Guna2Panel former;
         private Guna.UI2.WinForms.Guna2ControlBox closeapp;
+        private Guna.UI2.WinForms.Guna2Button IncomeBtn;
     }
 }

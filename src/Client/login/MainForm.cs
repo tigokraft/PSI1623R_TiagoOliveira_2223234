@@ -21,7 +21,13 @@ namespace login
         {
             InitializeComponent();
             _http = httpClient;    
-            closeapp.BringToFront();
+
+            // load default state
+            Overview overview = new Overview(_http);
+            overview.TopLevel = false;
+            former.Controls.Clear();
+            former.Controls.Add(overview);
+            overview.Show();
         }
 
         
@@ -31,14 +37,13 @@ namespace login
             OvBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
             budgetBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
             GoalsBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
+            IncomeBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
 
             Expenses exp = new Expenses(_http);
             exp.TopLevel = false;
-            //exp.TopMost = true;
             former.Controls.Clear();
             former.Controls.Add(exp);
             exp.Show();
-            closeapp.BringToFront();
         }
 
         private void OvBtn_Click(object sender, EventArgs e)
@@ -47,15 +52,14 @@ namespace login
             ExpensesBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
             budgetBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
             GoalsBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
+            IncomeBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
 
             Overview ov = new Overview(_http);
             ov.TopLevel = false;
-            //ov.TopMost = true;
             former.Controls.Clear();
             former.Controls.Add(ov);
             former.Controls.Add(ov);
             ov.Show();
-            closeapp.BringToFront();
         }
 
         private void budgetBtn_Click(object sender, EventArgs e)
@@ -64,6 +68,7 @@ namespace login
             ExpensesBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
             OvBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
             GoalsBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
+            IncomeBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
         }
 
         private void GoalsBtn_Click(object sender, EventArgs e)
@@ -72,6 +77,21 @@ namespace login
             ExpensesBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
             OvBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
             budgetBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
+            IncomeBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
+        }
+        private void IncomeBtn_Click(object sender, EventArgs e)
+        {
+            GoalsBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
+            ExpensesBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
+            OvBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
+            budgetBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
+            IncomeBtn.FillColor = Color.FromArgb(100, 27, 43, 48);
+
+            Incomes inc = new Incomes(_http);
+            inc.TopLevel = false;
+            former.Controls.Clear();
+            former.Controls.Add(inc);
+            inc.Show();
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
@@ -87,5 +107,7 @@ namespace login
         {
 
         }
+
+
     }
 }

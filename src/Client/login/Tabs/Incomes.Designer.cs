@@ -1,6 +1,6 @@
 ﻿namespace login.Tabs
 {
-    partial class Expenses
+    partial class Incomes
     {
         /// <summary>
         /// Required designer variable.
@@ -40,9 +40,9 @@
             this.label2.ForeColor = System.Drawing.Color.Transparent;
             this.label2.Location = new System.Drawing.Point(25, 30);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(103, 24);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Expenses";
+            this.label2.Size = new System.Drawing.Size(89, 24);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Incomes";
             // 
             // AddBtn
             // 
@@ -55,17 +55,19 @@
             this.AddBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(24)))), ((int)(((byte)(26)))));
             this.AddBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.AddBtn.ForeColor = System.Drawing.Color.White;
+            this.AddBtn.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(160)))), ((int)(((byte)(160)))));
+            this.AddBtn.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
             this.AddBtn.HoverState.Parent = this.AddBtn;
             this.AddBtn.Image = global::login.Properties.Resources.plus_white;
             this.AddBtn.Location = new System.Drawing.Point(750, 30);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.ShadowDecoration.Parent = this.AddBtn;
             this.AddBtn.Size = new System.Drawing.Size(124, 36);
-            this.AddBtn.TabIndex = 6;
-            this.AddBtn.Text = "Add Expense";
+            this.AddBtn.TabIndex = 7;
+            this.AddBtn.Text = "Add Income";
             this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
             // 
-            // Expenses
+            // Incomes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -73,9 +75,8 @@
             this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.AddBtn);
             this.Controls.Add(this.label2);
-            this.ForeColor = System.Drawing.Color.Coral;
-            this.Name = "Expenses";
-            this.Text = "Expenses";
+            this.Name = "Incomes";
+            this.Text = "Incomes";
             this.ResumeLayout(false);
             this.PerformLayout();
 
