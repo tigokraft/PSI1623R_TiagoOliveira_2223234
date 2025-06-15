@@ -56,14 +56,16 @@ namespace FinSync.Data
                 .Property(ris => ris.Amount)
                 .HasColumnType("decimal(18, 2)");
 
-            // Changed from WithMany(c => c.Incomes) to WithMany() to resolve CS1061 error
-            // This means Category will not have a navigation property back to Income by default
+            // The direct mapping for CategoryId as a foreign key without a navigation property
+            // is implicitly handled by EF Core if CategoryId exists on Income and CategoryId is PK on Category.
+            // Explicitly adding it here to ensure it's required and has OnDelete behavior,
+            // even without a direct navigation property in Income model.
             modelBuilder.Entity<Income>()
-                .HasOne(i => i.Category)
-                .WithMany() 
-                .HasForeignKey(i => i.CategoryId)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.Restrict);
+                .HasOne<Category>() // Specify the principal entity type
+                .WithMany() // No navigation property on Category back to Income
+                .HasForeignKey(i => i.CategoryId) // Define the foreign key
+                .IsRequired() // CategoryId is a required field on Income
+                .OnDelete(DeleteBehavior.Restrict); // Restrict delete behavior for Category
 
             modelBuilder.Entity<Income>()
                 .HasOne(i => i.RecurringSchedule)

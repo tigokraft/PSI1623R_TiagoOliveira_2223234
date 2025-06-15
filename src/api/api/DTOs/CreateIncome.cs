@@ -12,9 +12,9 @@ namespace FinSync.DTOs
         [Required]
         public DateTime Date { get; set; }
 
-        [Required]
+        // ⭐ Removed [Required] attribute and made nullable ⭐
         [StringLength(255, ErrorMessage = "Description cannot exceed 255 characters.")]
-        public string Descr { get; set; }
+        public string? Descr { get; set; } 
 
         public bool IsRecurring { get; set; } = false;
 

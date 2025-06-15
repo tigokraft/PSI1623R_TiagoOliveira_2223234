@@ -23,13 +23,11 @@ namespace FinSync.Models
         [StringLength(255)]
         public string Descr { get; set; }
         
-        // This links an income occurrence back to its recurring schedule. Null if one-time income.
         public int? RecurringScheduleId { get; set; } 
         [ForeignKey("RecurringScheduleId")]
         public RecurringIncomeSchedule? RecurringSchedule { get; set; } // Navigation property
 
+        // ⭐ NO Category navigation property here ⭐
         public int CategoryId { get; set; } // Foreign key to Category
-        [ForeignKey("CategoryId")]
-        public Category Category { get; set; } = null!; // Navigation property. Null-forgiving operator as it will be required.
     }
 }
