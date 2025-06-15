@@ -9,6 +9,7 @@ using FinSync.Jobs;
 using FinSync.Data;
 using Quartz;
 using Quartz.Spi;
+using FinSync.Panel;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -85,11 +86,15 @@ builder.Services.AddSwaggerGen(opt =>
     });
 });
 
+
 // ✅ API Key middleware support
 builder.Services.AddSingleton(validApiKeys ?? Array.Empty<string>());
 builder.Services.AddSingleton(apiKeyHeader ?? "x-api-key");
 
 var app = builder.Build();
+
+// ✅ API panel
+ConsolePanel.Start();
 
 // ✅ Middleware
 app.UseSerilogRequestLogging();
