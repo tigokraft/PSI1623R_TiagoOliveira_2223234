@@ -1,0 +1,1214 @@
+[2025-06-11 18:44:34 WRN] Failed to determine the https port for redirect.
+[2025-06-11 18:44:35 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 18:44:35 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 18:44:35 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 18:44:35 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 18:44:35 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Income'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 18:44:36 INF] HTTP POST /api/auth/login responded 200 in 1096.3416 ms
+[2025-06-11 18:44:37 INF] HTTP GET /api/balance responded 200 in 67.6098 ms
+[2025-06-11 18:44:38 INF] HTTP GET /api/expense/summary responded 200 in 94.5668 ms
+[2025-06-11 18:44:41 INF] HTTP GET /api/expense/summary responded 200 in 4.3213 ms
+[2025-06-11 18:44:53 INF] HTTP GET /api/expense/summary responded 200 in 2.7956 ms
+[2025-06-11 18:44:53 INF] HTTP GET /api/balance responded 200 in 2.1841 ms
+[2025-06-11 18:44:53 INF] HTTP GET /api/expense/summary responded 200 in 2.5779 ms
+[2025-06-11 18:44:56 INF] HTTP GET /api/expense/summary responded 200 in 2.6035 ms
+[2025-06-11 18:44:57 INF] HTTP GET /api/balance responded 200 in 2.0756 ms
+[2025-06-11 18:44:57 INF] HTTP GET /api/expense/summary responded 200 in 2.2961 ms
+[2025-06-11 18:45:01 INF] HTTP GET /api/expense/summary responded 200 in 2.2938 ms
+[2025-06-11 18:45:02 INF] HTTP GET /api/balance responded 200 in 2.0169 ms
+[2025-06-11 18:45:02 INF] HTTP GET /api/expense/summary responded 200 in 3.1269 ms
+[2025-06-11 18:45:05 INF] HTTP GET /api/expense/summary responded 200 in 2.3185 ms
+[2025-06-11 18:45:07 INF] HTTP GET /api/balance responded 200 in 1.8398 ms
+[2025-06-11 18:45:07 INF] HTTP GET /api/expense/summary responded 200 in 2.3780 ms
+[2025-06-11 18:45:08 INF] HTTP GET /api/expense/summary responded 200 in 2.3971 ms
+[2025-06-11 18:57:23 INF] HTTP GET /api/balance responded 200 in 63.7733 ms
+[2025-06-11 18:57:24 INF] HTTP GET /api/expense/summary responded 200 in 6.0559 ms
+[2025-06-11 19:11:00 INF] HTTP GET /api/expense/summary responded 200 in 11.1170 ms
+[2025-06-11 19:11:01 INF] HTTP GET /api/balance responded 200 in 3.8802 ms
+[2025-06-11 19:11:01 INF] HTTP GET /api/expense/summary responded 200 in 1.9839 ms
+[2025-06-11 19:14:03 INF] HTTP GET /api/balance responded 200 in 10.5849 ms
+[2025-06-11 19:14:04 INF] HTTP GET /api/expense/summary responded 200 in 4.9481 ms
+[2025-06-11 19:14:06 INF] HTTP GET /api/expense/summary responded 200 in 3.0008 ms
+[2025-06-11 19:14:07 INF] HTTP GET /api/balance responded 200 in 1.6640 ms
+[2025-06-11 19:14:07 INF] HTTP GET /api/expense/summary responded 200 in 2.1620 ms
+[2025-06-11 19:14:09 INF] HTTP GET /api/expense/summary responded 200 in 1.7603 ms
+[2025-06-11 19:14:10 INF] HTTP GET /api/balance responded 200 in 1.8031 ms
+[2025-06-11 19:14:10 INF] HTTP GET /api/expense/summary responded 200 in 1.7743 ms
+[2025-06-11 19:14:25 INF] HTTP GET /api/expense/summary responded 200 in 10.4712 ms
+[2025-06-11 19:15:05 INF] HTTP GET /api/balance responded 200 in 3.3393 ms
+[2025-06-11 19:15:06 INF] HTTP GET /api/expense/summary responded 200 in 2.0091 ms
+[2025-06-11 19:15:07 INF] HTTP GET /api/expense/summary responded 200 in 1.9860 ms
+[2025-06-11 19:20:09 INF] HTTP GET /api/balance responded 200 in 14.8917 ms
+[2025-06-11 19:20:10 INF] HTTP GET /api/expense/summary responded 200 in 4.8867 ms
+[2025-06-11 19:20:11 INF] HTTP GET /api/expense/summary responded 200 in 1.7150 ms
+[2025-06-11 19:20:21 INF] HTTP POST /api/expense/ responded 200 in 119.7177 ms
+[2025-06-11 19:20:22 INF] HTTP GET /api/expense/summary responded 200 in 2.0728 ms
+[2025-06-11 19:20:24 INF] HTTP GET /api/balance responded 200 in 1.6980 ms
+[2025-06-11 19:20:24 INF] HTTP GET /api/expense/summary responded 200 in 1.9979 ms
+[2025-06-11 19:24:47 INF] HTTP GET /api/balance responded 200 in 13.4624 ms
+[2025-06-11 19:24:49 INF] HTTP GET /api/expense/summary responded 200 in 5.2064 ms
+[2025-06-11 19:24:49 INF] HTTP GET /api/expense/summary responded 200 in 2.2477 ms
+[2025-06-11 19:24:50 INF] HTTP GET /api/balance responded 200 in 1.3411 ms
+[2025-06-11 19:24:50 INF] HTTP GET /api/expense/summary responded 200 in 2.1066 ms
+[2025-06-11 19:25:53 INF] HTTP GET /api/balance responded 200 in 12.1504 ms
+[2025-06-11 19:25:54 INF] HTTP GET /api/expense/summary responded 200 in 5.3244 ms
+[2025-06-11 19:25:59 INF] HTTP GET /api/expense/summary responded 200 in 2.1075 ms
+[2025-06-11 19:26:00 INF] HTTP GET /api/balance responded 200 in 2.0344 ms
+[2025-06-11 19:26:00 INF] HTTP GET /api/expense/summary responded 200 in 2.6153 ms
+[2025-06-11 19:26:21 INF] HTTP GET /api/balance responded 200 in 10.0107 ms
+[2025-06-11 19:26:22 INF] HTTP GET /api/expense/summary responded 200 in 21.1756 ms
+[2025-06-11 19:26:57 INF] HTTP GET /api/balance responded 200 in 10.4359 ms
+[2025-06-11 19:26:58 INF] HTTP GET /api/expense/summary responded 200 in 5.0756 ms
+[2025-06-11 19:30:19 INF] HTTP GET /api/balance responded 200 in 8.9006 ms
+[2025-06-11 19:30:20 INF] HTTP GET /api/expense/summary responded 200 in 5.0218 ms
+[2025-06-11 19:30:22 INF] HTTP GET /api/expense/summary responded 200 in 1.6468 ms
+[2025-06-11 19:30:24 INF] HTTP GET /api/balance responded 200 in 1.4240 ms
+[2025-06-11 19:30:24 INF] HTTP GET /api/expense/summary responded 200 in 1.9820 ms
+[2025-06-11 19:30:26 INF] HTTP GET /api/expense/summary responded 200 in 2.2384 ms
+[2025-06-11 19:30:55 INF] HTTP GET /api/balance responded 200 in 965.7017 ms
+[2025-06-11 19:30:56 INF] HTTP GET /api/expense/summary responded 200 in 76.9219 ms
+[2025-06-11 20:20:43 WRN] Failed to determine the https port for redirect.
+[2025-06-11 20:20:43 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 20:20:43 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 20:20:43 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 20:20:43 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 20:20:43 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Income'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 20:20:44 INF] HTTP POST /api/auth/login responded 200 in 1005.3970 ms
+[2025-06-11 20:22:04 INF] HTTP GET /api/Income/all responded 200 in 65.4042 ms
+[2025-06-11 20:22:26 INF] HTTP POST /api/income responded 400 in 29.7363 ms
+[2025-06-11 20:22:56 INF] HTTP POST /api/income responded 200 in 145.0893 ms
+[2025-06-11 20:22:59 INF] HTTP GET /api/Income/all responded 200 in 14.0438 ms
+[2025-06-11 20:24:29 INF] HTTP POST /api/income responded 200 in 7.5816 ms
+[2025-06-11 20:24:46 WRN] Failed to determine the https port for redirect.
+[2025-06-11 20:24:47 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 20:24:47 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 20:24:47 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 20:24:47 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 20:24:47 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Income'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 20:24:47 INF] HTTP GET /api/Income/all responded 200 in 1014.6273 ms
+[2025-06-11 20:25:11 INF] HTTP GET /api/expense/summary responded 200 in 58.9505 ms
+[2025-06-11 20:30:57 WRN] Failed to determine the https port for redirect.
+[2025-06-11 20:30:57 INF] HTTP GET /api/Income/all responded 405 in 133.5547 ms
+[2025-06-11 20:31:14 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 20:31:14 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 20:31:14 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 20:31:14 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 20:31:14 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Income'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 20:31:14 INF] HTTP POST /api/auth/login responded 200 in 845.5843 ms
+[2025-06-11 20:32:21 INF] HTTP GET /api/Income/ responded 200 in 78.5923 ms
+[2025-06-11 21:13:24 INF] HTTP POST /api/Income/monthly responded 405 in 0.6976 ms
+[2025-06-11 21:13:41 INF] HTTP GET /api/Income/monthly responded 200 in 78.6164 ms
+[2025-06-11 21:30:27 WRN] Failed to determine the https port for redirect.
+[2025-06-11 21:30:27 INF] HTTP GET /api/Income/monthly responded 405 in 118.0460 ms
+[2025-06-11 21:31:33 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 21:31:33 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 21:31:33 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 21:31:33 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 21:31:33 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Income'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 21:31:34 INF] HTTP POST /api/auth/login responded 200 in 858.2014 ms
+[2025-06-11 21:32:02 INF] HTTP GET /api/Incomes responded 404 in 7.5043 ms
+[2025-06-11 21:32:06 INF] HTTP GET /api/Income responded 200 in 72.3532 ms
+[2025-06-11 21:32:49 INF] HTTP POST /api/Income responded 400 in 33.4702 ms
+[2025-06-11 21:32:56 INF] HTTP POST /api/Income responded 200 in 128.4320 ms
+[2025-06-11 21:33:00 INF] HTTP GET /api/Income responded 200 in 8.0955 ms
+[2025-06-11 21:34:05 INF] HTTP GET /api/income/summary responded 200 in 20.9982 ms
+[2025-06-11 21:52:33 INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+[2025-06-11 21:52:33 INF] Quartz Scheduler created
+[2025-06-11 21:52:33 INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+[2025-06-11 21:52:33 INF] RAMJobStore initialized.
+[2025-06-11 21:52:33 INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+[2025-06-11 21:52:33 INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+[2025-06-11 21:52:33 INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+[2025-06-11 21:52:33 INF] Adding 1 jobs, 1 triggers.
+[2025-06-11 21:52:33 INF] Adding job: DEFAULT.RecurringIncomeJob
+[2025-06-11 21:52:33 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+[2025-06-11 21:52:33 INF] Recurring income check started at "2025-06-11T21:52:33.1840968+01:00"
+[2025-06-11 21:52:33 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 21:52:33 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 21:52:33 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 21:52:33 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 21:52:33 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Income'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 21:52:33 ERR] Failed executing DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[IncomeId], [i].[Amount], [i].[Date], [i].[Descr], [i].[IsRecurring], [i].[Recurrence], [i].[UserId]
+FROM [Incomes] AS [i]
+WHERE [i].[IsRecurring] = CAST(1 AS bit)
+[2025-06-11 21:52:33 ERR] An exception occurred while iterating over the results of a query for context type 'FinSync.Data.FinSyncContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'IsRecurring'.
+Invalid column name 'IsRecurring'.
+Invalid column name 'Recurrence'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:fa199019-a41b-4cca-aadb-4a893be5b987
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'IsRecurring'.
+Invalid column name 'IsRecurring'.
+Invalid column name 'Recurrence'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:fa199019-a41b-4cca-aadb-4a893be5b987
+Error Number:207,State:1,Class:16
+[2025-06-11 21:52:33 ERR] Job DEFAULT.RecurringIncomeJob threw an unhandled Exception: 
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'IsRecurring'.
+Invalid column name 'IsRecurring'.
+Invalid column name 'Recurrence'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at FinSync.Jobs.RecurringIncomeJob.Execute(IJobExecutionContext ctx) in C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\api\api\Jobs\RecurringIncomeJob.cs:line 28
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+ClientConnectionId:fa199019-a41b-4cca-aadb-4a893be5b987
+Error Number:207,State:1,Class:16
+[2025-06-11 21:52:33 ERR] Job DEFAULT.RecurringIncomeJob threw an exception.
+Quartz.SchedulerException: Job threw an unhandled exception.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'IsRecurring'.
+Invalid column name 'IsRecurring'.
+Invalid column name 'Recurrence'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at FinSync.Jobs.RecurringIncomeJob.Execute(IJobExecutionContext ctx) in C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\api\api\Jobs\RecurringIncomeJob.cs:line 28
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+ClientConnectionId:fa199019-a41b-4cca-aadb-4a893be5b987
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace --- [See nested exception: Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'IsRecurring'.
+Invalid column name 'IsRecurring'.
+Invalid column name 'Recurrence'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at FinSync.Jobs.RecurringIncomeJob.Execute(IJobExecutionContext ctx) in C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\api\api\Jobs\RecurringIncomeJob.cs:line 28
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+ClientConnectionId:fa199019-a41b-4cca-aadb-4a893be5b987
+Error Number:207,State:1,Class:16]
+[2025-06-11 21:53:32 INF] Recurring income check started at "2025-06-11T21:53:32.8384531+01:00"
+[2025-06-11 21:53:32 ERR] Failed executing DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[IncomeId], [i].[Amount], [i].[Date], [i].[Descr], [i].[IsRecurring], [i].[Recurrence], [i].[UserId]
+FROM [Incomes] AS [i]
+WHERE [i].[IsRecurring] = CAST(1 AS bit)
+[2025-06-11 21:53:32 ERR] An exception occurred while iterating over the results of a query for context type 'FinSync.Data.FinSyncContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'IsRecurring'.
+Invalid column name 'IsRecurring'.
+Invalid column name 'Recurrence'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:fa199019-a41b-4cca-aadb-4a893be5b987
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'IsRecurring'.
+Invalid column name 'IsRecurring'.
+Invalid column name 'Recurrence'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:fa199019-a41b-4cca-aadb-4a893be5b987
+Error Number:207,State:1,Class:16
+[2025-06-11 21:53:32 ERR] Job DEFAULT.RecurringIncomeJob threw an unhandled Exception: 
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'IsRecurring'.
+Invalid column name 'IsRecurring'.
+Invalid column name 'Recurrence'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at FinSync.Jobs.RecurringIncomeJob.Execute(IJobExecutionContext ctx) in C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\api\api\Jobs\RecurringIncomeJob.cs:line 28
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+ClientConnectionId:fa199019-a41b-4cca-aadb-4a893be5b987
+Error Number:207,State:1,Class:16
+[2025-06-11 21:53:32 ERR] Job DEFAULT.RecurringIncomeJob threw an exception.
+Quartz.SchedulerException: Job threw an unhandled exception.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'IsRecurring'.
+Invalid column name 'IsRecurring'.
+Invalid column name 'Recurrence'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at FinSync.Jobs.RecurringIncomeJob.Execute(IJobExecutionContext ctx) in C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\api\api\Jobs\RecurringIncomeJob.cs:line 28
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+ClientConnectionId:fa199019-a41b-4cca-aadb-4a893be5b987
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace --- [See nested exception: Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'IsRecurring'.
+Invalid column name 'IsRecurring'.
+Invalid column name 'Recurrence'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at FinSync.Jobs.RecurringIncomeJob.Execute(IJobExecutionContext ctx) in C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\api\api\Jobs\RecurringIncomeJob.cs:line 28
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+ClientConnectionId:fa199019-a41b-4cca-aadb-4a893be5b987
+Error Number:207,State:1,Class:16]
+[2025-06-11 21:54:32 INF] Recurring income check started at "2025-06-11T21:54:32.8450266+01:00"
+[2025-06-11 21:54:32 ERR] Failed executing DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[IncomeId], [i].[Amount], [i].[Date], [i].[Descr], [i].[IsRecurring], [i].[Recurrence], [i].[UserId]
+FROM [Incomes] AS [i]
+WHERE [i].[IsRecurring] = CAST(1 AS bit)
+[2025-06-11 21:54:32 ERR] An exception occurred while iterating over the results of a query for context type 'FinSync.Data.FinSyncContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'IsRecurring'.
+Invalid column name 'IsRecurring'.
+Invalid column name 'Recurrence'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:fa199019-a41b-4cca-aadb-4a893be5b987
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'IsRecurring'.
+Invalid column name 'IsRecurring'.
+Invalid column name 'Recurrence'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:fa199019-a41b-4cca-aadb-4a893be5b987
+Error Number:207,State:1,Class:16
+[2025-06-11 21:54:32 ERR] Job DEFAULT.RecurringIncomeJob threw an unhandled Exception: 
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'IsRecurring'.
+Invalid column name 'IsRecurring'.
+Invalid column name 'Recurrence'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at FinSync.Jobs.RecurringIncomeJob.Execute(IJobExecutionContext ctx) in C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\api\api\Jobs\RecurringIncomeJob.cs:line 28
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+ClientConnectionId:fa199019-a41b-4cca-aadb-4a893be5b987
+Error Number:207,State:1,Class:16
+[2025-06-11 21:54:32 ERR] Job DEFAULT.RecurringIncomeJob threw an exception.
+Quartz.SchedulerException: Job threw an unhandled exception.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'IsRecurring'.
+Invalid column name 'IsRecurring'.
+Invalid column name 'Recurrence'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at FinSync.Jobs.RecurringIncomeJob.Execute(IJobExecutionContext ctx) in C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\api\api\Jobs\RecurringIncomeJob.cs:line 28
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+ClientConnectionId:fa199019-a41b-4cca-aadb-4a893be5b987
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace --- [See nested exception: Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'IsRecurring'.
+Invalid column name 'IsRecurring'.
+Invalid column name 'Recurrence'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at FinSync.Jobs.RecurringIncomeJob.Execute(IJobExecutionContext ctx) in C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\api\api\Jobs\RecurringIncomeJob.cs:line 28
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+ClientConnectionId:fa199019-a41b-4cca-aadb-4a893be5b987
+Error Number:207,State:1,Class:16]
+[2025-06-11 21:55:32 INF] Recurring income check started at "2025-06-11T21:55:32.8400623+01:00"
+[2025-06-11 21:55:32 ERR] Failed executing DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [i].[IncomeId], [i].[Amount], [i].[Date], [i].[Descr], [i].[IsRecurring], [i].[Recurrence], [i].[UserId]
+FROM [Incomes] AS [i]
+WHERE [i].[IsRecurring] = CAST(1 AS bit)
+[2025-06-11 21:55:32 ERR] An exception occurred while iterating over the results of a query for context type 'FinSync.Data.FinSyncContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'IsRecurring'.
+Invalid column name 'IsRecurring'.
+Invalid column name 'Recurrence'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:fa199019-a41b-4cca-aadb-4a893be5b987
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'IsRecurring'.
+Invalid column name 'IsRecurring'.
+Invalid column name 'Recurrence'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:fa199019-a41b-4cca-aadb-4a893be5b987
+Error Number:207,State:1,Class:16
+[2025-06-11 21:55:32 ERR] Job DEFAULT.RecurringIncomeJob threw an unhandled Exception: 
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'IsRecurring'.
+Invalid column name 'IsRecurring'.
+Invalid column name 'Recurrence'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at FinSync.Jobs.RecurringIncomeJob.Execute(IJobExecutionContext ctx) in C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\api\api\Jobs\RecurringIncomeJob.cs:line 28
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+ClientConnectionId:fa199019-a41b-4cca-aadb-4a893be5b987
+Error Number:207,State:1,Class:16
+[2025-06-11 21:55:32 ERR] Job DEFAULT.RecurringIncomeJob threw an exception.
+Quartz.SchedulerException: Job threw an unhandled exception.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'IsRecurring'.
+Invalid column name 'IsRecurring'.
+Invalid column name 'Recurrence'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at FinSync.Jobs.RecurringIncomeJob.Execute(IJobExecutionContext ctx) in C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\api\api\Jobs\RecurringIncomeJob.cs:line 28
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+ClientConnectionId:fa199019-a41b-4cca-aadb-4a893be5b987
+Error Number:207,State:1,Class:16
+   --- End of inner exception stack trace --- [See nested exception: Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'IsRecurring'.
+Invalid column name 'IsRecurring'.
+Invalid column name 'Recurrence'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at FinSync.Jobs.RecurringIncomeJob.Execute(IJobExecutionContext ctx) in C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\api\api\Jobs\RecurringIncomeJob.cs:line 28
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+ClientConnectionId:fa199019-a41b-4cca-aadb-4a893be5b987
+Error Number:207,State:1,Class:16]
+[2025-06-11 21:56:27 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+[2025-06-11 21:56:27 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+[2025-06-11 21:56:27 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+[2025-06-11 22:26:28 INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+[2025-06-11 22:26:28 INF] Quartz Scheduler created
+[2025-06-11 22:26:28 INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+[2025-06-11 22:26:28 INF] RAMJobStore initialized.
+[2025-06-11 22:26:28 INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+[2025-06-11 22:26:28 INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+[2025-06-11 22:26:28 INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+[2025-06-11 22:26:28 INF] Adding 1 jobs, 1 triggers.
+[2025-06-11 22:26:28 INF] Adding job: DEFAULT.RecurringIncomeJob
+[2025-06-11 22:26:28 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+[2025-06-11 22:26:28 INF] Recurring income generation job started at "2025-06-11T22:26:28.3287510+01:00"
+[2025-06-11 22:26:28 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:26:28 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:26:28 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:26:28 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:26:29 ERR] Failed executing DbCommand (27ms) [Parameters=[@__today_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ScheduleId], [r].[Amount], [r].[Descr], [r].[EndDate], [r].[IsActive], [r].[NextOccurrenceDate], [r].[Recurrence], [r].[StartDate], [r].[UserId]
+FROM [RecurringIncomeSchedules] AS [r]
+WHERE [r].[IsActive] = CAST(1 AS bit) AND CONVERT(date, [r].[NextOccurrenceDate]) <= @__today_0
+[2025-06-11 22:26:29 ERR] An exception occurred while iterating over the results of a query for context type 'FinSync.Data.FinSyncContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'RecurringIncomeSchedules'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:c103bf6f-bab8-46c1-a17e-d6d540e9c4d9
+Error Number:208,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'RecurringIncomeSchedules'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:c103bf6f-bab8-46c1-a17e-d6d540e9c4d9
+Error Number:208,State:1,Class:16
+[2025-06-11 22:26:29 ERR] Job DEFAULT.RecurringIncomeJob threw an unhandled Exception: 
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'RecurringIncomeSchedules'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at FinSync.Jobs.RecurringIncomeJob.Execute(IJobExecutionContext ctx) in C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\api\api\Jobs\RecurringIncomeJob.cs:line 30
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+ClientConnectionId:c103bf6f-bab8-46c1-a17e-d6d540e9c4d9
+Error Number:208,State:1,Class:16
+[2025-06-11 22:26:29 ERR] Job DEFAULT.RecurringIncomeJob threw an exception.
+Quartz.SchedulerException: Job threw an unhandled exception.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'RecurringIncomeSchedules'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at FinSync.Jobs.RecurringIncomeJob.Execute(IJobExecutionContext ctx) in C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\api\api\Jobs\RecurringIncomeJob.cs:line 30
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+ClientConnectionId:c103bf6f-bab8-46c1-a17e-d6d540e9c4d9
+Error Number:208,State:1,Class:16
+   --- End of inner exception stack trace --- [See nested exception: Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'RecurringIncomeSchedules'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at FinSync.Jobs.RecurringIncomeJob.Execute(IJobExecutionContext ctx) in C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\api\api\Jobs\RecurringIncomeJob.cs:line 30
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+ClientConnectionId:c103bf6f-bab8-46c1-a17e-d6d540e9c4d9
+Error Number:208,State:1,Class:16]
+[2025-06-11 22:27:07 WRN] Failed to determine the https port for redirect.
+[2025-06-11 22:27:07 INF] HTTP POST /api/auth/login responded 200 in 175.6781 ms
+[2025-06-11 22:27:27 INF] Recurring income generation job started at "2025-06-11T22:27:27.9406018+01:00"
+[2025-06-11 22:27:27 ERR] Failed executing DbCommand (2ms) [Parameters=[@__today_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ScheduleId], [r].[Amount], [r].[Descr], [r].[EndDate], [r].[IsActive], [r].[NextOccurrenceDate], [r].[Recurrence], [r].[StartDate], [r].[UserId]
+FROM [RecurringIncomeSchedules] AS [r]
+WHERE [r].[IsActive] = CAST(1 AS bit) AND CONVERT(date, [r].[NextOccurrenceDate]) <= @__today_0
+[2025-06-11 22:27:27 ERR] An exception occurred while iterating over the results of a query for context type 'FinSync.Data.FinSyncContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'RecurringIncomeSchedules'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:c103bf6f-bab8-46c1-a17e-d6d540e9c4d9
+Error Number:208,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'RecurringIncomeSchedules'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:c103bf6f-bab8-46c1-a17e-d6d540e9c4d9
+Error Number:208,State:1,Class:16
+[2025-06-11 22:27:27 ERR] Job DEFAULT.RecurringIncomeJob threw an unhandled Exception: 
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'RecurringIncomeSchedules'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at FinSync.Jobs.RecurringIncomeJob.Execute(IJobExecutionContext ctx) in C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\api\api\Jobs\RecurringIncomeJob.cs:line 30
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+ClientConnectionId:c103bf6f-bab8-46c1-a17e-d6d540e9c4d9
+Error Number:208,State:1,Class:16
+[2025-06-11 22:27:27 ERR] Job DEFAULT.RecurringIncomeJob threw an exception.
+Quartz.SchedulerException: Job threw an unhandled exception.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'RecurringIncomeSchedules'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at FinSync.Jobs.RecurringIncomeJob.Execute(IJobExecutionContext ctx) in C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\api\api\Jobs\RecurringIncomeJob.cs:line 30
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+ClientConnectionId:c103bf6f-bab8-46c1-a17e-d6d540e9c4d9
+Error Number:208,State:1,Class:16
+   --- End of inner exception stack trace --- [See nested exception: Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'RecurringIncomeSchedules'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at FinSync.Jobs.RecurringIncomeJob.Execute(IJobExecutionContext ctx) in C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\api\api\Jobs\RecurringIncomeJob.cs:line 30
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+ClientConnectionId:c103bf6f-bab8-46c1-a17e-d6d540e9c4d9
+Error Number:208,State:1,Class:16]
+[2025-06-11 22:27:38 ERR] Failed executing DbCommand (3ms) [Parameters=[@p0='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p1='?' (Size = 255), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime2), @p7='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RecurringIncomeSchedules] ([Amount], [Descr], [EndDate], [IsActive], [NextOccurrenceDate], [Recurrence], [StartDate], [UserId])
+OUTPUT INSERTED.[ScheduleId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+[2025-06-11 22:27:38 ERR] An exception occurred in the database while saving changes for context type 'FinSync.Data.FinSyncContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'RecurringIncomeSchedules'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:c103bf6f-bab8-46c1-a17e-d6d540e9c4d9
+Error Number:208,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'RecurringIncomeSchedules'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:c103bf6f-bab8-46c1-a17e-d6d540e9c4d9
+Error Number:208,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+[2025-06-11 22:27:38 ERR] HTTP POST /api/income responded 500 in 129.4102 ms
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'RecurringIncomeSchedules'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:c103bf6f-bab8-46c1-a17e-d6d540e9c4d9
+Error Number:208,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at FinSync.Controllers.IncomeController.AddIncome(CreateIncomeDto dto) in C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\api\api\Controllers\IncomeController.cs:line 78
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Program.<>c__DisplayClass0_0.<<<Main>$>b__6>d.MoveNext() in C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\api\api\Program.cs:line 126
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context) in C:\Users\User\Documents\Github\AspNetCoreRateLimit\src\AspNetCoreRateLimit\Middleware\RateLimitMiddleware.cs:line 124
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[2025-06-11 22:27:38 ERR] An unhandled exception has occurred while executing the request.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'RecurringIncomeSchedules'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:c103bf6f-bab8-46c1-a17e-d6d540e9c4d9
+Error Number:208,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at FinSync.Controllers.IncomeController.AddIncome(CreateIncomeDto dto) in C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\api\api\Controllers\IncomeController.cs:line 78
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Program.<>c__DisplayClass0_0.<<<Main>$>b__6>d.MoveNext() in C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\api\api\Program.cs:line 126
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at AspNetCoreRateLimit.RateLimitMiddleware`1.Invoke(HttpContext context) in C:\Users\User\Documents\Github\AspNetCoreRateLimit\src\AspNetCoreRateLimit\Middleware\RateLimitMiddleware.cs:line 124
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+[2025-06-11 22:28:27 INF] Recurring income generation job started at "2025-06-11T22:28:27.9335315+01:00"
+[2025-06-11 22:28:27 ERR] Failed executing DbCommand (2ms) [Parameters=[@__today_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ScheduleId], [r].[Amount], [r].[Descr], [r].[EndDate], [r].[IsActive], [r].[NextOccurrenceDate], [r].[Recurrence], [r].[StartDate], [r].[UserId]
+FROM [RecurringIncomeSchedules] AS [r]
+WHERE [r].[IsActive] = CAST(1 AS bit) AND CONVERT(date, [r].[NextOccurrenceDate]) <= @__today_0
+[2025-06-11 22:28:27 ERR] An exception occurred while iterating over the results of a query for context type 'FinSync.Data.FinSyncContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'RecurringIncomeSchedules'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:c103bf6f-bab8-46c1-a17e-d6d540e9c4d9
+Error Number:208,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'RecurringIncomeSchedules'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:c103bf6f-bab8-46c1-a17e-d6d540e9c4d9
+Error Number:208,State:1,Class:16
+[2025-06-11 22:28:27 ERR] Job DEFAULT.RecurringIncomeJob threw an unhandled Exception: 
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'RecurringIncomeSchedules'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at FinSync.Jobs.RecurringIncomeJob.Execute(IJobExecutionContext ctx) in C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\api\api\Jobs\RecurringIncomeJob.cs:line 30
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+ClientConnectionId:c103bf6f-bab8-46c1-a17e-d6d540e9c4d9
+Error Number:208,State:1,Class:16
+[2025-06-11 22:28:27 ERR] Job DEFAULT.RecurringIncomeJob threw an exception.
+Quartz.SchedulerException: Job threw an unhandled exception.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'RecurringIncomeSchedules'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at FinSync.Jobs.RecurringIncomeJob.Execute(IJobExecutionContext ctx) in C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\api\api\Jobs\RecurringIncomeJob.cs:line 30
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+ClientConnectionId:c103bf6f-bab8-46c1-a17e-d6d540e9c4d9
+Error Number:208,State:1,Class:16
+   --- End of inner exception stack trace --- [See nested exception: Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'RecurringIncomeSchedules'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at FinSync.Jobs.RecurringIncomeJob.Execute(IJobExecutionContext ctx) in C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\api\api\Jobs\RecurringIncomeJob.cs:line 30
+   at Quartz.Core.JobRunShell.Run(CancellationToken cancellationToken)
+ClientConnectionId:c103bf6f-bab8-46c1-a17e-d6d540e9c4d9
+Error Number:208,State:1,Class:16]
+[2025-06-11 22:29:27 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+[2025-06-11 22:29:27 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+[2025-06-11 22:29:27 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+[2025-06-11 22:30:12 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:30:12 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:30:12 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:30:12 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:30:17 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:30:17 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:30:17 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:30:17 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:30:17 ERR] Failed executing DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [ApiKeys] (
+    [Id] int NOT NULL IDENTITY,
+    [Key] nvarchar(max) NOT NULL,
+    [Owner] nvarchar(max) NOT NULL,
+    [CreatedAt] datetime2 NOT NULL,
+    CONSTRAINT [PK_ApiKeys] PRIMARY KEY ([Id])
+);
+[2025-06-11 22:31:22 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:31:22 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:31:22 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:31:22 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:31:28 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:31:28 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:31:28 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:31:28 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:31:28 ERR] Failed executing DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [ApiKeys] (
+    [Id] int NOT NULL IDENTITY,
+    [Key] nvarchar(max) NOT NULL,
+    [Owner] nvarchar(max) NOT NULL,
+    [CreatedAt] datetime2 NOT NULL,
+    CONSTRAINT [PK_ApiKeys] PRIMARY KEY ([Id])
+);
+[2025-06-11 22:36:11 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:36:11 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:36:11 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:36:11 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:36:21 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:36:21 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:36:21 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:36:21 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:54:26 INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+[2025-06-11 22:54:26 INF] Quartz Scheduler created
+[2025-06-11 22:54:26 INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+[2025-06-11 22:54:26 INF] RAMJobStore initialized.
+[2025-06-11 22:54:26 INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+[2025-06-11 22:54:26 INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+[2025-06-11 22:54:26 INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+[2025-06-11 22:54:26 INF] Adding 1 jobs, 1 triggers.
+[2025-06-11 22:54:26 INF] Adding job: DEFAULT.RecurringIncomeJob
+[2025-06-11 22:54:26 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+[2025-06-11 22:54:26 INF] Recurring income generation job started at "2025-06-11T22:54:26.6631881+01:00"
+[2025-06-11 22:54:26 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:54:26 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:54:26 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:54:26 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 22:54:27 INF] Found 0 recurring income schedules due for generation.
+[2025-06-11 22:54:27 INF] Recurring income generation job finished at "2025-06-11T22:54:27.4526489+01:00"
+[2025-06-11 22:54:29 WRN] Failed to determine the https port for redirect.
+[2025-06-11 22:54:29 INF] HTTP POST /api/income responded 200 in 304.6502 ms
+[2025-06-11 22:54:33 INF] HTTP GET /api/income/summary responded 401 in 10.3946 ms
+[2025-06-11 22:54:39 INF] HTTP POST /api/auth/login responded 401 in 62.9211 ms
+[2025-06-11 22:55:20 INF] HTTP POST /api/auth/register responded 200 in 50.3620 ms
+[2025-06-11 22:55:26 INF] Recurring income generation job started at "2025-06-11T22:55:26.3360235+01:00"
+[2025-06-11 22:55:26 INF] Found 1 recurring income schedules due for generation.
+[2025-06-11 22:55:26 WRN] Income for schedule 1 on "2025-06-11T00:00:00.0000000" already exists. Skipping generation.
+[2025-06-11 22:55:26 INF] Recurring income generation job finished at "2025-06-11T22:55:26.3704754+01:00"
+[2025-06-11 22:56:26 INF] Recurring income generation job started at "2025-06-11T22:56:26.3416415+01:00"
+[2025-06-11 22:56:26 INF] Found 0 recurring income schedules due for generation.
+[2025-06-11 22:56:26 INF] Recurring income generation job finished at "2025-06-11T22:56:26.3447343+01:00"
+[2025-06-11 22:56:41 INF] HTTP GET /api/income/summary responded 200 in 34.2862 ms
+[2025-06-11 22:57:26 INF] Recurring income generation job started at "2025-06-11T22:57:26.3418585+01:00"
+[2025-06-11 22:57:26 INF] Found 0 recurring income schedules due for generation.
+[2025-06-11 22:57:26 INF] Recurring income generation job finished at "2025-06-11T22:57:26.3436065+01:00"
+[2025-06-11 22:57:33 INF] HTTP GET /swagger responded 301 in 0.3923 ms
+[2025-06-11 22:57:33 INF] HTTP GET /swagger/index.html responded 200 in 37.0829 ms
+[2025-06-11 22:57:33 INF] HTTP GET /swagger/index.js responded 200 in 0.5113 ms
+[2025-06-11 22:57:33 INF] HTTP GET /swagger/index.css responded 200 in 5.6190 ms
+[2025-06-11 22:57:33 INF] HTTP GET /swagger/swagger-ui.css responded 200 in 11.4113 ms
+[2025-06-11 22:57:33 INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 200 in 9.6766 ms
+[2025-06-11 22:57:33 INF] HTTP GET /swagger/swagger-ui-bundle.js responded 200 in 12.9825 ms
+[2025-06-11 22:57:33 INF] HTTP GET /swagger/favicon-32x32.png responded 200 in 0.4145 ms
+[2025-06-11 22:57:33 INF] HTTP GET /swagger/v1/swagger.json responded 200 in 63.9112 ms
+[2025-06-11 22:58:26 INF] Recurring income generation job started at "2025-06-11T22:58:26.3380746+01:00"
+[2025-06-11 22:58:26 INF] Found 0 recurring income schedules due for generation.
+[2025-06-11 22:58:26 INF] Recurring income generation job finished at "2025-06-11T22:58:26.3406015+01:00"
+[2025-06-11 22:59:26 INF] Recurring income generation job started at "2025-06-11T22:59:26.3451471+01:00"
+[2025-06-11 22:59:26 INF] Found 0 recurring income schedules due for generation.
+[2025-06-11 22:59:26 INF] Recurring income generation job finished at "2025-06-11T22:59:26.3487586+01:00"
+[2025-06-11 22:59:30 INF] HTTP POST /api/income responded 200 in 7.1697 ms
+[2025-06-11 22:59:43 INF] HTTP POST /api/income responded 200 in 7.2831 ms
+[2025-06-11 22:59:55 INF] HTTP POST /api/income responded 200 in 6.8554 ms
+[2025-06-11 23:00:00 INF] HTTP GET /api/income responded 200 in 9.4936 ms
+[2025-06-11 23:00:20 INF] HTTP POST /api/income responded 400 in 14.3242 ms
+[2025-06-11 23:00:26 INF] Recurring income generation job started at "2025-06-11T23:00:26.3355454+01:00"
+[2025-06-11 23:00:26 INF] Found 2 recurring income schedules due for generation.
+[2025-06-11 23:00:26 WRN] Income for schedule 2 on "2025-06-11T00:00:00.0000000" already exists. Skipping generation.
+[2025-06-11 23:00:26 WRN] Income for schedule 3 on "2025-06-01T00:00:00.0000000" already exists. Skipping generation.
+[2025-06-11 23:00:26 INF] Recurring income generation job finished at "2025-06-11T23:00:26.3549133+01:00"
+[2025-06-11 23:01:25 INF] HTTP GET /api/Income/summary responded 200 in 7.5403 ms
+[2025-06-11 23:01:26 INF] Recurring income generation job started at "2025-06-11T23:01:26.3352621+01:00"
+[2025-06-11 23:01:26 INF] Found 0 recurring income schedules due for generation.
+[2025-06-11 23:01:26 INF] Recurring income generation job finished at "2025-06-11T23:01:26.3373365+01:00"
+[2025-06-11 23:01:44 INF] HTTP GET /api/income responded 200 in 3.0788 ms
+[2025-06-11 23:02:26 INF] Recurring income generation job started at "2025-06-11T23:02:26.3308112+01:00"
+[2025-06-11 23:02:26 INF] Found 0 recurring income schedules due for generation.
+[2025-06-11 23:02:26 INF] Recurring income generation job finished at "2025-06-11T23:02:26.3331911+01:00"
+[2025-06-11 23:02:41 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+[2025-06-11 23:02:41 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+[2025-06-11 23:02:41 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+[2025-06-11 23:04:44 INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+[2025-06-11 23:04:44 INF] Quartz Scheduler created
+[2025-06-11 23:04:44 INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+[2025-06-11 23:04:44 INF] RAMJobStore initialized.
+[2025-06-11 23:04:44 INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+[2025-06-11 23:04:44 INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+[2025-06-11 23:04:44 INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+[2025-06-11 23:04:44 INF] Adding 1 jobs, 1 triggers.
+[2025-06-11 23:04:44 INF] Adding job: DEFAULT.RecurringIncomeJob
+[2025-06-11 23:04:44 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+[2025-06-11 23:04:44 INF] Recurring income generation job started at "2025-06-11T23:04:44.9050276+01:00"
+[2025-06-11 23:04:45 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 23:04:45 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 23:04:45 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 23:04:45 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 23:04:45 INF] Found 0 recurring income schedules due for generation.
+[2025-06-11 23:04:45 INF] Recurring income generation job finished at "2025-06-11T23:04:45.6630211+01:00"
+[2025-06-11 23:04:49 WRN] Failed to determine the https port for redirect.
+[2025-06-11 23:04:49 INF] HTTP GET /api/income responded 200 in 201.6377 ms
+[2025-06-11 23:05:23 INF] HTTP GET /api/income responded 200 in 52.8477 ms
+[2025-06-11 23:05:29 INF] HTTP GET /api/income responded 200 in 4.7357 ms
+[2025-06-11 23:05:44 INF] Recurring income generation job started at "2025-06-11T23:05:44.4651568+01:00"
+[2025-06-11 23:05:44 INF] Found 0 recurring income schedules due for generation.
+[2025-06-11 23:05:44 INF] Recurring income generation job finished at "2025-06-11T23:05:44.4676934+01:00"
+[2025-06-11 23:05:48 INF] HTTP GET /api/income/summary responded 200 in 28.8921 ms
+[2025-06-11 23:05:59 INF] HTTP GET /api/income/summary responded 200 in 3.2045 ms
+[2025-06-11 23:06:11 INF] HTTP GET /api/income/summary responded 200 in 3.2715 ms
+[2025-06-11 23:06:44 INF] Recurring income generation job started at "2025-06-11T23:06:44.4606414+01:00"
+[2025-06-11 23:06:44 INF] Found 0 recurring income schedules due for generation.
+[2025-06-11 23:06:44 INF] Recurring income generation job finished at "2025-06-11T23:06:44.4635751+01:00"
+[2025-06-11 23:07:44 INF] Recurring income generation job started at "2025-06-11T23:07:44.4646420+01:00"
+[2025-06-11 23:07:44 INF] Found 0 recurring income schedules due for generation.
+[2025-06-11 23:07:44 INF] Recurring income generation job finished at "2025-06-11T23:07:44.4672410+01:00"
+[2025-06-11 23:08:44 INF] Recurring income generation job started at "2025-06-11T23:08:44.4716363+01:00"
+[2025-06-11 23:08:44 INF] Found 0 recurring income schedules due for generation.
+[2025-06-11 23:08:44 INF] Recurring income generation job finished at "2025-06-11T23:08:44.4745539+01:00"
+[2025-06-11 23:09:44 INF] Recurring income generation job started at "2025-06-11T23:09:44.4717849+01:00"
+[2025-06-11 23:09:44 INF] Found 0 recurring income schedules due for generation.
+[2025-06-11 23:09:44 INF] Recurring income generation job finished at "2025-06-11T23:09:44.4745894+01:00"
+[2025-06-11 23:10:44 INF] Recurring income generation job started at "2025-06-11T23:10:44.4626582+01:00"
+[2025-06-11 23:10:44 INF] Found 0 recurring income schedules due for generation.
+[2025-06-11 23:10:44 INF] Recurring income generation job finished at "2025-06-11T23:10:44.4654524+01:00"
+[2025-06-11 23:11:44 INF] Recurring income generation job started at "2025-06-11T23:11:44.4691397+01:00"
+[2025-06-11 23:11:44 INF] Found 0 recurring income schedules due for generation.
+[2025-06-11 23:11:44 INF] Recurring income generation job finished at "2025-06-11T23:11:44.4716936+01:00"
+[2025-06-11 23:12:44 INF] Recurring income generation job started at "2025-06-11T23:12:44.4699855+01:00"
+[2025-06-11 23:12:44 INF] Found 0 recurring income schedules due for generation.
+[2025-06-11 23:12:44 INF] Recurring income generation job finished at "2025-06-11T23:12:44.4727038+01:00"
+[2025-06-11 23:13:44 INF] Recurring income generation job started at "2025-06-11T23:13:44.4659919+01:00"
+[2025-06-11 23:13:44 INF] Found 0 recurring income schedules due for generation.
+[2025-06-11 23:13:44 INF] Recurring income generation job finished at "2025-06-11T23:13:44.4686738+01:00"
+[2025-06-11 23:14:44 INF] Recurring income generation job started at "2025-06-11T23:14:44.4653585+01:00"
+[2025-06-11 23:14:44 INF] Found 0 recurring income schedules due for generation.
+[2025-06-11 23:14:44 INF] Recurring income generation job finished at "2025-06-11T23:14:44.4680063+01:00"
+[2025-06-11 23:15:44 INF] Recurring income generation job started at "2025-06-11T23:15:44.4701820+01:00"
+[2025-06-11 23:15:44 INF] Found 0 recurring income schedules due for generation.
+[2025-06-11 23:15:44 INF] Recurring income generation job finished at "2025-06-11T23:15:44.4727076+01:00"
+[2025-06-11 23:16:44 INF] Recurring income generation job started at "2025-06-11T23:16:44.4700204+01:00"
+[2025-06-11 23:16:44 INF] Found 0 recurring income schedules due for generation.
+[2025-06-11 23:16:44 INF] Recurring income generation job finished at "2025-06-11T23:16:44.4724714+01:00"
+[2025-06-11 23:17:44 INF] Recurring income generation job started at "2025-06-11T23:17:44.4707788+01:00"
+[2025-06-11 23:17:44 INF] Found 0 recurring income schedules due for generation.
+[2025-06-11 23:17:44 INF] Recurring income generation job finished at "2025-06-11T23:17:44.4733161+01:00"
+[2025-06-11 23:18:44 INF] Recurring income generation job started at "2025-06-11T23:18:44.4658708+01:00"
+[2025-06-11 23:18:44 INF] Found 0 recurring income schedules due for generation.
+[2025-06-11 23:18:44 INF] Recurring income generation job finished at "2025-06-11T23:18:44.4683103+01:00"
+[2025-06-11 23:19:44 INF] Recurring income generation job started at "2025-06-11T23:19:44.4734525+01:00"
+[2025-06-11 23:19:44 INF] Found 0 recurring income schedules due for generation.
+[2025-06-11 23:19:44 INF] Recurring income generation job finished at "2025-06-11T23:19:44.4759449+01:00"
+[2025-06-11 23:20:35 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+[2025-06-11 23:20:35 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+[2025-06-11 23:20:35 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+[2025-06-11 23:21:07 INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+[2025-06-11 23:21:07 INF] Quartz Scheduler created
+[2025-06-11 23:21:07 INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+[2025-06-11 23:21:07 INF] RAMJobStore initialized.
+[2025-06-11 23:21:07 INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+[2025-06-11 23:21:07 INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+[2025-06-11 23:21:07 INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+[2025-06-11 23:21:07 INF] Adding 1 jobs, 1 triggers.
+[2025-06-11 23:21:07 INF] Adding job: DEFAULT.RecurringIncomeJob
+[2025-06-11 23:21:08 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+[2025-06-11 23:21:08 INF] Recurring income generation job started at "2025-06-11T23:21:08.0722548+01:00"
+[2025-06-11 23:21:08 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 23:21:08 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 23:21:08 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 23:21:08 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-11 23:21:08 INF] Found 0 recurring income schedules due for generation.
+[2025-06-11 23:21:08 INF] Recurring income generation job finished at "2025-06-11T23:21:08.8220508+01:00"
+[2025-06-11 23:21:12 WRN] Failed to determine the https port for redirect.
+[2025-06-11 23:21:12 INF] HTTP GET /api/income/summary responded 200 in 227.5130 ms
+[2025-06-11 23:21:31 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+[2025-06-11 23:21:31 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+[2025-06-11 23:21:31 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.

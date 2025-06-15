@@ -1,0 +1,68 @@
+[2025-05-28 08:38:30 WRN] Failed to determine the https port for redirect.
+[2025-05-28 08:38:30 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-05-28 08:38:30 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-05-28 08:38:30 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-05-28 08:38:30 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-05-28 08:38:30 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Income'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-05-28 08:38:32 INF] HTTP POST /api/auth/login responded 200 in 2423.0996 ms
+[2025-05-28 08:42:47 INF] HTTP POST /api/auth/login responded 200 in 29.4148 ms
+[2025-05-28 08:43:47 INF] HTTP POST /api/auth/register responded 200 in 155.8679 ms
+[2025-05-28 08:44:03 INF] HTTP GET /api/balance responded 200 in 69.4531 ms
+[2025-05-28 08:44:14 INF] HTTP POST /api/auth/login responded 200 in 4.3666 ms
+[2025-05-28 08:44:18 INF] HTTP GET /api/balance responded 200 in 4.2832 ms
+[2025-05-28 08:44:24 INF] HTTP GET /api/balance responded 200 in 3.0597 ms
+[2025-05-28 08:44:41 INF] HTTP GET /api/balance responded 200 in 3.4933 ms
+[2025-05-28 08:44:50 INF] HTTP GET /api/balance responded 200 in 2.3988 ms
+[2025-05-28 08:44:56 INF] HTTP GET /api/balance responded 200 in 2.4932 ms
+[2025-05-28 08:45:04 INF] HTTP GET /api/balance responded 200 in 4.0300 ms
+[2025-05-28 08:45:09 INF] HTTP GET /api/balance responded 200 in 3.7262 ms
+[2025-05-28 08:54:03 INF] HTTP GET /api/balance responded 200 in 56.3303 ms
+[2025-05-28 08:54:13 INF] HTTP POST /api/auth/login responded 200 in 4.6638 ms
+[2025-05-28 09:06:56 INF] HTTP GET /api/balance responded 200 in 794.1387 ms
+[2025-05-28 09:07:05 INF] HTTP POST /api/auth/login responded 401 in 5.9875 ms
+[2025-05-28 09:07:09 INF] HTTP POST /api/auth/login responded 200 in 2.4614 ms
+[2025-05-28 09:07:10 INF] HTTP GET /api/balance responded 200 in 2.0783 ms
+[2025-05-28 10:01:36 INF] HTTP POST /api/auth/login responded 200 in 859.3112 ms
+[2025-05-28 10:02:43 INF] HTTP POST /api/expense/summary responded 405 in 2.7043 ms
+[2025-05-28 10:08:04 WRN] Failed to determine the https port for redirect.
+[2025-05-28 10:08:04 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-05-28 10:08:04 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-05-28 10:08:04 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-05-28 10:08:04 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-05-28 10:08:04 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Income'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-05-28 10:08:06 INF] HTTP GET /api/expense/summary responded 200 in 1983.0585 ms
+[2025-05-28 10:13:39 INF] HTTP POST /api/expense responded 401 in 10.0388 ms
+[2025-05-28 10:13:49 INF] HTTP POST /api/expense responded 200 in 199.5246 ms
+[2025-05-28 10:13:53 INF] HTTP GET /api/expense/summary responded 200 in 49.2004 ms
+[2025-05-28 11:19:34 INF] HTTP POST /api/auth/login responded 200 in 831.7198 ms
+[2025-05-28 11:19:34 INF] HTTP GET /api/balance responded 200 in 10.3178 ms
+[2025-05-28 11:20:25 INF] HTTP GET /api/balance responded 200 in 2.9723 ms
+[2025-05-28 11:22:42 INF] HTTP GET /api/balance responded 200 in 2.3622 ms
+[2025-05-28 11:22:58 INF] HTTP GET /api/balance responded 200 in 2.3284 ms
+[2025-05-28 11:23:54 INF] HTTP GET /api/balance responded 200 in 2.1536 ms
+[2025-05-28 11:25:06 INF] HTTP GET /api/balance responded 200 in 2.1702 ms
+[2025-05-28 11:28:47 INF] HTTP GET /api/balance responded 200 in 2.9096 ms
+[2025-05-28 11:29:01 INF] HTTP GET /api/balance responded 200 in 2.7367 ms
+[2025-05-28 11:29:31 INF] HTTP GET /api/balance responded 200 in 2.8825 ms
+[2025-05-28 11:29:53 INF] HTTP GET /api/balance responded 200 in 2.1452 ms
+[2025-05-28 11:30:25 INF] HTTP GET /api/balance responded 200 in 3.0648 ms
+[2025-05-28 11:30:28 INF] HTTP GET /api/balance responded 200 in 2.3739 ms
+[2025-05-28 11:30:36 INF] HTTP GET /api/balance responded 200 in 2.5297 ms
+[2025-05-28 11:30:46 INF] HTTP GET /api/balance responded 200 in 2.8221 ms
+[2025-05-28 11:30:58 INF] HTTP GET /api/balance responded 200 in 2.2316 ms
+[2025-05-28 11:31:06 INF] HTTP GET /api/balance responded 200 in 2.6367 ms
+[2025-05-28 11:31:22 INF] HTTP GET /api/balance responded 200 in 2.1853 ms
+[2025-05-28 11:40:31 INF] HTTP GET /api/balance responded 200 in 61.4678 ms
+[2025-05-28 11:40:53 INF] HTTP GET /api/balance responded 200 in 1.8221 ms
+[2025-05-28 11:41:04 INF] HTTP GET /api/balance responded 200 in 1.9513 ms
+[2025-05-28 11:41:31 INF] HTTP GET /api/balance responded 200 in 1.9786 ms
+[2025-05-28 11:41:56 INF] HTTP GET /api/balance responded 200 in 2.2680 ms
+[2025-05-28 11:42:40 INF] HTTP GET /api/balance responded 200 in 1.9119 ms
+[2025-05-28 11:47:23 INF] HTTP GET /api/balance responded 200 in 47.8371 ms
+[2025-05-28 11:51:11 INF] HTTP GET /api/balance responded 200 in 2.7348 ms
+[2025-05-28 11:51:22 INF] HTTP GET /api/balance responded 200 in 2.6311 ms
+[2025-05-28 11:52:52 INF] HTTP GET /api/balance responded 200 in 2.2474 ms
+[2025-05-28 12:11:25 INF] HTTP GET /api/balance responded 200 in 779.3192 ms
+[2025-05-28 12:12:21 INF] HTTP GET /api/balance responded 200 in 1.8897 ms
+[2025-05-28 12:13:02 INF] HTTP GET /api/balance responded 200 in 1.8974 ms
+[2025-05-28 12:16:57 INF] HTTP GET /api/balance responded 200 in 53.2678 ms

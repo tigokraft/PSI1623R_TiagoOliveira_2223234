@@ -1,0 +1,752 @@
+[2025-06-13 19:56:39 INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+[2025-06-13 19:56:39 INF] Quartz Scheduler created
+[2025-06-13 19:56:39 INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+[2025-06-13 19:56:39 INF] RAMJobStore initialized.
+[2025-06-13 19:56:39 INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+[2025-06-13 19:56:39 INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+[2025-06-13 19:56:39 INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+[2025-06-13 19:56:39 INF] Adding 1 jobs, 1 triggers.
+[2025-06-13 19:56:39 INF] Adding job: DEFAULT.RecurringIncomeJob
+[2025-06-13 19:56:39 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+[2025-06-13 19:56:39 INF] Recurring income generation job started at "2025-06-13T19:56:39.4424734+01:00"
+[2025-06-13 19:56:39 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 19:56:39 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 19:56:39 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 19:56:39 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 19:56:40 WRN] Failed to determine the https port for redirect.
+[2025-06-13 19:56:40 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 19:56:40 INF] Recurring income generation job finished at "2025-06-13T19:56:40.4475630+01:00"
+[2025-06-13 19:56:40 INF] HTTP POST /api/auth/login responded 200 in 230.9703 ms
+[2025-06-13 19:56:55 INF] HTTP GET /api/income/summary responded 200 in 156.9202 ms
+[2025-06-13 19:57:38 INF] Recurring income generation job started at "2025-06-13T19:57:38.6463995+01:00"
+[2025-06-13 19:57:38 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 19:57:38 INF] Recurring income generation job finished at "2025-06-13T19:57:38.6564093+01:00"
+[2025-06-13 19:58:38 INF] Recurring income generation job started at "2025-06-13T19:58:38.6403426+01:00"
+[2025-06-13 19:58:38 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 19:58:38 INF] Recurring income generation job finished at "2025-06-13T19:58:38.6423887+01:00"
+[2025-06-13 19:59:38 INF] Recurring income generation job started at "2025-06-13T19:59:38.6399992+01:00"
+[2025-06-13 19:59:38 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 19:59:38 INF] Recurring income generation job finished at "2025-06-13T19:59:38.6475460+01:00"
+[2025-06-13 20:00:38 INF] Recurring income generation job started at "2025-06-13T20:00:38.6402764+01:00"
+[2025-06-13 20:00:38 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:00:38 INF] Recurring income generation job finished at "2025-06-13T20:00:38.6489961+01:00"
+[2025-06-13 20:01:22 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+[2025-06-13 20:01:22 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+[2025-06-13 20:01:22 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+[2025-06-13 20:01:42 INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+[2025-06-13 20:01:42 INF] Quartz Scheduler created
+[2025-06-13 20:01:42 INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+[2025-06-13 20:01:42 INF] RAMJobStore initialized.
+[2025-06-13 20:01:42 INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+[2025-06-13 20:01:42 INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+[2025-06-13 20:01:42 INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+[2025-06-13 20:01:42 INF] Adding 1 jobs, 1 triggers.
+[2025-06-13 20:01:42 INF] Adding job: DEFAULT.RecurringIncomeJob
+[2025-06-13 20:01:42 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+[2025-06-13 20:01:42 INF] Recurring income generation job started at "2025-06-13T20:01:42.5683040+01:00"
+[2025-06-13 20:01:42 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 20:01:42 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 20:01:42 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 20:01:42 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 20:01:43 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:01:43 INF] Recurring income generation job finished at "2025-06-13T20:01:43.4097108+01:00"
+[2025-06-13 20:01:43 WRN] Failed to determine the https port for redirect.
+[2025-06-13 20:01:43 INF] HTTP GET /api/income/summary responded 200 in 251.5947 ms
+[2025-06-13 20:01:59 INF] HTTP GET /api/income/summary responded 200 in 65.8865 ms
+[2025-06-13 20:02:18 INF] HTTP GET /api/income/summary responded 200 in 13.3802 ms
+[2025-06-13 20:02:41 INF] Recurring income generation job started at "2025-06-13T20:02:41.9050014+01:00"
+[2025-06-13 20:02:41 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:02:41 INF] Recurring income generation job finished at "2025-06-13T20:02:41.9076917+01:00"
+[2025-06-13 20:03:14 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+[2025-06-13 20:03:14 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+[2025-06-13 20:03:14 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+[2025-06-13 20:03:54 INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+[2025-06-13 20:03:54 INF] Quartz Scheduler created
+[2025-06-13 20:03:54 INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+[2025-06-13 20:03:54 INF] RAMJobStore initialized.
+[2025-06-13 20:03:54 INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+[2025-06-13 20:03:54 INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+[2025-06-13 20:03:54 INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+[2025-06-13 20:03:54 INF] Adding 1 jobs, 1 triggers.
+[2025-06-13 20:03:54 INF] Adding job: DEFAULT.RecurringIncomeJob
+[2025-06-13 20:03:54 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+[2025-06-13 20:03:54 INF] Recurring income generation job started at "2025-06-13T20:03:54.3701954+01:00"
+[2025-06-13 20:03:54 WRN] Failed to determine the https port for redirect.
+[2025-06-13 20:03:54 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 20:03:54 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 20:03:54 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 20:03:54 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 20:03:55 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:03:55 INF] Recurring income generation job finished at "2025-06-13T20:03:55.1805241+01:00"
+[2025-06-13 20:03:55 INF] HTTP GET /api/income/summary responded 200 in 788.6985 ms
+[2025-06-13 20:04:20 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+[2025-06-13 20:04:20 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+[2025-06-13 20:04:20 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+[2025-06-13 20:04:56 INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+[2025-06-13 20:04:56 INF] Quartz Scheduler created
+[2025-06-13 20:04:56 INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+[2025-06-13 20:04:56 INF] RAMJobStore initialized.
+[2025-06-13 20:04:56 INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+[2025-06-13 20:04:56 INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+[2025-06-13 20:04:56 INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+[2025-06-13 20:04:56 INF] Adding 1 jobs, 1 triggers.
+[2025-06-13 20:04:56 INF] Adding job: DEFAULT.RecurringIncomeJob
+[2025-06-13 20:04:56 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+[2025-06-13 20:04:57 INF] Recurring income generation job started at "2025-06-13T20:04:57.0158015+01:00"
+[2025-06-13 20:04:57 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 20:04:57 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 20:04:57 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 20:04:57 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 20:04:57 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:04:57 INF] Recurring income generation job finished at "2025-06-13T20:04:57.7882589+01:00"
+[2025-06-13 20:04:59 WRN] Failed to determine the https port for redirect.
+[2025-06-13 20:04:59 INF] HTTP GET /api/income/summary responded 200 in 249.9249 ms
+[2025-06-13 20:05:56 INF] Recurring income generation job started at "2025-06-13T20:05:56.3285640+01:00"
+[2025-06-13 20:05:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:05:56 INF] Recurring income generation job finished at "2025-06-13T20:05:56.3756726+01:00"
+[2025-06-13 20:06:56 INF] Recurring income generation job started at "2025-06-13T20:06:56.3235941+01:00"
+[2025-06-13 20:06:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:06:56 INF] Recurring income generation job finished at "2025-06-13T20:06:56.3320879+01:00"
+[2025-06-13 20:07:56 INF] Recurring income generation job started at "2025-06-13T20:07:56.3365061+01:00"
+[2025-06-13 20:07:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:07:56 INF] Recurring income generation job finished at "2025-06-13T20:07:56.3434211+01:00"
+[2025-06-13 20:08:56 INF] Recurring income generation job started at "2025-06-13T20:08:56.3334897+01:00"
+[2025-06-13 20:08:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:08:56 INF] Recurring income generation job finished at "2025-06-13T20:08:56.3407382+01:00"
+[2025-06-13 20:09:56 INF] Recurring income generation job started at "2025-06-13T20:09:56.3255361+01:00"
+[2025-06-13 20:09:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:09:56 INF] Recurring income generation job finished at "2025-06-13T20:09:56.3333504+01:00"
+[2025-06-13 20:10:56 INF] Recurring income generation job started at "2025-06-13T20:10:56.3321665+01:00"
+[2025-06-13 20:10:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:10:56 INF] Recurring income generation job finished at "2025-06-13T20:10:56.3398405+01:00"
+[2025-06-13 20:11:56 INF] Recurring income generation job started at "2025-06-13T20:11:56.3218005+01:00"
+[2025-06-13 20:11:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:11:56 INF] Recurring income generation job finished at "2025-06-13T20:11:56.3298306+01:00"
+[2025-06-13 20:12:56 INF] Recurring income generation job started at "2025-06-13T20:12:56.3259456+01:00"
+[2025-06-13 20:12:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:12:56 INF] Recurring income generation job finished at "2025-06-13T20:12:56.3275869+01:00"
+[2025-06-13 20:13:56 INF] Recurring income generation job started at "2025-06-13T20:13:56.3253448+01:00"
+[2025-06-13 20:13:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:13:56 INF] Recurring income generation job finished at "2025-06-13T20:13:56.3326141+01:00"
+[2025-06-13 20:14:56 INF] Recurring income generation job started at "2025-06-13T20:14:56.3292267+01:00"
+[2025-06-13 20:14:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:14:56 INF] Recurring income generation job finished at "2025-06-13T20:14:56.3364953+01:00"
+[2025-06-13 20:15:56 INF] Recurring income generation job started at "2025-06-13T20:15:56.3217648+01:00"
+[2025-06-13 20:15:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:15:56 INF] Recurring income generation job finished at "2025-06-13T20:15:56.3289566+01:00"
+[2025-06-13 20:16:56 INF] Recurring income generation job started at "2025-06-13T20:16:56.3340951+01:00"
+[2025-06-13 20:16:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:16:56 INF] Recurring income generation job finished at "2025-06-13T20:16:56.3408928+01:00"
+[2025-06-13 20:17:56 INF] Recurring income generation job started at "2025-06-13T20:17:56.3323293+01:00"
+[2025-06-13 20:17:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:17:56 INF] Recurring income generation job finished at "2025-06-13T20:17:56.3375112+01:00"
+[2025-06-13 20:18:56 INF] Recurring income generation job started at "2025-06-13T20:18:56.3256812+01:00"
+[2025-06-13 20:18:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:18:56 INF] Recurring income generation job finished at "2025-06-13T20:18:56.3325593+01:00"
+[2025-06-13 20:19:56 INF] Recurring income generation job started at "2025-06-13T20:19:56.3317710+01:00"
+[2025-06-13 20:19:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:19:56 INF] Recurring income generation job finished at "2025-06-13T20:19:56.3388232+01:00"
+[2025-06-13 20:20:56 INF] Recurring income generation job started at "2025-06-13T20:20:56.3216782+01:00"
+[2025-06-13 20:20:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:20:56 INF] Recurring income generation job finished at "2025-06-13T20:20:56.3287905+01:00"
+[2025-06-13 20:21:56 INF] Recurring income generation job started at "2025-06-13T20:21:56.3355460+01:00"
+[2025-06-13 20:21:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:21:56 INF] Recurring income generation job finished at "2025-06-13T20:21:56.3427450+01:00"
+[2025-06-13 20:22:56 INF] Recurring income generation job started at "2025-06-13T20:22:56.3334051+01:00"
+[2025-06-13 20:22:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:22:56 INF] Recurring income generation job finished at "2025-06-13T20:22:56.3414225+01:00"
+[2025-06-13 20:23:56 INF] Recurring income generation job started at "2025-06-13T20:23:56.3313642+01:00"
+[2025-06-13 20:23:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:23:56 INF] Recurring income generation job finished at "2025-06-13T20:23:56.3384174+01:00"
+[2025-06-13 20:24:56 INF] Recurring income generation job started at "2025-06-13T20:24:56.3264892+01:00"
+[2025-06-13 20:24:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:24:56 INF] Recurring income generation job finished at "2025-06-13T20:24:56.3335106+01:00"
+[2025-06-13 20:25:56 INF] Recurring income generation job started at "2025-06-13T20:25:56.3234766+01:00"
+[2025-06-13 20:25:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:25:56 INF] Recurring income generation job finished at "2025-06-13T20:25:56.3302449+01:00"
+[2025-06-13 20:26:56 INF] Recurring income generation job started at "2025-06-13T20:26:56.3278771+01:00"
+[2025-06-13 20:26:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:26:56 INF] Recurring income generation job finished at "2025-06-13T20:26:56.3347598+01:00"
+[2025-06-13 20:27:56 INF] Recurring income generation job started at "2025-06-13T20:27:56.3338553+01:00"
+[2025-06-13 20:27:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:27:56 INF] Recurring income generation job finished at "2025-06-13T20:27:56.3409139+01:00"
+[2025-06-13 20:28:56 INF] Recurring income generation job started at "2025-06-13T20:28:56.3230166+01:00"
+[2025-06-13 20:28:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:28:56 INF] Recurring income generation job finished at "2025-06-13T20:28:56.3299754+01:00"
+[2025-06-13 20:29:56 INF] Recurring income generation job started at "2025-06-13T20:29:56.3232107+01:00"
+[2025-06-13 20:29:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:29:56 INF] Recurring income generation job finished at "2025-06-13T20:29:56.3298468+01:00"
+[2025-06-13 20:30:56 INF] Recurring income generation job started at "2025-06-13T20:30:56.3230857+01:00"
+[2025-06-13 20:30:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:30:56 INF] Recurring income generation job finished at "2025-06-13T20:30:56.3302203+01:00"
+[2025-06-13 20:31:56 INF] Recurring income generation job started at "2025-06-13T20:31:56.3234366+01:00"
+[2025-06-13 20:31:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:31:56 INF] Recurring income generation job finished at "2025-06-13T20:31:56.3306580+01:00"
+[2025-06-13 20:32:56 INF] Recurring income generation job started at "2025-06-13T20:32:56.3308217+01:00"
+[2025-06-13 20:32:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:32:56 INF] Recurring income generation job finished at "2025-06-13T20:32:56.3381781+01:00"
+[2025-06-13 20:33:56 INF] Recurring income generation job started at "2025-06-13T20:33:56.3252468+01:00"
+[2025-06-13 20:33:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:33:56 INF] Recurring income generation job finished at "2025-06-13T20:33:56.3332522+01:00"
+[2025-06-13 20:34:56 INF] Recurring income generation job started at "2025-06-13T20:34:56.3295130+01:00"
+[2025-06-13 20:34:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:34:56 INF] Recurring income generation job finished at "2025-06-13T20:34:56.3470109+01:00"
+[2025-06-13 20:35:56 INF] Recurring income generation job started at "2025-06-13T20:35:56.3284449+01:00"
+[2025-06-13 20:35:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:35:56 INF] Recurring income generation job finished at "2025-06-13T20:35:56.3316244+01:00"
+[2025-06-13 20:36:56 INF] Recurring income generation job started at "2025-06-13T20:36:56.3242523+01:00"
+[2025-06-13 20:36:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:36:56 INF] Recurring income generation job finished at "2025-06-13T20:36:56.3310195+01:00"
+[2025-06-13 20:37:56 INF] Recurring income generation job started at "2025-06-13T20:37:56.3252303+01:00"
+[2025-06-13 20:37:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:37:56 INF] Recurring income generation job finished at "2025-06-13T20:37:56.3321134+01:00"
+[2025-06-13 20:38:56 INF] Recurring income generation job started at "2025-06-13T20:38:56.3237492+01:00"
+[2025-06-13 20:38:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:38:56 INF] Recurring income generation job finished at "2025-06-13T20:38:56.3304470+01:00"
+[2025-06-13 20:39:56 INF] Recurring income generation job started at "2025-06-13T20:39:56.3256793+01:00"
+[2025-06-13 20:39:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:39:56 INF] Recurring income generation job finished at "2025-06-13T20:39:56.3323377+01:00"
+[2025-06-13 20:40:56 INF] Recurring income generation job started at "2025-06-13T20:40:56.3252956+01:00"
+[2025-06-13 20:40:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:40:56 INF] Recurring income generation job finished at "2025-06-13T20:40:56.3317582+01:00"
+[2025-06-13 20:41:56 INF] Recurring income generation job started at "2025-06-13T20:41:56.3236122+01:00"
+[2025-06-13 20:41:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:41:56 INF] Recurring income generation job finished at "2025-06-13T20:41:56.3302218+01:00"
+[2025-06-13 20:42:56 INF] Recurring income generation job started at "2025-06-13T20:42:56.3268632+01:00"
+[2025-06-13 20:42:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:42:56 INF] Recurring income generation job finished at "2025-06-13T20:42:56.3334102+01:00"
+[2025-06-13 20:43:56 INF] Recurring income generation job started at "2025-06-13T20:43:56.3305263+01:00"
+[2025-06-13 20:43:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:43:56 INF] Recurring income generation job finished at "2025-06-13T20:43:56.3374437+01:00"
+[2025-06-13 20:44:56 INF] Recurring income generation job started at "2025-06-13T20:44:56.3343227+01:00"
+[2025-06-13 20:44:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:44:56 INF] Recurring income generation job finished at "2025-06-13T20:44:56.3411763+01:00"
+[2025-06-13 20:45:56 INF] Recurring income generation job started at "2025-06-13T20:45:56.3335459+01:00"
+[2025-06-13 20:45:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:45:56 INF] Recurring income generation job finished at "2025-06-13T20:45:56.3403410+01:00"
+[2025-06-13 20:46:56 INF] Recurring income generation job started at "2025-06-13T20:46:56.3295375+01:00"
+[2025-06-13 20:46:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:46:56 INF] Recurring income generation job finished at "2025-06-13T20:46:56.3360830+01:00"
+[2025-06-13 20:47:56 INF] Recurring income generation job started at "2025-06-13T20:47:56.3227020+01:00"
+[2025-06-13 20:47:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:47:56 INF] Recurring income generation job finished at "2025-06-13T20:47:56.3255405+01:00"
+[2025-06-13 20:48:56 INF] Recurring income generation job started at "2025-06-13T20:48:56.3267904+01:00"
+[2025-06-13 20:48:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:48:56 INF] Recurring income generation job finished at "2025-06-13T20:48:56.3334486+01:00"
+[2025-06-13 20:49:56 INF] Recurring income generation job started at "2025-06-13T20:49:56.3294627+01:00"
+[2025-06-13 20:49:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:49:56 INF] Recurring income generation job finished at "2025-06-13T20:49:56.3363346+01:00"
+[2025-06-13 20:50:56 INF] Recurring income generation job started at "2025-06-13T20:50:56.3223293+01:00"
+[2025-06-13 20:50:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:50:56 INF] Recurring income generation job finished at "2025-06-13T20:50:56.3293712+01:00"
+[2025-06-13 20:51:56 INF] Recurring income generation job started at "2025-06-13T20:51:56.3226631+01:00"
+[2025-06-13 20:51:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:51:56 INF] Recurring income generation job finished at "2025-06-13T20:51:56.3297198+01:00"
+[2025-06-13 20:52:56 INF] Recurring income generation job started at "2025-06-13T20:52:56.3311412+01:00"
+[2025-06-13 20:52:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:52:56 INF] Recurring income generation job finished at "2025-06-13T20:52:56.3378286+01:00"
+[2025-06-13 20:53:56 INF] Recurring income generation job started at "2025-06-13T20:53:56.3353121+01:00"
+[2025-06-13 20:53:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:53:56 INF] Recurring income generation job finished at "2025-06-13T20:53:56.3423487+01:00"
+[2025-06-13 20:54:56 INF] Recurring income generation job started at "2025-06-13T20:54:56.3291495+01:00"
+[2025-06-13 20:54:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:54:56 INF] Recurring income generation job finished at "2025-06-13T20:54:56.3358163+01:00"
+[2025-06-13 20:55:56 INF] Recurring income generation job started at "2025-06-13T20:55:56.3243185+01:00"
+[2025-06-13 20:55:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:55:56 INF] Recurring income generation job finished at "2025-06-13T20:55:56.3311497+01:00"
+[2025-06-13 20:56:56 INF] Recurring income generation job started at "2025-06-13T20:56:56.3302970+01:00"
+[2025-06-13 20:56:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:56:56 INF] Recurring income generation job finished at "2025-06-13T20:56:56.3376223+01:00"
+[2025-06-13 20:57:56 INF] Recurring income generation job started at "2025-06-13T20:57:56.3234531+01:00"
+[2025-06-13 20:57:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:57:56 INF] Recurring income generation job finished at "2025-06-13T20:57:56.3304425+01:00"
+[2025-06-13 20:58:56 INF] Recurring income generation job started at "2025-06-13T20:58:56.3259265+01:00"
+[2025-06-13 20:58:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:58:56 INF] Recurring income generation job finished at "2025-06-13T20:58:56.3326992+01:00"
+[2025-06-13 20:59:56 INF] Recurring income generation job started at "2025-06-13T20:59:56.3354727+01:00"
+[2025-06-13 20:59:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 20:59:56 INF] Recurring income generation job finished at "2025-06-13T20:59:56.3422798+01:00"
+[2025-06-13 21:00:56 INF] Recurring income generation job started at "2025-06-13T21:00:56.3314727+01:00"
+[2025-06-13 21:00:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:00:56 INF] Recurring income generation job finished at "2025-06-13T21:00:56.3389897+01:00"
+[2025-06-13 21:01:56 INF] Recurring income generation job started at "2025-06-13T21:01:56.3359244+01:00"
+[2025-06-13 21:01:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:01:56 INF] Recurring income generation job finished at "2025-06-13T21:01:56.3434330+01:00"
+[2025-06-13 21:02:56 INF] Recurring income generation job started at "2025-06-13T21:02:56.3327385+01:00"
+[2025-06-13 21:02:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:02:56 INF] Recurring income generation job finished at "2025-06-13T21:02:56.3397646+01:00"
+[2025-06-13 21:03:56 INF] Recurring income generation job started at "2025-06-13T21:03:56.3250847+01:00"
+[2025-06-13 21:03:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:03:56 INF] Recurring income generation job finished at "2025-06-13T21:03:56.3317428+01:00"
+[2025-06-13 21:04:56 INF] Recurring income generation job started at "2025-06-13T21:04:56.3287948+01:00"
+[2025-06-13 21:04:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:04:56 INF] Recurring income generation job finished at "2025-06-13T21:04:56.3360891+01:00"
+[2025-06-13 21:05:56 INF] Recurring income generation job started at "2025-06-13T21:05:56.3359902+01:00"
+[2025-06-13 21:05:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:05:56 INF] Recurring income generation job finished at "2025-06-13T21:05:56.3482463+01:00"
+[2025-06-13 21:06:56 INF] Recurring income generation job started at "2025-06-13T21:06:56.3256750+01:00"
+[2025-06-13 21:06:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:06:56 INF] Recurring income generation job finished at "2025-06-13T21:06:56.3327718+01:00"
+[2025-06-13 21:07:56 INF] Recurring income generation job started at "2025-06-13T21:07:56.3269470+01:00"
+[2025-06-13 21:07:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:07:56 INF] Recurring income generation job finished at "2025-06-13T21:07:56.3336111+01:00"
+[2025-06-13 21:08:03 INF] HTTP POST /api/auth/login responded 200 in 74.7141 ms
+[2025-06-13 21:08:56 INF] Recurring income generation job started at "2025-06-13T21:08:56.3342156+01:00"
+[2025-06-13 21:08:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:08:56 INF] Recurring income generation job finished at "2025-06-13T21:08:56.3370212+01:00"
+[2025-06-13 21:09:56 INF] Recurring income generation job started at "2025-06-13T21:09:56.3312504+01:00"
+[2025-06-13 21:09:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:09:56 INF] Recurring income generation job finished at "2025-06-13T21:09:56.3379849+01:00"
+[2025-06-13 21:10:56 INF] Recurring income generation job started at "2025-06-13T21:10:56.3234062+01:00"
+[2025-06-13 21:10:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:10:56 INF] Recurring income generation job finished at "2025-06-13T21:10:56.3303625+01:00"
+[2025-06-13 21:11:56 INF] Recurring income generation job started at "2025-06-13T21:11:56.3325078+01:00"
+[2025-06-13 21:11:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:11:56 INF] Recurring income generation job finished at "2025-06-13T21:11:56.3390882+01:00"
+[2025-06-13 21:12:56 INF] Recurring income generation job started at "2025-06-13T21:12:56.3282123+01:00"
+[2025-06-13 21:12:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:12:56 INF] Recurring income generation job finished at "2025-06-13T21:12:56.3348917+01:00"
+[2025-06-13 21:13:01 INF] HTTP POST /api/auth/login responded 200 in 23.6914 ms
+[2025-06-13 21:13:01 INF] HTTP GET /api/balance responded 200 in 24.2327 ms
+[2025-06-13 21:13:03 INF] HTTP GET /api/expense/summary responded 200 in 16.9136 ms
+[2025-06-13 21:13:09 INF] HTTP GET /api/expense/summary responded 200 in 2.6775 ms
+[2025-06-13 21:13:16 INF] HTTP GET /api/expense/summary responded 200 in 2.1402 ms
+[2025-06-13 21:13:17 INF] HTTP GET /api/balance responded 200 in 1.8789 ms
+[2025-06-13 21:13:17 INF] HTTP GET /api/expense/summary responded 200 in 2.2731 ms
+[2025-06-13 21:13:18 INF] HTTP GET /api/expense/summary responded 200 in 2.1295 ms
+[2025-06-13 21:13:32 INF] HTTP POST /api/expense/ responded 200 in 95.9440 ms
+[2025-06-13 21:13:33 INF] HTTP GET /api/expense/summary responded 200 in 12.6532 ms
+[2025-06-13 21:13:56 INF] Recurring income generation job started at "2025-06-13T21:13:56.3361342+01:00"
+[2025-06-13 21:13:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:13:56 INF] Recurring income generation job finished at "2025-06-13T21:13:56.3386520+01:00"
+[2025-06-13 21:14:06 INF] HTTP GET /api/expense/summary responded 200 in 2.0258 ms
+[2025-06-13 21:14:56 INF] Recurring income generation job started at "2025-06-13T21:14:56.3284178+01:00"
+[2025-06-13 21:14:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:14:56 INF] Recurring income generation job finished at "2025-06-13T21:14:56.3368347+01:00"
+[2025-06-13 21:15:56 INF] Recurring income generation job started at "2025-06-13T21:15:56.3246100+01:00"
+[2025-06-13 21:15:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:15:56 INF] Recurring income generation job finished at "2025-06-13T21:15:56.3321873+01:00"
+[2025-06-13 21:16:15 INF] HTTP GET /api/balance responded 200 in 4.8729 ms
+[2025-06-13 21:16:15 INF] HTTP GET /api/expense/summary responded 200 in 5.9952 ms
+[2025-06-13 21:16:56 INF] Recurring income generation job started at "2025-06-13T21:16:56.3298505+01:00"
+[2025-06-13 21:16:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:16:56 INF] Recurring income generation job finished at "2025-06-13T21:16:56.3367806+01:00"
+[2025-06-13 21:17:56 INF] Recurring income generation job started at "2025-06-13T21:17:56.3333869+01:00"
+[2025-06-13 21:17:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:17:56 INF] Recurring income generation job finished at "2025-06-13T21:17:56.3401421+01:00"
+[2025-06-13 21:18:56 INF] Recurring income generation job started at "2025-06-13T21:18:56.3281183+01:00"
+[2025-06-13 21:18:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:18:56 INF] Recurring income generation job finished at "2025-06-13T21:18:56.3348665+01:00"
+[2025-06-13 21:19:56 INF] Recurring income generation job started at "2025-06-13T21:19:56.3231403+01:00"
+[2025-06-13 21:19:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:19:56 INF] Recurring income generation job finished at "2025-06-13T21:19:56.3300291+01:00"
+[2025-06-13 21:20:25 INF] HTTP GET /api/income/summary responded 401 in 7.0195 ms
+[2025-06-13 21:20:40 INF] HTTP GET /api/income/summary responded 200 in 7.0569 ms
+[2025-06-13 21:20:52 INF] HTTP GET /api/income responded 200 in 11.1111 ms
+[2025-06-13 21:20:56 INF] Recurring income generation job started at "2025-06-13T21:20:56.3281681+01:00"
+[2025-06-13 21:20:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:20:56 INF] Recurring income generation job finished at "2025-06-13T21:20:56.3300673+01:00"
+[2025-06-13 21:21:01 INF] HTTP GET /api/income/summary responded 200 in 2.1080 ms
+[2025-06-13 21:21:41 INF] HTTP GET /api/income/summary responded 200 in 10.8451 ms
+[2025-06-13 21:21:51 INF] HTTP GET /api/income/summary responded 400 in 0.9655 ms
+[2025-06-13 21:21:56 INF] Recurring income generation job started at "2025-06-13T21:21:56.3340613+01:00"
+[2025-06-13 21:21:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:21:56 INF] Recurring income generation job finished at "2025-06-13T21:21:56.3359968+01:00"
+[2025-06-13 21:21:58 INF] HTTP GET /api/income/summary responded 200 in 2.1412 ms
+[2025-06-13 21:22:07 INF] HTTP GET /api/income/summary responded 200 in 1.7267 ms
+[2025-06-13 21:22:10 INF] HTTP GET /api/income/summary responded 200 in 2.0493 ms
+[2025-06-13 21:22:56 INF] Recurring income generation job started at "2025-06-13T21:22:56.3227608+01:00"
+[2025-06-13 21:22:56 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:22:56 INF] Recurring income generation job finished at "2025-06-13T21:22:56.3293564+01:00"
+[2025-06-13 21:23:38 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+[2025-06-13 21:23:38 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+[2025-06-13 21:23:38 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+[2025-06-13 21:23:47 INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+[2025-06-13 21:23:47 INF] Quartz Scheduler created
+[2025-06-13 21:23:47 INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+[2025-06-13 21:23:47 INF] RAMJobStore initialized.
+[2025-06-13 21:23:47 INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+[2025-06-13 21:23:47 INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+[2025-06-13 21:23:47 INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+[2025-06-13 21:23:47 INF] Adding 1 jobs, 1 triggers.
+[2025-06-13 21:23:47 INF] Adding job: DEFAULT.RecurringIncomeJob
+[2025-06-13 21:23:47 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+[2025-06-13 21:23:47 INF] Recurring income generation job started at "2025-06-13T21:23:47.9719479+01:00"
+[2025-06-13 21:23:48 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:23:48 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:23:48 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:23:48 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:23:48 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:23:48 INF] Recurring income generation job finished at "2025-06-13T21:23:48.7922286+01:00"
+[2025-06-13 21:23:50 WRN] Failed to determine the https port for redirect.
+[2025-06-13 21:23:51 INF] HTTP GET /api/income/summary responded 400 in 128.4109 ms
+[2025-06-13 21:23:57 INF] HTTP GET /api/income/summary responded 400 in 7.5407 ms
+[2025-06-13 21:24:03 INF] HTTP GET /api/income/summary responded 200 in 113.8173 ms
+[2025-06-13 21:24:47 INF] Recurring income generation job started at "2025-06-13T21:24:47.2883603+01:00"
+[2025-06-13 21:24:47 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:24:47 INF] Recurring income generation job finished at "2025-06-13T21:24:47.3346998+01:00"
+[2025-06-13 21:25:47 INF] Recurring income generation job started at "2025-06-13T21:25:47.2846086+01:00"
+[2025-06-13 21:25:47 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:25:47 INF] Recurring income generation job finished at "2025-06-13T21:25:47.2925102+01:00"
+[2025-06-13 21:25:55 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+[2025-06-13 21:25:55 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+[2025-06-13 21:25:55 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+[2025-06-13 21:25:59 INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+[2025-06-13 21:25:59 INF] Quartz Scheduler created
+[2025-06-13 21:25:59 INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+[2025-06-13 21:25:59 INF] RAMJobStore initialized.
+[2025-06-13 21:25:59 INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+[2025-06-13 21:25:59 INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+[2025-06-13 21:25:59 INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+[2025-06-13 21:25:59 INF] Adding 1 jobs, 1 triggers.
+[2025-06-13 21:25:59 INF] Adding job: DEFAULT.RecurringIncomeJob
+[2025-06-13 21:26:00 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+[2025-06-13 21:26:00 INF] Recurring income generation job started at "2025-06-13T21:26:00.0986883+01:00"
+[2025-06-13 21:26:00 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:26:00 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:26:00 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:26:00 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:26:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:26:00 INF] Recurring income generation job finished at "2025-06-13T21:26:00.8764596+01:00"
+[2025-06-13 21:26:02 WRN] Failed to determine the https port for redirect.
+[2025-06-13 21:26:02 INF] HTTP GET /api/income/summary responded 200 in 251.1747 ms
+[2025-06-13 21:26:07 INF] HTTP GET /api/income/ responded 200 in 58.2051 ms
+[2025-06-13 21:26:21 INF] HTTP GET /api/income/summary responded 400 in 4.1205 ms
+[2025-06-13 21:26:33 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+[2025-06-13 21:26:33 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+[2025-06-13 21:26:33 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+[2025-06-13 21:26:36 INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+[2025-06-13 21:26:36 INF] Quartz Scheduler created
+[2025-06-13 21:26:36 INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+[2025-06-13 21:26:36 INF] RAMJobStore initialized.
+[2025-06-13 21:26:36 INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+[2025-06-13 21:26:36 INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+[2025-06-13 21:26:36 INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+[2025-06-13 21:26:36 INF] Adding 1 jobs, 1 triggers.
+[2025-06-13 21:26:36 INF] Adding job: DEFAULT.RecurringIncomeJob
+[2025-06-13 21:26:36 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+[2025-06-13 21:26:36 INF] Recurring income generation job started at "2025-06-13T21:26:36.6948281+01:00"
+[2025-06-13 21:26:37 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:26:37 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:26:37 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:26:37 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:26:37 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:26:37 INF] Recurring income generation job finished at "2025-06-13T21:26:37.5456027+01:00"
+[2025-06-13 21:26:37 WRN] Failed to determine the https port for redirect.
+[2025-06-13 21:26:37 INF] HTTP GET /api/income/summary responded 400 in 117.7778 ms
+[2025-06-13 21:26:50 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+[2025-06-13 21:26:50 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+[2025-06-13 21:26:50 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+[2025-06-13 21:26:53 INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+[2025-06-13 21:26:53 INF] Quartz Scheduler created
+[2025-06-13 21:26:53 INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+[2025-06-13 21:26:53 INF] RAMJobStore initialized.
+[2025-06-13 21:26:53 INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+[2025-06-13 21:26:53 INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+[2025-06-13 21:26:53 INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+[2025-06-13 21:26:53 INF] Adding 1 jobs, 1 triggers.
+[2025-06-13 21:26:53 INF] Adding job: DEFAULT.RecurringIncomeJob
+[2025-06-13 21:26:53 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+[2025-06-13 21:26:53 INF] Recurring income generation job started at "2025-06-13T21:26:53.9420170+01:00"
+[2025-06-13 21:26:54 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:26:54 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:26:54 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:26:54 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:26:54 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:26:54 INF] Recurring income generation job finished at "2025-06-13T21:26:54.6879271+01:00"
+[2025-06-13 21:26:54 WRN] Failed to determine the https port for redirect.
+[2025-06-13 21:26:54 INF] HTTP GET /api/income/summary responded 200 in 215.3105 ms
+[2025-06-13 21:27:01 INF] HTTP GET /api/income/ responded 200 in 63.9985 ms
+[2025-06-13 21:27:14 INF] HTTP GET /api/income/summary responded 200 in 9.6402 ms
+[2025-06-13 21:27:53 INF] Recurring income generation job started at "2025-06-13T21:27:53.6026742+01:00"
+[2025-06-13 21:27:53 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:27:53 INF] Recurring income generation job finished at "2025-06-13T21:27:53.6057620+01:00"
+[2025-06-13 21:28:07 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+[2025-06-13 21:28:07 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+[2025-06-13 21:28:07 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+[2025-06-13 21:28:10 INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+[2025-06-13 21:28:10 INF] Quartz Scheduler created
+[2025-06-13 21:28:10 INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+[2025-06-13 21:28:10 INF] RAMJobStore initialized.
+[2025-06-13 21:28:10 INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+[2025-06-13 21:28:10 INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+[2025-06-13 21:28:10 INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+[2025-06-13 21:28:10 INF] Adding 1 jobs, 1 triggers.
+[2025-06-13 21:28:10 INF] Adding job: DEFAULT.RecurringIncomeJob
+[2025-06-13 21:28:10 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+[2025-06-13 21:28:10 INF] Recurring income generation job started at "2025-06-13T21:28:10.5826639+01:00"
+[2025-06-13 21:28:10 WRN] Failed to determine the https port for redirect.
+[2025-06-13 21:28:10 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:28:10 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:28:10 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:28:10 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:28:11 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:28:11 INF] Recurring income generation job finished at "2025-06-13T21:28:11.3556485+01:00"
+[2025-06-13 21:28:11 INF] HTTP GET /api/income/summary responded 200 in 599.1368 ms
+[2025-06-13 21:28:20 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+[2025-06-13 21:28:20 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+[2025-06-13 21:28:20 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+[2025-06-13 21:28:24 INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+[2025-06-13 21:28:24 INF] Quartz Scheduler created
+[2025-06-13 21:28:24 INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+[2025-06-13 21:28:24 INF] RAMJobStore initialized.
+[2025-06-13 21:28:24 INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+[2025-06-13 21:28:24 INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+[2025-06-13 21:28:24 INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+[2025-06-13 21:28:24 INF] Adding 1 jobs, 1 triggers.
+[2025-06-13 21:28:24 INF] Adding job: DEFAULT.RecurringIncomeJob
+[2025-06-13 21:28:24 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+[2025-06-13 21:28:24 INF] Recurring income generation job started at "2025-06-13T21:28:24.1938842+01:00"
+[2025-06-13 21:28:24 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:28:24 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:28:24 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:28:24 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:28:25 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:28:25 INF] Recurring income generation job finished at "2025-06-13T21:28:25.0139281+01:00"
+[2025-06-13 21:28:25 WRN] Failed to determine the https port for redirect.
+[2025-06-13 21:28:25 INF] HTTP GET /api/income/summary responded 200 in 207.7201 ms
+[2025-06-13 21:28:41 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+[2025-06-13 21:28:41 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+[2025-06-13 21:28:41 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+[2025-06-13 21:28:44 INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+[2025-06-13 21:28:44 INF] Quartz Scheduler created
+[2025-06-13 21:28:44 INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+[2025-06-13 21:28:44 INF] RAMJobStore initialized.
+[2025-06-13 21:28:44 INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+[2025-06-13 21:28:44 INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+[2025-06-13 21:28:44 INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+[2025-06-13 21:28:44 INF] Adding 1 jobs, 1 triggers.
+[2025-06-13 21:28:44 INF] Adding job: DEFAULT.RecurringIncomeJob
+[2025-06-13 21:28:44 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+[2025-06-13 21:28:44 INF] Recurring income generation job started at "2025-06-13T21:28:44.5405095+01:00"
+[2025-06-13 21:28:44 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:28:44 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:28:44 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:28:44 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:28:45 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:28:45 INF] Recurring income generation job finished at "2025-06-13T21:28:45.3087408+01:00"
+[2025-06-13 21:28:45 WRN] Failed to determine the https port for redirect.
+[2025-06-13 21:28:46 INF] HTTP GET /api/income/summary responded 200 in 213.6164 ms
+[2025-06-13 21:29:04 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+[2025-06-13 21:29:04 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+[2025-06-13 21:29:04 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+[2025-06-13 21:29:07 INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+[2025-06-13 21:29:07 INF] Quartz Scheduler created
+[2025-06-13 21:29:07 INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+[2025-06-13 21:29:07 INF] RAMJobStore initialized.
+[2025-06-13 21:29:07 INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+[2025-06-13 21:29:07 INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+[2025-06-13 21:29:07 INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+[2025-06-13 21:29:07 INF] Adding 1 jobs, 1 triggers.
+[2025-06-13 21:29:07 INF] Adding job: DEFAULT.RecurringIncomeJob
+[2025-06-13 21:29:07 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+[2025-06-13 21:29:07 INF] Recurring income generation job started at "2025-06-13T21:29:07.7660798+01:00"
+[2025-06-13 21:29:08 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:29:08 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:29:08 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:29:08 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:29:08 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:29:08 INF] Recurring income generation job finished at "2025-06-13T21:29:08.5351767+01:00"
+[2025-06-13 21:29:08 WRN] Failed to determine the https port for redirect.
+[2025-06-13 21:29:08 INF] HTTP GET /api/income/summary responded 200 in 217.7937 ms
+[2025-06-13 21:29:13 INF] HTTP GET /api/income/ responded 200 in 55.2312 ms
+[2025-06-13 21:29:37 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+[2025-06-13 21:29:37 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+[2025-06-13 21:29:37 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+[2025-06-13 21:29:41 INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+[2025-06-13 21:29:41 INF] Quartz Scheduler created
+[2025-06-13 21:29:41 INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+[2025-06-13 21:29:41 INF] RAMJobStore initialized.
+[2025-06-13 21:29:41 INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+[2025-06-13 21:29:41 INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+[2025-06-13 21:29:41 INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+[2025-06-13 21:29:41 INF] Adding 1 jobs, 1 triggers.
+[2025-06-13 21:29:41 INF] Adding job: DEFAULT.RecurringIncomeJob
+[2025-06-13 21:29:41 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+[2025-06-13 21:29:41 INF] Recurring income generation job started at "2025-06-13T21:29:41.7780432+01:00"
+[2025-06-13 21:29:42 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:29:42 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:29:42 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:29:42 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:29:42 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:29:42 INF] Recurring income generation job finished at "2025-06-13T21:29:42.5439214+01:00"
+[2025-06-13 21:29:42 WRN] Failed to determine the https port for redirect.
+[2025-06-13 21:29:42 INF] HTTP GET /api/income/ responded 200 in 199.3166 ms
+[2025-06-13 21:29:46 INF] HTTP GET /api/income/summary responded 200 in 76.9269 ms
+[2025-06-13 21:29:51 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+[2025-06-13 21:29:51 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+[2025-06-13 21:29:51 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+[2025-06-13 21:30:01 INF] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+[2025-06-13 21:30:01 INF] Quartz Scheduler created
+[2025-06-13 21:30:01 INF] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+[2025-06-13 21:30:01 INF] RAMJobStore initialized.
+[2025-06-13 21:30:01 INF] Quartz Scheduler 3.14.0.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+[2025-06-13 21:30:01 INF] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+[2025-06-13 21:30:01 INF] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+[2025-06-13 21:30:01 INF] Adding 1 jobs, 1 triggers.
+[2025-06-13 21:30:01 INF] Adding job: DEFAULT.RecurringIncomeJob
+[2025-06-13 21:30:01 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+[2025-06-13 21:30:01 INF] Recurring income generation job started at "2025-06-13T21:30:01.6180339+01:00"
+[2025-06-13 21:30:01 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:30:01 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:30:01 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:30:01 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 21:30:02 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:30:02 INF] Recurring income generation job finished at "2025-06-13T21:30:02.3891160+01:00"
+[2025-06-13 21:30:08 WRN] Failed to determine the https port for redirect.
+[2025-06-13 21:30:08 INF] HTTP GET /api/income/ responded 200 in 222.3298 ms
+[2025-06-13 21:31:00 INF] Recurring income generation job started at "2025-06-13T21:31:00.8540161+01:00"
+[2025-06-13 21:31:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:31:00 INF] Recurring income generation job finished at "2025-06-13T21:31:00.9125286+01:00"
+[2025-06-13 21:32:00 INF] Recurring income generation job started at "2025-06-13T21:32:00.8461400+01:00"
+[2025-06-13 21:32:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:32:00 INF] Recurring income generation job finished at "2025-06-13T21:32:00.8545895+01:00"
+[2025-06-13 21:33:00 INF] Recurring income generation job started at "2025-06-13T21:33:00.8541856+01:00"
+[2025-06-13 21:33:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:33:00 INF] Recurring income generation job finished at "2025-06-13T21:33:00.8618947+01:00"
+[2025-06-13 21:34:00 INF] Recurring income generation job started at "2025-06-13T21:34:00.8465544+01:00"
+[2025-06-13 21:34:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:34:00 INF] Recurring income generation job finished at "2025-06-13T21:34:00.8543090+01:00"
+[2025-06-13 21:35:00 INF] Recurring income generation job started at "2025-06-13T21:35:00.8426530+01:00"
+[2025-06-13 21:35:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:35:00 INF] Recurring income generation job finished at "2025-06-13T21:35:00.8500514+01:00"
+[2025-06-13 21:36:00 INF] Recurring income generation job started at "2025-06-13T21:36:00.8450767+01:00"
+[2025-06-13 21:36:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:36:00 INF] Recurring income generation job finished at "2025-06-13T21:36:00.8524828+01:00"
+[2025-06-13 21:37:00 INF] Recurring income generation job started at "2025-06-13T21:37:00.8481584+01:00"
+[2025-06-13 21:37:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:37:00 INF] Recurring income generation job finished at "2025-06-13T21:37:00.8555095+01:00"
+[2025-06-13 21:38:00 INF] Recurring income generation job started at "2025-06-13T21:38:00.8486015+01:00"
+[2025-06-13 21:38:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:38:00 INF] Recurring income generation job finished at "2025-06-13T21:38:00.8559436+01:00"
+[2025-06-13 21:39:00 INF] Recurring income generation job started at "2025-06-13T21:39:00.8448164+01:00"
+[2025-06-13 21:39:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:39:00 INF] Recurring income generation job finished at "2025-06-13T21:39:00.8519075+01:00"
+[2025-06-13 21:40:00 INF] Recurring income generation job started at "2025-06-13T21:40:00.8429353+01:00"
+[2025-06-13 21:40:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:40:00 INF] Recurring income generation job finished at "2025-06-13T21:40:00.8510311+01:00"
+[2025-06-13 21:41:00 INF] Recurring income generation job started at "2025-06-13T21:41:00.8571948+01:00"
+[2025-06-13 21:41:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:41:00 INF] Recurring income generation job finished at "2025-06-13T21:41:00.8649862+01:00"
+[2025-06-13 21:42:00 INF] Recurring income generation job started at "2025-06-13T21:42:00.8469791+01:00"
+[2025-06-13 21:42:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:42:00 INF] Recurring income generation job finished at "2025-06-13T21:42:00.8541427+01:00"
+[2025-06-13 21:43:00 INF] Recurring income generation job started at "2025-06-13T21:43:00.8485144+01:00"
+[2025-06-13 21:43:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:43:00 INF] Recurring income generation job finished at "2025-06-13T21:43:00.8557668+01:00"
+[2025-06-13 21:44:00 INF] Recurring income generation job started at "2025-06-13T21:44:00.8475546+01:00"
+[2025-06-13 21:44:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:44:00 INF] Recurring income generation job finished at "2025-06-13T21:44:00.8549792+01:00"
+[2025-06-13 21:45:00 INF] Recurring income generation job started at "2025-06-13T21:45:00.8457371+01:00"
+[2025-06-13 21:45:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:45:00 INF] Recurring income generation job finished at "2025-06-13T21:45:00.8533466+01:00"
+[2025-06-13 21:46:00 INF] Recurring income generation job started at "2025-06-13T21:46:00.8464503+01:00"
+[2025-06-13 21:46:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:46:00 INF] Recurring income generation job finished at "2025-06-13T21:46:00.8539528+01:00"
+[2025-06-13 21:47:00 INF] Recurring income generation job started at "2025-06-13T21:47:00.8517479+01:00"
+[2025-06-13 21:47:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:47:00 INF] Recurring income generation job finished at "2025-06-13T21:47:00.8591398+01:00"
+[2025-06-13 21:48:00 INF] Recurring income generation job started at "2025-06-13T21:48:00.8552348+01:00"
+[2025-06-13 21:48:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:48:00 INF] Recurring income generation job finished at "2025-06-13T21:48:00.8590002+01:00"
+[2025-06-13 21:49:00 INF] Recurring income generation job started at "2025-06-13T21:49:00.8551101+01:00"
+[2025-06-13 21:49:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:49:00 INF] Recurring income generation job finished at "2025-06-13T21:49:00.8621624+01:00"
+[2025-06-13 21:50:00 INF] Recurring income generation job started at "2025-06-13T21:50:00.8462130+01:00"
+[2025-06-13 21:50:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:50:00 INF] Recurring income generation job finished at "2025-06-13T21:50:00.8550774+01:00"
+[2025-06-13 21:51:00 INF] Recurring income generation job started at "2025-06-13T21:51:00.8519845+01:00"
+[2025-06-13 21:51:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:51:00 INF] Recurring income generation job finished at "2025-06-13T21:51:00.8592165+01:00"
+[2025-06-13 21:52:00 INF] Recurring income generation job started at "2025-06-13T21:52:00.8445761+01:00"
+[2025-06-13 21:52:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:52:00 INF] Recurring income generation job finished at "2025-06-13T21:52:00.8517051+01:00"
+[2025-06-13 21:53:00 INF] Recurring income generation job started at "2025-06-13T21:53:00.8442640+01:00"
+[2025-06-13 21:53:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:53:00 INF] Recurring income generation job finished at "2025-06-13T21:53:00.8454599+01:00"
+[2025-06-13 21:54:00 INF] Recurring income generation job started at "2025-06-13T21:54:00.8438449+01:00"
+[2025-06-13 21:54:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:54:00 INF] Recurring income generation job finished at "2025-06-13T21:54:00.8509065+01:00"
+[2025-06-13 21:55:00 INF] Recurring income generation job started at "2025-06-13T21:55:00.8518352+01:00"
+[2025-06-13 21:55:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:55:00 INF] Recurring income generation job finished at "2025-06-13T21:55:00.8591983+01:00"
+[2025-06-13 21:56:00 INF] Recurring income generation job started at "2025-06-13T21:56:00.8566824+01:00"
+[2025-06-13 21:56:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:56:00 INF] Recurring income generation job finished at "2025-06-13T21:56:00.8636960+01:00"
+[2025-06-13 21:57:00 INF] Recurring income generation job started at "2025-06-13T21:57:00.8513078+01:00"
+[2025-06-13 21:57:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:57:00 INF] Recurring income generation job finished at "2025-06-13T21:57:00.8584581+01:00"
+[2025-06-13 21:58:00 INF] Recurring income generation job started at "2025-06-13T21:58:00.8470209+01:00"
+[2025-06-13 21:58:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:58:00 INF] Recurring income generation job finished at "2025-06-13T21:58:00.8543787+01:00"
+[2025-06-13 21:59:00 INF] Recurring income generation job started at "2025-06-13T21:59:00.8479550+01:00"
+[2025-06-13 21:59:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 21:59:00 INF] Recurring income generation job finished at "2025-06-13T21:59:00.8553554+01:00"
+[2025-06-13 22:00:00 INF] Recurring income generation job started at "2025-06-13T22:00:00.8541434+01:00"
+[2025-06-13 22:00:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 22:00:00 INF] Recurring income generation job finished at "2025-06-13T22:00:00.8622940+01:00"
+[2025-06-13 22:01:00 INF] Recurring income generation job started at "2025-06-13T22:01:00.8515262+01:00"
+[2025-06-13 22:01:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 22:01:00 INF] Recurring income generation job finished at "2025-06-13T22:01:00.8587304+01:00"
+[2025-06-13 22:02:00 INF] Recurring income generation job started at "2025-06-13T22:02:00.8516181+01:00"
+[2025-06-13 22:02:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 22:02:00 INF] Recurring income generation job finished at "2025-06-13T22:02:00.8593282+01:00"
+[2025-06-13 22:03:00 INF] Recurring income generation job started at "2025-06-13T22:03:00.8543900+01:00"
+[2025-06-13 22:03:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 22:03:00 INF] Recurring income generation job finished at "2025-06-13T22:03:00.8627462+01:00"
+[2025-06-13 22:04:00 INF] Recurring income generation job started at "2025-06-13T22:04:00.8467759+01:00"
+[2025-06-13 22:04:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 22:04:00 INF] Recurring income generation job finished at "2025-06-13T22:04:00.8537922+01:00"
+[2025-06-13 22:05:00 INF] Recurring income generation job started at "2025-06-13T22:05:00.8433386+01:00"
+[2025-06-13 22:05:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 22:05:00 INF] Recurring income generation job finished at "2025-06-13T22:05:00.8501795+01:00"
+[2025-06-13 22:06:00 INF] Recurring income generation job started at "2025-06-13T22:06:00.8457856+01:00"
+[2025-06-13 22:06:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 22:06:00 INF] Recurring income generation job finished at "2025-06-13T22:06:00.8527786+01:00"
+[2025-06-13 22:07:00 INF] Recurring income generation job started at "2025-06-13T22:07:00.8568425+01:00"
+[2025-06-13 22:07:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 22:07:00 INF] Recurring income generation job finished at "2025-06-13T22:07:00.8638276+01:00"
+[2025-06-13 22:08:00 INF] Recurring income generation job started at "2025-06-13T22:08:00.8424675+01:00"
+[2025-06-13 22:08:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 22:08:00 INF] Recurring income generation job finished at "2025-06-13T22:08:00.8506346+01:00"
+[2025-06-13 22:09:00 INF] Recurring income generation job started at "2025-06-13T22:09:00.8431549+01:00"
+[2025-06-13 22:09:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 22:09:00 INF] Recurring income generation job finished at "2025-06-13T22:09:00.8499078+01:00"
+[2025-06-13 22:10:00 INF] Recurring income generation job started at "2025-06-13T22:10:00.8424611+01:00"
+[2025-06-13 22:10:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 22:10:00 INF] Recurring income generation job finished at "2025-06-13T22:10:00.8494200+01:00"
+[2025-06-13 22:11:00 INF] Recurring income generation job started at "2025-06-13T22:11:00.8509343+01:00"
+[2025-06-13 22:11:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 22:11:00 INF] Recurring income generation job finished at "2025-06-13T22:11:00.8579291+01:00"
+[2025-06-13 22:12:00 INF] Recurring income generation job started at "2025-06-13T22:12:00.8527784+01:00"
+[2025-06-13 22:12:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 22:12:00 INF] Recurring income generation job finished at "2025-06-13T22:12:00.8604759+01:00"
+[2025-06-13 22:13:00 INF] Recurring income generation job started at "2025-06-13T22:13:00.8467605+01:00"
+[2025-06-13 22:13:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 22:13:00 INF] Recurring income generation job finished at "2025-06-13T22:13:00.8542089+01:00"
+[2025-06-13 22:14:00 INF] Recurring income generation job started at "2025-06-13T22:14:00.8548052+01:00"
+[2025-06-13 22:14:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 22:14:00 INF] Recurring income generation job finished at "2025-06-13T22:14:00.8629033+01:00"
+[2025-06-13 22:15:00 INF] Recurring income generation job started at "2025-06-13T22:15:00.8561672+01:00"
+[2025-06-13 22:15:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 22:15:00 INF] Recurring income generation job finished at "2025-06-13T22:15:00.8686598+01:00"
+[2025-06-13 22:16:00 INF] Recurring income generation job started at "2025-06-13T22:16:00.8539471+01:00"
+[2025-06-13 22:16:00 INF] Found 0 recurring income schedules due for generation.
+[2025-06-13 22:16:00 INF] Recurring income generation job finished at "2025-06-13T22:16:00.8576385+01:00"
+[2025-06-13 22:16:22 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED shutting down.
+[2025-06-13 22:16:22 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED paused.
+[2025-06-13 22:16:22 INF] Scheduler QuartzScheduler_$_NON_CLUSTERED Shutdown complete.
+[2025-06-13 22:22:21 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 22:22:21 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 22:22:21 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 22:22:21 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 22:22:33 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 22:22:33 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 22:22:33 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 22:22:33 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 22:22:33 ERR] Failed executing DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [Incomes] ADD CONSTRAINT [FK_Incomes_Categories_CategoryId] FOREIGN KEY ([CategoryId]) REFERENCES [Categories] ([CategoryId]) ON DELETE NO ACTION;
+[2025-06-13 22:37:34 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 22:37:34 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 22:37:34 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-06-13 22:37:34 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.

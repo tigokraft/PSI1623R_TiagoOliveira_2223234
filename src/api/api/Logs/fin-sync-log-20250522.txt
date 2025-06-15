@@ -1,0 +1,57 @@
+[2025-05-22 08:44:03 WRN] Failed to determine the https port for redirect.
+[2025-05-22 08:44:03 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-05-22 08:44:03 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-05-22 08:44:03 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-05-22 08:44:03 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-05-22 08:44:03 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Income'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-05-22 08:44:05 INF] HTTP POST /api/auth/login responded 200 in 2140.7780 ms
+[2025-05-22 08:48:08 INF] HTTP POST /api/auth/register responded 200 in 113.8944 ms
+[2025-05-22 08:59:18 INF] HTTP POST /api/auth/register responded 409 in 54.6797 ms
+[2025-05-22 08:59:52 INF] HTTP POST /api/auth/register responded 409 in 4.7256 ms
+[2025-05-22 08:59:54 INF] HTTP POST /api/auth/register responded 409 in 2.1849 ms
+[2025-05-22 09:00:01 INF] HTTP POST /api/auth/register responded 409 in 2.7285 ms
+[2025-05-22 09:47:30 INF] HTTP POST /api/auth/login responded 401 in 12.3556 ms
+[2025-05-22 09:47:33 INF] HTTP POST /api/auth/login responded 200 in 3.0030 ms
+[2025-05-22 09:47:52 INF] HTTP POST /api/auth/register responded 409 in 4.4035 ms
+[2025-05-22 09:48:00 INF] HTTP POST /api/auth/register responded 200 in 6.7349 ms
+[2025-05-22 10:03:04 WRN] Failed to determine the https port for redirect.
+[2025-05-22 10:03:04 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-05-22 10:03:04 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-05-22 10:03:04 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-05-22 10:03:04 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-05-22 10:03:04 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Income'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-05-22 10:03:05 INF] HTTP POST /api/auth/login responded 200 in 1232.6683 ms
+[2025-05-22 10:08:12 WRN] Failed to determine the https port for redirect.
+[2025-05-22 10:08:13 WRN] No store type was specified for the decimal property 'MonthlyLimit' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-05-22 10:08:13 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Expense'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-05-22 10:08:13 WRN] No store type was specified for the decimal property 'CurrentSaved' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-05-22 10:08:13 WRN] No store type was specified for the decimal property 'TargetAmount' on entity type 'Goal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-05-22 10:08:13 WRN] No store type was specified for the decimal property 'Amount' on entity type 'Income'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[2025-05-22 10:08:13 INF] HTTP GET /api/balance responded 200 in 1085.3890 ms
+[2025-05-22 10:08:51 INF] HTTP GET /api/expense responded 200 in 116.2265 ms
+[2025-05-22 10:09:01 INF] HTTP GET /api/expense responded 200 in 52.4213 ms
+[2025-05-22 10:09:23 INF] HTTP POST /api/expense responded 200 in 159.8906 ms
+[2025-05-22 10:10:10 INF] HTTP GET /api/balance responded 200 in 7.6582 ms
+[2025-05-22 10:10:43 INF] HTTP POST /api/expense responded 200 in 6.9559 ms
+[2025-05-22 10:10:45 INF] HTTP GET /api/balance responded 200 in 4.3992 ms
+[2025-05-22 10:11:11 INF] HTTP GET /api/balance responded 200 in 2.3065 ms
+[2025-05-22 10:11:24 INF] HTTP POST /api/expense responded 200 in 5.5054 ms
+[2025-05-22 10:11:27 INF] HTTP GET /api/balance responded 200 in 4.2885 ms
+[2025-05-22 10:11:49 INF] HTTP POST /api/income responded 401 in 5.8436 ms
+[2025-05-22 10:12:01 INF] HTTP POST /api/income responded 200 in 19.4553 ms
+[2025-05-22 10:12:13 INF] HTTP GET /api/balance responded 200 in 2.2378 ms
+[2025-05-22 10:21:40 INF] HTTP POST /api/auth/login responded 401 in 39.7261 ms
+[2025-05-22 10:21:45 INF] HTTP POST /api/auth/login responded 200 in 17.2905 ms
+[2025-05-22 10:37:28 INF] HTTP GET /api/balance responded 200 in 8.3646 ms
+[2025-05-22 10:38:15 INF] HTTP GET /api/balance responded 200 in 4.4096 ms
+[2025-05-22 10:38:17 INF] HTTP POST /api/expense responded 200 in 5.7853 ms
+[2025-05-22 10:38:22 INF] HTTP GET /api/balance responded 200 in 2.2081 ms
+[2025-05-22 10:38:51 INF] HTTP POST /api/auth/login responded 200 in 3.5995 ms
+[2025-05-22 10:39:44 INF] HTTP POST /api/auth/login responded 401 in 4.6082 ms
+[2025-05-22 10:40:58 INF] HTTP POST /api/auth/login responded 200 in 4.9378 ms
+[2025-05-22 10:44:08 INF] HTTP POST /api/auth/login responded 200 in 4.6256 ms
+[2025-05-22 11:01:14 INF] HTTP POST /api/auth/login responded 200 in 8.5077 ms
+[2025-05-22 11:01:33 INF] HTTP POST /api/auth/login responded 200 in 1.6506 ms
+[2025-05-22 11:01:43 INF] HTTP POST /api/income responded 401 in 0.4547 ms
+[2025-05-22 11:01:47 INF] HTTP POST /api/income responded 200 in 3.6423 ms
+[2025-05-22 11:01:51 INF] HTTP GET /api/balance responded 200 in 3.1010 ms
