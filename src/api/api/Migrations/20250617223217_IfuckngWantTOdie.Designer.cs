@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinSync.Migrations
 {
     [DbContext(typeof(FinSyncContext))]
-    [Migration("20250611213123_AddRecurringIncomeScheduleTable")]
-    partial class AddRecurringIncomeScheduleTable
+    [Migration("20250617223217_IfuckngWantTOdie")]
+    partial class IfuckngWantTOdie
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,7 +61,7 @@ namespace FinSync.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("MonthlyLimit")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -87,34 +87,15 @@ namespace FinSync.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("CategoryId");
 
-                    b.HasIndex("CategoryName")
+                    b.HasIndex("UserId", "CategoryName")
                         .IsUnique();
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            CategoryId = 1,
-                            CategoryName = "Alimentação"
-                        },
-                        new
-                        {
-                            CategoryId = 2,
-                            CategoryName = "Transporte"
-                        },
-                        new
-                        {
-                            CategoryId = 3,
-                            CategoryName = "Habitação"
-                        },
-                        new
-                        {
-                            CategoryId = 4,
-                            CategoryName = "Educação"
-                        });
                 });
 
             modelBuilder.Entity("FinSync.Models.Expense", b =>
@@ -126,7 +107,7 @@ namespace FinSync.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ExpenseId"));
 
                     b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
@@ -163,7 +144,7 @@ namespace FinSync.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GoalId"));
 
                     b.Property<decimal>("CurrentSaved")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<DateTime>("Deadline")
                         .HasColumnType("datetime2");
@@ -173,7 +154,7 @@ namespace FinSync.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("TargetAmount")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -196,6 +177,9 @@ namespace FinSync.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18, 2)");
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
@@ -211,6 +195,8 @@ namespace FinSync.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("IncomeId");
+
+                    b.HasIndex("CategoryId");
 
                     b.HasIndex("RecurringScheduleId", "Date")
                         .IsUnique()
@@ -292,7 +278,7 @@ namespace FinSync.Migrations
                     b.HasOne("FinSync.Models.Category", "Category")
                         .WithMany("Budgets")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("FinSync.Models.User", "User")
@@ -306,12 +292,23 @@ namespace FinSync.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("FinSync.Models.Category", b =>
+                {
+                    b.HasOne("FinSync.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("FinSync.Models.Expense", b =>
                 {
                     b.HasOne("FinSync.Models.Category", "Category")
                         .WithMany("Expenses")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("FinSync.Models.User", "User")
@@ -338,6 +335,12 @@ namespace FinSync.Migrations
 
             modelBuilder.Entity("FinSync.Models.Income", b =>
                 {
+                    b.HasOne("FinSync.Models.Category", null)
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("FinSync.Models.RecurringIncomeSchedule", "RecurringSchedule")
                         .WithMany()
                         .HasForeignKey("RecurringScheduleId")

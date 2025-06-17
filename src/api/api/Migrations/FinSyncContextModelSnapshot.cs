@@ -275,7 +275,7 @@ namespace FinSync.Migrations
                     b.HasOne("FinSync.Models.Category", "Category")
                         .WithMany("Budgets")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("FinSync.Models.User", "User")
@@ -305,7 +305,7 @@ namespace FinSync.Migrations
                     b.HasOne("FinSync.Models.Category", "Category")
                         .WithMany("Expenses")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("FinSync.Models.User", "User")
