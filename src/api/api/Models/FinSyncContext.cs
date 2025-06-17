@@ -28,20 +28,14 @@ namespace FinSync.Data
                 .IsUnique();
 
             modelBuilder.Entity<Category>()
-                .HasIndex(c => c.CategoryName)
+                .HasIndex(c => new { c.UserId, c.CategoryName })
                 .IsUnique();
 
-            modelBuilder.Entity<Category>().HasData(
-                new Category { CategoryId = 1, CategoryName = "Alimentação" },
-                new Category { CategoryId = 2, CategoryName = "Transporte" },
-                new Category { CategoryId = 3, CategoryName = "Habitação" },
-                new Category { CategoryId = 4, CategoryName = "Educação" },
-                new Category { CategoryId = 5, CategoryName = "Lazer"},
-                new Category { CategoryId = 6, CategoryName = "Salário" },
-                new Category { CategoryId = 7, CategoryName = "Investimentos" },
-                new Category { CategoryId = 8, CategoryName = "Presentes" },
-                new Category { CategoryId = 9, CategoryName = "Outros" }
-            );
+            modelBuilder.Entity<Category>()
+                .HasOne(c => c.User)
+                .WithMany()
+                .HasForeignKey(c => c.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Income>()
                 .HasIndex(i => new { i.RecurringScheduleId, i.Date })

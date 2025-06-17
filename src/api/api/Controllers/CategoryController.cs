@@ -20,10 +20,13 @@ namespace FinSync.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCategories()
         {
+            var userId = GetUserId();
+            if (userId == null) return Unauthorized("Invalid token.");
+
             var categories = await _context.Categories
+                .Where(c => c.UserId == userId.Value)
                 .OrderBy(c => c.CategoryName)
                 .Select(c => new CategoryDto
                 {
@@ -37,13 +40,16 @@ namespace FinSync.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateCategory([FromBody] CategoryDto dto)
         {
+            var userId = GetUserId();
+            if (userId == null) return Unauthorized("Invalid token.");
+
             if (string.IsNullOrWhiteSpace(dto.CategoryName))
                 return BadRequest("Category name required.");
 
-            if (await _context.Categories.AnyAsync(c => c.CategoryName == dto.CategoryName))
+            if (await _context.Categories.AnyAsync(c => c.UserId == userId.Value && c.CategoryName == dto.CategoryName))
                 return Conflict("Category already exists.");
 
-            var category = new Category { CategoryName = dto.CategoryName };
+            var category = new Category { CategoryName = dto.CategoryName, UserId = userId.Value };
             _context.Categories.Add(category);
             await _context.SaveChangesAsync();
             dto.CategoryId = category.CategoryId;
@@ -53,7 +59,10 @@ namespace FinSync.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateCategory(int id, [FromBody] CategoryDto dto)
         {
-            var cat = await _context.Categories.FindAsync(id);
+            var userId = GetUserId();
+            if (userId == null) return Unauthorized("Invalid token.");
+
+            var cat = await _context.Categories.FirstOrDefaultAsync(c => c.CategoryId == id && c.UserId == userId.Value);
             if (cat == null) return NotFound();
 
             if (string.IsNullOrWhiteSpace(dto.CategoryName))
@@ -67,12 +76,21 @@ namespace FinSync.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategory(int id)
         {
-            var cat = await _context.Categories.FindAsync(id);
+            var userId = GetUserId();
+            if (userId == null) return Unauthorized("Invalid token.");
+
+            var cat = await _context.Categories.FirstOrDefaultAsync(c => c.CategoryId == id && c.UserId == userId.Value);
             if (cat == null) return NotFound();
 
             _context.Categories.Remove(cat);
             await _context.SaveChangesAsync();
             return Ok(new { message = "Category removed." });
+        }
+
+        private int? GetUserId()
+        {
+            var claim = User.FindFirst("userId")?.Value;
+            return int.TryParse(claim, out var id) ? id : null;
         }
     }
 }
