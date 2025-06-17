@@ -209,9 +209,10 @@ namespace login.Tabs
                 {
                     if (recurrence.SelectedIndex == -1)
                     {
-                        var result = Cards.Show("Error", "Select recurrence", "OK");
+                        Cards.Show("Error", "Select recurrence", "OK");
                         return;
                     }
+
                     if (endDate.Value < DateTime.Now)
                     {
                         MessageBox.Show("End date cannot be in the past.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -222,9 +223,18 @@ namespace login.Tabs
                 {
                     recurrence.SelectedIndex = -1;
                     endDate.Value = DateTime.Now;
-                    //await Helpers.Tasks.PostIncome(descr.Text, Convert.ToDecimal(amount.Text), , _http);
-                    this.Controls.Remove(overlay);
-                };
+                }
+
+                // Validate amount
+                if (!decimal.TryParse(amount.Text, out var parsedAmount))
+                {
+                    MessageBox.Show("Enter a valid amount.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Call the method
+                await Tasks.PostIncome(parsedAmount, descr.Text, isRecurring, recurrence.SelectedItem?.ToString() ?? "", endDate.Value.ToString("yyyy-MM-dd"), _http);
+                this.Controls.Remove(overlay);
             };
             overlay.Controls.Add(label);
             overlay.Controls.Add(closeBtn);

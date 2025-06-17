@@ -28,6 +28,7 @@ namespace login.Helpers
             public bool isRecurring { get; set; }
             public string recurrence { get; set; }
             public string endDate { get; set; }
+            public decimal categoryId { get; set; }
         }
 
         public class ExpenseRequest
@@ -113,7 +114,7 @@ namespace login.Helpers
             }
         }
 
-        public async Task PostIncome(string description, decimal amt, string endTime, decimal catId, bool isRec, string rec, HttpClient http)
+        public static async Task PostIncome(decimal amt, string description, bool isRec, string rec, string endTime , HttpClient http)
         {
             var payload = new IncomeRequest
             {
@@ -123,6 +124,7 @@ namespace login.Helpers
                 isRecurring = isRec,
                 recurrence = rec,
                 endDate = endTime
+
             };
 
             var json = JsonSerializer.Serialize(payload);
