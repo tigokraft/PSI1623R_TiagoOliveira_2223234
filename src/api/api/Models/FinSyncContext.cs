@@ -35,7 +35,7 @@ namespace FinSync.Data
                 .HasOne(c => c.User)
                 .WithMany()
                 .HasForeignKey(c => c.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Income>()
                 .HasIndex(i => new { i.RecurringScheduleId, i.Date })
@@ -46,13 +46,25 @@ namespace FinSync.Data
                 .Property(i => i.Amount)
                 .HasColumnType("decimal(18, 2)");
 
-                        modelBuilder.Entity<Expense>()
+            modelBuilder.Entity<Expense>()
                 .Property(e => e.Amount)
                 .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<Expense>()
+                .HasOne(e => e.Category)
+                .WithMany(c => c.Expenses)
+                .HasForeignKey(e => e.CategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Budget>()
                 .Property(b => b.MonthlyLimit)
                 .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<Budget>()
+                .HasOne(b => b.Category)
+                .WithMany(c => c.Budgets)
+                .HasForeignKey(b => b.CategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Goal>()
                 .Property(g => g.TargetAmount)
