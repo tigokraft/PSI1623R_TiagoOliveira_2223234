@@ -194,17 +194,29 @@ namespace FinSync.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<IncomeDto>>> GetIndividual(int id)
+        public async Task<ActionResult<IncomeDto>> GetIndividual(int id)
         {
             var userId = GetUserId();
             if (userId == null) return Unauthorized("Invalid token. user ID not found");
 
             var income = await _context.Incomes
+                .Include(i => i.RecurringSchedule)
                 .FirstOrDefaultAsync(i => i.IncomeId == id && i.UserId == userId.Value);
 
             if (income == null) return NotFound("Income not found");
 
-            return Ok(income);
+            var incomeDto = new IncomeDto
+            {
+                IncomeId = income.IncomeId,
+                Amount = income.Amount,
+                Date = income.Date,
+                Descr = income.Descr,
+                IsRecurringSource = income.RecurringScheduleId.HasValue,
+                RecurrenceType = income.RecurringSchedule != null ? income.RecurringSchedule.Recurrence : null,
+                CategoryId = income.CategoryId
+            };
+
+            return Ok(incomeDto);
         }
 
         [HttpDelete("{id}")]
