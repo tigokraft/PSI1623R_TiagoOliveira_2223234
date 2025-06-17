@@ -35,7 +35,7 @@ namespace FinSync.Data
                 .HasOne(c => c.User)
                 .WithMany()
                 .HasForeignKey(c => c.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Income>()
                 .HasIndex(i => new { i.RecurringScheduleId, i.Date })
