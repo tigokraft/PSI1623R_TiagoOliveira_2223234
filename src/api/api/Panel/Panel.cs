@@ -79,7 +79,7 @@ namespace FinSync.Panel
             try
             {
                 using var client = new HttpClient();
-                var response = await client.GetAsync("http://localhost:5000/health");
+                var response = await client.GetAsync("http://localhost:5034/health");
                 centerBlock(new[] { response.IsSuccessStatusCode ? "✅ API is healthy." : $"❌ API error: {response.StatusCode}" });
             }
             catch (Exception ex)

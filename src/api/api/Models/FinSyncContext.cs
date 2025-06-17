@@ -52,6 +52,22 @@ namespace FinSync.Data
                 .Property(i => i.Amount)
                 .HasColumnType("decimal(18, 2)");
 
+                        modelBuilder.Entity<Expense>()
+                .Property(e => e.Amount)
+                .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<Budget>()
+                .Property(b => b.MonthlyLimit)
+                .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<Goal>()
+                .Property(g => g.TargetAmount)
+                .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<Goal>()
+                .Property(g => g.CurrentSaved)
+                .HasColumnType("decimal(18, 2)");
+
             modelBuilder.Entity<RecurringIncomeSchedule>()
                 .Property(ris => ris.Amount)
                 .HasColumnType("decimal(18, 2)");
