@@ -8,12 +8,21 @@ namespace FinSync.Models
     {
         [Key]
         public int ExpenseId { get; set; }
+
         public int UserId { get; set; }
-        public int CategoryId { get; set; }
+
+        [Required]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Amount { get; set; }
+
+        [Required]
         public DateTime Date { get; set; }
-        public string Tags { get; set; }
+
+        [Required]
+        [StringLength(255)]
         public string Description { get; set; }
+
+        public int CategoryId { get; set; }
 
         [ForeignKey("UserId")]
         public User User { get; set; }

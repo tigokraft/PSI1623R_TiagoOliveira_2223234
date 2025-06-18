@@ -1,9 +1,13 @@
-public class ExpenseDto
+using System;
+
+namespace FinSync.DTOs
 {
-    public int ExpenseId { get; set; }
-    public decimal Amount { get; set; }
-    public string Tags { get; set; }
-    public string Description { get; set; }
-    public DateTime Date { get; set; }
-    public string CategoryName { get; set; }
+    public class ExpenseDto
+    {
+        public int ExpenseId { get; set; }
+        public decimal Amount { get; set; }
+        public string? Description { get; set; }
+        public DateTime Date { get; set; }
+        public int CategoryId { get; set; }
+    }
 }

@@ -24,29 +24,32 @@ namespace FinSync.Controllers
         public async Task<IActionResult> AddExpense([FromBody] CreateExpenseDto dto)
         {
             var userId = GetUserId();
-            if (userId == null) return Unauthorized("Invalid token.");
+            if (userId == null)
+                return Unauthorized("Invalid token.");
 
-            if (dto.Amount <= 0)
-                return BadRequest("Amount must be positive.");
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
             var ownsCategory = await _context.Categories.AnyAsync(c => c.CategoryId == dto.CategoryId && c.UserId == userId.Value);
             if (!ownsCategory)
-                return BadRequest("Invalid category.");
+                return BadRequest($"Category with ID {dto.CategoryId} not found.");
+
+            if (dto.Amount <= 0)
+                return BadRequest("Amount must be positive.");
 
             var expense = new Expense
             {
                 UserId = userId.Value,
                 Amount = dto.Amount,
-                Tags = dto.Tags,
                 Description = dto.Description,
-                Date = dto.Date,
+                Date = dto.Date.Date,
                 CategoryId = dto.CategoryId
             };
 
-            _context.Expenses.Add(expense);
+            await _context.Expenses.AddAsync(expense);
             await _context.SaveChangesAsync();
 
-            return Ok(new { message = "Expense added." });
+            return Ok(new { message = "Expense added successfully." });
         }
 
         [HttpGet]
@@ -56,17 +59,15 @@ namespace FinSync.Controllers
             if (userId == null) return Unauthorized("Invalid token.");
 
             var expenses = await _context.Expenses
-                .Include(e => e.Category)
                 .Where(e => e.UserId == userId.Value)
                 .OrderByDescending(e => e.Date)
                 .Select(e => new ExpenseDto
                 {
                     ExpenseId = e.ExpenseId,
                     Amount = e.Amount,
-                    Tags = e.Tags,
                     Description = e.Description,
                     Date = e.Date,
-                    CategoryName = e.Category.CategoryName
+                    CategoryId = e.CategoryId
                 })
                 .ToListAsync();
 
@@ -74,45 +75,73 @@ namespace FinSync.Controllers
         }
 
         [HttpGet("summary")]
-        [Authorize]
-        public IActionResult GetExpenseSummary()
+        public async Task<IActionResult> GetExpenseSummary([FromQuery] string period = "monthly")
         {
-            var userIdClaim = User.FindFirst("userId")?.Value;
-            if (!int.TryParse(userIdClaim, out int userId))
+            var userId = GetUserId();
+            if (userId == null)
                 return Unauthorized("Invalid user token.");
-        
-            var now = DateTime.Now;
-            var startOfMonth = new DateTime(now.Year, now.Month, 1);
-        
-            var monthlyTotal = _context.Expenses
-                .Where(e => e.UserId == userId && e.Date >= startOfMonth)
-                .Sum(e => (decimal?)e.Amount) ?? 0;
-        
-            var allTimeTotal = _context.Expenses
-                .Where(e => e.UserId == userId)
-                .Sum(e => (decimal?)e.Amount) ?? 0;
-        
-            var expenses = _context.Expenses
-                .Where(e => e.UserId == userId)
-                .Select(e => new ExpenseItemDto
+
+            period = period.ToLower();
+            if (!new[] { "daily", "weekly", "monthly", "yearly" }.Contains(period))
+                return BadRequest("Invalid period. Use 'daily', 'weekly', 'monthly', or 'yearly'.");
+
+            DateTime fromDate = period switch
+            {
+                "daily" => DateTime.Today,
+                "weekly" => DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek),
+                "monthly" => new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1),
+                "yearly" => new DateTime(DateTime.Today.Year, 1, 1),
+                _ => DateTime.Today
+            };
+
+            DateTime toDate = DateTime.Today.AddDays(1).AddTicks(-1);
+
+            var expenses = await _context.Expenses
+                .Where(e => e.UserId == userId.Value && e.Date.Date >= fromDate.Date && e.Date.Date <= toDate.Date)
+                .OrderByDescending(e => e.Date)
+                .Select(e => new ExpenseDto
                 {
                     ExpenseId = e.ExpenseId,
                     Amount = e.Amount,
                     Description = e.Description,
                     Date = e.Date,
-                    Tags = e.Tags,
-                    CategoryName = e.Category != null ? e.Category.CategoryName : null
+                    CategoryId = e.CategoryId
                 })
-                .ToList();
+                .ToListAsync();
         
-            var result = new MonthlyExpenseSummaryDto
+            var totalExpense = expenses.Sum(e => e.Amount);
+
+            return Ok(new
             {
-                TotalMonthlySpent = monthlyTotal,
-                TotalAllTimeSpent = allTimeTotal,
+                Period = period,
+                FromDate = fromDate,
+                ToDate = toDate,
+                TotalExpense = totalExpense,
                 Expenses = expenses
+            });
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ExpenseDto>> GetExpense(int id)
+        {
+            var userId = GetUserId();
+            if (userId == null) return Unauthorized("Invalid token.");
+
+            var expense = await _context.Expenses
+                .FirstOrDefaultAsync(e => e.ExpenseId == id && e.UserId == userId.Value);
+
+            if (expense == null) return NotFound("Expense not found.");
+
+            var dto = new ExpenseDto
+            {
+                ExpenseId = expense.ExpenseId,
+                Amount = expense.Amount,
+                Description = expense.Description,
+                Date = expense.Date,
+                CategoryId = expense.CategoryId
             };
-        
-            return Ok(result);
+
+            return Ok(dto);
         }
 
         [HttpPut("{id}")]
@@ -120,30 +149,30 @@ namespace FinSync.Controllers
         {
             var userId = GetUserId();
             if (userId == null) return Unauthorized("Invalid token.");
-        
+
             var expense = await _context.Expenses
                 .FirstOrDefaultAsync(e => e.ExpenseId == id && e.UserId == userId.Value);
-        
+
             if (expense == null)
                 return NotFound("Expense not found.");
 
-            if (dto.Amount <= 0)
-                return BadRequest("Amount must be positive.");
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
             var ownsCategory = await _context.Categories.AnyAsync(c => c.CategoryId == dto.CategoryId && c.UserId == userId.Value);
             if (!ownsCategory)
-                return BadRequest("Invalid category.");
-        
+                return BadRequest($"Category with ID {dto.CategoryId} not found.");
+
             expense.Amount = dto.Amount;
-            expense.Tags = dto.Tags;
             expense.Description = dto.Description;
-            expense.Date = dto.Date;
+            expense.Date = dto.Date.Date;
             expense.CategoryId = dto.CategoryId;
-        
+
             await _context.SaveChangesAsync();
-        
+
             return Ok(new { message = "Expense updated successfully." });
         }
+
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteExpense(int id)
