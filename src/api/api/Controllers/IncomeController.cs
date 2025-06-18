@@ -34,7 +34,11 @@ namespace FinSync.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var categoryExists = await _context.Categories.AnyAsync(c => c.CategoryId == dto.CategoryId);
+             if (dto.Amount <= 0)
+                return BadRequest("Amount must be positive.");
+
+            var categoryExists = await _context.Categories.AnyAsync(c => c.CategoryId == dto.CategoryId && c.UserId == userId.Value);
+
             if (!categoryExists)
                 return BadRequest($"Category with ID {dto.CategoryId} not found.");
 
@@ -246,7 +250,11 @@ namespace FinSync.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var categoryExists = await _context.Categories.AnyAsync(c => c.CategoryId == dto.CategoryId);
+            if (dto.Amount <= 0)
+                return BadRequest("Amount must be positive.");
+
+            var categoryExists = await _context.Categories.AnyAsync(c => c.CategoryId == dto.CategoryId && c.UserId == userId.Value);
+
             if (!categoryExists)
                 return BadRequest($"Category with ID {dto.CategoryId} not found.");
 

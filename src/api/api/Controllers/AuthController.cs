@@ -7,6 +7,7 @@ using System.Text;
 using FinSync.Data;
 using FinSync.DTOs;
 using FinSync.Models;
+using FinSync.Utils;
 
 namespace FinSync.Controllers;
 
@@ -27,7 +28,7 @@ public class AuthController : ControllerBase
     public IActionResult Login([FromBody] LoginRequest request)
     {
         var user = _context.Users.FirstOrDefault(u => u.Username == request.Username);
-        if (user == null || user.PasswordHash != request.Password)
+        if (user == null || !PasswordHelper.VerifyPassword(user.PasswordHash, request.Password))
             return Unauthorized("Invalid credentials.");
 
         var token = GenerateJwtToken(user);
@@ -43,7 +44,7 @@ public class AuthController : ControllerBase
         var newUser = new User
         {
             Username = request.Username,
-            PasswordHash = request.Password, // 🔐 Replace this with hashed password later
+            PasswordHash = PasswordHelper.HashPassword(request.Password),
             Role = "user"
         };
     

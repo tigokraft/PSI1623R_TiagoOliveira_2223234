@@ -26,6 +26,13 @@ namespace FinSync.Controllers
             var userId = GetUserId();
             if (userId == null) return Unauthorized("Invalid token.");
 
+            if (dto.Amount <= 0)
+                return BadRequest("Amount must be positive.");
+
+            var ownsCategory = await _context.Categories.AnyAsync(c => c.CategoryId == dto.CategoryId && c.UserId == userId.Value);
+            if (!ownsCategory)
+                return BadRequest("Invalid category.");
+
             var expense = new Expense
             {
                 UserId = userId.Value,
@@ -119,6 +126,13 @@ namespace FinSync.Controllers
         
             if (expense == null)
                 return NotFound("Expense not found.");
+
+            if (dto.Amount <= 0)
+                return BadRequest("Amount must be positive.");
+
+            var ownsCategory = await _context.Categories.AnyAsync(c => c.CategoryId == dto.CategoryId && c.UserId == userId.Value);
+            if (!ownsCategory)
+                return BadRequest("Invalid category.");
         
             expense.Amount = dto.Amount;
             expense.Tags = dto.Tags;
