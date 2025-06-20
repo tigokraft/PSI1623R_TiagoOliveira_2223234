@@ -16,12 +16,72 @@ namespace login.Tabs
     public partial class Incomes : Form
     {
         private readonly HttpClient _http;
+        private FlowLayoutPanel _incomePanel;
+
+        private int _colDateWidth = 150;
+        private int _colDescWidth = 350;
+        private int _colAmountWidth = 150;
 
         public Incomes(HttpClient http)
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             _http = http;
+            ListLoader();
+        }
+
+        private async void ListLoader()
+        {
+            int padding = 20;
+            int containerWidth = 700;
+            int startY = 80;
+
+            int availableWidth = containerWidth - (padding * 2);
+            int fixedWidth = _colDateWidth + _colAmountWidth;
+            _colDescWidth = availableWidth - fixedWidth;
+
+            var tableContainer = new Guna2Panel
+            {
+                Size = new Size(containerWidth, 400 + (padding * 2)),
+                Location = new Point(20, startY),
+                BorderRadius = 10,
+                BorderThickness = 1,
+                BorderColor = Color.FromArgb(40, 40, 40),
+                FillColor = Color.FromArgb(24, 26, 27),
+                Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom,
+                Padding = new Padding(padding)
+            };
+
+            _incomePanel = new FlowLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                AutoScroll = true,
+                FlowDirection = FlowDirection.TopDown,
+                WrapContents = false,
+                BackColor = Color.Transparent,
+                Padding = new Padding(0),
+                Margin = new Padding(0)
+            };
+
+            tableContainer.Controls.Add(_incomePanel);
+            Controls.Add(tableContainer);
+            tableContainer.BringToFront();
+
+            await GetIncomes();
+        }
+
+        public class Income
+        {
+            public int IncomeId { get; set; }
+            public decimal Amount { get; set; }
+            public string Descr { get; set; }
+            public DateTime Date { get; set; }
+        }
+
+        public class IncomeSummary
+        {
+            public decimal TotalIncome { get; set; }
+            public List<Income> Incomes { get; set; }
         }
 
         private void AddBtn_Click(object sender, EventArgs e)
@@ -234,6 +294,7 @@ namespace login.Tabs
 
                 // Call the method
                 await Tasks.PostIncome(parsedAmount, descr.Text, isRecurring, recurrence.SelectedItem?.ToString() ?? "", endDate.Value.ToString("yyyy-MM-dd"), _http);
+                await GetIncomes();
                 this.Controls.Remove(overlay);
             };
             overlay.Controls.Add(label);
@@ -247,6 +308,121 @@ namespace login.Tabs
 
             this.Controls.Add(overlay);
             overlay.BringToFront();
+        }
+
+        private async Task GetIncomes()
+        {
+            var response = await _http.GetAsync("api/income/summary");
+            if (!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show("Failed to fetch incomes.");
+                return;
+            }
+
+            var json = await response.Content.ReadAsStringAsync();
+            var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+            var data = JsonSerializer.Deserialize<IncomeSummary>(json, options);
+
+            _incomePanel.Controls.Clear();
+
+            int totalWidth = _colDateWidth + _colDescWidth + _colAmountWidth;
+
+            var header = CreateTableRow("Date", "Description", "Amount", true, totalWidth);
+            _incomePanel.Controls.Add(header);
+
+            foreach (var inc in data.Incomes)
+            {
+                var row = CreateTableRow(
+                    inc.Date.ToString("MM/dd/yyyy"),
+                    inc.Descr,
+                    $"${inc.Amount:N2}",
+                    false,
+                    totalWidth);
+                _incomePanel.Controls.Add(row);
+            }
+        }
+
+        private Guna2Panel CreateTableRow(string dateText, string descriptionText, string amountText, bool isHeader, int totalWidth)
+        {
+            var rowPanel = new Guna2Panel
+            {
+                Size = new Size(totalWidth, 40),
+                Margin = new Padding(0),
+                FillColor = Color.FromArgb(24, 26, 27),
+                BorderColor = Color.FromArgb(35, 38, 39),
+                BorderThickness = 1,
+            };
+
+            var innerFlowPanel = new FlowLayoutPanel
+            {
+                Size = new Size(totalWidth, rowPanel.Height),
+                FlowDirection = FlowDirection.LeftToRight,
+                WrapContents = false,
+                BackColor = Color.Transparent,
+                Padding = new Padding(0),
+                Margin = new Padding(0),
+            };
+            rowPanel.Controls.Add(innerFlowPanel);
+            rowPanel.HorizontalScroll.Maximum = 0;
+            rowPanel.AutoScroll = false;
+            rowPanel.VerticalScroll.Visible = false;
+            rowPanel.AutoScroll = true;
+
+            int internalPadding = 10;
+
+            Func<int, Control> createColumnPanel = (width) => new Guna2Panel
+            {
+                Size = new Size(width, rowPanel.Height),
+                FillColor = Color.Transparent,
+                Margin = new Padding(0),
+            };
+
+            var datePanel = createColumnPanel(_colDateWidth);
+            var dateLabel = new Label
+            {
+                Text = dateText,
+                Font = new Font("Segoe UI", 9, isHeader ? FontStyle.Bold : FontStyle.Regular),
+                ForeColor = isHeader ? Color.LightGray : Color.White,
+                BackColor = Color.Transparent,
+                AutoSize = false,
+                Size = new Size(_colDateWidth - internalPadding, rowPanel.Height),
+                Location = new Point(internalPadding, 0),
+                TextAlign = ContentAlignment.MiddleLeft,
+            };
+            datePanel.Controls.Add(dateLabel);
+            innerFlowPanel.Controls.Add(datePanel);
+
+            var descPanel = createColumnPanel(_colDescWidth);
+            var descLabel = new Label
+            {
+                Text = descriptionText,
+                Font = new Font("Segoe UI", 9, isHeader ? FontStyle.Bold : FontStyle.Regular),
+                ForeColor = isHeader ? Color.LightGray : Color.White,
+                BackColor = Color.Transparent,
+                AutoSize = false,
+                Size = new Size(_colDescWidth - internalPadding, rowPanel.Height),
+                Location = new Point(internalPadding, 0),
+                TextAlign = ContentAlignment.MiddleLeft,
+            };
+            descPanel.Controls.Add(descLabel);
+            innerFlowPanel.Controls.Add(descPanel);
+
+            var amountPanel = createColumnPanel(_colAmountWidth);
+            var amountLabel = new Label
+            {
+                Text = amountText,
+                Font = new Font("Segoe UI", 9, isHeader ? FontStyle.Bold : FontStyle.Regular),
+                ForeColor = isHeader ? Color.LightGray : Color.White,
+                BackColor = Color.Transparent,
+                AutoSize = false,
+                Size = new Size(_colAmountWidth - internalPadding, rowPanel.Height),
+                Location = new Point(internalPadding, 0),
+                TextAlign = ContentAlignment.MiddleRight,
+            };
+            amountPanel.Controls.Add(amountLabel);
+            innerFlowPanel.Controls.Add(amountPanel);
+
+            return rowPanel;
         }
     }
 }

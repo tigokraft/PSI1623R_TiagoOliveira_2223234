@@ -12,12 +12,13 @@ using File = System.IO.File;
 
 namespace login.Helpers
 {
-    internal class Tasks : MainForm
+    // Utility helpers for performing API requests.
+    // Previously this class inherited from MainForm but no
+    // functionality from MainForm was used.  Changing it to a
+    // static helper class simplifies the design and removes the
+    // unnecessary constructor.
+    internal static class Tasks
     {
-        public Tasks(HttpClient httpClient) : base(httpClient)
-        {
-
-        }
 
         // request classes
         public class IncomeRequest
@@ -57,7 +58,7 @@ namespace login.Helpers
             public decimal TotalAllTimeSpent { get; set; }
         }
 
-        public async Task GetExpensesAsync(HttpClient http)
+        public static async Task GetExpensesAsync(HttpClient http)
         {
             var token = LoadToken();
 
