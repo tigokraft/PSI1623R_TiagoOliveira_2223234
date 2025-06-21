@@ -46,13 +46,14 @@
             // guna2GradientPanel1
             // 
             this.guna2GradientPanel1.AutoRoundedCorners = true;
+            this.guna2GradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.guna2GradientPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.guna2GradientPanel1.BorderRadius = 15;
             this.guna2GradientPanel1.BorderThickness = 1;
             this.guna2GradientPanel1.Controls.Add(this.BalanceTxt);
             this.guna2GradientPanel1.Controls.Add(this.label3);
-            this.guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
-            this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.guna2GradientPanel1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
             this.guna2GradientPanel1.Location = new System.Drawing.Point(30, 80);
             this.guna2GradientPanel1.Name = "guna2GradientPanel1";
@@ -105,8 +106,8 @@
             this.guna2GradientPanel2.BorderThickness = 1;
             this.guna2GradientPanel2.Controls.Add(this.lblSpent);
             this.guna2GradientPanel2.Controls.Add(this.label4);
-            this.guna2GradientPanel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
-            this.guna2GradientPanel2.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.guna2GradientPanel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.guna2GradientPanel2.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.guna2GradientPanel2.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
             this.guna2GradientPanel2.Location = new System.Drawing.Point(270, 80);
             this.guna2GradientPanel2.Name = "guna2GradientPanel2";
@@ -165,6 +166,7 @@
             this.ExpensesPanel.BackColor = System.Drawing.Color.Transparent;
             this.ExpensesPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.ExpensesPanel.BorderRadius = 10;
+            this.ExpensesPanel.BorderThickness = 1;
             this.ExpensesPanel.Location = new System.Drawing.Point(30, 235);
             this.ExpensesPanel.Name = "ExpensesPanel";
             this.ExpensesPanel.ShadowDecoration.Parent = this.ExpensesPanel;
@@ -188,6 +190,7 @@
             this.closeapp.ShadowDecoration.Parent = this.closeapp;
             this.closeapp.Size = new System.Drawing.Size(45, 29);
             this.closeapp.TabIndex = 18;
+            this.closeapp.Click += new System.EventHandler(this.closeapp_Click);
             // 
             // Overview
             // 

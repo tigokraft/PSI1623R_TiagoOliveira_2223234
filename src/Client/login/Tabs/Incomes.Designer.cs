@@ -86,6 +86,7 @@
             this.closeapp.ShadowDecoration.Parent = this.closeapp;
             this.closeapp.Size = new System.Drawing.Size(45, 29);
             this.closeapp.TabIndex = 18;
+            this.closeapp.Click += new System.EventHandler(this.closeapp_Click);
             // 
             // cmbCat
             // 

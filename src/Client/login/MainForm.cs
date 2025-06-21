@@ -30,6 +30,7 @@ namespace login
             former.Controls.Clear();
             former.Controls.Add(overview);
             overview.Show();
+            overview.Dock = DockStyle.Fill; // Fill the parent container
 
         }
 
@@ -47,6 +48,7 @@ namespace login
             former.Controls.Clear();
             former.Controls.Add(exp);
             exp.Show();
+            exp.Dock = DockStyle.Fill;
         }
 
         private void OvBtn_Click(object sender, EventArgs e)
@@ -62,6 +64,22 @@ namespace login
             former.Controls.Clear();
             former.Controls.Add(ov);
             ov.Show();
+            ov.Dock = DockStyle.Fill; // Fill the parent container
+        }
+        private void IncomeBtn_Click(object sender, EventArgs e)
+        {
+            GoalsBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
+            ExpensesBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
+            OvBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
+            budgetBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
+            IncomeBtn.FillColor = Color.FromArgb(100, 27, 43, 48);
+
+            Incomes inc = new Incomes(_http);
+            inc.TopLevel = false;
+            former.Controls.Clear();
+            former.Controls.Add(inc);
+            inc.Dock = DockStyle.Fill; // Fill the parent container
+            inc.Show();
         }
 
         private void budgetBtn_Click(object sender, EventArgs e)
@@ -80,20 +98,6 @@ namespace login
             OvBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
             budgetBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
             IncomeBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
-        }
-        private void IncomeBtn_Click(object sender, EventArgs e)
-        {
-            GoalsBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
-            ExpensesBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
-            OvBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
-            budgetBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
-            IncomeBtn.FillColor = Color.FromArgb(100, 27, 43, 48);
-
-            Incomes inc = new Incomes(_http);
-            inc.TopLevel = false;
-            former.Controls.Clear();
-            former.Controls.Add(inc);
-            inc.Show();
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)

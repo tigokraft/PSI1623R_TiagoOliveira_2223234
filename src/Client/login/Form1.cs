@@ -15,7 +15,6 @@ namespace login
 {
     public partial class Form1 : Form
     {
-        private readonly HttpClient httpClient;
         private readonly HttpClient _http;
         public Form1(HttpClient httpClient)
         {

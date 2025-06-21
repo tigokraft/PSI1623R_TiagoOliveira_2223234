@@ -9,6 +9,8 @@ using System.IO;
 using static System.Net.WebRequestMethods;
 using System.Text;
 using File = System.IO.File;
+using System.Windows.Forms.DataVisualization.Charting;
+using System.Drawing;
 
 namespace login.Helpers
 {
@@ -55,6 +57,12 @@ namespace login.Helpers
             public List<Expense> Expenses { get; set; }
             public decimal TotalMonthlySpent { get; set; }
             public decimal TotalAllTimeSpent { get; set; }
+        }
+
+        public class Category
+        {
+            public int CategoryId { get; set; }
+            public string CategoryName { get; set; }
         }
 
         public async Task GetExpensesAsync(HttpClient http)

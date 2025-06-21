@@ -99,5 +99,10 @@ namespace login.Tabs
 
             return null;
         }
+
+        private void closeapp_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
