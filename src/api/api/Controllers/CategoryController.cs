@@ -32,7 +32,8 @@ namespace FinSync.Controllers
                 .Select(c => new CategoryDto
                 {
                     CategoryId = c.CategoryId,
-                    CategoryName = c.CategoryName
+                    CategoryName = c.CategoryName,
+                    Color = c.Color
                 })
                 .ToListAsync();
             return Ok(categories);
@@ -53,7 +54,8 @@ namespace FinSync.Controllers
                 .Select(c => new CategoryDto
                 {
                     CategoryId = c.CategoryId,
-                    CategoryName = c.CategoryName
+                    CategoryName = c.CategoryName,
+                    Color = c.Color
                 })
                 .ToListAsync();
 
@@ -68,11 +70,13 @@ namespace FinSync.Controllers
 
             if (string.IsNullOrWhiteSpace(dto.CategoryName))
                 return BadRequest("Category name required.");
+            if (string.IsNullOrWhiteSpace(dto.Color))
+                return BadRequest("Color required.");
 
             if (await _context.Categories.AnyAsync(c => c.UserId == userId.Value && c.CategoryName == dto.CategoryName))
                 return Conflict("Category already exists.");
 
-            var category = new Category { CategoryName = dto.CategoryName, UserId = userId.Value };
+            var category = new Category { CategoryName = dto.CategoryName, UserId = userId.Value, Color = dto.Color };
             _context.Categories.Add(category);
             await _context.SaveChangesAsync();
             dto.CategoryId = category.CategoryId;
@@ -92,6 +96,7 @@ namespace FinSync.Controllers
                 return BadRequest("Category name required.");
 
             cat.CategoryName = dto.CategoryName;
+            cat.Color = dto.Color;
             await _context.SaveChangesAsync();
             return Ok(new { message = "Category updated." });
         }
