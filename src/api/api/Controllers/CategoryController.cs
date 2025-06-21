@@ -38,6 +38,28 @@ namespace FinSync.Controllers
             return Ok(categories);
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCategoryById(int id, [FromBody] CategoryDto dto)
+        {
+            var userId = GetUserId();
+            if (userId == null) return Unauthorized("Invalid token.");
+
+            if (await _context.Categories.FirstOrDefaultAsync(c => c.CategoryId == id && c.UserId == userId.Value) == null) { return NotFound(); }
+            
+
+            var category = await _context.Categories
+                .Where(c => c.UserId == userId.Value)
+                .Where(c => c.CategoryId == id)
+                .Select(c => new CategoryDto
+                {
+                    CategoryId = c.CategoryId,
+                    CategoryName = c.CategoryName
+                })
+                .ToListAsync();
+
+            return Ok(category);
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateCategory([FromBody] CategoryDto dto)
         {

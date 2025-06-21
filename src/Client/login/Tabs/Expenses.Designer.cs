@@ -28,60 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label2 = new System.Windows.Forms.Label();
-            this.AddBtn = new Guna.UI2.WinForms.Guna2Button();
-            this.closeapp = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.SuspendLayout();
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(25, 30);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(103, 24);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Expenses";
-            // 
-            // AddBtn
-            // 
-            this.AddBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.AddBtn.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(42)))), ((int)(((byte)(44)))));
-            this.AddBtn.BorderRadius = 10;
-            this.AddBtn.BorderThickness = 1;
-            this.AddBtn.CheckedState.Parent = this.AddBtn;
-            this.AddBtn.CustomImages.Parent = this.AddBtn;
-            this.AddBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(24)))), ((int)(((byte)(26)))));
-            this.AddBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.AddBtn.ForeColor = System.Drawing.Color.White;
-            this.AddBtn.HoverState.Parent = this.AddBtn;
-            this.AddBtn.Image = global::login.Properties.Resources.plus_white;
-            this.AddBtn.Location = new System.Drawing.Point(750, 30);
-            this.AddBtn.Name = "AddBtn";
-            this.AddBtn.ShadowDecoration.Parent = this.AddBtn;
-            this.AddBtn.Size = new System.Drawing.Size(124, 36);
-            this.AddBtn.TabIndex = 6;
-            this.AddBtn.Text = "Add Expense";
-            this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
-            // 
-            // closeapp
-            // 
-            this.closeapp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.closeapp.BackColor = System.Drawing.Color.Transparent;
-            this.closeapp.FillColor = System.Drawing.Color.Transparent;
-            this.closeapp.HoverState.BorderColor = System.Drawing.Color.Transparent;
-            this.closeapp.HoverState.FillColor = System.Drawing.Color.Transparent;
-            this.closeapp.HoverState.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.closeapp.HoverState.Parent = this.closeapp;
-            this.closeapp.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(160)))), ((int)(((byte)(160)))));
-            this.closeapp.Location = new System.Drawing.Point(850, 3);
-            this.closeapp.Name = "closeapp";
-            this.closeapp.PressedColor = System.Drawing.Color.Transparent;
-            this.closeapp.ShadowDecoration.Parent = this.closeapp;
-            this.closeapp.Size = new System.Drawing.Size(45, 29);
-            this.closeapp.TabIndex = 17;
             // 
             // Expenses
             // 
@@ -89,9 +35,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.ClientSize = new System.Drawing.Size(884, 561);
-            this.Controls.Add(this.AddBtn);
-            this.Controls.Add(this.closeapp);
-            this.Controls.Add(this.label2);
+            //this.Controls.Add(this.AddBtn);
+            //this.Controls.Add(this.closeapp);
+            //this.Controls.Add(this.label2);
             this.ForeColor = System.Drawing.Color.Coral;
             this.Name = "Expenses";
             this.Text = "Expenses";

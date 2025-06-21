@@ -123,7 +123,8 @@ namespace login.Helpers
                 descr = description,
                 isRecurring = isRec,
                 recurrence = rec,
-                endDate = endTime
+                endDate = endTime,
+                categoryId = 1
 
             };
 

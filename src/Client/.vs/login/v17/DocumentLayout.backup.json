@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|c:\\users\\exxo\\downloads\\psi1623r_tiagooliveira_2223234\\src\\client\\login\\tabs\\incomes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\tabs\\incomes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|solutionrelative:login\\tabs\\incomes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\tabs\\incomes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|solutionrelative:login\\tabs\\incomes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\helpers\\tasks.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|solutionrelative:login\\helpers\\tasks.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\tabs\\expenses.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|solutionrelative:login\\tabs\\expenses.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|solutionrelative:login\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\tabs\\expenses.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|solutionrelative:login\\tabs\\expenses.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,41 +34,53 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Incomes.cs",
-              "DocumentMoniker": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Tabs\\Incomes.cs",
-              "RelativeDocumentMoniker": "login\\Tabs\\Incomes.cs",
-              "ToolTip": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Tabs\\Incomes.cs",
-              "RelativeToolTip": "login\\Tabs\\Incomes.cs",
-              "ViewState": "AgIAANYAAAAAAAAAAAArwOsAAAAWAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "Expenses.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Tabs\\Expenses.cs",
+              "RelativeDocumentMoniker": "login\\Tabs\\Expenses.cs",
+              "ToolTip": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Tabs\\Expenses.cs [Design]",
+              "RelativeToolTip": "login\\Tabs\\Expenses.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-16T21:57:30.802Z",
+              "WhenOpened": "2025-06-20T21:27:17.453Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Expenses.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Tabs\\Expenses.Designer.cs",
+              "RelativeDocumentMoniker": "login\\Tabs\\Expenses.Designer.cs",
+              "ToolTip": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Tabs\\Expenses.Designer.cs",
+              "RelativeToolTip": "login\\Tabs\\Expenses.Designer.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAswCcAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T21:26:44.149Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Tasks.cs",
-              "DocumentMoniker": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Helpers\\Tasks.cs",
-              "RelativeDocumentMoniker": "login\\Helpers\\Tasks.cs",
-              "ToolTip": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Helpers\\Tasks.cs",
-              "RelativeToolTip": "login\\Helpers\\Tasks.cs",
-              "ViewState": "AgIAAGgAAAAAAAAAAAAkwHQAAAAWAAAAAAAAAA==",
+              "Title": "Incomes.cs",
+              "DocumentMoniker": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Tabs\\Incomes.cs",
+              "RelativeDocumentMoniker": "login\\Tabs\\Incomes.cs",
+              "ToolTip": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Tabs\\Incomes.cs*",
+              "RelativeToolTip": "login\\Tabs\\Incomes.cs*",
+              "ViewState": "AgIAAAkBAAAAAAAAAADwvxwBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-13T20:32:17.394Z",
+              "WhenOpened": "2025-06-20T20:32:10.912Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainForm.cs",
-              "DocumentMoniker": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\MainForm.cs",
-              "RelativeDocumentMoniker": "login\\MainForm.cs",
-              "ToolTip": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\MainForm.cs",
-              "RelativeToolTip": "login\\MainForm.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAUwB4AAAAqAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "Incomes.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Tabs\\Incomes.cs",
+              "RelativeDocumentMoniker": "login\\Tabs\\Incomes.cs",
+              "ToolTip": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Tabs\\Incomes.cs [Design]*",
+              "RelativeToolTip": "login\\Tabs\\Incomes.cs [Design]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-13T20:08:27.349Z"
+              "WhenOpened": "2025-06-20T19:25:23.064Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

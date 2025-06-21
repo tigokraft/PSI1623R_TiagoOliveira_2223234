@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Guna.UI2.WinForms;
 using login.Helpers;
+using System.Text.Json;
+using System.Xml;
 
 namespace login.Tabs
 {
@@ -22,7 +24,36 @@ namespace login.Tabs
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             _http = http;
+
+            Setup();
         }
+
+        private void Setup()
+        {
+            DateTime now = DateTime.Now;
+            DateTime start = new DateTime(now.Year - 5, now.Month, 1);
+
+            cmbMonths.Items.Clear(); // Clear existing items
+            cmbMonths.Items.Add("All Months"); // Add "All Months" at the top
+
+            // Build the list ascending, then reverse
+            List<string> months = new List<string>();
+            while (start <= now)
+            {
+                months.Add($"{start:MMMM yyyy}");
+                start = start.AddMonths(1);
+            }
+            months.Reverse(); // Descending order
+
+            foreach (var month in months)
+                cmbMonths.Items.Add(month);
+
+            cmbMonths.DropDownHeight = 200;
+            cmbMonths.DropDownStyle = ComboBoxStyle.DropDownList; // Set dropdown style
+            cmbMonths.SelectedIndex = 0; // Select "All Months" by default
+            cmbMonths.MaxDropDownItems = 5; // Limit the number of items shown in the dropdown
+        }
+
 
         private void AddBtn_Click(object sender, EventArgs e)
         {
@@ -247,6 +278,11 @@ namespace login.Tabs
 
             this.Controls.Add(overlay);
             overlay.BringToFront();
+        }
+
+        private void cmbCat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

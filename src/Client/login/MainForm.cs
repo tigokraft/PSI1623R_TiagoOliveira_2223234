@@ -42,7 +42,7 @@ namespace login
             GoalsBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
             IncomeBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
 
-            Expenses exp = new Expenses(_http);
+            Expenses exp = new Expenses(_http); // pass the panel
             exp.TopLevel = false;
             former.Controls.Clear();
             former.Controls.Add(exp);
@@ -60,7 +60,6 @@ namespace login
             Overview ov = new Overview(_http);
             ov.TopLevel = false;
             former.Controls.Clear();
-            former.Controls.Add(ov);
             former.Controls.Add(ov);
             ov.Show();
         }
