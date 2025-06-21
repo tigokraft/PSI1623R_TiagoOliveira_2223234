@@ -12,6 +12,11 @@ namespace FinSync.Models
         public int UserId { get; set; }
         public string CategoryName { get; set; }
 
+        // Stored as "R,G,B" (e.g. "255,0,0" for red)
+        [Required]
+        [MaxLength(11)] // "255,255,255" length
+        public string Color { get; set; }
+
         [ForeignKey(nameof(UserId))]
         public User User { get; set; }
 

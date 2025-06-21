@@ -32,6 +32,11 @@ namespace FinSync.Data
                 .IsUnique();
 
             modelBuilder.Entity<Category>()
+                .Property(c => c.Color)
+                .IsRequired()
+                .HasMaxLength(11);
+
+            modelBuilder.Entity<Category>()
                 .HasOne(c => c.User)
                 .WithMany()
                 .HasForeignKey(c => c.UserId)
