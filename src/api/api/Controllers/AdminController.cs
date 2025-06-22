@@ -36,4 +36,8 @@ public class AdminController : ControllerBase
         _context.SaveChanges();
         return NoContent();
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 60e1d173258b90325b17b768d98c978f13042579

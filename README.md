@@ -20,7 +20,8 @@ Both projects are included in this repository along with a small helper for clea
 - JWT-based authentication with API key header
 - Budget, income and expense management screens
 - LiveCharts visualizations
-- Interactive console panel with admin mode for viewing statistics
+ - Interactive console panel with admin mode for viewing statistics and user management
+ - Admin REST endpoints secured by JWT role claims
 
 ## Prerequisites
 
@@ -40,7 +41,9 @@ dotnet run
 
 The API listens by default on `http://localhost:5034` and requires a header `x-api-key` with value `12345-abcdef-67890`.
 
-Health information is exposed at `/healthz` (machine readable) and `/health` (detailed). The console admin panel is protected by a password defined in `appsettings.json` under `AdminPanel:Password`.
+Health information is exposed at `/healthz` (machine readable) and `/health` (detailed). The console admin panel now authenticates using an admin user account (role `admin`) stored in the database and lets admins list and promote users.
+
+Admin-only endpoints are available under `/api/admin` and require a JWT for a user with the `admin` role.
 
 ## Running the Client
 

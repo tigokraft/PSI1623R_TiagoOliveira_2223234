@@ -3,8 +3,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Text;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
 using FinSync.Data;
+using FinSync.Utils;
 using Quartz;
 using System.Linq;
 
@@ -112,14 +112,65 @@ namespace FinSync.Panel
                 centerBlock(new[] { "Invalid credentials." });
                 return;
             }
+<<<<<<< HEAD
             var schedulerFactory = scope.ServiceProvider.GetRequiredService<ISchedulerFactory>();
             var scheduler = schedulerFactory.GetScheduler().Result;
+=======
+
+            var schedFactory = scope.ServiceProvider.GetRequiredService<ISchedulerFactory>();
+            AdminMenu(ctx, schedFactory);
+        }
+
+        private static void AdminMenu(FinSyncContext ctx, ISchedulerFactory schedFactory)
+        {
+            while (true)
+            {
+                Console.Clear();
+                var options = new[]
+                {
+                    "1 -> View statistics",
+                    "2 -> List users",
+                    "3 -> Promote user",
+                    "4 -> Back"
+                };
+                centerBlock(options);
+
+                var key = Console.ReadKey(true).Key;
+                Console.Clear();
+
+                switch (key)
+                {
+                    case ConsoleKey.D1:
+                        ShowStats(ctx, schedFactory);
+                        break;
+                    case ConsoleKey.D2:
+                        ListUsers(ctx);
+                        break;
+                    case ConsoleKey.D3:
+                        PromoteUser(ctx);
+                        break;
+                    case ConsoleKey.D4:
+                        return;
+                    default:
+                        centerBlock(new[] { "Invalid option." });
+                        break;
+                }
+
+                centerBlock(new[] { "\nPress any key to continue..." });
+                Console.ReadKey(true);
+            }
+        }
+
+        private static void ShowStats(FinSyncContext ctx, ISchedulerFactory schedFactory)
+        {
+            var scheduler = schedFactory.GetScheduler().Result;
+>>>>>>> 60e1d173258b90325b17b768d98c978f13042579
             var triggers = scheduler.GetTriggersOfJob(new JobKey("RecurringIncomeJob")).Result;
             var nextRun = triggers.FirstOrDefault()?.GetNextFireTimeUtc()?.ToLocalTime();
 
             var lines = new[]
             {
-                "🛠️ Admin Panel:",
+                "🛠️ Statistics:",
                 $"- Users: {ctx.Users.Count()}",
                 $"- Expenses: {ctx.Expenses.Count()}",
                 $"- Incomes: {ctx.Incomes.Count()}",
@@ -129,6 +180,42 @@ namespace FinSync.Panel
             };
 
             centerBlock(lines);
+        }
+
+        private static void ListUsers(FinSyncContext ctx)
+        {
+            var users = ctx.Users
+                .Select(u => $"{u.UserId}: {u.Username} ({u.Role})")
+                .ToArray();
+
+            if (users.Length == 0)
+            {
+                centerBlock(new[] { "No users found." });
+                return;
+            }
+
+            centerBlock(users);
+        }
+
+        private static void PromoteUser(FinSyncContext ctx)
+        {
+            Console.Write("Enter user ID to promote: ");
+            if (!int.TryParse(Console.ReadLine(), out var id))
+            {
+                centerBlock(new[] { "Invalid ID." });
+                return;
+            }
+
+            var user = ctx.Users.FirstOrDefault(u => u.UserId == id);
+            if (user == null)
+            {
+                centerBlock(new[] { "User not found." });
+                return;
+            }
+
+            user.Role = "admin";
+            ctx.SaveChanges();
+            centerBlock(new[] { "User promoted to admin." });
         }
 
         private static string ReadPassword()
