@@ -100,7 +100,7 @@ builder.Services.AddSingleton(apiKeyHeader ?? "x-api-key");
 var app = builder.Build();
 
 // ✅ API panel
-ConsolePanel.Start(app.Services, app.Configuration);
+ConsolePanel.Start(app.Services);
 
 // ✅ Middleware
 app.UseSerilogRequestLogging();

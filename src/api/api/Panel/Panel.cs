@@ -13,12 +13,10 @@ namespace FinSync.Panel
     public static class ConsolePanel
     {
         private static IServiceProvider _services;
-        private static string _adminPassword = "admin";
 
-        public static void Start(IServiceProvider services, IConfiguration config)
+        public static void Start(IServiceProvider services)
         {
             _services = services;
-            _adminPassword = config["AdminPanel:Password"] ?? _adminPassword;
             Task.Run(() => RunMenu());
         }
 
@@ -101,16 +99,19 @@ namespace FinSync.Panel
 
         private static void ShowAdminPanel()
         {
+            Console.Write("Admin username: ");
+            string user = Console.ReadLine()?.Trim() ?? string.Empty;
             Console.Write("Admin password: ");
-            string entered = ReadPassword();
-            if (entered != _adminPassword)
-            {
-                centerBlock(new[] { "Invalid password." });
-                return;
-            }
+            string pass = ReadPassword();
 
             using var scope = _services.CreateScope();
             var ctx = scope.ServiceProvider.GetRequiredService<FinSyncContext>();
+            var admin = ctx.Users.FirstOrDefault(u => u.Username == user && u.Role == "admin");
+            if (admin == null || !PasswordHelper.VerifyPassword(admin.PasswordHash, pass))
+            {
+                centerBlock(new[] { "Invalid credentials." });
+                return;
+            }
             var schedulerFactory = scope.ServiceProvider.GetRequiredService<ISchedulerFactory>();
             var scheduler = schedulerFactory.GetScheduler().Result;
             var triggers = scheduler.GetTriggersOfJob(new JobKey("RecurringIncomeJob")).Result;
