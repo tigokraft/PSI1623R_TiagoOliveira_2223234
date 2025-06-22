@@ -39,6 +39,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.ExpensesPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.closeapp = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.aiButton = new Guna.UI2.WinForms.Guna2Button();
             this.guna2GradientPanel1.SuspendLayout();
             this.guna2GradientPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -148,6 +149,25 @@
             this.ChartPanel.ShadowDecoration.Parent = this.ChartPanel;
             this.ChartPanel.Size = new System.Drawing.Size(360, 465);
             this.ChartPanel.TabIndex = 14;
+            //
+            // aiButton
+            //
+            this.aiButton.Animated = true;
+            this.aiButton.BackColor = System.Drawing.Color.Transparent;
+            this.aiButton.BorderRadius = 5;
+            this.aiButton.CheckedState.Parent = this.aiButton;
+            this.aiButton.CustomImages.Parent = this.aiButton;
+            this.aiButton.FillColor = System.Drawing.Color.FromArgb(27, 43, 48);
+            this.aiButton.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.aiButton.ForeColor = System.Drawing.Color.White;
+            this.aiButton.Location = new System.Drawing.Point(30, 560);
+            this.aiButton.Name = "aiButton";
+            this.aiButton.ShadowDecoration.Parent = this.aiButton;
+            this.aiButton.Size = new System.Drawing.Size(150, 30);
+            this.aiButton.TabIndex = 19;
+            this.aiButton.Text = "AI Overview";
+            this.aiButton.UseTransparentBackground = true;
+            this.aiButton.Click += new System.EventHandler(this.aiButton_Click);
             // 
             // label5
             // 
@@ -199,6 +219,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.closeapp);
+            this.Controls.Add(this.aiButton);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.ChartPanel);
             this.Controls.Add(this.ExpensesPanel);
@@ -229,5 +250,6 @@
         private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2Panel ExpensesPanel;
         private Guna.UI2.WinForms.Guna2ControlBox closeapp;
+        private Guna.UI2.WinForms.Guna2Button aiButton;
     }
 }
