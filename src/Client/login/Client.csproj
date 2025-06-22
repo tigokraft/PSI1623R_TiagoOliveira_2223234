@@ -146,6 +146,7 @@
     <Compile Include="Helpers\Tasks.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Helpers\AiHelper.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
