@@ -1,13 +1,24 @@
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Text;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using FinSync.Data;
+using Quartz;
+using System.Linq;
 
 namespace FinSync.Panel
 {
     public static class ConsolePanel
     {
-        public static void Start()
+        private static IServiceProvider _services;
+        private static string _adminPassword = "admin";
+
+        public static void Start(IServiceProvider services, IConfiguration config)
         {
+            _services = services;
+            _adminPassword = config["AdminPanel:Password"] ?? _adminPassword;
             Task.Run(() => RunMenu());
         }
 
@@ -90,13 +101,57 @@ namespace FinSync.Panel
 
         private static void ShowAdminPanel()
         {
-            centerBlock(new[]
+            Console.Write("Admin password: ");
+            string entered = ReadPassword();
+            if (entered != _adminPassword)
+            {
+                centerBlock(new[] { "Invalid password." });
+                return;
+            }
+
+            using var scope = _services.CreateScope();
+            var ctx = scope.ServiceProvider.GetRequiredService<FinSyncContext>();
+            var schedulerFactory = scope.ServiceProvider.GetRequiredService<ISchedulerFactory>();
+            var scheduler = schedulerFactory.GetScheduler().Result;
+            var triggers = scheduler.GetTriggersOfJob(new JobKey("RecurringIncomeJob")).Result;
+            var nextRun = triggers.FirstOrDefault()?.GetNextFireTimeUtc()?.ToLocalTime();
+
+            var lines = new[]
             {
                 "🛠️ Admin Panel:",
-                "- Alerts count: TODO",
-                "- Jobs running: TODO",
-                "- Users online: TODO"
-            });
+                $"- Users: {ctx.Users.Count()}",
+                $"- Expenses: {ctx.Expenses.Count()}",
+                $"- Incomes: {ctx.Incomes.Count()}",
+                $"- Budgets: {ctx.Budgets.Count()}",
+                $"- Active Schedules: {ctx.RecurringIncomeSchedules.Count(r => r.IsActive)}",
+                $"- Next RecurringIncomeJob: {nextRun}"
+            };
+
+            centerBlock(lines);
+        }
+
+        private static string ReadPassword()
+        {
+            var sb = new StringBuilder();
+            ConsoleKeyInfo key;
+            while ((key = Console.ReadKey(true)).Key != ConsoleKey.Enter)
+            {
+                if (key.Key == ConsoleKey.Backspace)
+                {
+                    if (sb.Length > 0)
+                    {
+                        sb.Length--;
+                        Console.Write("\b \b");
+                    }
+                }
+                else if (!char.IsControl(key.KeyChar))
+                {
+                    sb.Append(key.KeyChar);
+                    Console.Write("*");
+                }
+            }
+            Console.WriteLine();
+            return sb.ToString();
         }
 
         private static void StopAPI()

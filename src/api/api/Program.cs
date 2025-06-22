@@ -10,6 +10,7 @@ using FinSync.Data;
 using Quartz;
 using Quartz.Spi;
 using FinSync.Panel;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +28,10 @@ var validApiKeys = builder.Configuration.GetSection("ApiKeySettings:ValidKeys").
 // ✅ Database Context
 builder.Services.AddDbContext<FinSyncContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// ✅ Health Checks
+builder.Services.AddHealthChecks()
+    .AddDbContextCheck<FinSyncContext>(name: "Database");
 
 // ✅ Authentication (JWT)
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -94,7 +99,7 @@ builder.Services.AddSingleton(apiKeyHeader ?? "x-api-key");
 var app = builder.Build();
 
 // ✅ API panel
-ConsolePanel.Start();
+ConsolePanel.Start(app.Services, app.Configuration);
 
 // ✅ Middleware
 app.UseSerilogRequestLogging();
@@ -131,6 +136,7 @@ app.Use(async (context, next) =>
     await next();
 });
 
+app.MapHealthChecks("/healthz");
 app.MapControllers();
 
 app.Run();
