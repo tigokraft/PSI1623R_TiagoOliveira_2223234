@@ -112,10 +112,9 @@ namespace FinSync.Panel
                 centerBlock(new[] { "Invalid credentials." });
                 return;
             }
-<<<<<<< HEAD
+
             var schedulerFactory = scope.ServiceProvider.GetRequiredService<ISchedulerFactory>();
             var scheduler = schedulerFactory.GetScheduler().Result;
-=======
 
             var schedFactory = scope.ServiceProvider.GetRequiredService<ISchedulerFactory>();
             AdminMenu(ctx, schedFactory);
@@ -164,7 +163,6 @@ namespace FinSync.Panel
         private static void ShowStats(FinSyncContext ctx, ISchedulerFactory schedFactory)
         {
             var scheduler = schedFactory.GetScheduler().Result;
->>>>>>> 60e1d173258b90325b17b768d98c978f13042579
             var triggers = scheduler.GetTriggersOfJob(new JobKey("RecurringIncomeJob")).Result;
             var nextRun = triggers.FirstOrDefault()?.GetNextFireTimeUtc()?.ToLocalTime();
 
