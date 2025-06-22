@@ -58,6 +58,27 @@ namespace FinSync.Controllers
             return Ok(goals);
         }
 
+        [HttpPost("{id}/save")]
+        public async Task<IActionResult> UpdateProgress(int id, [FromBody] UpdateGoalProgressDto dto)
+        {
+            var userId = GetUserId();
+            if (userId == null) return Unauthorized("Invalid token.");
+
+            if (dto.Amount <= 0)
+                return BadRequest("Amount must be positive.");
+
+            var goal = await _context.Goals.FirstOrDefaultAsync(g => g.GoalId == id && g.UserId == userId.Value);
+            if (goal == null) return NotFound();
+
+            goal.CurrentSaved += dto.Amount;
+            if (goal.CurrentSaved > goal.TargetAmount)
+                goal.CurrentSaved = goal.TargetAmount;
+
+            await _context.SaveChangesAsync();
+            return Ok(new { message = "Goal progress updated.", currentSaved = goal.CurrentSaved });
+        }
+
+
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateGoal(int id, [FromBody] CreateGoalDto dto)
         {

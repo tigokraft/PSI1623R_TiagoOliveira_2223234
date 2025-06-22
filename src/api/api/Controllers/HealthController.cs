@@ -10,7 +10,7 @@ public class HealthController : ControllerBase
 {
     private readonly HealthCheckService _healthService;
 
-    public HealthController(HealthCheckService healthService)
+   public HealthController(HealthCheckService healthService)
     {
         _healthService = healthService;
     }
