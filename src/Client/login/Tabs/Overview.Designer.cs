@@ -149,25 +149,6 @@
             this.ChartPanel.ShadowDecoration.Parent = this.ChartPanel;
             this.ChartPanel.Size = new System.Drawing.Size(360, 465);
             this.ChartPanel.TabIndex = 14;
-            //
-            // aiButton
-            //
-            this.aiButton.Animated = true;
-            this.aiButton.BackColor = System.Drawing.Color.Transparent;
-            this.aiButton.BorderRadius = 5;
-            this.aiButton.CheckedState.Parent = this.aiButton;
-            this.aiButton.CustomImages.Parent = this.aiButton;
-            this.aiButton.FillColor = System.Drawing.Color.FromArgb(27, 43, 48);
-            this.aiButton.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.aiButton.ForeColor = System.Drawing.Color.White;
-            this.aiButton.Location = new System.Drawing.Point(30, 560);
-            this.aiButton.Name = "aiButton";
-            this.aiButton.ShadowDecoration.Parent = this.aiButton;
-            this.aiButton.Size = new System.Drawing.Size(150, 30);
-            this.aiButton.TabIndex = 19;
-            this.aiButton.Text = "AI Overview";
-            this.aiButton.UseTransparentBackground = true;
-            this.aiButton.Click += new System.EventHandler(this.aiButton_Click);
             // 
             // label5
             // 
@@ -211,6 +192,26 @@
             this.closeapp.Size = new System.Drawing.Size(45, 29);
             this.closeapp.TabIndex = 18;
             this.closeapp.Click += new System.EventHandler(this.closeapp_Click);
+            // 
+            // aiButton
+            // 
+            this.aiButton.Animated = true;
+            this.aiButton.BackColor = System.Drawing.Color.Transparent;
+            this.aiButton.BorderRadius = 5;
+            this.aiButton.CheckedState.Parent = this.aiButton;
+            this.aiButton.CustomImages.Parent = this.aiButton;
+            this.aiButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
+            this.aiButton.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.aiButton.ForeColor = System.Drawing.Color.White;
+            this.aiButton.HoverState.Parent = this.aiButton;
+            this.aiButton.Location = new System.Drawing.Point(30, 560);
+            this.aiButton.Name = "aiButton";
+            this.aiButton.ShadowDecoration.Parent = this.aiButton;
+            this.aiButton.Size = new System.Drawing.Size(150, 30);
+            this.aiButton.TabIndex = 19;
+            this.aiButton.Text = "AI Overview";
+            this.aiButton.UseTransparentBackground = true;
+            this.aiButton.Click += new System.EventHandler(this.aiButton_Click);
             // 
             // Overview
             // 

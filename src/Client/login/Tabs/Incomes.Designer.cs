@@ -68,7 +68,6 @@
             this.AddBtn.Size = new System.Drawing.Size(150, 36);
             this.AddBtn.TabIndex = 7;
             this.AddBtn.Text = "Add Income";
-            this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
             // 
             // closeapp
             // 
@@ -110,7 +109,6 @@
             this.cmbCat.ShadowDecoration.Parent = this.cmbCat;
             this.cmbCat.Size = new System.Drawing.Size(215, 36);
             this.cmbCat.TabIndex = 19;
-            this.cmbCat.SelectedIndexChanged += new System.EventHandler(this.cmbCat_SelectedIndexChanged);
             // 
             // cmbMonths
             // 

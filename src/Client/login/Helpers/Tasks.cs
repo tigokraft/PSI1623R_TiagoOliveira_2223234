@@ -11,6 +11,7 @@ using System.Text;
 using File = System.IO.File;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace login.Helpers
 {
@@ -19,18 +20,6 @@ namespace login.Helpers
         public Tasks(HttpClient httpClient) : base(httpClient)
         {
 
-        }
-
-        // request classes
-        public class IncomeRequest
-        {
-            public decimal amount { get; set; }
-            public DateTime date { get; set; }
-            public string descr { get; set; }
-            public bool isRecurring { get; set; }
-            public string recurrence { get; set; }
-            public string endDate { get; set; }
-            public decimal categoryId { get; set; }
         }
 
         public class ExpenseRequest
@@ -79,13 +68,12 @@ namespace login.Helpers
                     if (response.Headers.TryGetValues("Retry-After", out var retryValues))
                     {
                         int retryAfterSec = int.Parse(retryValues.First());
-                        MessageBox.Show($"Rate limited. Try again after {retryAfterSec} seconds.", "Too Many Requests", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        Cards.Show("Too Many Requests", $"Rate limited. Try again after {retryAfterSec} seconds.", "OK");
                     }
                     else
                     {
-                        MessageBox.Show("Rate limited. Please wait a few seconds before trying again.", "Too Many Requests", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        Cards.Show("Too Many Requests", "Rate limited. Please wait a few seconds before trying again.", "OK");
                     }
-
                     return;
                 }
 
@@ -100,59 +88,78 @@ namespace login.Helpers
 
                     if (expenseResponse != null)
                     {
-                        // Example: you can now use these to update your labels
+                        // You can now use these to update your labels/UI as needed
                         decimal monthlySpent = expenseResponse.TotalMonthlySpent;
                         decimal allTimeSpent = expenseResponse.TotalAllTimeSpent;
 
                         Console.WriteLine($"Monthly: {monthlySpent}, All Time: {allTimeSpent}");
 
-                        // You can now assign these to your labels or UI
                         // labelMonthlySpent.Text = $"${monthlySpent}";
                         // labelAllTimeSpent.Text = $"${allTimeSpent}";
                     }
                 }
                 else
                 {
-                    MessageBox.Show($"API call failed: {response.StatusCode}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Cards.Show("Error", $"API call failed: {response.StatusCode}", "OK");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error fetching expenses: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Cards.Show("Error", $"Error fetching expenses:\n{ex.Message}", "OK");
             }
         }
 
-        public static async Task PostIncome(decimal amt, string description, bool isRec, string rec, string endTime , HttpClient http)
+
+        public static async Task<bool> PostIncome
+        (
+            decimal amount,
+            string description,
+            bool isRecurring,
+            string recurrence,
+            string endDate,
+            HttpClient http,
+            int categoryId
+        )
         {
-            var payload = new IncomeRequest
+            var payload = new
             {
-                amount = amt,
+                amount = amount,
                 date = DateTime.Now,
                 descr = description,
-                isRecurring = isRec,
-                recurrence = rec,
-                endDate = endTime,
-                categoryId = 1
-
+                isRecurring = isRecurring,
+                recurrence = recurrence,
+                endDate = endDate,
+                categoryId = categoryId
             };
 
             var json = JsonSerializer.Serialize(payload);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            var response = await http.PostAsync("api/income/", content);
-
-            if (response.IsSuccessStatusCode)
+            using (var content = new StringContent(json, Encoding.UTF8, "application/json"))
             {
-                var result = await response.Content.ReadAsStringAsync();
-                //return Cards.
+                try
+                {
+                    var response = await http.PostAsync("api/income/", content);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        Cards.Show("Success", "Income added successfully!", "OK");
+                        return true;
+                    }
+                    else
+                    {
+                        var error = await response.Content.ReadAsStringAsync();
+                        Cards.Show("Error", $"Failed to add income:\n{response.StatusCode}\n{error}", "OK");
+                        return false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Cards.Show("Error", $"Error posting income:\n{ex.Message}", "OK");
+                    return false;
+                }
             }
-            else
-            {
-                var error = await response.Content.ReadAsStringAsync();
-                MessageBox.Show($"Failed: {response.StatusCode} - {error}");
-            }
-
         }
+
+
+
 
         public static string LoadToken()
         {

@@ -97,7 +97,7 @@ namespace login.Tabs
             }
         }
 
-        private async Task<MonthlyBalance?> GetMonthlyBalanceAsync()
+        private async Task<MonthlyBalance> GetMonthlyBalanceAsync()
         {
             try
             {

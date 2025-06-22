@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -10,13 +11,14 @@ using System.Windows.Forms;
 using Guna.UI2.WinForms;
 using Guna.UI2.WinForms.Enums;
 using login.Helpers;
+using login.Tabs;
 
 public static class Overlays
 {
     /// <summary>
-    /// Shows the "Add Income" overlay with a horizontal scrollable category selector.
+    /// Shows the "Add/Edit Income" overlay with a horizontal scrollable category selector.
     /// </summary>
-    public static async Task IncomeOverlay(Form parentForm, HttpClient _http)
+    public static async Task IncomeOverlay(Form parentForm, HttpClient _http, Incomes.Income incomeToEdit = null)
     {
         await Task.Yield();
 
@@ -36,7 +38,7 @@ public static class Overlays
         // TITLE
         var titleLabel = new Label
         {
-            Text = "Add Income",
+            Text = incomeToEdit == null ? "Add Income" : "Edit Income",
             ForeColor = Color.White,
             Font = new Font("Segoe UI", 12, FontStyle.Bold),
             Location = new Point(20, 20),
@@ -135,20 +137,26 @@ public static class Overlays
         int selectedCategoryId = -1;
         var categories = await CategoriesList.GetCategoriesAsync(_http);
 
-        // ---------------- CONTEXT MENU STRIP ------------------
+        // ---------------- CONTEXT MENU STRIP for Categories ------------------
         var catContextMenu = new ContextMenuStrip();
-        var editItem = new ToolStripMenuItem("Edit Category");
-        var deleteItem = new ToolStripMenuItem("Delete Category");
-        catContextMenu.Items.AddRange(new ToolStripItem[] { editItem, deleteItem });
+        var editCatItem = new ToolStripMenuItem("Edit Category");
+        var deleteCatItem = new ToolStripMenuItem("Delete Category");
+        catContextMenu.Items.AddRange(new ToolStripItem[] { editCatItem, deleteCatItem });
 
-        editItem.Click += (s, e) =>
+        editCatItem.Click += async (s, e) =>
         {
             int categoryId = (int)catContextMenu.Tag;
-            Cards.Show("Edit Category", $"Edit category {categoryId} (implement overlay here)", "OK");
-            // TODO: Launch your edit overlay after this if needed.
+            var cat = categories.FirstOrDefault(c => c.CategoryId == categoryId);
+            if (cat == null)
+            {
+                Cards.Show("Error", "Category not found.", "OK");
+                return;
+            }
+            await EditCategoryOverlay(parentForm, _http, cat.CategoryId, cat.CategoryName, cat.Color);
+            parentForm.Controls.Remove(overlay); // Remove old overlay after editing
         };
 
-        deleteItem.Click += async (s, e) =>
+        deleteCatItem.Click += async (s, e) =>
         {
             int categoryId = (int)catContextMenu.Tag;
             var confirm = Cards.Show("Delete Category", "This will delete the category. Continue?", "OK");
@@ -289,10 +297,10 @@ public static class Overlays
         overlay.Controls.Add(maskPanel);
         overlay.Controls.Add(hScroll);
 
-        // ─── ADD INCOME BUTTON ───────────────────────────────────────
+        // ─── ADD / EDIT INCOME BUTTON ───────────────────────────────────────
         var createBtn = new Guna2Button
         {
-            Text = "Add Income",
+            Text = incomeToEdit == null ? "Add Income" : "Save Changes",
             Size = new Size(300, 50),
             Location = new Point(25, overlay.Bottom - 140),
             FillColor = Color.FromArgb(20, 24, 26),
@@ -301,19 +309,104 @@ public static class Overlays
             BorderThickness = 1,
             Font = new Font("Segoe UI", 9)
         };
+
+        // ── PREFILL FIELDS IF EDITING ─────────────────────
+        if (incomeToEdit != null)
+        {
+            descrBox.Text = incomeToEdit.Descr;
+            amountBox.Text = incomeToEdit.Amount.ToString("0.##");
+            // Find and select the right category
+            foreach (Guna2Button catBtn in inner.Controls.OfType<Guna2Button>())
+            {
+                if (catBtn.Tag is int catId && catId == incomeToEdit.CategoryId)
+                {
+                    catBtn.Checked = true;
+                    selectedCategoryId = catId;
+                    break;
+                }
+            }
+        }
+
+        // ── BUTTON CLICK HANDLER ───────────────────────────
         createBtn.Click += async (s, ev) =>
         {
-            // … validate recurrence/amount …
+            var description = descrBox.Text.Trim();
+            var amountText = amountBox.Text.Trim();
 
-            await Tasks.PostIncome(
-                /*parsedAmount*/0m,
-                /*descr*/"",
-                /*isRecurring*/false,
-                /*recurrence*/"",
-                /*endDate*/DateTime.Now.ToString("yyyy-MM-dd"),
-                _http
-            );
-            parentForm.Controls.Remove(overlay);
+            // Hard validation, all required!
+            if (string.IsNullOrEmpty(description))
+            {
+                Cards.Show("Validation Error", "Description is required.", "OK");
+                return;
+            }
+            if (string.IsNullOrEmpty(amountText))
+            {
+                Cards.Show("Validation Error", "Amount is required.", "OK");
+                return;
+            }
+            if (!decimal.TryParse(amountText, out var amount) || amount <= 0)
+            {
+                Cards.Show("Validation Error", "Amount must be a positive number.", "OK");
+                return;
+            }
+            if (selectedCategoryId == -1)
+            {
+                Cards.Show("Validation Error", "Select a category.", "OK");
+                return;
+            }
+
+            bool isRec = recurringChk.Checked;
+            string recurrence = recurrenceCombo.SelectedItem?.ToString();
+            if (isRec && string.IsNullOrEmpty(recurrence))
+            {
+                Cards.Show("Validation Error", "Choose a recurrence type.", "OK");
+                return;
+            }
+            string endDate = isRec ? endDatePicker.Value.ToString("yyyy-MM-dd") : DateTime.Now.ToString("yyyy-MM-dd");
+
+            bool success = false;
+            if (incomeToEdit == null)
+            {
+                // ADD NEW
+                success = await Tasks.PostIncome(
+                    amount,
+                    description,
+                    isRec,
+                    isRec ? recurrence : "",
+                    endDate,
+                    _http,
+                    selectedCategoryId
+                );
+            }
+            else
+            {
+                // UPDATE
+                var payload = new
+                {
+                    incomeToEdit.IncomeId,
+                    Amount = amount,
+                    Descr = description,
+                    Date = incomeToEdit.Date, // Or allow edit if you want
+                    CategoryId = selectedCategoryId
+                };
+                var json = JsonSerializer.Serialize(payload);
+                using (var content = new StringContent(json, Encoding.UTF8, "application/json"))
+                {
+                    var resp = await _http.PutAsync($"api/income/{incomeToEdit.IncomeId}", content);
+                    success = resp.IsSuccessStatusCode;
+                    if (!success)
+                        Cards.Show("Error", $"Error updating income: {resp.StatusCode}", "OK");
+                }
+            }
+
+            if (success)
+            {
+                parentForm.Controls.Remove(overlay);
+                if (parentForm is Incomes incomesForm)
+                {
+                    await incomesForm.InvokeAsync(() => incomesForm.ListLoader());
+                }
+            }
         };
 
         // ASSEMBLE CONTROLS
@@ -448,5 +541,131 @@ public static class Overlays
         parentForm.Controls.Add(panel);
         panel.BringToFront();
     }
+
+    public static async Task EditCategoryOverlay(Form parentForm, HttpClient _http, int categoryId, string currentName, string currentColor)
+    {
+        var panel = new Guna2Panel
+        {
+            BorderRadius = 10,
+            BorderThickness = 1,
+            BorderColor = Color.FromArgb(40, 40, 40),
+            FillColor = Color.FromArgb(18, 20, 20),
+            Size = new Size(350, 250),
+            Location = new Point((parentForm.ClientSize.Width - 350) / 2, 100),
+            Anchor = AnchorStyles.Top
+        };
+
+        var title = new Label
+        {
+            Text = "Edit Category",
+            ForeColor = Color.White,
+            Font = new Font("Segoe UI", 12, FontStyle.Bold),
+            Location = new Point(20, 20),
+            AutoSize = true
+        };
+
+        var nameBox = new Guna2TextBox
+        {
+            PlaceholderText = "Category Name",
+            Text = currentName,
+            Size = new Size(300, 40),
+            Location = new Point(25, 60),
+            FillColor = Color.FromArgb(18, 20, 20),
+            ForeColor = Color.White,
+            BorderColor = Color.FromArgb(67, 79, 82),
+            BorderRadius = 10
+        };
+
+        var colorBox = new Guna2TextBox
+        {
+            PlaceholderText = "#RRGGBB",
+            Text = currentColor,
+            Size = new Size(300, 40),
+            Location = new Point(25, 110),
+            FillColor = Color.FromArgb(18, 20, 20),
+            ForeColor = Color.White,
+            BorderColor = Color.FromArgb(67, 79, 82),
+            BorderRadius = 10
+        };
+
+        var saveBtn = new Guna2Button
+        {
+            Text = "Save",
+            Size = new Size(140, 40),
+            Location = new Point(25, 170),
+            FillColor = Color.FromArgb(20, 24, 26),
+            BorderColor = Color.FromArgb(39, 42, 44),
+            BorderRadius = 10,
+            Font = new Font("Segoe UI", 9)
+        };
+
+        var cancelBtn = new Guna2Button
+        {
+            Text = "Cancel",
+            Size = new Size(140, 40),
+            Location = new Point(185, 170),
+            FillColor = Color.FromArgb(20, 24, 26),
+            BorderColor = Color.FromArgb(39, 42, 44),
+            BorderRadius = 10,
+            Font = new Font("Segoe UI", 9)
+        };
+
+        cancelBtn.Click += (s, e) =>
+        {
+            parentForm.Controls.Remove(panel);
+        };
+
+        saveBtn.Click += async (s, e) =>
+        {
+            var name = nameBox.Text.Trim();
+            var color = colorBox.Text.Trim();
+
+            if (string.IsNullOrEmpty(name))
+            {
+                Cards.Show("Validation Error", "Please enter a category name.", "OK");
+                return;
+            }
+            if (!Regex.IsMatch(color, "^#[0-9A-Fa-f]{6}$"))
+            {
+                Cards.Show("Validation Error", "Please enter a valid hex color (e.g. #FFA500).", "OK");
+                return;
+            }
+
+            var payload = new { CategoryId = categoryId, CategoryName = name, Color = color };
+            var json = JsonSerializer.Serialize(payload);
+            using (var content = new StringContent(json, Encoding.UTF8, "application/json"))
+            {
+                var resp = await _http.PutAsync($"api/category/{categoryId}", content);
+                if (!resp.IsSuccessStatusCode)
+                {
+                    Cards.Show("Error", $"Error updating category: {resp.StatusCode}", "OK");
+                    return;
+                }
+            }
+
+            parentForm.Controls.Remove(panel);
+            // After editing, close overlays and re-open income overlay so it's always fresh:
+            foreach (Control c in parentForm.Controls.OfType<Guna2Panel>().ToList())
+            {
+                if (c.Name == "IncomeOverlay") parentForm.Controls.Remove(c);
+            }
+            await IncomeOverlay(parentForm, _http);
+        };
+
+        panel.Controls.AddRange(new Control[] { title, nameBox, colorBox, saveBtn, cancelBtn });
+        parentForm.Controls.Add(panel);
+        panel.BringToFront();
+    }
+
 }
 
+public static class FormExtensions
+{
+    public static async Task InvokeAsync(this Control control, Action action)
+    {
+        if (control.InvokeRequired)
+            await control.InvokeAsync(() => action());
+        else
+            action();
+    }
+}
