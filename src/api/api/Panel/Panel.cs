@@ -3,8 +3,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Text;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
 using FinSync.Data;
+using FinSync.Utils;
 using Quartz;
 using System.Linq;
 
@@ -13,12 +13,10 @@ namespace FinSync.Panel
     public static class ConsolePanel
     {
         private static IServiceProvider _services;
-        private static string _adminPassword = "admin";
 
-        public static void Start(IServiceProvider services, IConfiguration config)
+        public static void Start(IServiceProvider services)
         {
             _services = services;
-            _adminPassword = config["AdminPanel:Password"] ?? _adminPassword;
             Task.Run(() => RunMenu());
         }
 
@@ -101,24 +99,73 @@ namespace FinSync.Panel
 
         private static void ShowAdminPanel()
         {
+            Console.Write("Admin username: ");
+            string user = Console.ReadLine()?.Trim() ?? string.Empty;
             Console.Write("Admin password: ");
-            string entered = ReadPassword();
-            if (entered != _adminPassword)
-            {
-                centerBlock(new[] { "Invalid password." });
-                return;
-            }
+            string pass = ReadPassword();
 
             using var scope = _services.CreateScope();
             var ctx = scope.ServiceProvider.GetRequiredService<FinSyncContext>();
-            var schedulerFactory = scope.ServiceProvider.GetRequiredService<ISchedulerFactory>();
-            var scheduler = schedulerFactory.GetScheduler().Result;
+            var admin = ctx.Users.FirstOrDefault(u => u.Username == user && u.Role == "admin");
+            if (admin == null || !PasswordHelper.VerifyPassword(admin.PasswordHash, pass))
+            {
+                centerBlock(new[] { "Invalid credentials." });
+                return;
+            }
+
+            var schedFactory = scope.ServiceProvider.GetRequiredService<ISchedulerFactory>();
+            AdminMenu(ctx, schedFactory);
+        }
+
+        private static void AdminMenu(FinSyncContext ctx, ISchedulerFactory schedFactory)
+        {
+            while (true)
+            {
+                Console.Clear();
+                var options = new[]
+                {
+                    "1 -> View statistics",
+                    "2 -> List users",
+                    "3 -> Promote user",
+                    "4 -> Back"
+                };
+                centerBlock(options);
+
+                var key = Console.ReadKey(true).Key;
+                Console.Clear();
+
+                switch (key)
+                {
+                    case ConsoleKey.D1:
+                        ShowStats(ctx, schedFactory);
+                        break;
+                    case ConsoleKey.D2:
+                        ListUsers(ctx);
+                        break;
+                    case ConsoleKey.D3:
+                        PromoteUser(ctx);
+                        break;
+                    case ConsoleKey.D4:
+                        return;
+                    default:
+                        centerBlock(new[] { "Invalid option." });
+                        break;
+                }
+
+                centerBlock(new[] { "\nPress any key to continue..." });
+                Console.ReadKey(true);
+            }
+        }
+
+        private static void ShowStats(FinSyncContext ctx, ISchedulerFactory schedFactory)
+        {
+            var scheduler = schedFactory.GetScheduler().Result;
             var triggers = scheduler.GetTriggersOfJob(new JobKey("RecurringIncomeJob")).Result;
             var nextRun = triggers.FirstOrDefault()?.GetNextFireTimeUtc()?.ToLocalTime();
 
             var lines = new[]
             {
-                "🛠️ Admin Panel:",
+                "🛠️ Statistics:",
                 $"- Users: {ctx.Users.Count()}",
                 $"- Expenses: {ctx.Expenses.Count()}",
                 $"- Incomes: {ctx.Incomes.Count()}",
@@ -128,6 +175,42 @@ namespace FinSync.Panel
             };
 
             centerBlock(lines);
+        }
+
+        private static void ListUsers(FinSyncContext ctx)
+        {
+            var users = ctx.Users
+                .Select(u => $"{u.UserId}: {u.Username} ({u.Role})")
+                .ToArray();
+
+            if (users.Length == 0)
+            {
+                centerBlock(new[] { "No users found." });
+                return;
+            }
+
+            centerBlock(users);
+        }
+
+        private static void PromoteUser(FinSyncContext ctx)
+        {
+            Console.Write("Enter user ID to promote: ");
+            if (!int.TryParse(Console.ReadLine(), out var id))
+            {
+                centerBlock(new[] { "Invalid ID." });
+                return;
+            }
+
+            var user = ctx.Users.FirstOrDefault(u => u.UserId == id);
+            if (user == null)
+            {
+                centerBlock(new[] { "User not found." });
+                return;
+            }
+
+            user.Role = "admin";
+            ctx.SaveChanges();
+            centerBlock(new[] { "User promoted to admin." });
         }
 
         private static string ReadPassword()
