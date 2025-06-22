@@ -11,6 +11,7 @@ using Quartz;
 using Quartz.Spi;
 using FinSync.Panel;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 

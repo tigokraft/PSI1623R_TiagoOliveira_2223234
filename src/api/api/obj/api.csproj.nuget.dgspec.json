@@ -83,6 +83,10 @@
               "target": "Package",
               "version": "[9.0.4, )"
             },
+            "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "Quartz.Extensions.DependencyInjection": {
               "target": "Package",
               "version": "[3.14.0, )"
