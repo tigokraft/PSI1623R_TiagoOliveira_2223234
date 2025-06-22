@@ -20,7 +20,7 @@ Both projects are included in this repository along with a small helper for clea
 - JWT-based authentication with API key header
 - Budget, income and expense management screens
 - LiveCharts visualizations
-- Simple console panel for monitoring the API
+- Interactive console panel with admin mode for viewing statistics
 
 ## Prerequisites
 
@@ -39,6 +39,8 @@ dotnet run
 ```
 
 The API listens by default on `http://localhost:5034` and requires a header `x-api-key` with value `12345-abcdef-67890`.
+
+Health information is exposed at `/healthz` (machine readable) and `/health` (detailed). The console admin panel is protected by a password defined in `appsettings.json` under `AdminPanel:Password`.
 
 ## Running the Client
 
