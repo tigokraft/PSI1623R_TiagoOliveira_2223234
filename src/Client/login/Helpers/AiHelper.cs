@@ -13,7 +13,7 @@ namespace login.Helpers
         private static string GetApiKey()
         {
             // Use your real API key here.
-            return "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";
+            return "";
         }
 
         public static async Task<string> GenerateOverviewAsync(decimal income, decimal expenses)
