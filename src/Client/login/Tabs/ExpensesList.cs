@@ -1,231 +1,369 @@
 ﻿using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Net.Http;
-using System.Runtime.InteropServices; // You already have this
-using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace login.Tabs
 {
-    public partial class Expenses_list : Form
+    public partial class Expenses_list : UserControl
     {
-        // Theme Colors
-        private readonly Color BackgroundColor = Color.FromArgb(16, 20, 20);
-        private readonly Color CardColor = Color.FromArgb(28, 28, 28);
+        // Colors
+        private readonly Color BackgroundColor = Color.FromArgb(18, 20, 20);
+        private readonly Color CardColor = Color.FromArgb(32, 34, 35);
         private readonly Color TextPrimary = Color.White;
-        private readonly Color TextSecondary = Color.LightGray;
-
-        // --- WINAPI STUFF ---
-        [DllImport("user32.dll")]
-        private static extern int ShowScrollBar(IntPtr hWnd, int wBar, int bShow);
-
-        private const int SB_VERT = 1; // Vertical scrollbar
-
-        public class Expense
-        {
-            public int ExpenseId { get; set; }
-            public decimal Amount { get; set; }
-            public string Description { get; set; }
-            public DateTime Date { get; set; }
-            public string Tags { get; set; }
-            public string CategoryName { get; set; }
-        }
-
-        public class ExpenseResponse
-        {
-            public decimal TotalMonthlySpent { get; set; }
-            public decimal TotalAllTimeSpent { get; set; }
-            public List<Expense> Expenses { get; set; }
-        }
+        private readonly Color TextSecondary = Color.FromArgb(180, 180, 180);
+        private readonly Color AmountExpense = Color.FromArgb(220, 60, 60);
+        private readonly Color AmountIncome = Color.FromArgb(60, 180, 100);
 
         private readonly HttpClient _http;
-        private readonly FlowLayoutPanel _expenseList;
-        private readonly Label _totalBalanceLabel;
-        private readonly Label _monthlySpentLabel;
+        private List<Category> _categories = new List<Category>();
 
+        // Scrolling infra
+        private Guna2Panel viewportPanel;
+        private Panel contentPanel;
+        private Guna2VScrollBar gunaScroll;
 
-        public Expenses_list(HttpClient httpClient, int w, int h)
+        public class Category
         {
-            _http = httpClient;
-
-            Text = "Expenses Viewer";
-            Width = w;
-            Height = h;
-            BackColor = BackgroundColor;
-
-
-            // Top Summary Panel
-            var summaryPanel = new Panel
-            {
-                Dock = DockStyle.Top,
-                Height = 130,
-                Padding = new Padding(20),
-                BackColor = BackgroundColor
-            };
-
-            var totalCard = CreateSummaryCard("Total Balance", out _totalBalanceLabel);
-            totalCard.Location = new Point(10, 10);
-
-            var monthCard = CreateSummaryCard("Spent This Month", out _monthlySpentLabel);
-            monthCard.Location = new Point(240, 10);
-
-            summaryPanel.Controls.Add(totalCard);
-            summaryPanel.Controls.Add(monthCard);
-
-            // Expense List
-            _expenseList = new NoScrollFlowLayoutPanel
-            {
-                Dock = DockStyle.Fill,
-                AutoScroll = true,
-                FlowDirection = FlowDirection.TopDown,
-                WrapContents = false,
-                BackColor = BackgroundColor,
-                Padding = new Padding(20),
-            };
-
-            Controls.Add(_expenseList);
-            //Controls.Add(summaryPanel); // Make sure you uncomment this if you want the summary panel to show up
-            // or change the order of adding controls if you want summaryPanel on top
-
-            load();
-
-            // Hide the scrollbar after the form has been created
-            this.Load += (s, e) => ShowScrollBar(_expenseList.Handle, SB_VERT, 0);
+            public int CategoryId { get; set; }
+            public string CategoryName { get; set; }
+            public string Color { get; set; }
         }
 
-        private async void load()
+        public class Transaction
         {
-            await LoadExpensesAsync();
+            public int Id { get; set; }
+            public decimal Amount { get; set; }
+
+            // map incomes' "descr" field into our Description
+            [JsonPropertyName("descr")]
+            public string Description { get; set; }
+
+            public DateTime Date { get; set; }
+            public int CategoryId { get; set; }
+            public string Tags { get; set; }
+            public bool IsExpense { get; set; }
         }
 
-        private Guna2Panel CreateSummaryCard(string title, out Label valueLabel)
+        public Expenses_list(HttpClient httpClient)
         {
-            var card = new Guna2Panel
-            {
-                BorderRadius = 20,
-                FillColor = CardColor,
-                Size = new Size(200, 100),
-                ShadowDecoration = { Enabled = true }
-            };
+            InitializeComponent();
 
-            var titleLabel = new Label
+            this.DoubleBuffered = true;
+            this.Size = new Size(440, 345);
+            this.BackColor = BackgroundColor;
+
+            var lblSub = new Label
             {
-                Text = title,
+                Text = "Latest activity",
+                Font = new Font("Segoe UI", 9, FontStyle.Regular),
                 ForeColor = TextSecondary,
-                BackColor = Color.Transparent,
-                Font = new Font("Segoe UI", 10, FontStyle.Bold),
-                Location = new Point(20, 10),
-                AutoSize = true
+                AutoSize = true,
+                Location = new Point(8, 28),
+                BackColor = Color.Transparent
             };
+            Controls.Add(lblSub);
 
-            valueLabel = new Label
+            // Viewport panel
+            viewportPanel = new Guna2Panel
             {
-                Text = "$0.00",
-                ForeColor = TextPrimary,
-                Font = new Font("Segoe UI", 16, FontStyle.Bold),
-                Location = new Point(20, 40),
-                AutoSize = true
+                Location = new Point(0, 48),
+                Size = new Size(425, 260),
+                BorderRadius = 16,
+                FillColor = BackgroundColor,
+                BorderThickness = 0
             };
+            Controls.Add(viewportPanel);
 
-            card.Controls.Add(titleLabel);
-            card.Controls.Add(valueLabel);
-            return card;
+            // Content panel
+            contentPanel = new Panel
+            {
+                Location = new Point(0, 0),
+                Size = new Size(425, 0),
+                BackColor = BackgroundColor,
+                AutoScroll = false
+            };
+            viewportPanel.Controls.Add(contentPanel);
+
+            // Custom scrollbar
+            gunaScroll = new Guna2VScrollBar
+            {
+                Location = new Point(432, 48),
+                Size = new Size(8, 260),
+                FillColor = Color.FromArgb(40, 40, 40),
+                ThumbColor = Color.FromArgb(120, 120, 120),
+                BorderRadius = 4,
+                LargeChange = 40,
+                Minimum = 0,
+                Maximum = 0,
+                Value = 0
+            };
+            gunaScroll.Scroll += (s, e) =>
+            {
+                contentPanel.Top = -gunaScroll.Value;
+            };
+            Controls.Add(gunaScroll);
+
+            // Mouse‐wheel scrolling
+            viewportPanel.MouseWheel += MouseWheelScrollHandler;
+            contentPanel.MouseWheel += MouseWheelScrollHandler;
+            this.MouseWheel += MouseWheelScrollHandler;
+
+            _http = httpClient;
+            LoadAll();
         }
 
-        private async System.Threading.Tasks.Task LoadExpensesAsync()
+        private void MouseWheelScrollHandler(object sender, MouseEventArgs e)
         {
-            var response = await _http.GetAsync("api/expense/summary");
-            if (!response.IsSuccessStatusCode)
+            int newVal = gunaScroll.Value - e.Delta / 3;
+            if (newVal < gunaScroll.Minimum) newVal = gunaScroll.Minimum;
+            if (newVal > gunaScroll.Maximum) newVal = gunaScroll.Maximum;
+
+            if (newVal != gunaScroll.Value)
             {
-                MessageBox.Show("Failed to fetch expenses.");
-                return;
+                gunaScroll.Value = newVal;
+                contentPanel.Top = -newVal;
+            }
+        }
+
+        private void UpdateScrollBar()
+        {
+            int contentHeight = contentPanel.Controls
+                .Cast<Control>()
+                .Sum(c => c.Height + c.Margin.Top + c.Margin.Bottom);
+
+            contentPanel.Height = contentHeight;
+            int visibleHeight = viewportPanel.Height;
+            int max = Math.Max(0, contentHeight - visibleHeight);
+
+            gunaScroll.Maximum = max;
+            gunaScroll.LargeChange = visibleHeight;
+            gunaScroll.Enabled = max > 0;
+
+            if (gunaScroll.Value > max)
+                gunaScroll.Value = max;
+
+            contentPanel.Top = -gunaScroll.Value;
+        }
+
+        private async void LoadAll()
+        {
+            await LoadCategories();
+            await LoadExpensesAndIncomes();
+        }
+
+        private async Task LoadCategories()
+        {
+            var resp = await _http.GetAsync("api/category");
+            if (!resp.IsSuccessStatusCode) return;
+
+            var json = await resp.Content.ReadAsStringAsync();
+            _categories = JsonSerializer.Deserialize<List<Category>>(
+                json,
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
+            ) ?? new List<Category>();
+        }
+
+        private async Task LoadExpensesAndIncomes()
+        {
+            var expenses = new List<Transaction>();
+            var expResp = await _http.GetAsync("api/expense/summary");
+            if (expResp.IsSuccessStatusCode)
+            {
+                string j = await expResp.Content.ReadAsStringAsync();
+                using (JsonDocument doc = JsonDocument.Parse(j))
+                {
+                    if (doc.RootElement.TryGetProperty("expenses", out var arr))
+                    {
+                        expenses = JsonSerializer.Deserialize<List<Transaction>>(
+                            arr.GetRawText(),
+                            new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
+                        ) ?? new List<Transaction>();
+                        expenses.ForEach(t => t.IsExpense = true);
+                    }
+                }
             }
 
-            var json = await response.Content.ReadAsStringAsync();
-            var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-            var data = JsonSerializer.Deserialize<ExpenseResponse>(json, options);
-
-            _totalBalanceLabel.Text = $"${data.TotalAllTimeSpent:0.00}";
-            _monthlySpentLabel.Text = $"${data.TotalMonthlySpent:0.00}";
-
-            _expenseList.Controls.Clear();
-
-            foreach (var exp in data.Expenses)
+            var incomes = new List<Transaction>();
+            var incResp = await _http.GetAsync("api/income/summary");
+            if (incResp.IsSuccessStatusCode)
             {
-                var panel = new Guna2Panel
+                string j = await incResp.Content.ReadAsStringAsync();
+                using (JsonDocument doc = JsonDocument.Parse(j))
                 {
-                    BorderRadius = 10,
-                    FillColor = CardColor,
-                    Size = new Size(_expenseList.Width - 60, 80), // Adjusted width to account for padding
-                    Margin = new Padding(10),
-                };
+                    if (doc.RootElement.TryGetProperty("incomes", out var arr))
+                    {
+                        incomes = JsonSerializer.Deserialize<List<Transaction>>(
+                            arr.GetRawText(),
+                            new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
+                        ) ?? new List<Transaction>();
+                        incomes.ForEach(t => t.IsExpense = false);
+                    }
+                }
+            }
 
-                var title = new Label
-                {
-                    Text = $"{exp.Description} - {exp.Amount:C}",
-                    Font = new Font("Segoe UI", 10, FontStyle.Bold),
-                    ForeColor = TextPrimary,
-                    BackColor = Color.Transparent,
-                    AutoSize = true,
-                    Location = new Point(15, 10)
-                };
+            var all = expenses
+                .Concat(incomes)
+                .OrderByDescending(t => t.Date)
+                .ToList();
 
-                var info = new Label
+            contentPanel.Controls.Clear();
+
+            if (!all.Any())
+            {
+                var lbl = new Label
                 {
-                    Text = $"Date: {exp.Date:yyyy-MM-dd HH:mm} | Tags: {exp.Tags} | Category: {exp.CategoryName}",
-                    Font = new Font("Segoe UI", 9),
+                    Text = "No transactions.",
+                    Font = new Font("Segoe UI", 10, FontStyle.Italic),
                     ForeColor = TextSecondary,
-                    BackColor = Color.Transparent,
-                    AutoSize = true,
-                    Location = new Point(15, 35)
+                    Size = new Size(viewportPanel.Width - 20, 35),
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    BackColor = BackgroundColor
                 };
-
-                panel.Controls.Add(title);
-                panel.Controls.Add(info);
-                _expenseList.Controls.Add(panel);
-            }
-        }
-    }
-
-    public class NoScrollFlowLayoutPanel : FlowLayoutPanel
-    {
-        [DllImport("user32.dll")]
-        private static extern int ShowScrollBar(IntPtr hWnd, int wBar, int bShow);
-
-        private const int SB_VERT = 1; // Vertical scrollbar
-
-        protected override void WndProc(ref Message m)
-        {
-            if (m.Msg == 0x83) // WM_NCCALCSIZE
-            {
-                m.Result = IntPtr.Zero;
+                contentPanel.Controls.Add(lbl);
+                UpdateScrollBar();
                 return;
             }
-            base.WndProc(ref m);
-        }
 
-        protected override void OnHandleCreated(EventArgs e)
-        {
-            base.OnHandleCreated(e);
-            ShowScrollBar(this.Handle, SB_VERT, 0);
-        }
-
-        protected override CreateParams CreateParams
-        {
-            get
+            int y = 0;
+            foreach (var t in all)
             {
-                CreateParams cp = base.CreateParams;
-                cp.Style |= 0x00200000; // WS_VSCROLL
-                return cp;
+                var card = CreateCard(t);
+                card.Location = new Point(6, y);
+                contentPanel.Controls.Add(card);
+                y += card.Height + card.Margin.Bottom;
+                card.MouseWheel += MouseWheelScrollHandler;
             }
+            UpdateScrollBar();
+        }
+
+        private Guna2Panel CreateCard(Transaction t)
+        {
+            // Lookup category
+            var cat = _categories.FirstOrDefault(c => c.CategoryId == t.CategoryId);
+            Color dotColor = Color.Gray;
+            string catName = "Unknown";
+            if (cat != null)
+            {
+                catName = cat.CategoryName;
+                try { dotColor = ColorTranslator.FromHtml(cat.Color); }
+                catch { }
+            }
+
+            // Build icon
+            var iconBmp = new Bitmap(24, 24);
+            using (Graphics g = Graphics.FromImage(iconBmp))
+            {
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                g.Clear(Color.Transparent);
+                using (SolidBrush brush = new SolidBrush(Color.White))
+                    g.FillEllipse(brush, 0, 0, 24, 24);
+                using (Pen pen = new Pen(t.IsExpense ? AmountExpense : AmountIncome, 3))
+                {
+                    g.DrawLine(pen, 6, 12, 18, 12);
+                    if (!t.IsExpense)
+                        g.DrawLine(pen, 12, 6, 12, 18);
+                }
+            }
+
+            var panel = new Guna2Panel
+            {
+                BorderRadius = 10,
+                FillColor = CardColor,
+                Size = new Size(405, 46),
+                Margin = new Padding(0, 0, 0, 10)
+            };
+
+            // Icon
+            var pic = new PictureBox
+            {
+                Image = iconBmp,
+                SizeMode = PictureBoxSizeMode.CenterImage,
+                Size = new Size(30, 30),
+                Location = new Point(9, 8),
+                BackColor = Color.Transparent
+            };
+            panel.Controls.Add(pic);
+
+            // Description
+            var descr = new Label
+            {
+                Text = t.Description,
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
+                ForeColor = TextPrimary,
+                AutoSize = true,
+                Location = new Point(48, 6),
+                BackColor = Color.Transparent
+            };
+            panel.Controls.Add(descr);
+
+            int w = panel.ClientSize.Width;
+            int h = panel.ClientSize.Height;
+
+            // Category dot
+            var catDot = new Panel
+            {
+                Size = new Size(9, 9),
+                BackColor = Color.Transparent,
+                Location = new Point(48, h - 9 - 6)
+            };
+            catDot.Paint += (s, e) =>
+            {
+                e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                e.Graphics.FillEllipse(new SolidBrush(dotColor), 0, 0, 9, 9);
+            };
+            panel.Controls.Add(catDot);
+
+            // Category label
+            var catLbl = new Label
+            {
+                Text = catName,
+                Font = new Font("Segoe UI", 8, FontStyle.Regular),
+                ForeColor = TextSecondary,
+                AutoSize = true,
+                Location = new Point(48 + 9 + 4, h - new Font("Segoe UI", 8).Height - 6),
+                BackColor = Color.Transparent
+            };
+            panel.Controls.Add(catLbl);
+
+            // Amount
+            string amtText = (t.IsExpense ? "-" : "+") + $"{Math.Abs(t.Amount):0.00}";
+            var amtLbl = new Label
+            {
+                Text = amtText,
+                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                ForeColor = t.IsExpense ? AmountExpense : AmountIncome,
+                AutoSize = true,
+                Padding = new Padding(0, 0, 5, 0),
+                BackColor = Color.Transparent
+            };
+            int amtWidth = TextRenderer.MeasureText(amtText, amtLbl.Font).Width + 5;
+            amtLbl.Location = new Point(w - amtWidth - 12, 6);
+            panel.Controls.Add(amtLbl);
+
+            // Date
+            string dtStr = (t.Date.Year == DateTime.Now.Year)
+                ? t.Date.ToString("MMM d")
+                : t.Date.ToString("MMM d, yyyy");
+            var dateLbl = new Label
+            {
+                Text = dtStr,
+                Font = new Font("Segoe UI", 8, FontStyle.Italic),
+                ForeColor = TextSecondary,
+                AutoSize = true,
+                BackColor = Color.Transparent
+            };
+            int dateW = TextRenderer.MeasureText(dtStr, dateLbl.Font).Width;
+            dateLbl.Location = new Point(w - dateW - 12, h - dateLbl.PreferredHeight - 6);
+            panel.Controls.Add(dateLbl);
+
+            return panel;
         }
     }
-
 }

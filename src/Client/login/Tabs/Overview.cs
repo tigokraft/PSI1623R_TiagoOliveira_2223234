@@ -38,19 +38,14 @@ namespace login.Tabs
         private async void Loader()
         {
             var balance = await GetBalanceAsync();
+            //MessageBox.Show(Convert.ToString(balance), "Balance", MessageBoxButtons.OK, MessageBoxIcon.Information);
             var monthly = await GetMonthlyBalanceAsync();
             Charts chartHelper = new Charts();
             CartesianChart ovChart = chartHelper.SetupChart();
 
-            int PWidth = ExpensesPanel.Width;
-            int PHeight = ExpensesPanel.Height;
-            Expenses_list expList = new Expenses_list(_http, PWidth, PHeight);
+            Expenses_list expList = new Expenses_list(_http);
 
-            expList.TopLevel = false;
-            expList.TopMost = true;
-            expList.FormBorderStyle = FormBorderStyle.None;
-
-            BalanceTxt.Text = $"{balance:C2}";
+            BalanceTxt.Text = $"{balance}";
             if (monthly != null)
             {
                 lblSpent.Text = $"{monthly.Expenses:C2}";

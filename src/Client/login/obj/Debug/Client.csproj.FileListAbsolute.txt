@@ -1,8 +1,6 @@
 C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\bin\Debug\login.exe.config
 C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\bin\Debug\login.exe
 C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\bin\Debug\login.pdb
-C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\bin\Debug\Guna.UI.dll
-C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\bin\Debug\Guna.UI2.dll
 C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\bin\Debug\LiveCharts.dll
 C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\bin\Debug\LiveCharts.WinForms.dll
 C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\bin\Debug\LiveCharts.Wpf.dll
@@ -59,3 +57,4 @@ C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\obj\Debu
 C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\obj\Debug\login.pdb
 C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\obj\Debug\login.Tabs.Incomes.resources
 C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\obj\Debug\login.Helpers.Cards.resources
+C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\obj\Debug\login.Tabs.Expenses_list.resources

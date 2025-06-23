@@ -36,7 +36,6 @@
             this.lblSpent = new Guna.UI.WinForms.GunaLabel();
             this.label4 = new System.Windows.Forms.Label();
             this.ChartPanel = new Guna.UI2.WinForms.Guna2Panel();
-            this.label5 = new System.Windows.Forms.Label();
             this.ExpensesPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.closeapp = new Guna.UI2.WinForms.Guna2ControlBox();
             this.aiButton = new Guna.UI2.WinForms.Guna2Button();
@@ -150,28 +149,16 @@
             this.ChartPanel.Size = new System.Drawing.Size(360, 465);
             this.ChartPanel.TabIndex = 14;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Inter Medium", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Transparent;
-            this.label5.Location = new System.Drawing.Point(30, 200);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(108, 21);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Last expenses";
-            // 
             // ExpensesPanel
             // 
             this.ExpensesPanel.BackColor = System.Drawing.Color.Transparent;
             this.ExpensesPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.ExpensesPanel.BorderRadius = 10;
             this.ExpensesPanel.BorderThickness = 1;
-            this.ExpensesPanel.Location = new System.Drawing.Point(30, 235);
+            this.ExpensesPanel.Location = new System.Drawing.Point(30, 200);
             this.ExpensesPanel.Name = "ExpensesPanel";
             this.ExpensesPanel.ShadowDecoration.Parent = this.ExpensesPanel;
-            this.ExpensesPanel.Size = new System.Drawing.Size(440, 310);
+            this.ExpensesPanel.Size = new System.Drawing.Size(440, 345);
             this.ExpensesPanel.TabIndex = 13;
             this.ExpensesPanel.UseTransparentBackground = true;
             // 
@@ -221,7 +208,6 @@
             this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.closeapp);
             this.Controls.Add(this.aiButton);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.ChartPanel);
             this.Controls.Add(this.ExpensesPanel);
             this.Controls.Add(this.guna2GradientPanel2);
@@ -248,7 +234,6 @@
         private Guna.UI.WinForms.GunaLabel lblSpent;
         private System.Windows.Forms.Label label4;
         private Guna.UI2.WinForms.Guna2Panel ChartPanel;
-        private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2Panel ExpensesPanel;
         private Guna.UI2.WinForms.Guna2ControlBox closeapp;
         private Guna.UI2.WinForms.Guna2Button aiButton;

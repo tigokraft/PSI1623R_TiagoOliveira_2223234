@@ -168,7 +168,7 @@
       <DependentUpon>Expenses.cs</DependentUpon>
     </Compile>
     <Compile Include="Tabs\ExpensesList.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Tabs\ExpensesList.Designer.cs">
       <DependentUpon>ExpensesList.cs</DependentUpon>

@@ -69,6 +69,7 @@ namespace login.Tabs
             months.Reverse();
             cmbMonths.Items.AddRange(months.ToArray());
             cmbMonths.SelectedIndex = 0;
+
         }
 
         private void SetupCategories()
