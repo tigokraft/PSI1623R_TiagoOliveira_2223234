@@ -12,6 +12,8 @@ using Guna.UI2.WinForms;
 using Guna.UI2.WinForms.Enums;
 using login.Helpers;
 using login.Tabs;
+using static login.Helpers.Tasks;
+using static System.Net.WebRequestMethods;
 
 public static class Overlays
 {
@@ -655,6 +657,462 @@ public static class Overlays
         panel.Controls.AddRange(new Control[] { title, nameBox, colorBox, saveBtn, cancelBtn });
         parentForm.Controls.Add(panel);
         panel.BringToFront();
+    }
+
+    public static async Task PostExpense(string desc, decimal amt, string tags, int categoryId, HttpClient _http)
+    {
+        var payload = new 
+        {
+            Amount = amt,
+            Description = desc,
+            Tags = tags,
+            CategoryId = categoryId,
+            Date = DateTime.Now
+        };
+
+        var json = JsonSerializer.Serialize(payload);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        var response = await _http.PostAsync("api/expense/", content);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            var error = await response.Content.ReadAsStringAsync();
+            MessageBox.Show($"Failed: {response.StatusCode} - {error}");
+        }
+    }
+
+
+    public static async Task ExpenseOverlay(Form parentForm, HttpClient _http)
+    {
+        await Task.Yield();
+
+        // OVERLAY PANEL
+        var overlay = new Guna2Panel
+        {
+            BorderRadius = 10,
+            BorderThickness = 1,
+            BorderColor = Color.FromArgb(40, 40, 40),
+            FillColor = Color.FromArgb(18, 20, 20),
+            Size = new Size(350, 500),
+            Location = new Point((parentForm.ClientSize.Width - 350) / 2, 50),
+            Anchor = AnchorStyles.Top,
+            Name = "ExpenseOverlay"
+        };
+
+        // TITLE
+        var titleLabel = new Label
+        {
+            Text = "Add Expense",
+            ForeColor = Color.White,
+            Font = new Font("Segoe UI", 12, FontStyle.Bold),
+            Location = new Point(20, 20),
+            AutoSize = true
+        };
+
+        // DESCRIPTION
+        var descrBox = new Guna2TextBox
+        {
+            PlaceholderText = "Description",
+            Size = new Size(300, 40),
+            Location = new Point(25, 60),
+            BorderColor = Color.FromArgb(67, 79, 82),
+            FillColor = Color.FromArgb(18, 20, 20),
+            ForeColor = Color.White,
+            BorderRadius = 10
+        };
+
+        // AMOUNT
+        var amountBox = new Guna2TextBox
+        {
+            PlaceholderText = "Amount",
+            Size = new Size(300, 40),
+            Location = new Point(25, 110),
+            BorderColor = Color.FromArgb(67, 79, 82),
+            FillColor = Color.FromArgb(18, 20, 20),
+            ForeColor = Color.White,
+            BorderRadius = 10
+        };
+
+        // TAGS
+        var tagsBox = new Guna2TextBox
+        {
+            PlaceholderText = "Tags (comma separated)",
+            Size = new Size(300, 40),
+            Location = new Point(25, 160),
+            BorderColor = Color.FromArgb(67, 79, 82),
+            FillColor = Color.FromArgb(18, 20, 20),
+            ForeColor = Color.White,
+            BorderRadius = 10
+        };
+
+        // CLOSE BUTTON
+        var closeBtn = new Guna2ImageButton
+        {
+            Image = login.Properties.Resources.close,
+            Size = new Size(30, 30),
+            Location = new Point(overlay.Width - 40, 10),
+            ForeColor = Color.Transparent
+        };
+        closeBtn.Click += (s, ev) => parentForm.Controls.Remove(overlay);
+
+        // Category pills (like IncomeOverlay)
+        int selectedCategoryId = -1;
+        var categories = await CategoriesList.GetCategoriesAsync(_http);
+
+        var maskPanel = new Guna2Panel
+        {
+            Size = new Size(300, 40),
+            Location = new Point(25, 220),
+            BackColor = Color.FromArgb(18, 20, 20),
+            BorderRadius = 10,
+            ShadowDecoration = { Enabled = false }
+        };
+
+        var inner = new FlowLayoutPanel
+        {
+            Location = Point.Empty,
+            AutoSize = true,
+            FlowDirection = FlowDirection.LeftToRight,
+            WrapContents = false,
+            BackColor = Color.Transparent
+        };
+
+        foreach (var cat in categories)
+        {
+            int dot = 12;
+            int textW = TextRenderer.MeasureText(cat.CategoryName, new Font("Segoe UI", 9)).Width;
+
+            var btn = new Guna2Button
+            {
+                Text = cat.CategoryName,
+                AutoRoundedCorners = true,
+                BorderRadius = 15,
+                Size = new Size(dot + 6 + textW + 20, 30),
+                FillColor = Color.FromArgb(18, 20, 20),
+                ForeColor = Color.LightGray,
+                ButtonMode = ButtonMode.RadioButton,
+                Tag = cat.CategoryId,
+                Font = new Font("Segoe UI", 9)
+            };
+            btn.CheckedState.FillColor = Color.FromArgb(60, 60, 60);
+            btn.CheckedState.ForeColor = Color.White;
+
+            var bmp = new Bitmap(dot, dot);
+            using (var g = Graphics.FromImage(bmp))
+            {
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                g.FillEllipse(new SolidBrush(ColorTranslator.FromHtml(cat.Color)), 0, 0, dot, dot);
+            }
+            btn.Image = bmp;
+            btn.ImageSize = new Size(dot, dot);
+            btn.ImageAlign = HorizontalAlignment.Left;
+            btn.Padding = new Padding(dot + 6, 0, 0, 0);
+
+            btn.CheckedChanged += (s, e) =>
+            {
+                if (btn.Checked) selectedCategoryId = (int)btn.Tag;
+            };
+
+            inner.Controls.Add(btn);
+        }
+
+        maskPanel.Controls.Add(inner);
+
+        var hScroll = new Guna2HScrollBar
+        {
+            Location = new Point(maskPanel.Left, maskPanel.Bottom + 4),
+            Size = new Size(maskPanel.Width, 6),
+            Minimum = 0,
+            LargeChange = maskPanel.Width,
+            FillColor = Color.FromArgb(40, 40, 40),
+            ThumbColor = Color.FromArgb(100, 100, 100),
+            BorderRadius = 3
+        };
+        Action updateMax = () =>
+        {
+            inner.PerformLayout();
+            hScroll.Maximum = Math.Max(0, inner.Width - maskPanel.Width);
+        };
+        inner.ControlAdded += (s, e) => updateMax();
+        inner.ControlRemoved += (s, e) => updateMax();
+        hScroll.Scroll += (s, e) => inner.Left = -e.NewValue;
+        updateMax();
+
+        overlay.Controls.Add(maskPanel);
+        overlay.Controls.Add(hScroll);
+
+        var createBtn = new Guna2Button
+        {
+            Text = "Add Expense",
+            Size = new Size(300, 50),
+            Location = new Point(25, overlay.Bottom - 140),
+            FillColor = Color.FromArgb(20, 24, 26),
+            BorderColor = Color.FromArgb(39, 42, 44),
+            BorderRadius = 10,
+            BorderThickness = 1,
+            Font = new Font("Segoe UI", 9)
+        };
+
+        createBtn.Click += async (s, ev) =>
+        {
+            var description = descrBox.Text.Trim();
+            var amountText = amountBox.Text.Trim();
+            var tags = tagsBox.Text.Trim();
+
+            if (string.IsNullOrEmpty(description))
+            {
+                Cards.Show("Validation Error", "Description is required.", "OK");
+                return;
+            }
+            if (string.IsNullOrEmpty(amountText))
+            {
+                Cards.Show("Validation Error", "Amount is required.", "OK");
+                return;
+            }
+            if (!decimal.TryParse(amountText, out var amount) || amount <= 0)
+            {
+                Cards.Show("Validation Error", "Amount must be a positive number.", "OK");
+                return;
+            }
+            if (selectedCategoryId == -1)
+            {
+                Cards.Show("Validation Error", "Select a category.", "OK");
+                return;
+            }
+
+            // Call your form's PostExpense function!
+            if (parentForm is login.Tabs.Expenses expForm)
+            {
+                await PostExpense(description, amount, tags, selectedCategoryId, _http);
+                parentForm.Controls.Remove(overlay);
+                expForm.ListLoader(); // Refresh expenses
+            }
+        };
+
+        // ASSEMBLE CONTROLS
+        overlay.Controls.AddRange(new Control[]
+        {
+        titleLabel, descrBox, amountBox, tagsBox, closeBtn
+        });
+        overlay.Controls.Add(createBtn);
+        parentForm.Controls.Add(overlay);
+        overlay.BringToFront();
+    }
+
+
+
+
+    /// <summary>
+    /// Edit Expense Overlay: pre-filled, updates on save
+    /// </summary>
+    public static async Task EditExpenseOverlay(Form parentForm, HttpClient _http, dynamic expense)
+    {
+        await Task.Yield();
+
+        var overlay = new Guna2Panel
+        {
+            BorderRadius = 10,
+            BorderThickness = 1,
+            BorderColor = Color.FromArgb(40, 40, 40),
+            FillColor = Color.FromArgb(18, 20, 20),
+            Size = new Size(350, 500),
+            Location = new Point((parentForm.ClientSize.Width - 350) / 2, 50),
+            Anchor = AnchorStyles.Top,
+            Name = "ExpenseEditOverlay"
+        };
+
+        var titleLabel = new Label
+        {
+            Text = "Edit Expense",
+            ForeColor = Color.White,
+            Font = new Font("Segoe UI", 12, FontStyle.Bold),
+            Location = new Point(20, 20),
+            AutoSize = true
+        };
+
+        var descrBox = new Guna2TextBox
+        {
+            PlaceholderText = "Description",
+            Text = expense.Description,
+            Size = new Size(300, 40),
+            Location = new Point(25, 60),
+            BorderColor = Color.FromArgb(67, 79, 82),
+            FillColor = Color.FromArgb(18, 20, 20),
+            ForeColor = Color.White,
+            BorderRadius = 10
+        };
+
+        var amountBox = new Guna2TextBox
+        {
+            PlaceholderText = "Amount",
+            Text = expense.Amount.ToString(),
+            Size = new Size(300, 40),
+            Location = new Point(25, 110),
+            BorderColor = Color.FromArgb(67, 79, 82),
+            FillColor = Color.FromArgb(18, 20, 20),
+            ForeColor = Color.White,
+            BorderRadius = 10
+        };
+
+        var tagsBox = new Guna2TextBox
+        {
+            PlaceholderText = "Tags (comma separated)",
+            Text = expense.Tags ?? "",
+            Size = new Size(300, 40),
+            Location = new Point(25, 160),
+            BorderColor = Color.FromArgb(67, 79, 82),
+            FillColor = Color.FromArgb(18, 20, 20),
+            ForeColor = Color.White,
+            BorderRadius = 10
+        };
+
+        int selectedCategoryId = expense.CategoryId;
+        var categories = await CategoriesList.GetCategoriesAsync(_http);
+
+        var maskPanel = new Guna2Panel
+        {
+            Size = new Size(300, 40),
+            Location = new Point(25, 210),
+            BackColor = Color.FromArgb(18, 20, 20),
+            BorderRadius = 10,
+            ShadowDecoration = { Enabled = false }
+        };
+
+        var inner = new FlowLayoutPanel
+        {
+            Location = Point.Empty,
+            AutoSize = true,
+            FlowDirection = FlowDirection.LeftToRight,
+            WrapContents = false,
+            BackColor = Color.Transparent
+        };
+
+        foreach (var cat in categories)
+        {
+            int dot = 12;
+            int textW = TextRenderer.MeasureText(cat.CategoryName, new Font("Segoe UI", 9)).Width;
+
+            var btn = new Guna2Button
+            {
+                Text = cat.CategoryName,
+                AutoRoundedCorners = true,
+                BorderRadius = 15,
+                Size = new Size(dot + 6 + textW + 20, 30),
+                FillColor = Color.FromArgb(18, 20, 20),
+                ForeColor = Color.LightGray,
+                ButtonMode = ButtonMode.RadioButton,
+                Tag = cat.CategoryId,
+                Font = new Font("Segoe UI", 9)
+            };
+            btn.CheckedState.FillColor = Color.FromArgb(60, 60, 60);
+            btn.CheckedState.ForeColor = Color.White;
+            btn.Checked = cat.CategoryId == expense.CategoryId;
+
+            var bmp = new Bitmap(dot, dot);
+            using (var g = Graphics.FromImage(bmp))
+            {
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                g.FillEllipse(new SolidBrush(ColorTranslator.FromHtml(cat.Color)), 0, 0, dot, dot);
+            }
+            btn.Image = bmp;
+            btn.ImageSize = new Size(dot, dot);
+            btn.ImageAlign = HorizontalAlignment.Left;
+            btn.Padding = new Padding(dot + 6, 0, 0, 0);
+
+            btn.CheckedChanged += (s, e) =>
+            {
+                if (btn.Checked) selectedCategoryId = (int)btn.Tag;
+            };
+
+            inner.Controls.Add(btn);
+        }
+        maskPanel.Controls.Add(inner);
+
+        var closeBtn = new Guna2ImageButton
+        {
+            Image = login.Properties.Resources.close,
+            Size = new Size(30, 30),
+            Location = new Point(overlay.Width - 40, 10),
+            ForeColor = Color.Transparent
+        };
+        closeBtn.Click += (s, ev) => parentForm.Controls.Remove(overlay);
+
+        var saveBtn = new Guna2Button
+        {
+            Text = "Save",
+            Size = new Size(300, 50),
+            Location = new Point(25, overlay.Bottom - 140),
+            FillColor = Color.FromArgb(20, 24, 26),
+            BorderColor = Color.FromArgb(39, 42, 44),
+            BorderRadius = 10,
+            BorderThickness = 1,
+            Font = new Font("Segoe UI", 9)
+        };
+        saveBtn.Click += async (s, ev) =>
+        {
+            var description = descrBox.Text.Trim();
+            var amountText = amountBox.Text.Trim();
+            var tags = tagsBox.Text.Trim();
+
+            if (string.IsNullOrEmpty(description))
+            {
+                Cards.Show("Validation Error", "Description is required.", "OK");
+                return;
+            }
+            if (string.IsNullOrEmpty(amountText))
+            {
+                Cards.Show("Validation Error", "Amount is required.", "OK");
+                return;
+            }
+            if (!decimal.TryParse(amountText, out var amount) || amount <= 0)
+            {
+                Cards.Show("Validation Error", "Amount must be a positive number.", "OK");
+                return;
+            }
+            if (selectedCategoryId == -1)
+            {
+                Cards.Show("Validation Error", "Select a category.", "OK");
+                return;
+            }
+
+            // API: tags, category, etc.
+            var payload = new
+            {
+                Amount = amount,
+                Description = description,
+                Tags = tags,
+                CategoryId = selectedCategoryId,
+                Date = DateTime.Now
+            };
+            var json = JsonSerializer.Serialize(payload);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var resp = await _http.PutAsync($"api/expense/{expense.ExpenseId}", content);
+
+            if (resp.IsSuccessStatusCode)
+            {
+                parentForm.Controls.Remove(overlay);
+                if (parentForm is Expenses expForm)
+                {
+                    expForm.ListLoader();
+                }
+            }
+            else
+            {
+                var error = await resp.Content.ReadAsStringAsync();
+                Cards.Show("Error", $"Failed: {resp.StatusCode} - {error}", "OK");
+            }
+        };
+
+        // ASSEMBLE CONTROLS
+        overlay.Controls.AddRange(new Control[]
+        {
+            titleLabel, descrBox, amountBox, tagsBox, maskPanel, closeBtn
+        });
+        overlay.Controls.Add(saveBtn);
+        parentForm.Controls.Add(overlay);
+        overlay.BringToFront();
     }
 
 }
