@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;                  // ← needed for LINQ
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using login.Helpers;
+using login.Tabs;                   // ← for Expenses_list
 using OxyPlot.WindowsForms;
 
 namespace login.Tabs
@@ -27,7 +30,6 @@ namespace login.Tabs
             FormBorderStyle = FormBorderStyle.None;
             _http = httpClient;
 
-            // match your dark theme
             ChartPanel.BackColor = Color.FromArgb(16, 20, 20);
             ExpensesPanel.BackColor = Color.FromArgb(16, 20, 20);
 
@@ -36,29 +38,98 @@ namespace login.Tabs
 
         private async void Loader()
         {
-            // 1) Fetch data
-            var balance = await GetBalanceAsync();
-            var monthly = await GetMonthlyBalanceAsync();
+            // 1) Fetch balances
+            decimal balance = await GetBalanceAsync();
+            MonthlyBalance monthly = await GetMonthlyBalanceAsync();
 
-            // 2) Update labels
             BalanceTxt.Text = $"{balance:C0}";
             lblSpent.Text = monthly != null ? $"{monthly.Expenses:C0}" : "$0";
 
-            // 3) Expenses list on the right
+            // 2) Expenses list
             var expList = new Expenses_list(_http) { Dock = DockStyle.Fill };
             ExpensesPanel.Controls.Clear();
             ExpensesPanel.Controls.Add(expList);
 
-            // 4) Chart in the ChartPanel
-            var chart = new Charts().SetupChart();
-            chart.Dock = DockStyle.Fill;
+            // 3) Fetch raw transactions
+            var expenses = new List<Expenses_list.Transaction>();
+            var incomes = new List<Expenses_list.Transaction>();
+
+            HttpResponseMessage expResp = await _http.GetAsync("api/expense/summary");
+            if (expResp.IsSuccessStatusCode)
+            {
+                string j = await expResp.Content.ReadAsStringAsync();
+                using (JsonDocument doc = JsonDocument.Parse(j))
+                {
+                    if (doc.RootElement.TryGetProperty("expenses", out var arr))
+                    {
+                        expenses = JsonSerializer.Deserialize<List<Expenses_list.Transaction>>(
+                            arr.GetRawText(),
+                            new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
+                        ) ?? new List<Expenses_list.Transaction>();
+                        expenses.ForEach(t => t.IsExpense = true);
+                    }
+                }
+            }
+
+            HttpResponseMessage incResp = await _http.GetAsync("api/income/summary");
+            if (incResp.IsSuccessStatusCode)
+            {
+                string j = await incResp.Content.ReadAsStringAsync();
+                using (JsonDocument doc = JsonDocument.Parse(j))
+                {
+                    if (doc.RootElement.TryGetProperty("incomes", out var arr))
+                    {
+                        incomes = JsonSerializer.Deserialize<List<Expenses_list.Transaction>>(
+                            arr.GetRawText(),
+                            new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
+                        ) ?? new List<Expenses_list.Transaction>();
+                        incomes.ForEach(t => t.IsExpense = false);
+                    }
+                }
+            }
+
+            // 4) Align by date
+            var allDates = expenses
+                .Select(tx => tx.Date.Date)
+                .Concat(incomes.Select(tx => tx.Date.Date))
+                .Distinct()
+                .OrderBy(d => d)
+                .ToList();
+
+            // X-axis labels: show only first, middle, last
+            string[] xLabels = allDates
+                .Select((d, i) =>
+                    i == 0
+                    || i == allDates.Count / 2
+                    || i == allDates.Count - 1
+                        ? d.ToString("MMM d")
+                        : ""
+                )
+                .ToArray();
+
+            // 5) Daily totals
+            double[] expVals = allDates
+                .Select(d => (double)expenses
+                    .Where(tx => tx.Date.Date == d)
+                    .Sum(tx => tx.Amount))
+                .ToArray();
+
+            double[] incVals = allDates
+                .Select(d => (double)incomes
+                    .Where(tx => tx.Date.Date == d)
+                    .Sum(tx => tx.Amount))
+                .ToArray();
+
+            // 6) Render the chart
+            var chartPanel = new Charts().SetupChart(incVals, expVals, xLabels);
+            chartPanel.Dock = DockStyle.Fill;
             ChartPanel.Controls.Clear();
-            ChartPanel.Controls.Add(chart);
+            ChartPanel.Controls.Add(chartPanel);
         }
 
-        private async Task<decimal> GetBalanceAsync()
+        public async Task<decimal> GetBalanceAsync()
         {
-            var token = LoadToken();
+            string token = LoadToken();
             if (string.IsNullOrEmpty(token))
             {
                 MessageBox.Show("No saved token. Please log in.");
@@ -70,7 +141,7 @@ namespace login.Tabs
                 var resp = await _http.GetAsync("api/balance");
                 if (resp.IsSuccessStatusCode)
                 {
-                    var body = await resp.Content.ReadAsStringAsync();
+                    string body = await resp.Content.ReadAsStringAsync();
                     if (decimal.TryParse(body, out var bal))
                         return bal;
                 }
@@ -90,7 +161,7 @@ namespace login.Tabs
             {
                 var resp = await _http.GetAsync("api/balance/monthly");
                 if (!resp.IsSuccessStatusCode) return null;
-                var json = await resp.Content.ReadAsStringAsync();
+                string json = await resp.Content.ReadAsStringAsync();
                 return JsonSerializer.Deserialize<MonthlyBalance>(json, new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true
@@ -108,10 +179,7 @@ namespace login.Tabs
             return File.Exists(path) ? File.ReadAllText(path) : null;
         }
 
-        private void closeapp_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
+        private void closeapp_Click(object sender, EventArgs e) => Application.Exit();
 
         private async void aiButton_Click(object sender, EventArgs e)
         {
@@ -121,7 +189,7 @@ namespace login.Tabs
                 MessageBox.Show("Unable to fetch monthly balance.");
                 return;
             }
-            var summary = await AiHelper.GenerateOverviewAsync(monthly.Income, monthly.Expenses);
+            string summary = await AiHelper.GenerateOverviewAsync(monthly.Income, monthly.Expenses);
             MessageBox.Show(summary, "AI Overview");
         }
     }

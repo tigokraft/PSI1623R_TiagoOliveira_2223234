@@ -686,15 +686,7 @@ public static class Overlays
     {
         await Task.Yield();
 
-        // ── Constants for layout ───────────────────────────────────────────────
-        const int overlayWidth = 350;
-        const int overlayHeight = 500;
-        const int marginX = 25;
-        const int controlWidth = 300;
-        const int verticalGap = 15;
-        const int labelGap = 4;
-
-        // ── Create overlay panel ─────────────────────────────────────────────
+        const int overlayWidth = 350, overlayHeight = 500, marginX = 25, controlWidth = 300, gap = 15, labelGap = 4;
         var overlay = new Guna2Panel
         {
             Name = "ExpenseOverlay",
@@ -709,8 +701,7 @@ public static class Overlays
         overlay.SuspendLayout();
 
         int currY = 20;
-
-        // ── Title ───────────────────────────────────────────────────────────────
+        // ── Title ──────────────────────────────────────────────────────
         var title = new Label
         {
             Text = "Add Expense",
@@ -720,20 +711,11 @@ public static class Overlays
             AutoSize = true
         };
         overlay.Controls.Add(title);
+        currY += title.Height + gap;
 
-        currY += title.Height + verticalGap;
-
-        // ── Description ────────────────────────────────────────────────────────
-        var lblDesc = new Label
-        {
-            Text = "Description",
-            ForeColor = Color.White,
-            Font = new Font("Segoe UI", 9),
-            Location = new Point(marginX, currY),
-            AutoSize = true
-        };
+        // ── Description ───────────────────────────────────────────────
+        var lblDesc = new Label { Text = "Description", ForeColor = Color.White, Font = new Font("Segoe UI", 9), Location = new Point(marginX, currY), AutoSize = true };
         overlay.Controls.Add(lblDesc);
-
         currY += lblDesc.Height + labelGap;
 
         var txtDesc = new Guna2TextBox
@@ -747,20 +729,11 @@ public static class Overlays
             BorderRadius = 10
         };
         overlay.Controls.Add(txtDesc);
+        currY += txtDesc.Height + gap;
 
-        currY += txtDesc.Height + verticalGap;
-
-        // ── Amount ─────────────────────────────────────────────────────────────
-        var lblAmt = new Label
-        {
-            Text = "Amount",
-            ForeColor = Color.White,
-            Font = new Font("Segoe UI", 9),
-            Location = new Point(marginX, currY),
-            AutoSize = true
-        };
+        // ── Amount ───────────────────────────────────────────────────
+        var lblAmt = new Label { Text = "Amount", ForeColor = Color.White, Font = new Font("Segoe UI", 9), Location = new Point(marginX, currY), AutoSize = true };
         overlay.Controls.Add(lblAmt);
-
         currY += lblAmt.Height + labelGap;
 
         var txtAmt = new Guna2TextBox
@@ -774,20 +747,11 @@ public static class Overlays
             BorderRadius = 10
         };
         overlay.Controls.Add(txtAmt);
+        currY += txtAmt.Height + gap;
 
-        currY += txtAmt.Height + verticalGap;
-
-        // ── Date ────────────────────────────────────────────────────────────────
-        var lblDate = new Label
-        {
-            Text = "Date",
-            ForeColor = Color.White,
-            Font = new Font("Segoe UI", 9),
-            Location = new Point(marginX, currY),
-            AutoSize = true
-        };
+        // ── Date ─────────────────────────────────────────────────────
+        var lblDate = new Label { Text = "Date", ForeColor = Color.White, Font = new Font("Segoe UI", 9), Location = new Point(marginX, currY), AutoSize = true };
         overlay.Controls.Add(lblDate);
-
         currY += lblDate.Height + labelGap;
 
         var dtPicker = new Guna2DateTimePicker
@@ -800,23 +764,13 @@ public static class Overlays
             BorderRadius = 10
         };
         overlay.Controls.Add(dtPicker);
+        currY += dtPicker.Height + gap;
 
-        currY += dtPicker.Height + verticalGap;
-
-        // ── Category ────────────────────────────────────────────────────────────
-        var lblCat = new Label
-        {
-            Text = "Category",
-            ForeColor = Color.White,
-            Font = new Font("Segoe UI", 9),
-            Location = new Point(marginX, currY),
-            AutoSize = true
-        };
+        // ── Category ─────────────────────────────────────────────────
+        var lblCat = new Label { Text = "Category", ForeColor = Color.White, Font = new Font("Segoe UI", 9), Location = new Point(marginX, currY), AutoSize = true };
         overlay.Controls.Add(lblCat);
-
         currY += lblCat.Height + labelGap;
 
-        // pill‐style category selector
         var maskPanel = new Guna2Panel
         {
             Size = new Size(controlWidth, 40),
@@ -825,26 +779,16 @@ public static class Overlays
             BorderRadius = 10,
             ShadowDecoration = { Enabled = false }
         };
+        var inner = new FlowLayoutPanel { Location = Point.Empty, AutoSize = true, FlowDirection = FlowDirection.LeftToRight, WrapContents = false };
+        maskPanel.Controls.Add(inner);
         overlay.Controls.Add(maskPanel);
 
-        var inner = new FlowLayoutPanel
-        {
-            Location = Point.Empty,
-            AutoSize = true,
-            FlowDirection = FlowDirection.LeftToRight,
-            WrapContents = false,
-            BackColor = Color.Transparent
-        };
-        maskPanel.Controls.Add(inner);
-
-        // load categories & build buttons
         int selectedCategoryId = -1;
         var categories = await CategoriesList.GetCategoriesAsync(_http);
         foreach (var cat in categories)
         {
             int dot = 12;
             int textW = TextRenderer.MeasureText(cat.CategoryName, new Font("Segoe UI", 9)).Width;
-
             var btn = new Guna2Button
             {
                 Text = cat.CategoryName,
@@ -862,25 +806,19 @@ public static class Overlays
 
             var bmp = new Bitmap(dot, dot);
             using (var g = Graphics.FromImage(bmp))
-            {
-                g.SmoothingMode = SmoothingMode.AntiAlias;
                 g.FillEllipse(new SolidBrush(ColorTranslator.FromHtml(cat.Color)), 0, 0, dot, dot);
-            }
+
             btn.Image = bmp;
             btn.ImageSize = new Size(dot, dot);
             btn.ImageAlign = HorizontalAlignment.Left;
             btn.Padding = new Padding(dot + 6, 0, 0, 0);
+            btn.CheckedChanged += (s, e) => { if (btn.Checked) selectedCategoryId = (int)btn.Tag; };
 
-            btn.CheckedChanged += (s, e) =>
-            {
-                if (btn.Checked) selectedCategoryId = (int)btn.Tag;
-            };
             inner.Controls.Add(btn);
         }
-
         currY += maskPanel.Height + labelGap;
 
-        // horizontal scrollbar
+        // ── Scrollbar ────────────────────────────────────────────────
         var hScroll = new Guna2HScrollBar
         {
             Location = new Point(marginX, currY),
@@ -891,21 +829,15 @@ public static class Overlays
             ThumbColor = Color.FromArgb(100, 100, 100),
             BorderRadius = 3
         };
-        Action updateMax = () =>
-        {
-            inner.PerformLayout();
-            hScroll.Maximum = Math.Max(0, inner.Width - maskPanel.Width);
-        };
+        Action updateMax = () => { inner.PerformLayout(); hScroll.Maximum = Math.Max(0, inner.Width - maskPanel.Width); };
         inner.ControlAdded += (s, e) => updateMax();
         inner.ControlRemoved += (s, e) => updateMax();
         hScroll.Scroll += (s, e) => inner.Left = -e.NewValue;
         updateMax();
-
         overlay.Controls.Add(hScroll);
+        currY += hScroll.Height + gap;
 
-        currY += hScroll.Height + verticalGap;
-
-        // ── Add Expense Button ─────────────────────────────────────────────────────
+        // ── Add Expense Button ────────────────────────────────────────
         var btnAdd = new Guna2Button
         {
             Text = "Add Expense",
@@ -919,11 +851,49 @@ public static class Overlays
         };
         btnAdd.Click += async (s, ev) =>
         {
-            // … your existing validation + PostExpense logic …
+            var description = txtDesc.Text.Trim();
+            var amountText = txtAmt.Text.Trim();
+            if (string.IsNullOrEmpty(description))
+            {
+                Cards.Show("Validation Error", "Description is required.", "OK");
+                return;
+            }
+            if (!decimal.TryParse(amountText, out var amount) || amount <= 0)
+            {
+                Cards.Show("Validation Error", "Amount must be a positive number.", "OK");
+                return;
+            }
+            if (selectedCategoryId == -1)
+            {
+                Cards.Show("Validation Error", "Select a category.", "OK");
+                return;
+            }
+
+            // build payload
+            var payload = new
+            {
+                Description = description,
+                Amount = amount,
+                CategoryId = selectedCategoryId,
+                Date = dtPicker.Value
+            };
+            var json = JsonSerializer.Serialize(payload);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var resp = await _http.PostAsync("api/expense", content);
+            if (!resp.IsSuccessStatusCode)
+            {
+                var err = await resp.Content.ReadAsStringAsync();
+                Cards.Show("Error", $"Failed to save expense: {resp.StatusCode} – {err}", "OK");
+                return;
+            }
+
+            parentForm.Controls.Remove(overlay);
+            if (parentForm is Expenses expForm)
+                await expForm.InvokeAsync(() => expForm.ListLoader());
         };
         overlay.Controls.Add(btnAdd);
 
-        // ── Close Button ───────────────────────────────────────────────────────────
+        // ── Close Button ───────────────────────────────────────────────
         var btnClose = new Guna2ImageButton
         {
             Image = login.Properties.Resources.close,
