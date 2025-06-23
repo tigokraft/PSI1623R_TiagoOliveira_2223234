@@ -88,7 +88,7 @@ namespace login.Tabs
         public async void ListLoader()
         {
             int tablePadding = 20;
-            int desiredTotalContainerWidth = 900;
+            int desiredTotalContainerWidth = 800;
             int desiredStartY = 130;
 
             int availableContentWidth = desiredTotalContainerWidth - (tablePadding * 2);

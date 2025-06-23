@@ -659,13 +659,12 @@ public static class Overlays
         panel.BringToFront();
     }
 
-    public static async Task PostExpense(string desc, decimal amt, string tags, int categoryId, HttpClient _http)
+    public static async Task PostExpense(string desc, decimal amt, int categoryId, HttpClient _http)
     {
         var payload = new 
         {
             Amount = amt,
             Description = desc,
-            Tags = tags,
             CategoryId = categoryId,
             Date = DateTime.Now
         };
@@ -734,12 +733,10 @@ public static class Overlays
             BorderRadius = 10
         };
 
-        // TAGS
-        var tagsBox = new Guna2TextBox
+        var datePicker = new Guna2DateTimePicker
         {
-            PlaceholderText = "Tags (comma separated)",
             Size = new Size(300, 40),
-            Location = new Point(25, 160),
+            Location = new Point(25, 170),
             BorderColor = Color.FromArgb(67, 79, 82),
             FillColor = Color.FromArgb(18, 20, 20),
             ForeColor = Color.White,
@@ -858,7 +855,6 @@ public static class Overlays
         {
             var description = descrBox.Text.Trim();
             var amountText = amountBox.Text.Trim();
-            var tags = tagsBox.Text.Trim();
 
             if (string.IsNullOrEmpty(description))
             {
@@ -884,7 +880,7 @@ public static class Overlays
             // Call your form's PostExpense function!
             if (parentForm is login.Tabs.Expenses expForm)
             {
-                await PostExpense(description, amount, tags, selectedCategoryId, _http);
+                await PostExpense(description, amount, selectedCategoryId, _http);
                 parentForm.Controls.Remove(overlay);
                 expForm.ListLoader(); // Refresh expenses
             }
@@ -893,7 +889,7 @@ public static class Overlays
         // ASSEMBLE CONTROLS
         overlay.Controls.AddRange(new Control[]
         {
-        titleLabel, descrBox, amountBox, tagsBox, closeBtn
+        titleLabel, descrBox, amountBox, closeBtn, datePicker
         });
         overlay.Controls.Add(createBtn);
         parentForm.Controls.Add(overlay);

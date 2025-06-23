@@ -21,7 +21,9 @@ namespace login.Tabs
             public string Descr { get; set; }
             public DateTime Date { get; set; }
             public int CategoryId { get; set; }
+            public bool? Recurring { get; set; } // optional support
         }
+
         public class IncomeResponse
         {
             [JsonPropertyName("incomes")]
@@ -35,8 +37,9 @@ namespace login.Tabs
 
         private int column1Width = 110;
         private int column2Width = 150;
-        private int column3Width = 240; // dynamically updated
+        private int column3Width = 240;
         private int column4Width = 90;
+        private int column5Width = 90; // recurring column
 
         public Incomes(HttpClient http)
         {
@@ -86,10 +89,9 @@ namespace login.Tabs
             int desiredTotalContainerWidth = 800;
             int desiredStartY = 130;
             int availableContentWidth = desiredTotalContainerWidth - (tablePadding * 2);
-            int fixedColumnsSumWidth = column1Width + column2Width + column4Width;
+            int fixedColumnsSumWidth = column1Width + column2Width + column4Width + column5Width;
             column3Width = availableContentWidth - fixedColumnsSumWidth;
 
-            // Only one panel (incomePanel) at a time!
             if (incomePanel != null)
             {
                 this.Controls.Remove(incomePanel.Parent);
@@ -99,7 +101,7 @@ namespace login.Tabs
 
             var tableContainerPanel = new Guna2Panel
             {
-                Size = new Size(desiredTotalContainerWidth, 200 + (tablePadding * 2)), // 200px list
+                Size = new Size(desiredTotalContainerWidth, 200 + (tablePadding * 2)),
                 Location = new Point(20, desiredStartY),
                 BorderRadius = 10,
                 BorderThickness = 1,
@@ -130,7 +132,6 @@ namespace login.Tabs
         private async Task LoadIncomes()
         {
             _categories = await CategoriesList.GetCategoriesAsync(_http);
-
             var resp = await _http.GetAsync("api/income/summary");
             if (!resp.IsSuccessStatusCode)
             {
@@ -149,16 +150,14 @@ namespace login.Tabs
         public void RefreshList()
         {
             incomePanel.Controls.Clear();
-            int totalWidth = column1Width + column2Width + column3Width + column4Width;
+            int totalWidth = column1Width + column2Width + column3Width + column4Width + column5Width;
 
-            // Header
             incomePanel.Controls.Add(CreateTableRow(
-                "Date", "Category", "Description", "Amount",
+                "Date", "Category", "Description", "Amount", "Recurring",
                 isHeader: true,
                 totalWidth: totalWidth
             ));
 
-            // Month filtering
             var filtered = _rawIncomes;
             if (cmbMonths.SelectedIndex > 0)
             {
@@ -166,7 +165,7 @@ namespace login.Tabs
                 if (DateTime.TryParseExact(sel, "MMMM yyyy", null, System.Globalization.DateTimeStyles.None, out var dt))
                     filtered = filtered.Where(x => x.Date.Month == dt.Month && x.Date.Year == dt.Year).ToList();
             }
-            // Category filtering
+
             if (cmbCat.SelectedIndex > 0 && _categories != null)
             {
                 string selectedCat = cmbCat.SelectedItem.ToString();
@@ -181,12 +180,14 @@ namespace login.Tabs
                 var catName = cat?.CategoryName ?? "Unknown";
                 var catColor = cat != null ? ColorTranslator.FromHtml(cat.Color) : Color.Gray;
 
-                // Create the row and pass income object for context menu
+                var recurringText = inc.Recurring == true ? "Yes" : "No";
+
                 var row = CreateTableRow(
                     inc.Date.ToString("MMM d, yyyy"),
                     catName,
                     inc.Descr,
                     $"${inc.Amount:N2}",
+                    recurringText,
                     isHeader: false,
                     categoryColor: catColor,
                     totalWidth: totalWidth,
@@ -197,7 +198,7 @@ namespace login.Tabs
         }
 
         private Guna2Panel CreateTableRow(
-            string dateText, string categoryText, string descriptionText, string amountText,
+            string dateText, string categoryText, string descriptionText, string amountText, string recurringText,
             bool isHeader = false, Color? categoryColor = null, int totalWidth = 600, Income income = null)
         {
             var rowPanel = new Guna2Panel
@@ -228,8 +229,9 @@ namespace login.Tabs
                 Margin = new Padding(0),
             };
 
+            // Date
             var dateColumnPanel = createColumnPanel(column1Width);
-            var dateLabel = new Label
+            dateColumnPanel.Controls.Add(new Label
             {
                 Text = dateText,
                 Font = new Font("Segoe UI", 9, isHeader ? FontStyle.Bold : FontStyle.Regular),
@@ -239,10 +241,10 @@ namespace login.Tabs
                 Size = new Size(column1Width - internalPadding, rowPanel.Height),
                 Location = new Point(internalPadding, 0),
                 TextAlign = ContentAlignment.MiddleLeft,
-            };
-            dateColumnPanel.Controls.Add(dateLabel);
+            });
             innerFlowPanel.Controls.Add(dateColumnPanel);
 
+            // Category
             var categoryColumnPanel = createColumnPanel(column2Width);
             if (!isHeader)
             {
@@ -275,15 +277,13 @@ namespace login.Tabs
                     Location = new Point(dot.Right + 5, (categoryTagPanel.MinimumSize.Height - 5) / 2)
                 };
                 categoryTagPanel.Controls.Add(catTextLabel);
-
                 categoryTagPanel.Width = catTextLabel.Right + 5;
 
                 categoryColumnPanel.Controls.Add(categoryTagPanel);
-
             }
             else
             {
-                var catHeaderLabel = new Label
+                categoryColumnPanel.Controls.Add(new Label
                 {
                     Text = categoryText,
                     Font = new Font("Segoe UI", 9, FontStyle.Bold),
@@ -293,13 +293,13 @@ namespace login.Tabs
                     Size = new Size(column2Width - internalPadding, rowPanel.Height),
                     Location = new Point(internalPadding, 0),
                     TextAlign = ContentAlignment.MiddleLeft,
-                };
-                categoryColumnPanel.Controls.Add(catHeaderLabel);
+                });
             }
             innerFlowPanel.Controls.Add(categoryColumnPanel);
 
+            // Description
             var descriptionColumnPanel = createColumnPanel(column3Width);
-            var descriptionLabel = new Label
+            descriptionColumnPanel.Controls.Add(new Label
             {
                 Text = descriptionText,
                 Font = new Font("Segoe UI", 9, isHeader ? FontStyle.Bold : FontStyle.Regular),
@@ -309,12 +309,12 @@ namespace login.Tabs
                 Size = new Size(column3Width - internalPadding, rowPanel.Height),
                 Location = new Point(internalPadding, 0),
                 TextAlign = ContentAlignment.MiddleLeft,
-            };
-            descriptionColumnPanel.Controls.Add(descriptionLabel);
+            });
             innerFlowPanel.Controls.Add(descriptionColumnPanel);
 
+            // Amount
             var amountColumnPanel = createColumnPanel(column4Width);
-            var amountLabel = new Label
+            amountColumnPanel.Controls.Add(new Label
             {
                 Text = amountText,
                 Font = new Font("Segoe UI", 9, isHeader ? FontStyle.Bold : FontStyle.Regular),
@@ -324,11 +324,24 @@ namespace login.Tabs
                 Size = new Size(column4Width - internalPadding, rowPanel.Height),
                 Location = new Point(internalPadding, 0),
                 TextAlign = ContentAlignment.MiddleRight,
-            };
-            amountColumnPanel.Controls.Add(amountLabel);
+            });
             innerFlowPanel.Controls.Add(amountColumnPanel);
 
-            // ADD CONTEXT MENU for right-click on INCOME rows (not header)
+            // Recurring
+            var recurringColumnPanel = createColumnPanel(column5Width);
+            recurringColumnPanel.Controls.Add(new Label
+            {
+                Text = recurringText,
+                Font = new Font("Segoe UI", 9, isHeader ? FontStyle.Bold : FontStyle.Regular),
+                ForeColor = isHeader ? Color.LightGray : Color.White,
+                BackColor = Color.Transparent,
+                AutoSize = false,
+                Size = new Size(column5Width - internalPadding, rowPanel.Height),
+                Location = new Point(internalPadding, 0),
+                TextAlign = ContentAlignment.MiddleCenter,
+            });
+            innerFlowPanel.Controls.Add(recurringColumnPanel);
+
             if (!isHeader && income != null)
             {
                 var contextMenu = new ContextMenuStrip();
@@ -365,19 +378,17 @@ namespace login.Tabs
                         if (e.Button == MouseButtons.Right)
                             contextMenu.Show(rowPanel, rowPanel.PointToClient(Control.MousePosition));
                     };
-                    // Recursively attach to all children
                     foreach (Control child in control.Controls)
                         AttachContextMenu(child);
                 }
+
                 AttachContextMenu(rowPanel);
             }
 
             return rowPanel;
         }
 
-        private void closeapp_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
+        private void closeapp_Click(object sender, EventArgs e) => Application.Exit();
+        private void Incomes_Load(object sender, EventArgs e) { }
     }
 }
