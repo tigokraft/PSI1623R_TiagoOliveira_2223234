@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|c:\\users\\exxo\\downloads\\psi1623r_tiagooliveira_2223234\\src\\client\\login\\tabs\\overview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|solutionrelative:login\\tabs\\overview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|c:\\users\\exxo\\downloads\\psi1623r_tiagooliveira_2223234\\src\\client\\login\\helpers\\charts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|solutionrelative:login\\helpers\\charts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|c:\\users\\exxo\\downloads\\psi1623r_tiagooliveira_2223234\\src\\client\\login\\tabs\\overview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|solutionrelative:login\\tabs\\overview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\tabs\\incomes.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,20 +38,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Charts.cs",
               "DocumentMoniker": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Helpers\\Charts.cs",
               "RelativeDocumentMoniker": "login\\Helpers\\Charts.cs",
               "ToolTip": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Helpers\\Charts.cs",
               "RelativeToolTip": "login\\Helpers\\Charts.cs",
-              "ViewState": "AgIAADwAAAAAAAAAAAAIwF4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAIwJMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-23T22:10:05.335Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Overview.cs",
               "DocumentMoniker": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Tabs\\Overview.cs",
               "RelativeDocumentMoniker": "login\\Tabs\\Overview.cs",

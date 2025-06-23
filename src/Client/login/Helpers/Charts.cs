@@ -1,4 +1,8 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
+using Guna.UI2.WinForms;
 using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
@@ -9,86 +13,133 @@ namespace login.Helpers
     internal class Charts
     {
         /// <summary>
-        /// Returns a PlotView with two line series (Income/Expenses), dark theme,
-        /// light horizontal gridlines, category X-axis, and dollar-formatted Y-axis.
+        /// Returns a Guna2Panel containing a PlotView with Income/Expenses
+        /// area fills + lines, a faint baseline, and a 1px panel border.
         /// </summary>
-        public PlotView SetupChart()
+        public Guna2Panel SetupChart()
         {
-            // 1) WinForms host
+            // 1) Container with border
+            var container = new Guna2Panel
+            {
+                Dock = DockStyle.Fill,
+                FillColor = Color.FromArgb(16, 20, 20),
+                BorderColor = Color.FromArgb(60, 60, 60),
+                BorderThickness = 1,
+                BorderRadius = 6
+            };
+
+            // 2) PlotView host
             var plotView = new PlotView
             {
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                BackColor = Color.FromArgb(20, 20, 20)
+                Dock = DockStyle.Fill,
+                BackColor = Color.FromArgb(16, 20, 20)
             };
+            container.Controls.Add(plotView);
 
-            // 2) PlotModel
+            // 3) Model
             var model = new PlotModel
             {
-                Background = OxyColor.FromRgb(18, 20, 20),
-                PlotAreaBackground = OxyColor.FromRgb(20, 20, 20),
-                IsLegendVisible = true
+                Background = OxyColors.Transparent,
+                PlotAreaBackground = OxyColors.Transparent,
+                IsLegendVisible = false
             };
 
-            // 3) Sample data + labels
-            double[] incomeData = { 0, 90, 130, 160, 180, 200, 190, 210, 205, 220 };
-            double[] expenseData = { 0, 30, 50, 80, 95, 110, 100, 120, 115, 130 };
+            // 4) Data + labels
+            double[] incomeRaw = { 0, 90, 130, 160, 180, 200, 190, 210, 205, 220 };
+            double[] expenseRaw = { 0, 30, 50, 80, 95, 110, 100, 120, 115, 130 };
             string[] xLabels = { "Apr 1", "", "", "", "", "24", "", "", "" };
 
-            // 4) Income line
-            var incomeSeries = new LineSeries
+            // 5) Smooth lightly
+            var incomePts = Smooth(incomeRaw, 1).ToList();
+            var expensePts = Smooth(expenseRaw, 1).ToList();
+
+            // 6) Income area fill
+            var incArea = new AreaSeries
             {
-                Title = "Income",
+                Color = OxyColors.Transparent,
+                Fill = OxyColor.FromArgb(60, 50, 220, 180), // 60/255 opacity
+            };
+            incArea.Points.AddRange(incomePts);
+            incArea.Points2.AddRange(incomePts.Select(p => new DataPoint(p.X, 0)));
+            model.Series.Add(incArea);
+
+            // 7) Income outline
+            var incLine = new LineSeries
+            {
                 Color = OxyColor.FromRgb(50, 220, 180),
                 StrokeThickness = 2,
                 MarkerType = MarkerType.None
             };
-            for (int i = 0; i < incomeData.Length; i++)
-                incomeSeries.Points.Add(new DataPoint(i, incomeData[i]));
-            model.Series.Add(incomeSeries);
+            incLine.Points.AddRange(incomePts);
+            model.Series.Add(incLine);
 
-            // 5) Expenses line
-            var expenseSeries = new LineSeries
+            // 8) Expenses area fill
+            var expArea = new AreaSeries
             {
-                Title = "Expenses",
+                Color = OxyColors.Transparent,
+                Fill = OxyColor.FromArgb(60, 220, 100, 90),
+            };
+            expArea.Points.AddRange(expensePts);
+            expArea.Points2.AddRange(expensePts.Select(p => new DataPoint(p.X, 0)));
+            model.Series.Add(expArea);
+
+            // 9) Expenses outline
+            var expLine = new LineSeries
+            {
                 Color = OxyColor.FromRgb(220, 100, 90),
                 StrokeThickness = 2,
                 MarkerType = MarkerType.None
             };
-            for (int i = 0; i < expenseData.Length; i++)
-                expenseSeries.Points.Add(new DataPoint(i, expenseData[i]));
-            model.Series.Add(expenseSeries);
+            expLine.Points.AddRange(expensePts);
+            model.Series.Add(expLine);
 
-            // 6) X-axis: categories
+            // 10) X-axis with subtle baseline
             var xAxis = new CategoryAxis
             {
                 Position = AxisPosition.Bottom,
-                TextColor = OxyColors.LightGray,
-                AxislineColor = OxyColors.Transparent,
+                TextColor = OxyColors.White,
+                FontSize = 10,
+                AxislineColor = OxyColor.FromArgb(80, 255, 255, 255),
+                AxislineThickness = 1,
                 MajorGridlineStyle = LineStyle.None,
                 MinorGridlineStyle = LineStyle.None,
                 TickStyle = OxyPlot.Axes.TickStyle.None
             };
-            foreach (var lbl in xLabels)
-                xAxis.Labels.Add(lbl);
+            foreach (var lbl in xLabels) xAxis.Labels.Add(lbl);
             model.Axes.Add(xAxis);
 
-            // 7) Y-axis: $ formatter + horizontal gridlines
+            // 11) Y-axis with gridlines
             var yAxis = new LinearAxis
             {
                 Position = AxisPosition.Left,
                 Minimum = 0,
-                TextColor = OxyColors.LightGray,
+                TextColor = OxyColors.White,
+                FontSize = 10,
                 AxislineColor = OxyColors.Transparent,
                 MajorGridlineStyle = LineStyle.Solid,
-                MajorGridlineColor = OxyColor.FromArgb(40, 128, 128, 128),
+                MajorGridlineColor = OxyColor.FromArgb(30, 255, 255, 255),
                 MinorGridlineStyle = LineStyle.None,
                 LabelFormatter = v => $"${v:0}"
             };
             model.Axes.Add(yAxis);
 
-            // 8) Attach and return
+            // 12) Attach and return
             plotView.Model = model;
-            return plotView;
+            return container;
+        }
+
+        // moving-average smoother
+        private static IEnumerable<DataPoint> Smooth(double[] data, int w)
+        {
+            int n = data.Length;
+            for (int i = 0; i < n; i++)
+            {
+                int s = i - w < 0 ? 0 : i - w;
+                int e = i + w >= n ? n - 1 : i + w;
+                double sum = 0;
+                for (int j = s; j <= e; j++) sum += data[j];
+                yield return new DataPoint(i, sum / (e - s + 1));
+            }
         }
     }
 }
