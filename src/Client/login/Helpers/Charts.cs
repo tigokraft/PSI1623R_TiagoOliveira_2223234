@@ -1,108 +1,94 @@
-﻿using LiveCharts;
-using LiveCharts.WinForms;
-using LiveCharts.Wpf;
-using System;
-using System.Windows.Media;
-using WpfAxis = LiveCharts.Wpf.Axis;
-using WpfSeparator = LiveCharts.Wpf.Separator;
-using WpfBrushes = System.Windows.Media.Brushes;
-using System.Windows.Forms;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
+using OxyPlot;
+using OxyPlot.Axes;
+using OxyPlot.Series;
+using OxyPlot.WindowsForms;
 
 namespace login.Helpers
 {
     internal class Charts
     {
-        public LiveCharts.WinForms.CartesianChart SetupChart()
+        /// <summary>
+        /// Returns a PlotView with two line series (Income/Expenses), dark theme,
+        /// light horizontal gridlines, category X-axis, and dollar-formatted Y-axis.
+        /// </summary>
+        public PlotView SetupChart()
         {
-            var cartesianChart = new LiveCharts.WinForms.CartesianChart
+            // 1) WinForms host
+            var plotView = new PlotView
             {
-                Size = new System.Drawing.Size(360, 465),
-                Location = new System.Drawing.Point(0, 0),
-                // Keep this as a slightly different shade if you want the chart area defined
-                BackColor = System.Drawing.Color.FromArgb(20, 20, 20), // This is the chart's specific background
-                LegendLocation = LiveCharts.LegendLocation.Top,
-                ForeColor = System.Drawing.Color.Black,
+                Dock = System.Windows.Forms.DockStyle.Fill,
+                BackColor = Color.FromArgb(20, 20, 20)
             };
 
-            // ... (rest of your chart setup code for gradients, series, axes) ...
-            // (The colors for lines, fills, labels, and grid lines should remain as we refined them previously)
-
-            var incomeGradient = new System.Windows.Media.LinearGradientBrush
+            // 2) PlotModel
+            var model = new PlotModel
             {
-                StartPoint = new System.Windows.Point(0.5, 0),
-                EndPoint = new System.Windows.Point(0.5, 1),
-                GradientStops = new System.Windows.Media.GradientStopCollection
-                {
-                    new System.Windows.Media.GradientStop(System.Windows.Media.Color.FromArgb(180, 50, 220, 180), 0),
-                    new System.Windows.Media.GradientStop(System.Windows.Media.Color.FromArgb(0, 40, 180, 140), 1)
-                }
+                Background = OxyColor.FromRgb(18, 20, 20),
+                PlotAreaBackground = OxyColor.FromRgb(20, 20, 20),
+                IsLegendVisible = true
             };
 
-            var expensesGradient = new System.Windows.Media.LinearGradientBrush
+            // 3) Sample data + labels
+            double[] incomeData = { 0, 90, 130, 160, 180, 200, 190, 210, 205, 220 };
+            double[] expenseData = { 0, 30, 50, 80, 95, 110, 100, 120, 115, 130 };
+            string[] xLabels = { "Apr 1", "", "", "", "", "24", "", "", "" };
+
+            // 4) Income line
+            var incomeSeries = new LineSeries
             {
-                StartPoint = new System.Windows.Point(0.5, 0),
-                EndPoint = new System.Windows.Point(0.5, 1),
-                GradientStops = new System.Windows.Media.GradientStopCollection
-                {
-                    new System.Windows.Media.GradientStop(System.Windows.Media.Color.FromArgb(180, 220, 100, 90), 0),
-                    new System.Windows.Media.GradientStop(System.Windows.Media.Color.FromArgb(0, 180, 80, 70), 1)
-                }
+                Title = "Income",
+                Color = OxyColor.FromRgb(50, 220, 180),
+                StrokeThickness = 2,
+                MarkerType = MarkerType.None
             };
+            for (int i = 0; i < incomeData.Length; i++)
+                incomeSeries.Points.Add(new DataPoint(i, incomeData[i]));
+            model.Series.Add(incomeSeries);
 
-            cartesianChart.Series = new SeriesCollection
+            // 5) Expenses line
+            var expenseSeries = new LineSeries
             {
-                new LineSeries
-                {
-                    Title = "Income",
-                    Values = new ChartValues<double> { 0, 90, 130, 160, 180, 200, 190, 210, 205, 220 },
-                    Stroke = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 50, 220, 180)),
-                    Fill = incomeGradient,
-                    PointGeometry = null,
-                    StrokeThickness = 2,
-                    LineSmoothness = 1
-                },
-                new LineSeries
-                {
-                    Title = "Expenses",
-                    Values = new ChartValues<double> { 0, 30, 50, 80, 95, 110, 100, 120, 115, 130 },
-                    Stroke = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 220, 100, 90)),
-                    Fill = expensesGradient,
-                    PointGeometry = null,
-                    StrokeThickness = 2,
-                    LineSmoothness = 1
-                }
+                Title = "Expenses",
+                Color = OxyColor.FromRgb(220, 100, 90),
+                StrokeThickness = 2,
+                MarkerType = MarkerType.None
             };
+            for (int i = 0; i < expenseData.Length; i++)
+                expenseSeries.Points.Add(new DataPoint(i, expenseData[i]));
+            model.Series.Add(expenseSeries);
 
-            cartesianChart.AxisX.Add(new WpfAxis
+            // 6) X-axis: categories
+            var xAxis = new CategoryAxis
             {
-                Labels = new[] { "Apr 1", "", "", "", "", "24", "", "", "" },
-                Foreground = WpfBrushes.LightGray,
-                Separator = new WpfSeparator
-                {
-                    Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromArgb(40, 128, 128, 128)),
-                    StrokeThickness = 1,
-                    IsEnabled = true
-                }
-            });
+                Position = AxisPosition.Bottom,
+                TextColor = OxyColors.LightGray,
+                AxislineColor = OxyColors.Transparent,
+                MajorGridlineStyle = LineStyle.None,
+                MinorGridlineStyle = LineStyle.None,
+                TickStyle = OxyPlot.Axes.TickStyle.None
+            };
+            foreach (var lbl in xLabels)
+                xAxis.Labels.Add(lbl);
+            model.Axes.Add(xAxis);
 
-            cartesianChart.AxisY.Add(new WpfAxis
+            // 7) Y-axis: $ formatter + horizontal gridlines
+            var yAxis = new LinearAxis
             {
-                LabelFormatter = value => $"${value}",
-                Foreground = WpfBrushes.LightGray,
-                Separator = new WpfSeparator
-                {
-                    Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromArgb(40, 128, 128, 128)),
-                    StrokeThickness = 1,
-                    IsEnabled = true
-                },
-                MinValue = 0
-            });
+                Position = AxisPosition.Left,
+                Minimum = 0,
+                TextColor = OxyColors.LightGray,
+                AxislineColor = OxyColors.Transparent,
+                MajorGridlineStyle = LineStyle.Solid,
+                MajorGridlineColor = OxyColor.FromArgb(40, 128, 128, 128),
+                MinorGridlineStyle = LineStyle.None,
+                LabelFormatter = v => $"${v:0}"
+            };
+            model.Axes.Add(yAxis);
 
-            return cartesianChart;
+            // 8) Attach and return
+            plotView.Model = model;
+            return plotView;
         }
     }
 }

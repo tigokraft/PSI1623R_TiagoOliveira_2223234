@@ -6,7 +6,6 @@ using System.Net.Http.Headers;
 using System.IO;
 using System.Threading.Tasks;
 using System.Globalization;
-using LiveCharts.WinForms;
 using login.Helpers;
 using login.Tabs;
 using System.Runtime.InteropServices;

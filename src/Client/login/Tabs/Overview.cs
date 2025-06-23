@@ -1,62 +1,62 @@
 ﻿using System;
 using System.Drawing;
-using System.Windows.Forms;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.IO;
-using System.Threading.Tasks;
-using System.Globalization;
-using LiveCharts.WinForms;
-using login.Helpers;
-using login.Tabs;
-using System.Runtime.InteropServices;
+using System.Net.Http;
 using System.Text.Json;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using login.Helpers;
+using OxyPlot.WindowsForms;
 
 namespace login.Tabs
 {
     public partial class Overview : Form
     {
         private readonly HttpClient _http;
+
         private class MonthlyBalance
         {
             public decimal Income { get; set; }
             public decimal Expenses { get; set; }
             public decimal Available { get; set; }
         }
+
         public Overview(HttpClient httpClient)
         {
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.None;
             _http = httpClient;
 
+            // match your dark theme
+            ChartPanel.BackColor = Color.FromArgb(16, 20, 20);
+            ExpensesPanel.BackColor = Color.FromArgb(16, 20, 20);
+
             Loader();
-            this.ChartPanel.BackColor = System.Drawing.Color.FromArgb(16, 20, 20);
-
-            
-
         }
+
         private async void Loader()
         {
+            // 1) Fetch data
             var balance = await GetBalanceAsync();
-            //MessageBox.Show(Convert.ToString(balance), "Balance", MessageBoxButtons.OK, MessageBoxIcon.Information);
             var monthly = await GetMonthlyBalanceAsync();
-            Charts chartHelper = new Charts();
-            CartesianChart ovChart = chartHelper.SetupChart();
 
-            Expenses_list expList = new Expenses_list(_http);
+            // 2) Update labels
+            BalanceTxt.Text = $"{balance:C0}";
+            lblSpent.Text = monthly != null ? $"{monthly.Expenses:C0}" : "$0";
 
-            BalanceTxt.Text = $"{balance}";
-            if (monthly != null)
-            {
-                lblSpent.Text = $"{monthly.Expenses:C2}";
-            }
-            this.ExpensesPanel.Controls.Add(expList);
-            expList.Show();
-            //this.ChartPanel.Controls.Add(ovChart); // Chart added to ChartPanel
-            ChartPanel.Controls.Add(ovChart); // Chart added to the main form
+            // 3) Expenses list on the right
+            var expList = new Expenses_list(_http) { Dock = DockStyle.Fill };
+            ExpensesPanel.Controls.Clear();
+            ExpensesPanel.Controls.Add(expList);
+
+            // 4) Chart in the ChartPanel
+            var chart = new Charts().SetupChart();
+            chart.Dock = DockStyle.Fill;
+            ChartPanel.Controls.Clear();
+            ChartPanel.Controls.Add(chart);
         }
 
-        public async Task<decimal> GetBalanceAsync()
+        private async Task<decimal> GetBalanceAsync()
         {
             var token = LoadToken();
             if (string.IsNullOrEmpty(token))
@@ -67,22 +67,14 @@ namespace login.Tabs
 
             try
             {
-                var response = await _http.GetAsync("api/balance");
-                if (response.IsSuccessStatusCode)
+                var resp = await _http.GetAsync("api/balance");
+                if (resp.IsSuccessStatusCode)
                 {
-                    string body = await response.Content.ReadAsStringAsync();
-
-                    // Optionally log to debug or MessageBox
-                    Console.WriteLine($"Raw balance response: {body}");
-
-                    if (decimal.TryParse(body, out var balance))
-                        return balance;
-
-                    MessageBox.Show("Failed to parse balance value.");
-                    return 0;
+                    var body = await resp.Content.ReadAsStringAsync();
+                    if (decimal.TryParse(body, out var bal))
+                        return bal;
                 }
-
-                MessageBox.Show("Failed to fetch balance.");
+                MessageBox.Show("Failed to fetch or parse balance.");
                 return 0;
             }
             catch (Exception ex)
@@ -96,11 +88,9 @@ namespace login.Tabs
         {
             try
             {
-                var response = await _http.GetAsync("api/balance/monthly");
-                if (!response.IsSuccessStatusCode)
-                    return null;
-
-                var json = await response.Content.ReadAsStringAsync();
+                var resp = await _http.GetAsync("api/balance/monthly");
+                if (!resp.IsSuccessStatusCode) return null;
+                var json = await resp.Content.ReadAsStringAsync();
                 return JsonSerializer.Deserialize<MonthlyBalance>(json, new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true
@@ -112,19 +102,10 @@ namespace login.Tabs
             }
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
         public static string LoadToken()
         {
-            string tokenPath = "auth.token";
-
-            if (File.Exists(tokenPath))
-                return File.ReadAllText(tokenPath);
-
-            return null;
+            const string path = "auth.token";
+            return File.Exists(path) ? File.ReadAllText(path) : null;
         }
 
         private void closeapp_Click(object sender, EventArgs e)
@@ -140,7 +121,6 @@ namespace login.Tabs
                 MessageBox.Show("Unable to fetch monthly balance.");
                 return;
             }
-
             var summary = await AiHelper.GenerateOverviewAsync(monthly.Income, monthly.Expenses);
             MessageBox.Show(summary, "AI Overview");
         }

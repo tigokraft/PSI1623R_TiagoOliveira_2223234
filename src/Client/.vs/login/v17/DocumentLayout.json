@@ -3,28 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|c:\\users\\exxo\\downloads\\psi1623r_tiagooliveira_2223234\\src\\client\\login\\tabs\\incomes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|solutionrelative:login\\tabs\\incomes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|c:\\users\\exxo\\downloads\\psi1623r_tiagooliveira_2223234\\src\\client\\login\\tabs\\overview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|solutionrelative:login\\tabs\\overview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|c:\\users\\exxo\\downloads\\psi1623r_tiagooliveira_2223234\\src\\client\\login\\tabs\\expenseslist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|solutionrelative:login\\tabs\\expenseslist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|c:\\users\\exxo\\downloads\\psi1623r_tiagooliveira_2223234\\src\\client\\login\\tabs\\overview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|solutionrelative:login\\tabs\\overview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|c:\\users\\exxo\\downloads\\psi1623r_tiagooliveira_2223234\\src\\client\\login\\helpers\\charts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|solutionrelative:login\\helpers\\charts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\tabs\\incomes.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|solutionrelative:login\\tabs\\incomes.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|c:\\users\\exxo\\downloads\\psi1623r_tiagooliveira_2223234\\src\\client\\login\\helpers\\overlays.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|solutionrelative:login\\helpers\\overlays.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|c:\\users\\exxo\\downloads\\psi1623r_tiagooliveira_2223234\\src\\client\\login\\tabs\\overview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|solutionrelative:login\\tabs\\overview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|c:\\users\\exxo\\downloads\\psi1623r_tiagooliveira_2223234\\src\\client\\login\\tabs\\incomes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|solutionrelative:login\\tabs\\incomes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\tabs\\expenses.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,71 +38,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Overview.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Tabs\\Overview.cs",
-              "RelativeDocumentMoniker": "login\\Tabs\\Overview.cs",
-              "ToolTip": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Tabs\\Overview.cs [Design]",
-              "RelativeToolTip": "login\\Tabs\\Overview.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T21:52:37.95Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Overlays.cs",
-              "DocumentMoniker": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Helpers\\Overlays.cs",
-              "RelativeDocumentMoniker": "login\\Helpers\\Overlays.cs",
-              "ToolTip": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Helpers\\Overlays.cs",
-              "RelativeToolTip": "login\\Helpers\\Overlays.cs",
-              "ViewState": "AgIAAJMDAAAAAAAAAAAIwKYDAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T21:44:09.274Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ExpensesList.cs",
-              "DocumentMoniker": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Tabs\\ExpensesList.cs",
-              "RelativeDocumentMoniker": "login\\Tabs\\ExpensesList.cs",
-              "ToolTip": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Tabs\\ExpensesList.cs",
-              "RelativeToolTip": "login\\Tabs\\ExpensesList.cs",
-              "ViewState": "AgIAADcAAAAAAAAAAAD4v0MAAAAqAAAAAAAAAA==",
+              "Title": "Charts.cs",
+              "DocumentMoniker": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Helpers\\Charts.cs",
+              "RelativeDocumentMoniker": "login\\Helpers\\Charts.cs",
+              "ToolTip": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Helpers\\Charts.cs",
+              "RelativeToolTip": "login\\Helpers\\Charts.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAIwF4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T19:11:41.436Z",
+              "WhenOpened": "2025-06-23T22:10:05.335Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "Overview.cs",
               "DocumentMoniker": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Tabs\\Overview.cs",
               "RelativeDocumentMoniker": "login\\Tabs\\Overview.cs",
               "ToolTip": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Tabs\\Overview.cs",
               "RelativeToolTip": "login\\Tabs\\Overview.cs",
-              "ViewState": "AgIAAHkAAAAAAAAAAAAowIgAAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAIwIAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-23T19:05:33.768Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Incomes.cs",
               "DocumentMoniker": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Tabs\\Incomes.cs",
               "RelativeDocumentMoniker": "login\\Tabs\\Incomes.cs",
               "ToolTip": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Tabs\\Incomes.cs",
               "RelativeToolTip": "login\\Tabs\\Incomes.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAkwEgAAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAADgAAAAAAAAAAAA7wEQAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-23T16:04:12.204Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "Expenses.cs",
               "DocumentMoniker": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Tabs\\Expenses.cs",
               "RelativeDocumentMoniker": "login\\Tabs\\Expenses.cs",
@@ -123,7 +90,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "Incomes.Designer.cs",
               "DocumentMoniker": "C:\\Users\\exxo\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Tabs\\Incomes.Designer.cs",
               "RelativeDocumentMoniker": "login\\Tabs\\Incomes.Designer.cs",

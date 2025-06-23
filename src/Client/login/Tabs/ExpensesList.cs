@@ -41,9 +41,13 @@ namespace login.Tabs
             public int Id { get; set; }
             public decimal Amount { get; set; }
 
-            // map incomes' "descr" field into our Description
-            [JsonPropertyName("descr")]
+            // map expense JSON "description"
+            [JsonPropertyName("description")]
             public string Description { get; set; }
+
+            // map income JSON "descr"
+            [JsonPropertyName("descr")]
+            public string Descr { get; set; }
 
             public DateTime Date { get; set; }
             public int CategoryId { get; set; }
@@ -55,33 +59,34 @@ namespace login.Tabs
         {
             InitializeComponent();
 
-            this.DoubleBuffered = true;
-            this.Size = new Size(440, 345);
-            this.BackColor = BackgroundColor;
+            DoubleBuffered = true;
+            Size = new Size(440, 345);
+            BackColor = BackgroundColor;
 
-            var lblSub = new Label
+            // HEADER
+            var header = new Label
             {
-                Text = "Latest activity",
-                Font = new Font("Segoe UI", 9, FontStyle.Regular),
-                ForeColor = TextSecondary,
+                Text = "Latest Activity",
+                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                ForeColor = TextPrimary,
                 AutoSize = true,
-                Location = new Point(8, 28),
+                Location = new Point(8, 8),
                 BackColor = Color.Transparent
             };
-            Controls.Add(lblSub);
+            Controls.Add(header);
 
-            // Viewport panel
+            // VIEWPORT PANEL
             viewportPanel = new Guna2Panel
             {
-                Location = new Point(0, 48),
-                Size = new Size(425, 260),
+                Location = new Point(0, 40),
+                Size = new Size(425, 305),
                 BorderRadius = 16,
                 FillColor = BackgroundColor,
                 BorderThickness = 0
             };
             Controls.Add(viewportPanel);
 
-            // Content panel
+            // CONTENT PANEL
             contentPanel = new Panel
             {
                 Location = new Point(0, 0),
@@ -91,29 +96,25 @@ namespace login.Tabs
             };
             viewportPanel.Controls.Add(contentPanel);
 
-            // Custom scrollbar
+            // SCROLLBAR
             gunaScroll = new Guna2VScrollBar
             {
-                Location = new Point(432, 48),
-                Size = new Size(8, 260),
+                Location = new Point(432, 40),
+                Size = new Size(8, 305),
                 FillColor = Color.FromArgb(40, 40, 40),
                 ThumbColor = Color.FromArgb(120, 120, 120),
                 BorderRadius = 4,
                 LargeChange = 40,
                 Minimum = 0,
-                Maximum = 0,
-                Value = 0
+                Maximum = 0
             };
-            gunaScroll.Scroll += (s, e) =>
-            {
-                contentPanel.Top = -gunaScroll.Value;
-            };
+            gunaScroll.Scroll += (s, e) => contentPanel.Top = -gunaScroll.Value;
             Controls.Add(gunaScroll);
 
-            // Mouse‐wheel scrolling
+            // MOUSE-WHEEL SCROLLING
             viewportPanel.MouseWheel += MouseWheelScrollHandler;
             contentPanel.MouseWheel += MouseWheelScrollHandler;
-            this.MouseWheel += MouseWheelScrollHandler;
+            MouseWheel += MouseWheelScrollHandler;
 
             _http = httpClient;
             LoadAll();
@@ -124,7 +125,6 @@ namespace login.Tabs
             int newVal = gunaScroll.Value - e.Delta / 3;
             if (newVal < gunaScroll.Minimum) newVal = gunaScroll.Minimum;
             if (newVal > gunaScroll.Maximum) newVal = gunaScroll.Maximum;
-
             if (newVal != gunaScroll.Value)
             {
                 gunaScroll.Value = newVal;
@@ -144,7 +144,7 @@ namespace login.Tabs
 
             gunaScroll.Maximum = max;
             gunaScroll.LargeChange = visibleHeight;
-            gunaScroll.Enabled = max > 0;
+            gunaScroll.Enabled = (max > 0);
 
             if (gunaScroll.Value > max)
                 gunaScroll.Value = max;
@@ -176,8 +176,8 @@ namespace login.Tabs
             var expResp = await _http.GetAsync("api/expense/summary");
             if (expResp.IsSuccessStatusCode)
             {
-                string j = await expResp.Content.ReadAsStringAsync();
-                using (JsonDocument doc = JsonDocument.Parse(j))
+                var j = await expResp.Content.ReadAsStringAsync();
+                using (var doc = JsonDocument.Parse(j))
                 {
                     if (doc.RootElement.TryGetProperty("expenses", out var arr))
                     {
@@ -194,8 +194,8 @@ namespace login.Tabs
             var incResp = await _http.GetAsync("api/income/summary");
             if (incResp.IsSuccessStatusCode)
             {
-                string j = await incResp.Content.ReadAsStringAsync();
-                using (JsonDocument doc = JsonDocument.Parse(j))
+                var j = await incResp.Content.ReadAsStringAsync();
+                using (var doc = JsonDocument.Parse(j))
                 {
                     if (doc.RootElement.TryGetProperty("incomes", out var arr))
                     {
@@ -214,7 +214,6 @@ namespace login.Tabs
                 .ToList();
 
             contentPanel.Controls.Clear();
-
             if (!all.Any())
             {
                 var lbl = new Label
@@ -245,18 +244,20 @@ namespace login.Tabs
 
         private Guna2Panel CreateCard(Transaction t)
         {
-            // Lookup category
+            // resolve category
             var cat = _categories.FirstOrDefault(c => c.CategoryId == t.CategoryId);
             Color dotColor = Color.Gray;
             string catName = "Unknown";
             if (cat != null)
             {
                 catName = cat.CategoryName;
-                try { dotColor = ColorTranslator.FromHtml(cat.Color); }
-                catch { }
+                try { dotColor = ColorTranslator.FromHtml(cat.Color); } catch { }
             }
 
-            // Build icon
+            // choose description text
+            string desc = !string.IsNullOrEmpty(t.Description) ? t.Description : (t.Descr ?? "");
+
+            // build icon
             var iconBmp = new Bitmap(24, 24);
             using (Graphics g = Graphics.FromImage(iconBmp))
             {
@@ -280,7 +281,7 @@ namespace login.Tabs
                 Margin = new Padding(0, 0, 0, 10)
             };
 
-            // Icon
+            // icon
             var pic = new PictureBox
             {
                 Image = iconBmp,
@@ -291,28 +292,29 @@ namespace login.Tabs
             };
             panel.Controls.Add(pic);
 
-            // Description
-            var descr = new Label
-            {
-                Text = t.Description,
-                Font = new Font("Segoe UI", 9, FontStyle.Bold),
-                ForeColor = TextPrimary,
-                AutoSize = true,
-                Location = new Point(48, 6),
-                BackColor = Color.Transparent
-            };
-            panel.Controls.Add(descr);
-
             int w = panel.ClientSize.Width;
             int h = panel.ClientSize.Height;
 
-            // Category dot
+            // description label
+            var lblDesc = new Label
+            {
+                Text = desc,
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
+                ForeColor = TextPrimary,
+                Location = new Point(48, 16),
+                AutoSize = true,
+                BackColor = Color.Transparent
+            };
+            panel.Controls.Add(lblDesc);
+
+            // category dot (to the right of desc), centered vertically
             var catDot = new Panel
             {
                 Size = new Size(9, 9),
-                BackColor = Color.Transparent,
-                Location = new Point(48, h - 9 - 6)
+                BackColor = Color.Transparent
             };
+            int dotY = (h - catDot.Height) / 2;
+            catDot.Location = new Point(lblDesc.Right + 8, dotY);
             catDot.Paint += (s, e) =>
             {
                 e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
@@ -320,21 +322,22 @@ namespace login.Tabs
             };
             panel.Controls.Add(catDot);
 
-            // Category label
-            var catLbl = new Label
+            // category label (right of dot), same vertical center
+            var lblCat = new Label
             {
                 Text = catName,
                 Font = new Font("Segoe UI", 8, FontStyle.Regular),
                 ForeColor = TextSecondary,
                 AutoSize = true,
-                Location = new Point(48 + 9 + 4, h - new Font("Segoe UI", 8).Height - 6),
                 BackColor = Color.Transparent
             };
-            panel.Controls.Add(catLbl);
+            int lblY = dotY + (catDot.Height - lblCat.PreferredHeight) / 2;
+            lblCat.Location = new Point(catDot.Right + 4, lblY);
+            panel.Controls.Add(lblCat);
 
-            // Amount
+            // amount label
             string amtText = (t.IsExpense ? "-" : "+") + $"{Math.Abs(t.Amount):0.00}";
-            var amtLbl = new Label
+            var lblAmt = new Label
             {
                 Text = amtText,
                 Font = new Font("Segoe UI", 10, FontStyle.Bold),
@@ -343,25 +346,25 @@ namespace login.Tabs
                 Padding = new Padding(0, 0, 5, 0),
                 BackColor = Color.Transparent
             };
-            int amtWidth = TextRenderer.MeasureText(amtText, amtLbl.Font).Width + 5;
-            amtLbl.Location = new Point(w - amtWidth - 12, 6);
-            panel.Controls.Add(amtLbl);
+            int aw = TextRenderer.MeasureText(amtText, lblAmt.Font).Width + 5;
+            lblAmt.Location = new Point(w - aw - 12, 6);
+            panel.Controls.Add(lblAmt);
 
-            // Date
-            string dtStr = (t.Date.Year == DateTime.Now.Year)
+            // date label
+            string ds = t.Date.Year == DateTime.Now.Year
                 ? t.Date.ToString("MMM d")
                 : t.Date.ToString("MMM d, yyyy");
-            var dateLbl = new Label
+            var lblDate = new Label
             {
-                Text = dtStr,
+                Text = ds,
                 Font = new Font("Segoe UI", 8, FontStyle.Italic),
                 ForeColor = TextSecondary,
                 AutoSize = true,
                 BackColor = Color.Transparent
             };
-            int dateW = TextRenderer.MeasureText(dtStr, dateLbl.Font).Width;
-            dateLbl.Location = new Point(w - dateW - 12, h - dateLbl.PreferredHeight - 6);
-            panel.Controls.Add(dateLbl);
+            int dw = TextRenderer.MeasureText(ds, lblDate.Font).Width;
+            lblDate.Location = new Point(w - dw - 12, h - lblDate.PreferredHeight - 6);
+            panel.Controls.Add(lblDate);
 
             return panel;
         }
