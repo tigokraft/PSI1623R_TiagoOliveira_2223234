@@ -1,59 +1,80 @@
-# FinSync
+# PSI1623R_TiagoOliveira_2223234
+
+Aplicação de gestão financeira pessoal, composta por:
+
+- **API back-end** desenvolvida em ASP.NET Core 8.0.
+- **Cliente desktop** desenvolvido com Windows Forms em C#.
+
+Permite ao utilizador gerir rendimentos, despesas e objectivos financeiros através de uma interface moderna e funcionalidades robustas.
+
+## ✨ Funcionalidades
+
+- Registo e autenticação de utilizadores (com JWT).
+- Registo e consulta de rendimentos e despesas.
+- Definição e acompanhamento de objectivos financeiros.
+- Interface intuitiva com componentes Guna.UI2.
+
+## 🗂 Estrutura
 
 ```
-    ·▄▄▄▪   ▐ ▄ .▄▄ ·  ▄· ▄▌ ▐ ▄  ▄▄·      ▄▄▄·  ▄▄▄·▪
-    ▐▄▄·██ •█▌▐█▐█ ▀. ▐█▪██▌•█▌▐█▐█ ▌▪    ▐█ ▀█ ▐█ ▄███
-    ██▪ ▐█·▐█▐▐▌▄▀▀▀█▄▐█▌▐█▪▐█▐▐▌██ ▄▄    ▄█▀▀█  ██▀·▐█·
-    ██▌.▐█▌██▐█▌▐█▄▪▐█ ▐█▀·.██▐█▌▐███▌    ▐█ ▪▐▌▐█▪·•▐█▌
-    ▀▀▀ ▀▀▀▀▀ █▪ ▀▀▀▀   ▀ • ▀▀ █▪·▀▀▀      ▀  ▀ .▀   ▀▀▀
+src/
+├── api/        # ASP.NET Core Web API
+└── Client/     # Aplicação Windows Forms
 ```
 
-FinSync is a personal finance platform built as the final year project for the PSI1623R course. It consists of two main pieces:
+## 🧰 Requisitos
 
-* **FinSync API** – an ASP.NET Core Web API (\`src/api/api\`)
-* **FinSync Client** – a Windows Forms desktop application (\`src/Client/login\`)
+- [.NET SDK 8.0](https://dotnet.microsoft.com/)
+- [Visual Studio 2022](https://visualstudio.microsoft.com/)
+- SQL Server Express ou LocalDB
+- [EF](https://learn.microsoft.com/en-us/ef/core/cli/dotnet)
 
-Both projects are included in this repository along with a small helper for clearing authentication tokens.
+## ⚙️ Configuração
 
-## Features
+### API
 
-- JWT-based authentication with API key header
-- Budget, income and expense management screens
-- LiveCharts visualizations
- - Interactive console panel with admin mode for viewing statistics and user management
- - Admin REST endpoints secured by JWT role claims
+1. Configurar `appsettings.json`:
+   ```json
+   "ConnectionStrings": {
+     "DefaultConnection": "Server=localhost\\SQLEXPRESS;Database=nome_da_base;Trusted_Connection=True;"
+   }
+   ```
 
-## Prerequisites
+2. Executar:
+   ```bash
+   dotnet ef database update
+   ./starter.bat
+   ```
 
-- **.NET 8 SDK** for building and running the API
-- **.NET Framework 4.7.2** and Visual Studio (Windows) for the desktop client
-- SQL Server (connection string can be set in `appsettings.json`)
+A API estará acessível em `http://localhost:5034`.
 
-## Running the API
+### Cliente
 
-```bash
-cd src/api/api
-# optional helper script that cleans and restarts on exit
-./starter.bat     # Windows
-# or run directly
-dotnet run
+1. Abrir `src/Client/login.sln` no Visual Studio.
+2. Adicionar manualmente as referências a `Guna.UI2.WinForms.dll` e `Guna.UI.WinForms.dll`.
+3. Compilar e executar.
+
+## 📑 Endpoints Principais
+
+| Endpoint            | Método | Descrição                   |
+|---------------------|--------|-----------------------------|
+| /api/users/login    | POST   | Autenticação                |
+| /api/users/register | POST   | Registo                     |
+| /api/incomes        | GET    | Listagem de rendimentos     |
+| /api/expenses       | GET    | Listagem de despesas        |
+| /api/goals          | GET    | Objectivos financeiros      |
+
+## 🔐 Autenticação
+
+Após o login, é devolvido um token JWT. Este deve ser incluído nos cabeçalhos de cada pedido autenticado:
+```
+Authorization: Bearer <token>
 ```
 
-The API listens by default on `http://localhost:5034` and requires a header `x-api-key` with value `12345-abcdef-67890`.
+## 🧪 Testes
 
-Health information is exposed at `/healthz` (machine readable) and `/health` (detailed). The console admin panel now authenticates using an admin user account (role `admin`) stored in the database and lets admins list and promote users.
+Pode utilizar [Postman](https://www.postman.com/) para testar os endpoints da API com o token JWT.
 
-Admin-only endpoints are available under `/api/admin` and require a JWT for a user with the `admin` role.
+## 📜 Licença
 
-## Running the Client
-
-Open `src/Client/login/login.sln` with Visual Studio and build the `login` project. Ensure the API is running before launching the client. On first login a token is saved to `auth.token`; deleting this file logs you out.
-
-A small helper project `token-eraser` can be used to remove the token.
-
-## Repository Links
-
-- [FinSync Client on GitHub](https://github.com/tigokraft/FinSync)
-- [FinSync API on GitHub](https://github.com/tigokraft/FinSync-api)
-
-This project is licensed under the Apache 2.0 license. See [LICENSE](LICENSE) for details.
+Distribuído sob a licença MIT. Ver o ficheiro `LICENSE`.
