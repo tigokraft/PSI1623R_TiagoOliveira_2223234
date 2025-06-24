@@ -101,11 +101,12 @@ namespace login
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            if (File.Exists("auth.token"))
-            {
-                File.Delete("auth.token");
-                Application.Exit();
-            }
+            var settings = new SettingsPanel(_http);
+            settings.TopLevel = false;
+            former.Controls.Clear();
+            former.Controls.Add(settings);
+            settings.Dock = DockStyle.Fill;
+            settings.Show();
         }
 
         private void BalanceTxt_Click(object sender, EventArgs e)

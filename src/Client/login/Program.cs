@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http;
 using System.IO;
+using login.Helpers;
 
 namespace login
 {
@@ -19,9 +20,11 @@ namespace login
             Application.SetCompatibleTextRenderingDefault(false);
 
             string tokenPath = "auth.token";
+
+            var settings = login.Helpers.ClientSettings.Load();
             HttpClient httpClient = new HttpClient
             {
-                BaseAddress = new Uri("http://localhost:5034")
+                BaseAddress = new Uri(settings.ApiBaseUrl)
             };
             httpClient.DefaultRequestHeaders.Add("x-api-key", "12345-abcdef-67890");
 
