@@ -21,12 +21,13 @@ namespace login.Tabs
             public string Description { get; set; }
             public DateTime Date { get; set; }
             public int CategoryId { get; set; }
-            public bool IsRecurringSource { get; set; } // Optional: backend must support
-            public string RecurrenceType { get; set; } // Optional
+            public bool IsRecurringSource { get; set; }    // Optional: backend must support
+            public string RecurrenceType { get; set; }     // Optional
         }
 
         public class ExpenseResponse
         {
+            [JsonPropertyName("expenses")]
             public List<Expense> Expenses { get; set; }
         }
 
@@ -49,6 +50,7 @@ namespace login.Tabs
 
             SetupMonths();
             cmbMonths.SelectedIndexChanged += (s, e) => RefreshList();
+            SetupCategories();
             cmbCat.SelectedIndexChanged += (s, e) => RefreshList();
 
             AddBtn.Click += async (s, e) => await Overlays.ExpenseOverlay(this, _http);
@@ -95,7 +97,6 @@ namespace login.Tabs
             int fixedColumnsSumWidth = column1Width + column2Width + column4Width + column5Width;
             column3Width = availableContentWidth - fixedColumnsSumWidth;
 
-            // Only one panel (expensePanel) at a time!
             if (expensePanel != null)
             {
                 this.Controls.Remove(expensePanel.Parent);
@@ -143,6 +144,7 @@ namespace login.Tabs
                 MessageBox.Show($"Failed loading expenses: {resp.StatusCode}");
                 return;
             }
+
             var json = await resp.Content.ReadAsStringAsync();
             var opts = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
             var wrapper = JsonSerializer.Deserialize<ExpenseResponse>(json, opts);
@@ -157,14 +159,14 @@ namespace login.Tabs
             expensePanel.Controls.Clear();
             int totalWidth = column1Width + column2Width + column3Width + column4Width + column5Width;
 
-            // Header
+            // Header row
             expensePanel.Controls.Add(CreateTableRow(
                 "Date", "Category", "Description", "Amount", "Recurring",
                 isHeader: true,
                 totalWidth: totalWidth
             ));
 
-            // Month filtering
+            // Apply month filter
             var filtered = _rawExpenses;
             if (cmbMonths.SelectedIndex > 0)
             {
@@ -173,76 +175,52 @@ namespace login.Tabs
                     filtered = filtered.Where(x => x.Date.Month == dt.Month && x.Date.Year == dt.Year).ToList();
             }
 
-            // Category filtering
+            // Apply category filter
             if (cmbCat.SelectedIndex > 0 && _categories != null)
             {
-                string selectedCat = cmbCat.SelectedItem.ToString();
-                var cat = _categories.FirstOrDefault(c => c.CategoryName == selectedCat);
+                var selCat = cmbCat.SelectedItem.ToString();
+                var cat = _categories.FirstOrDefault(c => c.CategoryName == selCat);
                 if (cat != null)
                     filtered = filtered.Where(x => x.CategoryId == cat.CategoryId).ToList();
             }
 
+            // Data rows
             foreach (var exp in filtered)
             {
                 var cat = _categories.FirstOrDefault(c => c.CategoryId == exp.CategoryId);
                 var catName = cat?.CategoryName ?? "Unknown";
                 var catColor = cat != null ? ColorTranslator.FromHtml(cat.Color) : Color.Gray;
+                var recurringText = exp.IsRecurringSource
+                    ? (string.IsNullOrEmpty(exp.RecurrenceType) ? "Yes" : exp.RecurrenceType)
+                    : "No";
 
                 var row = CreateTableRow(
                     exp.Date.ToString("MMM d, yyyy"),
                     catName,
                     exp.Description,
                     $"${exp.Amount:N2}",
-                    exp.IsRecurringSource ? exp.RecurrenceType ?? "Yes" : "No",
+                    recurringText,
                     isHeader: false,
                     categoryColor: catColor,
-                    totalWidth: totalWidth
+                    totalWidth: totalWidth,
+                    expense: exp
                 );
 
-                // Right-click context menu on each row (except header)
-                row.MouseUp += (s, e) =>
-                {
-                    if (e.Button == MouseButtons.Right)
-                    {
-                        var context = new ContextMenuStrip();
-                        var editItem = new ToolStripMenuItem("Edit Expense");
-                        var deleteItem = new ToolStripMenuItem("Delete Expense");
-                        context.Items.Add(editItem);
-                        context.Items.Add(deleteItem);
-
-                        // Pass exp as closure
-                        editItem.Click += async (se, ev) =>
-                        {
-                            await Overlays.EditExpenseOverlay(this, _http, exp);
-                        };
-
-                        deleteItem.Click += async (se, ev) =>
-                        {
-                            var confirm = Cards.Show("Delete Expense", "This will delete the expense. Continue?", "OK");
-                            if (confirm == DialogResult.OK)
-                            {
-                                var resp = await _http.DeleteAsync($"api/expense/{exp.ExpenseId}");
-                                if (resp.IsSuccessStatusCode)
-                                {
-                                    Cards.Show("Success", "Expense deleted.", "OK");
-                                    await LoadExpenses();
-                                }
-                                else
-                                {
-                                    Cards.Show("Error", "Failed to delete expense.", "OK");
-                                }
-                            }
-                        };
-                        context.Show(row, e.Location);
-                    }
-                };
                 expensePanel.Controls.Add(row);
             }
         }
 
         private Guna2Panel CreateTableRow(
-            string dateText, string categoryText, string descriptionText, string amountText, string recurringText,
-            bool isHeader = false, Color? categoryColor = null, int totalWidth = 600)
+            string dateText,
+            string categoryText,
+            string descriptionText,
+            string amountText,
+            string recurringText,
+            bool isHeader = false,
+            Color? categoryColor = null,
+            int totalWidth = 600,
+            Expense expense = null      // <<< expense passed in for context menu
+        )
         {
             var rowPanel = new Guna2Panel
             {
@@ -250,148 +228,187 @@ namespace login.Tabs
                 Margin = new Padding(0),
                 FillColor = Color.FromArgb(24, 26, 27),
                 BorderColor = Color.FromArgb(35, 38, 39),
-                BorderThickness = 1,
+                BorderThickness = 1
             };
 
-            var innerFlowPanel = new FlowLayoutPanel
+            var inner = new FlowLayoutPanel
             {
                 Size = new Size(totalWidth, rowPanel.Height),
                 FlowDirection = FlowDirection.LeftToRight,
                 WrapContents = false,
                 BackColor = Color.Transparent,
                 Padding = new Padding(0),
-                Margin = new Padding(0),
+                Margin = new Padding(0)
             };
-            rowPanel.Controls.Add(innerFlowPanel);
+            rowPanel.Controls.Add(inner);
 
-            int internalPadding = 10;
-
-            Func<int, Control> createColumnPanel = (width) => new Guna2Panel
+            int pad = 10;
+            Func<int, Control> makeCol = width => new Guna2Panel
             {
                 Size = new Size(width, rowPanel.Height),
                 FillColor = Color.Transparent,
-                Margin = new Padding(0),
+                Margin = new Padding(0)
             };
 
-            // Date
-            var dateColumnPanel = createColumnPanel(column1Width);
-            var dateLabel = new Label
+            // Date column
+            var colDate = makeCol(column1Width);
+            colDate.Controls.Add(new Label
             {
                 Text = dateText,
                 Font = new Font("Segoe UI", 9, isHeader ? FontStyle.Bold : FontStyle.Regular),
                 ForeColor = isHeader ? Color.LightGray : Color.White,
                 BackColor = Color.Transparent,
                 AutoSize = false,
-                Size = new Size(column1Width - internalPadding, rowPanel.Height),
-                Location = new Point(internalPadding, 0),
-                TextAlign = ContentAlignment.MiddleLeft,
-            };
-            dateColumnPanel.Controls.Add(dateLabel);
-            innerFlowPanel.Controls.Add(dateColumnPanel);
+                Size = new Size(column1Width - pad, rowPanel.Height),
+                Location = new Point(pad, 0),
+                TextAlign = ContentAlignment.MiddleLeft
+            });
+            inner.Controls.Add(colDate);
 
-            // Category
-            var categoryColumnPanel = createColumnPanel(column2Width);
+            // Category column
+            var colCat = makeCol(column2Width);
             if (!isHeader)
             {
-                var categoryTagPanel = new Guna2Panel
+                var tag = new Guna2Panel
                 {
                     FillColor = Color.FromArgb(35, 38, 39),
                     BorderRadius = 5,
                     Padding = new Padding(5, 0, 8, 0),
-                    Location = new Point(internalPadding, (rowPanel.Height - 24) / 2),
+                    Location = new Point(pad, (rowPanel.Height - 24) / 2),
                     MinimumSize = new Size(0, 20),
                     Size = new Size(column2Width, 24)
                 };
-
                 var dot = new Guna2Panel
                 {
                     BorderRadius = 5,
                     FillColor = categoryColor ?? Color.Gray,
                     Size = new Size(12, 12),
-                    Location = new Point(5, (categoryTagPanel.MinimumSize.Height - 5) / 2)
+                    Location = new Point(5, (tag.Height - 5) / 2)
                 };
-                categoryTagPanel.Controls.Add(dot);
+                tag.Controls.Add(dot);
 
-                var catTextLabel = new Label
+                var lblCatText = new Label
                 {
                     Text = categoryText,
-                    Font = new Font("Segoe UI", 9, FontStyle.Regular),
+                    Font = new Font("Segoe UI", 9),
                     ForeColor = Color.White,
                     BackColor = Color.Transparent,
                     AutoSize = true,
-                    Location = new Point(dot.Right + 5, (categoryTagPanel.MinimumSize.Height - 5) / 2)
+                    Location = new Point(dot.Right + 5, (tag.Height - 5) / 2)
                 };
-                categoryTagPanel.Controls.Add(catTextLabel);
-
-                categoryTagPanel.Width = catTextLabel.Right + 5;
-
-                categoryColumnPanel.Controls.Add(categoryTagPanel);
-
+                tag.Controls.Add(lblCatText);
+                tag.Width = lblCatText.Right + 5;
+                colCat.Controls.Add(tag);
             }
             else
             {
-                var catHeaderLabel = new Label
+                colCat.Controls.Add(new Label
                 {
                     Text = categoryText,
                     Font = new Font("Segoe UI", 9, FontStyle.Bold),
                     ForeColor = Color.LightGray,
                     BackColor = Color.Transparent,
                     AutoSize = false,
-                    Size = new Size(column2Width - internalPadding, rowPanel.Height),
-                    Location = new Point(internalPadding, 0),
-                    TextAlign = ContentAlignment.MiddleLeft,
-                };
-                categoryColumnPanel.Controls.Add(catHeaderLabel);
+                    Size = new Size(column2Width - pad, rowPanel.Height),
+                    Location = new Point(pad, 0),
+                    TextAlign = ContentAlignment.MiddleLeft
+                });
             }
-            innerFlowPanel.Controls.Add(categoryColumnPanel);
+            inner.Controls.Add(colCat);
 
-            // Description
-            var descriptionColumnPanel = createColumnPanel(column3Width);
-            var descriptionLabel = new Label
+            // Description column
+            var colDesc = makeCol(column3Width);
+            colDesc.Controls.Add(new Label
             {
                 Text = descriptionText,
                 Font = new Font("Segoe UI", 9, isHeader ? FontStyle.Bold : FontStyle.Regular),
                 ForeColor = isHeader ? Color.LightGray : Color.White,
                 BackColor = Color.Transparent,
                 AutoSize = false,
-                Size = new Size(column3Width - internalPadding, rowPanel.Height),
-                Location = new Point(internalPadding, 0),
-                TextAlign = ContentAlignment.MiddleLeft,
-            };
-            descriptionColumnPanel.Controls.Add(descriptionLabel);
-            innerFlowPanel.Controls.Add(descriptionColumnPanel);
+                Size = new Size(column3Width - pad, rowPanel.Height),
+                Location = new Point(pad, 0),
+                TextAlign = ContentAlignment.MiddleLeft
+            });
+            inner.Controls.Add(colDesc);
 
-            // Amount
-            var amountColumnPanel = createColumnPanel(column4Width);
-            var amountLabel = new Label
+            // Amount column
+            var colAmt = makeCol(column4Width);
+            colAmt.Controls.Add(new Label
             {
                 Text = amountText,
                 Font = new Font("Segoe UI", 9, isHeader ? FontStyle.Bold : FontStyle.Regular),
                 ForeColor = isHeader ? Color.LightGray : Color.White,
                 BackColor = Color.Transparent,
                 AutoSize = false,
-                Size = new Size(column4Width - internalPadding, rowPanel.Height),
-                Location = new Point(internalPadding, 0),
-                TextAlign = ContentAlignment.MiddleRight,
-            };
-            amountColumnPanel.Controls.Add(amountLabel);
-            innerFlowPanel.Controls.Add(amountColumnPanel);
+                Size = new Size(column4Width - pad, rowPanel.Height),
+                Location = new Point(pad, 0),
+                TextAlign = ContentAlignment.MiddleRight
+            });
+            inner.Controls.Add(colAmt);
 
-            // Recurring
-            var recurringColumnPanel = createColumnPanel(column5Width);
-            var recurringLabel = new Label
+            // Recurring column
+            var colRec = makeCol(column5Width);
+            colRec.Controls.Add(new Label
             {
                 Text = recurringText,
                 Font = new Font("Segoe UI", 9, isHeader ? FontStyle.Bold : FontStyle.Regular),
                 ForeColor = isHeader ? Color.LightGray : Color.White,
                 BackColor = Color.Transparent,
                 AutoSize = false,
-                Size = new Size(column5Width - internalPadding, rowPanel.Height),
-                Location = new Point(internalPadding, 0),
-                TextAlign = ContentAlignment.MiddleCenter,
-            };
-            recurringColumnPanel.Controls.Add(recurringLabel);
-            innerFlowPanel.Controls.Add(recurringColumnPanel);
+                Size = new Size(column5Width - pad, rowPanel.Height),
+                Location = new Point(pad, 0),
+                TextAlign = ContentAlignment.MiddleCenter
+            });
+            inner.Controls.Add(colRec);
+
+            // Right-click context menu for data rows
+            if (!isHeader && expense != null)
+            {
+                var menu = new ContextMenuStrip();
+                var editItem = new ToolStripMenuItem("Edit Expense");
+                var deleteItem = new ToolStripMenuItem("Delete Expense");
+                menu.Items.AddRange(new[] { editItem, deleteItem });
+
+                editItem.Click += async (s, e) =>
+                {
+                    await Overlays.EditExpenseOverlay(this, _http, expense);
+                };
+                deleteItem.Click += async (s, e) =>
+                {
+                    var confirm = Cards.Show(
+                        "Delete Expense",
+                        "This will delete the expense. Continue?",
+                        "OK"
+                    );
+                    if (confirm == DialogResult.OK)
+                    {
+                        var resp = await _http.DeleteAsync($"api/expense/{expense.ExpenseId}");
+                        if (resp.IsSuccessStatusCode)
+                        {
+                            Cards.Show("Success", "Expense deleted.", "OK");
+                            await LoadExpenses();
+                        }
+                        else
+                        {
+                            Cards.Show("Error", "Failed to delete expense.", "OK");
+                        }
+
+                        RefreshList();
+                    }
+                };
+
+                void AttachMenu(Control c)
+                {
+                    c.MouseUp += (s, e) =>
+                    {
+                        if (e.Button == MouseButtons.Right)
+                            menu.Show(rowPanel, rowPanel.PointToClient(Control.MousePosition));
+                    };
+                    foreach (Control child in c.Controls)
+                        AttachMenu(child);
+                }
+                AttachMenu(rowPanel);
+            }
 
             return rowPanel;
         }

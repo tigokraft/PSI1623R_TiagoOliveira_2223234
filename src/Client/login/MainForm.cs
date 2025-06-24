@@ -38,7 +38,6 @@ namespace login
         {
             ExpensesBtn.FillColor = Color.FromArgb(100, 27, 43, 48);
             OvBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
-            budgetBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
             GoalsBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
             IncomeBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
 
@@ -54,7 +53,6 @@ namespace login
         {
             OvBtn.FillColor = Color.FromArgb(100, 27, 43, 48);
             ExpensesBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
-            budgetBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
             GoalsBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
             IncomeBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
 
@@ -70,7 +68,6 @@ namespace login
             GoalsBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
             ExpensesBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
             OvBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
-            budgetBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
             IncomeBtn.FillColor = Color.FromArgb(100, 27, 43, 48);
 
             Incomes inc = new Incomes(_http);
@@ -81,21 +78,11 @@ namespace login
             inc.Show();
         }
 
-        private void budgetBtn_Click(object sender, EventArgs e)
-        {
-            budgetBtn.FillColor = Color.FromArgb(100, 27, 43, 48);
-            ExpensesBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
-            OvBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
-            GoalsBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
-            IncomeBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
-        }
-
         private void GoalsBtn_Click(object sender, EventArgs e)
         {
             GoalsBtn.FillColor = Color.FromArgb(100, 27, 43, 48);
             ExpensesBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
             OvBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
-            budgetBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
             IncomeBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
         }
 

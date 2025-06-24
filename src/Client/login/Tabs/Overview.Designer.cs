@@ -38,7 +38,6 @@
             this.ChartPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.ExpensesPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.closeapp = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.aiButton = new Guna.UI2.WinForms.Guna2Button();
             this.guna2GradientPanel1.SuspendLayout();
             this.guna2GradientPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -180,26 +179,6 @@
             this.closeapp.TabIndex = 18;
             this.closeapp.Click += new System.EventHandler(this.closeapp_Click);
             // 
-            // aiButton
-            // 
-            this.aiButton.Animated = true;
-            this.aiButton.BackColor = System.Drawing.Color.Transparent;
-            this.aiButton.BorderRadius = 5;
-            this.aiButton.CheckedState.Parent = this.aiButton;
-            this.aiButton.CustomImages.Parent = this.aiButton;
-            this.aiButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
-            this.aiButton.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.aiButton.ForeColor = System.Drawing.Color.White;
-            this.aiButton.HoverState.Parent = this.aiButton;
-            this.aiButton.Location = new System.Drawing.Point(30, 560);
-            this.aiButton.Name = "aiButton";
-            this.aiButton.ShadowDecoration.Parent = this.aiButton;
-            this.aiButton.Size = new System.Drawing.Size(150, 30);
-            this.aiButton.TabIndex = 19;
-            this.aiButton.Text = "AI Overview";
-            this.aiButton.UseTransparentBackground = true;
-            this.aiButton.Click += new System.EventHandler(this.aiButton_Click);
-            // 
             // Overview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -207,7 +186,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.closeapp);
-            this.Controls.Add(this.aiButton);
             this.Controls.Add(this.ChartPanel);
             this.Controls.Add(this.ExpensesPanel);
             this.Controls.Add(this.guna2GradientPanel2);
@@ -236,6 +214,5 @@
         private Guna.UI2.WinForms.Guna2Panel ChartPanel;
         private Guna.UI2.WinForms.Guna2Panel ExpensesPanel;
         private Guna.UI2.WinForms.Guna2ControlBox closeapp;
-        private Guna.UI2.WinForms.Guna2Button aiButton;
     }
 }

@@ -180,17 +180,5 @@ namespace login.Tabs
         }
 
         private void closeapp_Click(object sender, EventArgs e) => Application.Exit();
-
-        private async void aiButton_Click(object sender, EventArgs e)
-        {
-            var monthly = await GetMonthlyBalanceAsync();
-            if (monthly == null)
-            {
-                MessageBox.Show("Unable to fetch monthly balance.");
-                return;
-            }
-            string summary = await AiHelper.GenerateOverviewAsync(monthly.Income, monthly.Expenses);
-            MessageBox.Show(summary, "AI Overview");
-        }
     }
 }

@@ -916,22 +916,23 @@ public static class Overlays
     /// <summary>
     /// Edit Expense Overlay: pre-filled, updates on save
     /// </summary>
-    public static async Task EditExpenseOverlay(Form parentForm, HttpClient _http, dynamic expense)
+    public static async Task EditExpenseOverlay(Form parentForm, HttpClient _http, Expenses.Expense expense)
     {
         await Task.Yield();
 
         var overlay = new Guna2Panel
         {
+            Name = "ExpenseEditOverlay",
             BorderRadius = 10,
             BorderThickness = 1,
             BorderColor = Color.FromArgb(40, 40, 40),
             FillColor = Color.FromArgb(18, 20, 20),
             Size = new Size(350, 500),
             Location = new Point((parentForm.ClientSize.Width - 350) / 2, 50),
-            Anchor = AnchorStyles.Top,
-            Name = "ExpenseEditOverlay"
+            Anchor = AnchorStyles.Top
         };
 
+        // Title
         var titleLabel = new Label
         {
             Text = "Edit Expense",
@@ -940,7 +941,9 @@ public static class Overlays
             Location = new Point(20, 20),
             AutoSize = true
         };
+        overlay.Controls.Add(titleLabel);
 
+        // Description
         var descrBox = new Guna2TextBox
         {
             PlaceholderText = "Description",
@@ -952,44 +955,47 @@ public static class Overlays
             ForeColor = Color.White,
             BorderRadius = 10
         };
+        overlay.Controls.Add(descrBox);
 
+        // Amount
         var amountBox = new Guna2TextBox
         {
             PlaceholderText = "Amount",
-            Text = expense.Amount.ToString(),
+            Text = expense.Amount.ToString("0.##"),
             Size = new Size(300, 40),
-            Location = new Point(25, 110),
+            Location = new Point(25, 120),
             BorderColor = Color.FromArgb(67, 79, 82),
             FillColor = Color.FromArgb(18, 20, 20),
             ForeColor = Color.White,
             BorderRadius = 10
         };
+        overlay.Controls.Add(amountBox);
 
-        var tagsBox = new Guna2TextBox
+        // Date
+        var datePicker = new Guna2DateTimePicker
         {
-            PlaceholderText = "Tags (comma separated)",
-            Text = expense.Tags ?? "",
+            Value = expense.Date,
             Size = new Size(300, 40),
-            Location = new Point(25, 160),
+            Location = new Point(25, 180),
             BorderColor = Color.FromArgb(67, 79, 82),
             FillColor = Color.FromArgb(18, 20, 20),
             ForeColor = Color.White,
             BorderRadius = 10
         };
+        overlay.Controls.Add(datePicker);
 
+        // Category selector
         int selectedCategoryId = expense.CategoryId;
         var categories = await CategoriesList.GetCategoriesAsync(_http);
 
         var maskPanel = new Guna2Panel
         {
             Size = new Size(300, 40),
-            Location = new Point(25, 210),
+            Location = new Point(25, 240),
             BackColor = Color.FromArgb(18, 20, 20),
-            BorderRadius = 10,
-            ShadowDecoration = { Enabled = false }
+            BorderRadius = 10
         };
-
-        var inner = new FlowLayoutPanel
+        var innerFlow = new FlowLayoutPanel
         {
             Location = Point.Empty,
             AutoSize = true,
@@ -997,6 +1003,8 @@ public static class Overlays
             WrapContents = false,
             BackColor = Color.Transparent
         };
+        maskPanel.Controls.Add(innerFlow);
+        overlay.Controls.Add(maskPanel);
 
         foreach (var cat in categories)
         {
@@ -1013,16 +1021,16 @@ public static class Overlays
                 ForeColor = Color.LightGray,
                 ButtonMode = ButtonMode.RadioButton,
                 Tag = cat.CategoryId,
-                Font = new Font("Segoe UI", 9)
+                Font = new Font("Segoe UI", 9),
+                Checked = cat.CategoryId == expense.CategoryId
             };
             btn.CheckedState.FillColor = Color.FromArgb(60, 60, 60);
             btn.CheckedState.ForeColor = Color.White;
-            btn.Checked = cat.CategoryId == expense.CategoryId;
 
             var bmp = new Bitmap(dot, dot);
             using (var g = Graphics.FromImage(bmp))
             {
-                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                g.SmoothingMode = SmoothingMode.AntiAlias;
                 g.FillEllipse(new SolidBrush(ColorTranslator.FromHtml(cat.Color)), 0, 0, dot, dot);
             }
             btn.Image = bmp;
@@ -1030,29 +1038,42 @@ public static class Overlays
             btn.ImageAlign = HorizontalAlignment.Left;
             btn.Padding = new Padding(dot + 6, 0, 0, 0);
 
-            btn.CheckedChanged += (s, e) =>
+            btn.CheckedChanged += (s, ev) =>
             {
                 if (btn.Checked) selectedCategoryId = (int)btn.Tag;
             };
 
-            inner.Controls.Add(btn);
+            innerFlow.Controls.Add(btn);
         }
-        maskPanel.Controls.Add(inner);
 
-        var closeBtn = new Guna2ImageButton
+        // Scrollbar under categories
+        var hScroll = new Guna2HScrollBar
         {
-            Image = login.Properties.Resources.close,
-            Size = new Size(30, 30),
-            Location = new Point(overlay.Width - 40, 10),
-            ForeColor = Color.Transparent
+            Location = new Point(maskPanel.Left, maskPanel.Bottom + 4),
+            Size = new Size(maskPanel.Width, 6),
+            Minimum = 0,
+            LargeChange = maskPanel.Width,
+            FillColor = Color.FromArgb(40, 40, 40),
+            ThumbColor = Color.FromArgb(100, 100, 100),
+            BorderRadius = 3
         };
-        closeBtn.Click += (s, ev) => parentForm.Controls.Remove(overlay);
+        Action updateMax = () =>
+        {
+            innerFlow.PerformLayout();
+            hScroll.Maximum = Math.Max(0, innerFlow.Width - maskPanel.Width);
+        };
+        innerFlow.ControlAdded += (s, ev) => updateMax();
+        innerFlow.ControlRemoved += (s, ev) => updateMax();
+        hScroll.Scroll += (s, ev) => innerFlow.Left = -ev.NewValue;
+        updateMax();
+        overlay.Controls.Add(hScroll);
 
+        // Save button
         var saveBtn = new Guna2Button
         {
             Text = "Save",
             Size = new Size(300, 50),
-            Location = new Point(25, overlay.Bottom - 140),
+            Location = new Point(25, overlay.Height - 120),
             FillColor = Color.FromArgb(20, 24, 26),
             BorderColor = Color.FromArgb(39, 42, 44),
             BorderRadius = 10,
@@ -1061,21 +1082,14 @@ public static class Overlays
         };
         saveBtn.Click += async (s, ev) =>
         {
-            var description = descrBox.Text.Trim();
-            var amountText = amountBox.Text.Trim();
-            var tags = tagsBox.Text.Trim();
-
-            if (string.IsNullOrEmpty(description))
+            var desc = descrBox.Text.Trim();
+            var amtTxt = amountBox.Text.Trim();
+            if (string.IsNullOrEmpty(desc))
             {
                 Cards.Show("Validation Error", "Description is required.", "OK");
                 return;
             }
-            if (string.IsNullOrEmpty(amountText))
-            {
-                Cards.Show("Validation Error", "Amount is required.", "OK");
-                return;
-            }
-            if (!decimal.TryParse(amountText, out var amount) || amount <= 0)
+            if (!decimal.TryParse(amtTxt, out var amt) || amt <= 0)
             {
                 Cards.Show("Validation Error", "Amount must be a positive number.", "OK");
                 return;
@@ -1086,41 +1100,42 @@ public static class Overlays
                 return;
             }
 
-            // API: tags, category, etc.
             var payload = new
             {
-                Amount = amount,
-                Description = description,
-                Tags = tags,
+                Description = desc,
+                Amount = amt,
                 CategoryId = selectedCategoryId,
-                Date = DateTime.Now
+                Date = datePicker.Value
             };
             var json = JsonSerializer.Serialize(payload);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-
             var resp = await _http.PutAsync($"api/expense/{expense.ExpenseId}", content);
 
             if (resp.IsSuccessStatusCode)
             {
                 parentForm.Controls.Remove(overlay);
                 if (parentForm is Expenses expForm)
-                {
                     expForm.ListLoader();
-                }
             }
             else
             {
-                var error = await resp.Content.ReadAsStringAsync();
-                Cards.Show("Error", $"Failed: {resp.StatusCode} - {error}", "OK");
+                var err = await resp.Content.ReadAsStringAsync();
+                Cards.Show("Error", $"Failed to update expense: {resp.StatusCode} – {err}", "OK");
             }
         };
-
-        // ASSEMBLE CONTROLS
-        overlay.Controls.AddRange(new Control[]
-        {
-            titleLabel, descrBox, amountBox, tagsBox, maskPanel, closeBtn
-        });
         overlay.Controls.Add(saveBtn);
+
+        // Close button
+        var closeBtn = new Guna2ImageButton
+        {
+            Image = login.Properties.Resources.close,
+            Size = new Size(30, 30),
+            Location = new Point(overlay.Width - 40, 10),
+            BackColor = Color.Transparent
+        };
+        closeBtn.Click += (s, ev) => parentForm.Controls.Remove(overlay);
+        overlay.Controls.Add(closeBtn);
+
         parentForm.Controls.Add(overlay);
         overlay.BringToFront();
     }

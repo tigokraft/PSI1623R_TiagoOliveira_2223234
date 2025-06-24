@@ -1,4 +1,6 @@
-﻿namespace login
+﻿using login.Properties;
+
+namespace login
 {
     partial class MainForm
     {
@@ -35,7 +37,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.IncomeBtn = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.budgetBtn = new Guna.UI2.WinForms.Guna2Button();
             this.ExpensesBtn = new Guna.UI2.WinForms.Guna2Button();
             this.GoalsBtn = new Guna.UI2.WinForms.Guna2Button();
             this.OvBtn = new Guna.UI2.WinForms.Guna2Button();
@@ -72,7 +73,6 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
             this.panel1.Controls.Add(this.IncomeBtn);
             this.panel1.Controls.Add(this.guna2Button1);
-            this.panel1.Controls.Add(this.budgetBtn);
             this.panel1.Controls.Add(this.ExpensesBtn);
             this.panel1.Controls.Add(this.GoalsBtn);
             this.panel1.Controls.Add(this.OvBtn);
@@ -126,28 +126,6 @@
             this.guna2Button1.Text = "Settings";
             this.guna2Button1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
-            // 
-            // budgetBtn
-            // 
-            this.budgetBtn.Animated = true;
-            this.budgetBtn.BorderRadius = 8;
-            this.budgetBtn.CheckedState.Parent = this.budgetBtn;
-            this.budgetBtn.CustomImages.Parent = this.budgetBtn;
-            this.budgetBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
-            this.budgetBtn.Font = new System.Drawing.Font("Inter", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.budgetBtn.ForeColor = System.Drawing.Color.White;
-            this.budgetBtn.HoverState.Parent = this.budgetBtn;
-            this.budgetBtn.Image = global::login.Properties.Resources.budget;
-            this.budgetBtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.budgetBtn.Location = new System.Drawing.Point(12, 300);
-            this.budgetBtn.Name = "budgetBtn";
-            this.budgetBtn.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
-            this.budgetBtn.ShadowDecoration.Parent = this.budgetBtn;
-            this.budgetBtn.Size = new System.Drawing.Size(175, 40);
-            this.budgetBtn.TabIndex = 8;
-            this.budgetBtn.Text = "Budgets";
-            this.budgetBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.budgetBtn.Click += new System.EventHandler(this.budgetBtn_Click);
             // 
             // ExpensesBtn
             // 
@@ -281,7 +259,6 @@
         private Guna.UI2.WinForms.Guna2Button OvBtn;
         private Guna.UI2.WinForms.Guna2Button GoalsBtn;
         private Guna.UI2.WinForms.Guna2Button ExpensesBtn;
-        private Guna.UI2.WinForms.Guna2Button budgetBtn;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
         private Guna.UI2.WinForms.Guna2Panel former;
