@@ -1140,6 +1140,169 @@ public static class Overlays
         overlay.BringToFront();
     }
 
+    public static async Task GoalOverlay(Form parentForm, HttpClient _http, dynamic goalToEdit = null)
+    {
+        await Task.Yield();
+
+        const int W = 350, H = 350, M = 25, CW = 300, G = 20;
+        var overlay = new Guna2Panel
+        {
+            Name = "GoalOverlay",
+            Size = new Size(W, H),
+            Location = new Point((parentForm.ClientSize.Width - W) / 2, 50),
+            FillColor = Color.FromArgb(18, 20, 20),
+            BorderColor = Color.FromArgb(40, 40, 40),
+            BorderThickness = 1,
+            BorderRadius = 10,
+            Anchor = AnchorStyles.Top
+        };
+
+        // Close button
+        var closeBtn = new Guna2ImageButton
+        {
+            Image = login.Properties.Resources.close,
+            Size = new Size(30, 30),
+            Location = new Point(W - 40, 10),
+            BackColor = Color.Transparent
+        };
+        closeBtn.Click += (s, e) => parentForm.Controls.Remove(overlay);
+
+        // Title
+        var titleLabel = new Label
+        {
+            Text = goalToEdit == null ? "Add Goal" : "Edit Goal",
+            ForeColor = Color.White,
+            Font = new Font("Segoe UI", 12, FontStyle.Bold),
+            Location = new Point(M, 20),
+            AutoSize = true
+        };
+
+        // Name
+        var nameBox = new Guna2TextBox
+        {
+            PlaceholderText = "Goal Name",
+            Size = new Size(CW, 40),
+            Location = new Point(M, titleLabel.Bottom + G),
+            BorderColor = Color.FromArgb(67, 79, 82),
+            FillColor = Color.FromArgb(18, 20, 20),
+            ForeColor = Color.White,
+            BorderRadius = 10
+        };
+
+        // Amount
+        var amountBox = new Guna2TextBox
+        {
+            PlaceholderText = "Target Amount",
+            Size = new Size(CW, 40),
+            Location = new Point(M, nameBox.Bottom + G),
+            BorderColor = Color.FromArgb(67, 79, 82),
+            FillColor = Color.FromArgb(18, 20, 20),
+            ForeColor = Color.White,
+            BorderRadius = 10
+        };
+
+        // Deadline
+        var deadlinePicker = new Guna2DateTimePicker
+        {
+            Format = DateTimePickerFormat.Short,
+            Value = DateTime.Now,
+            Size = new Size(CW, 40),
+            Location = new Point(M, amountBox.Bottom + G),
+            BorderColor = Color.FromArgb(67, 79, 82),
+            FillColor = Color.FromArgb(18, 20, 20),
+            ForeColor = Color.White,
+            BorderRadius = 10
+        };
+
+        // Prefill for editing
+        if (goalToEdit != null)
+        {
+            nameBox.Text = goalToEdit.Name;
+            amountBox.Text = goalToEdit.TargetAmount.ToString("0.##");
+            deadlinePicker.Value = goalToEdit.Deadline;
+        }
+
+        // Save button
+        var saveBtn = new Guna2Button
+        {
+            Text = goalToEdit == null ? "Add Goal" : "Save Changes",
+            Size = new Size(CW, 50),
+            Location = new Point(M, H - 80),
+            FillColor = Color.FromArgb(20, 24, 26),
+            BorderColor = Color.FromArgb(39, 42, 44),
+            BorderRadius = 10,
+            BorderThickness = 1,
+            Font = new Font("Segoe UI", 9)
+        };
+        saveBtn.Click += async (s, ev) =>
+        {
+            // validation
+            var name = nameBox.Text.Trim();
+            var amtTxt = amountBox.Text.Trim();
+            if (string.IsNullOrEmpty(name))
+            {
+                Cards.Show("Validation Error", "Name is required.", "OK");
+                return;
+            }
+            if (!decimal.TryParse(amtTxt, out var target) || target <= 0)
+            {
+                Cards.Show("Validation Error", "Target amount must be positive.", "OK");
+                return;
+            }
+
+            // build DTO & call API
+            var dto = new
+            {
+                Name = name,
+                TargetAmount = target,
+                Deadline = deadlinePicker.Value.Date
+            };
+            var json = JsonSerializer.Serialize(dto);
+            using (var content = new StringContent(json, Encoding.UTF8, "application/json"))
+            {
+                HttpResponseMessage resp;
+                if (goalToEdit == null)
+                    resp = await _http.PostAsync("api/goal", content);
+                else
+                    resp = await _http.PutAsync($"api/goal/{goalToEdit.GoalId}", content);
+
+                if (!resp.IsSuccessStatusCode)
+                {
+                    var verb = goalToEdit == null ? "create" : "update";
+                    Cards.Show("Error", $"Failed to {verb} goal: {resp.StatusCode}", "OK");
+                    return;
+                }
+            }
+
+            // remove overlay
+            parentForm.Controls.Remove(overlay);
+
+            // **Directly refresh your Goals list**
+            if (parentForm is Goals goalsForm)
+            {
+                goalsForm.ListLoader();
+            }
+        };
+
+        // assemble controls
+        overlay.Controls.AddRange(new Control[]
+        {
+        titleLabel,
+        nameBox,
+        amountBox,
+        deadlinePicker,
+        saveBtn,
+        closeBtn
+        });
+
+        parentForm.Controls.Add(overlay);
+        overlay.BringToFront();
+    }
+
+
+
+
+
 }
 
 public static class FormExtensions

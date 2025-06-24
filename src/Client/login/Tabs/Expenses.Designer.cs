@@ -41,10 +41,9 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(33, 37);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(25, 30);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(127, 29);
+            this.label2.Size = new System.Drawing.Size(103, 24);
             this.label2.TabIndex = 5;
             this.label2.Text = "Expenses";
             // 
@@ -63,13 +62,12 @@
             this.AddBtn.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
             this.AddBtn.HoverState.Parent = this.AddBtn;
             this.AddBtn.Image = global::login.Properties.Resources.plus_white;
-            this.AddBtn.Location = new System.Drawing.Point(927, 21);
-            this.AddBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AddBtn.Location = new System.Drawing.Point(695, 15);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.ShadowDecoration.Parent = this.AddBtn;
-            this.AddBtn.Size = new System.Drawing.Size(200, 44);
+            this.AddBtn.Size = new System.Drawing.Size(150, 36);
             this.AddBtn.TabIndex = 7;
-            this.AddBtn.Text = "Add Income";
+            this.AddBtn.Text = "Add Expenses";
             // 
             // closeapp
             // 
@@ -81,12 +79,11 @@
             this.closeapp.HoverState.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
             this.closeapp.HoverState.Parent = this.closeapp;
             this.closeapp.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(160)))), ((int)(((byte)(160)))));
-            this.closeapp.Location = new System.Drawing.Point(1133, 4);
-            this.closeapp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.closeapp.Location = new System.Drawing.Point(845, 0);
             this.closeapp.Name = "closeapp";
             this.closeapp.PressedColor = System.Drawing.Color.Transparent;
             this.closeapp.ShadowDecoration.Parent = this.closeapp;
-            this.closeapp.Size = new System.Drawing.Size(60, 36);
+            this.closeapp.Size = new System.Drawing.Size(45, 29);
             this.closeapp.TabIndex = 18;
             this.closeapp.Click += new System.EventHandler(this.closeapp_Click);
             // 
@@ -107,11 +104,10 @@
             this.cmbCat.HoverState.Parent = this.cmbCat;
             this.cmbCat.ItemHeight = 30;
             this.cmbCat.ItemsAppearance.Parent = this.cmbCat;
-            this.cmbCat.Location = new System.Drawing.Point(344, 86);
-            this.cmbCat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbCat.Location = new System.Drawing.Point(258, 70);
             this.cmbCat.Name = "cmbCat";
             this.cmbCat.ShadowDecoration.Parent = this.cmbCat;
-            this.cmbCat.Size = new System.Drawing.Size(285, 36);
+            this.cmbCat.Size = new System.Drawing.Size(215, 36);
             this.cmbCat.TabIndex = 19;
             // 
             // cmbMonths
@@ -133,26 +129,24 @@
             this.cmbMonths.ItemsAppearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMonths.ItemsAppearance.ForeColor = System.Drawing.Color.White;
             this.cmbMonths.ItemsAppearance.Parent = this.cmbMonths;
-            this.cmbMonths.Location = new System.Drawing.Point(33, 86);
-            this.cmbMonths.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbMonths.Location = new System.Drawing.Point(25, 70);
             this.cmbMonths.MaxDropDownItems = 5;
             this.cmbMonths.Name = "cmbMonths";
             this.cmbMonths.ShadowDecoration.Parent = this.cmbMonths;
-            this.cmbMonths.Size = new System.Drawing.Size(285, 36);
+            this.cmbMonths.Size = new System.Drawing.Size(215, 36);
             this.cmbMonths.TabIndex = 20;
             // 
             // Expenses
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.ClientSize = new System.Drawing.Size(1179, 690);
+            this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.cmbMonths);
             this.Controls.Add(this.cmbCat);
             this.Controls.Add(this.AddBtn);
             this.Controls.Add(this.closeapp);
             this.Controls.Add(this.label2);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Expenses";
             this.Text = "Expenses";
             this.ResumeLayout(false);

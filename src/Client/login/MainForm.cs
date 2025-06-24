@@ -84,6 +84,14 @@ namespace login
             ExpensesBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
             OvBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
             IncomeBtn.FillColor = Color.FromArgb(100, 14, 18, 18);
+
+            Goals goals = new Goals(_http);
+            goals.TopLevel = false;
+            former.Controls.Clear();
+            former.Controls.Add(goals);
+            goals.Dock = DockStyle.Fill; // Fill the parent container
+            goals.Show();
+
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)

@@ -55,3 +55,4 @@ C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\bin\Debu
 C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\bin\Debug\OxyPlot.WindowsForms.dll
 C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\bin\Debug\OxyPlot.xml
 C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\bin\Debug\OxyPlot.WindowsForms.xml
+C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\obj\Debug\login.Tabs.Goals.resources
