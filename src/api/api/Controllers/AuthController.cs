@@ -70,6 +70,19 @@ public class AuthController : ControllerBase
         });
     }
 
+    [HttpPost("reset-password")]
+    public IActionResult ResetPassword([FromBody] ResetPasswordRequest request)
+    {
+        var user = _context.Users.FirstOrDefault(u => u.Username == request.Username);
+        if (user == null)
+            return NotFound("User not found.");
+
+        user.PasswordHash = PasswordHelper.HashPassword(request.NewPassword);
+        _context.SaveChanges();
+
+        return NoContent();
+    }
+
     private string GenerateJwtToken(User user)
     {
         var jwtSettings = _config.GetSection("JwtSettings");
