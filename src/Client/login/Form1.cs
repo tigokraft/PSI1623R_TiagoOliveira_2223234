@@ -88,7 +88,7 @@ namespace login
 
         private void resetpwd_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            ForgotPwd forgot = new ForgotPwd();
+            ForgotPwd forgot = new ForgotPwd(_http, txtUser.Text);
             //forgot.FormClosed += new FormClosedEventHandler(resetClosed);
 
             //this.Hide();
