@@ -67,7 +67,7 @@ namespace login
             }
             else
             {
-                Form1 loginForm = new Form1(httpClient);
+                Login loginForm = new Login(httpClient);
 
                 DialogResult loginResult = loginForm.ShowDialog();
 

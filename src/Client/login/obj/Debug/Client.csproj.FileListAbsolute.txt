@@ -37,7 +37,6 @@ C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\bin\Debu
 C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\bin\Debug\System.ValueTuple.xml
 C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\obj\Debug\Client.csproj.AssemblyReference.cache
 C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\obj\Debug\login.ForgotPwd.resources
-C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\obj\Debug\login.Form1.resources
 C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\obj\Debug\login.MainForm.resources
 C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\obj\Debug\login.Properties.Resources.resources
 C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\obj\Debug\login.Register.resources
@@ -203,3 +202,4 @@ C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\bin\Debu
 C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\bin\Debug\SkiaSharp.HarfBuzz.xml
 C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\bin\Debug\SkiaSharp.Views.Desktop.Common.xml
 C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\bin\Debug\SkiaSharp.Views.WindowsForms.xml
+C:\Users\exxo\Downloads\PSI1623R_TiagoOliveira_2223234\src\Client\login\obj\Debug\login.Login.resources

@@ -1,7 +1,7 @@
-﻿using System;
+﻿// Goals.cs
+using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Guna.UI2.WinForms;
 using login.Helpers;
+using login.Properties;
 
 namespace login.Tabs
 {
@@ -24,17 +25,6 @@ namespace login.Tabs
         }
 
         private readonly HttpClient _http;
-        private readonly Color[] _progressColors = new[]
-        {
-            Color.FromArgb(52, 152, 219),
-            Color.FromArgb(241, 196, 15),
-            Color.FromArgb(46, 204, 113),
-            Color.FromArgb(231, 76, 60),
-            Color.FromArgb(155, 89, 182)
-        };
-
-        // Top toolbar panel to hold Add and Close buttons
-        private Panel toolbarPanel;
         private FlowLayoutPanel cardPanel;
 
         public Goals(HttpClient http)
@@ -43,27 +33,15 @@ namespace login.Tabs
             FormBorderStyle = FormBorderStyle.None;
             _http = http;
 
-            // === Toolbar setup ===
-            toolbarPanel = new Panel
-            {
-                Dock = DockStyle.Top,
-                Height = 60,
-                BackColor = Color.FromArgb(24, 25, 28)
-            };
-            Controls.Add(toolbarPanel);
+            // -- Leave your AddBtn and closeapp setup alone! --
 
-            // Move your AddBtn and closeapp onto the toolbarPanel
-            // If you created them in the Designer, move them manually in Designer
-            AddBtn.Parent = toolbarPanel;
-            AddBtn.Location = new Point(20, 14);
-            closeapp.Parent = toolbarPanel;
-            closeapp.Location = new Point(toolbarPanel.Width - closeapp.Width - 20, 14);
-            closeapp.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-
-            // === Cards panel ===
+            // Place cards panel below your buttons. Adjust the Y as needed if you have more controls.
+            int panelY = Math.Max(AddBtn.Bottom, closeapp.Bottom) + 20;
             cardPanel = new FlowLayoutPanel
             {
-                Dock = DockStyle.Fill,
+                Location = new Point(0, panelY),
+                Size = new Size(ClientSize.Width, ClientSize.Height - panelY),
+                Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right,
                 AutoScroll = true,
                 FlowDirection = FlowDirection.TopDown,
                 WrapContents = false,
@@ -73,11 +51,15 @@ namespace login.Tabs
             Controls.Add(cardPanel);
             cardPanel.BringToFront();
 
-            // Event handlers
+            this.Resize += (s, e) =>
+            {
+                cardPanel.Width = ClientSize.Width;
+                cardPanel.Height = ClientSize.Height - cardPanel.Top;
+            };
+
             AddBtn.Click += AddBtn_Click;
             closeapp.Click += closeapp_Click;
 
-            // Initial load
             _ = ListLoader();
         }
 
@@ -97,7 +79,6 @@ namespace login.Tabs
             cardPanel.SuspendLayout();
             cardPanel.Controls.Clear();
 
-            // API call
             HttpResponseMessage resp;
             try
             {
@@ -143,28 +124,42 @@ namespace login.Tabs
                 return;
             }
 
-            int idx = 0;
             foreach (var g in goals)
             {
-                var card = CreateGoalCard(g, idx++);
+                var card = CreateGoalCard(g);
                 cardPanel.Controls.Add(card);
             }
             cardPanel.ResumeLayout();
         }
 
-        private Guna2Panel CreateGoalCard(GoalDto g, int index)
+        // Interpolates between two colors based on percentage (0–100)
+        private Color InterpolateColor(Color from, Color to, int percentage)
         {
-            Color color = _progressColors[index % _progressColors.Length];
+            int r = from.R + (to.R - from.R) * percentage / 100;
+            int g = from.G + (to.G - from.G) * percentage / 100;
+            int b = from.B + (to.B - from.B) * percentage / 100;
+            return Color.FromArgb(r, g, b);
+        }
+
+        private Guna2Panel CreateGoalCard(GoalDto g)
+        {
+            const int BaseHeight = 120;
             int pct = (g.TargetAmount > 0m)
                 ? (int)Math.Round((double)g.CurrentSaved / (double)g.TargetAmount * 100)
                 : 0;
             pct = Math.Max(0, Math.Min(100, pct));
 
-            const int BaseHeight = 120;
+            // Calculate dynamic color from (20,24,26) → (27,43,48)
+            Color color = InterpolateColor(
+                Color.FromArgb(20, 24, 26),
+                Color.FromArgb(27, 43, 48),
+                pct
+            );
+
             var card = new Guna2Panel
             {
                 Tag = "goalCard",
-                Width = cardPanel.ClientSize.Width - 32, // To account for FlowLayoutPanel's scrollbar & padding
+                Width = cardPanel.ClientSize.Width - 32,
                 Height = BaseHeight,
                 FillColor = Color.FromArgb(32, 34, 37),
                 BorderColor = Color.FromArgb(50, 50, 50),
@@ -185,12 +180,12 @@ namespace login.Tabs
             };
             card.Controls.Add(lblTitle);
 
-            // Progress bar
+            // Horizontal progress bar
             var prog = new Guna2ProgressBar
             {
                 Height = 12,
                 Location = new Point(20, lblTitle.Bottom + 10),
-                FillColor = Color.FromArgb(50, 50, 50),
+                FillColor = Color.FromArgb(20, 24, 26),
                 ProgressColor = color,
                 BorderRadius = 6,
                 Value = pct,
@@ -219,7 +214,8 @@ namespace login.Tabs
                 ProgressThickness = 8,
                 FillThickness = 8,
                 ProgressColor = color,
-                FillColor = Color.FromArgb(32, 34, 37),
+                FillColor = Color.FromArgb(20, 24, 26),
+                ForeColor = Color.White,
                 ShowPercentage = true,
                 Font = new Font("Segoe UI", 9f, FontStyle.Bold),
             };
@@ -229,18 +225,17 @@ namespace login.Tabs
             // Expander button
             var expanderBtn = new Guna2Button
             {
-                Text = "➕",
+                Image = Resources.plus_white,
+                ImageAlign = HorizontalAlignment.Center,
                 Size = new Size(32, 32),
                 BorderRadius = 8,
                 FillColor = Color.FromArgb(67, 79, 82),
                 ForeColor = Color.White,
-                Location = new Point(card.Width - circ.Width - 80, 25),
-                Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                Location = new Point(card.Width - circ.Width - 80, card.Height / 2 - 16),
                 Name = "expanderBtn"
             };
             card.Controls.Add(expanderBtn);
 
-            // Expand/collapse logic
             Panel addMoneyPanel = null;
             bool expanded = false;
 
@@ -277,7 +272,7 @@ namespace login.Tabs
                             Size = new Size(100, 30),
                             Location = new Point(txt.Right + 10, 5),
                             BorderRadius = 6,
-                            FillColor = Color.FromArgb(52, 152, 219),
+                            FillColor = Color.FromArgb(20, 24, 26),
                             ForeColor = Color.White
                         };
                         addMoneyPanel.Controls.Add(btn);
@@ -291,14 +286,12 @@ namespace login.Tabs
                             }
                             var dto = new { Amount = amt };
                             var body = JsonSerializer.Serialize(dto);
-                            using (var content2 = new StringContent(body, Encoding.UTF8, "application/json"))
+                            var content2 = new StringContent(body, Encoding.UTF8, "application/json");
+                            var r2 = await _http.PostAsync($"api/goal/{g.GoalId}/save", content2);
+                            if (!r2.IsSuccessStatusCode)
                             {
-                                var r2 = await _http.PostAsync($"api/goal/{g.GoalId}/save", content2);
-                                if (!r2.IsSuccessStatusCode)
-                                {
-                                    Cards.Show("Error", $"Failed: {r2.StatusCode}", "OK");
-                                    return;
-                                }
+                                Cards.Show("Error", $"Failed: {r2.StatusCode}", "OK");
+                                return;
                             }
                             await ListLoader();
                         };
@@ -310,26 +303,18 @@ namespace login.Tabs
                 }
                 else
                 {
-                    if (addMoneyPanel != null)
-                    {
-                        card.Controls.Remove(addMoneyPanel);
-                        card.Height = BaseHeight;
-                        expanded = false;
-                        addMoneyPanel = null;
-                    }
+                    card.Controls.Remove(addMoneyPanel);
+                    card.Height = BaseHeight;
+                    expanded = false;
+                    addMoneyPanel = null;
                 }
-                // Trigger FlowLayoutPanel re-layout
                 cardPanel.PerformLayout();
             };
 
-            // Resize event for responsive width
             card.Resize += (s, e) =>
             {
                 prog.Width = card.Width - 180;
-                if (addMoneyPanel != null)
-                {
-                    addMoneyPanel.Width = card.Width - 40;
-                }
+                addMoneyPanel?.SetBounds(0, addMoneyPanel.Location.Y, card.Width - 40, 40);
                 circ.Location = new Point(card.Width - circ.Width - 20, (card.Height - circ.Height) / 2);
                 expanderBtn.Location = new Point(card.Width - circ.Width - 80, 25);
             };

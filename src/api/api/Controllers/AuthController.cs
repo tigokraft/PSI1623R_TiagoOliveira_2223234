@@ -31,6 +31,11 @@ public class AuthController : ControllerBase
         if (user == null || !PasswordHelper.VerifyPassword(user.PasswordHash, request.Password))
             return Unauthorized("Invalid credentials.");
 
+        if (string.IsNullOrWhiteSpace(request.Username)) 
+        {
+            return Conflict("username can't be invalid");
+        }
+
         var token = GenerateJwtToken(user);
         return Ok(new { token });
     }
@@ -40,7 +45,12 @@ public class AuthController : ControllerBase
     {
         if (_context.Users.Any(u => u.Username == request.Username))
             return Conflict("Username already exists.");
-        
+
+        if (string.IsNullOrWhiteSpace(request.Username)) 
+        {
+            return Conflict("username can't be invalid");
+        }
+
         var newUser = new User
         {
             Username = request.Username,

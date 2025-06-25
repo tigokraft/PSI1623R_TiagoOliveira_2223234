@@ -131,7 +131,7 @@
             this.Pass.SelectedText = "";
             this.Pass.ShadowDecoration.Parent = this.Pass;
             this.Pass.Size = new System.Drawing.Size(200, 44);
-            this.Pass.TabIndex = 17;
+            this.Pass.TabIndex = 2;
             this.Pass.UseSystemPasswordChar = true;
             // 
             // User
@@ -164,7 +164,7 @@
             this.User.SelectedText = "";
             this.User.ShadowDecoration.Parent = this.User;
             this.User.Size = new System.Drawing.Size(200, 44);
-            this.User.TabIndex = 16;
+            this.User.TabIndex = 1;
             // 
             // LoginBtn
             // 
@@ -181,7 +181,7 @@
             this.LoginBtn.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(43)))));
             this.LoginBtn.ShadowDecoration.Parent = this.LoginBtn;
             this.LoginBtn.Size = new System.Drawing.Size(200, 44);
-            this.LoginBtn.TabIndex = 19;
+            this.LoginBtn.TabIndex = 4;
             this.LoginBtn.Text = "Register";
             this.LoginBtn.Click += new System.EventHandler(this.LoginBtn_Click);
             // 
@@ -216,7 +216,7 @@
             this.rptPass.SelectedText = "";
             this.rptPass.ShadowDecoration.Parent = this.rptPass;
             this.rptPass.Size = new System.Drawing.Size(200, 44);
-            this.rptPass.TabIndex = 20;
+            this.rptPass.TabIndex = 3;
             this.rptPass.UseSystemPasswordChar = true;
             // 
             // Register

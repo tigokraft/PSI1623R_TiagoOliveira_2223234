@@ -13,10 +13,10 @@ using System.IO;
 
 namespace login
 {
-    public partial class Form1 : Form
+    public partial class Login : Form
     {
         private readonly HttpClient _http;
-        public Form1(HttpClient httpClient)
+        public Login(HttpClient httpClient)
         {
             InitializeComponent();
             this.MaximizeBox = false;
