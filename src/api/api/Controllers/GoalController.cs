@@ -70,11 +70,38 @@ namespace FinSync.Controllers
             var goal = await _context.Goals.FirstOrDefaultAsync(g => g.GoalId == id && g.UserId == userId.Value);
             if (goal == null) return NotFound();
 
-            goal.CurrentSaved += dto.Amount;
-            if (goal.CurrentSaved > goal.TargetAmount)
-                goal.CurrentSaved = goal.TargetAmount;
+            var amountAllowed = Math.Min(dto.Amount, goal.TargetAmount - goal.CurrentSaved);
+            if (amountAllowed <= 0)
+                return BadRequest("Goal already reached.");
 
+            goal.CurrentSaved += amountAllowed;
+
+            // Ensure user has a "goal" category
+            var goalCategory = await _context.Categories.FirstOrDefaultAsync(c => c.UserId == userId.Value && c.CategoryName == "goal");
+            if (goalCategory == null)
+            {
+                goalCategory = new Category
+                {
+                    UserId = userId.Value,
+                    CategoryName = "goal",
+                    Color = "0,128,0"
+                };
+                _context.Categories.Add(goalCategory);
+                await _context.SaveChangesAsync();
+            }
+
+            var expense = new Expense
+            {
+                UserId = userId.Value,
+                Amount = amountAllowed,
+                Description = $"Goal: {goal.Name}",
+                Date = DateTime.UtcNow,
+                CategoryId = goalCategory.CategoryId
+            };
+
+            _context.Expenses.Add(expense);
             await _context.SaveChangesAsync();
+
             return Ok(new { message = "Goal progress updated.", currentSaved = goal.CurrentSaved });
         }
 
