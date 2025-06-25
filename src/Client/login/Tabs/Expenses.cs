@@ -106,7 +106,7 @@ namespace login.Tabs
 
             var tableContainerPanel = new Guna2Panel
             {
-                Size = new Size(desiredTotalContainerWidth, 200 + (tablePadding * 2)),
+                Size = new Size(desiredTotalContainerWidth, 400 + (tablePadding * 2)),
                 Location = new Point(20, desiredStartY),
                 BorderRadius = 10,
                 BorderThickness = 1,

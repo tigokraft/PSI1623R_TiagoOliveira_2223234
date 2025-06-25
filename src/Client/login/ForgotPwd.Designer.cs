@@ -91,7 +91,7 @@
             this.userBox.ForeColor = System.Drawing.Color.Transparent;
             this.userBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(160)))), ((int)(((byte)(160)))));
             this.userBox.HoverState.Parent = this.userBox;
-            this.userBox.Location = new System.Drawing.Point(50, 96);
+            this.userBox.Location = new System.Drawing.Point(50, 144);
             this.userBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.userBox.Name = "userBox";
             this.userBox.PasswordChar = '\0';
@@ -101,9 +101,9 @@
             this.userBox.ShadowDecoration.Parent = this.userBox;
             this.userBox.Size = new System.Drawing.Size(200, 44);
             this.userBox.TabIndex = 8;
-            //
+            // 
             // txtUser
-            //
+            // 
             this.txtUser.AcceptsTab = true;
             this.txtUser.Animated = true;
             this.txtUser.BackColor = System.Drawing.Color.Transparent;
@@ -123,7 +123,7 @@
             this.txtUser.ForeColor = System.Drawing.Color.Transparent;
             this.txtUser.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(160)))), ((int)(((byte)(160)))));
             this.txtUser.HoverState.Parent = this.txtUser;
-            this.txtUser.Location = new System.Drawing.Point(50, 154);
+            this.txtUser.Location = new System.Drawing.Point(50, 202);
             this.txtUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtUser.Name = "txtUser";
             this.txtUser.PasswordChar = '\0';
@@ -156,7 +156,7 @@
             this.guna2TextBox1.ForeColor = System.Drawing.Color.Transparent;
             this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(160)))), ((int)(((byte)(160)))));
             this.guna2TextBox1.HoverState.Parent = this.guna2TextBox1;
-            this.guna2TextBox1.Location = new System.Drawing.Point(50, 212);
+            this.guna2TextBox1.Location = new System.Drawing.Point(50, 261);
             this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2TextBox1.Name = "guna2TextBox1";
             this.guna2TextBox1.PasswordChar = '\0';
@@ -173,7 +173,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Inter Medium", 13F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(45, 118);
+            this.label2.Location = new System.Drawing.Point(45, 105);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(153, 26);
             this.label2.TabIndex = 11;
@@ -189,7 +189,7 @@
             this.LoginBtn.Font = new System.Drawing.Font("Inter Medium", 11F, System.Drawing.FontStyle.Bold);
             this.LoginBtn.ForeColor = System.Drawing.Color.White;
             this.LoginBtn.HoverState.Parent = this.LoginBtn;
-            this.LoginBtn.Location = new System.Drawing.Point(50, 268);
+            this.LoginBtn.Location = new System.Drawing.Point(50, 340);
             this.LoginBtn.Name = "LoginBtn";
             this.LoginBtn.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(43)))));
             this.LoginBtn.ShadowDecoration.Parent = this.LoginBtn;
@@ -230,7 +230,7 @@
             this.pwdShow.CheckMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
             this.pwdShow.Font = new System.Drawing.Font("Inter Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pwdShow.ForeColor = System.Drawing.Color.Transparent;
-            this.pwdShow.Location = new System.Drawing.Point(50, 328);
+            this.pwdShow.Location = new System.Drawing.Point(50, 312);
             this.pwdShow.Name = "pwdShow";
             this.pwdShow.Size = new System.Drawing.Size(126, 22);
             this.pwdShow.TabIndex = 15;

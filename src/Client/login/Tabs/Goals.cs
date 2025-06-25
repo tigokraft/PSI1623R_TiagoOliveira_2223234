@@ -66,7 +66,6 @@ namespace login.Tabs
         private async void AddBtn_Click(object sender, EventArgs e)
         {
             await Overlays.GoalOverlay(this, _http);
-            await ListLoader();
         }
 
         private void closeapp_Click(object sender, EventArgs e)

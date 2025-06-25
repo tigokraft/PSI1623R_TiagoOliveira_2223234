@@ -123,8 +123,12 @@ namespace login.Tabs
         private void MouseWheelScrollHandler(object sender, MouseEventArgs e)
         {
             int newVal = gunaScroll.Value - e.Delta / 3;
-            if (newVal < gunaScroll.Minimum) newVal = gunaScroll.Minimum;
-            if (newVal > gunaScroll.Maximum) newVal = gunaScroll.Maximum;
+            // manual clamp because Math.Clamp isn't in .NET Framework
+            if (newVal < gunaScroll.Minimum)
+                newVal = gunaScroll.Minimum;
+            else if (newVal > gunaScroll.Maximum)
+                newVal = gunaScroll.Maximum;
+
             if (newVal != gunaScroll.Value)
             {
                 gunaScroll.Value = newVal;
@@ -172,42 +176,55 @@ namespace login.Tabs
 
         private async Task LoadExpensesAndIncomes()
         {
-            var expenses = new List<Transaction>();
-            var expResp = await _http.GetAsync("api/expense/summary");
+            var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+
+            // --- EXPENSES ---
+            List<Transaction> expenses = new List<Transaction>();
+            var expResp = await _http.GetAsync("api/expense/");
             if (expResp.IsSuccessStatusCode)
             {
-                var j = await expResp.Content.ReadAsStringAsync();
-                using (var doc = JsonDocument.Parse(j))
+                var json = await expResp.Content.ReadAsStringAsync();
+                var doc = JsonDocument.Parse(json);
+                var root = doc.RootElement;
+
+                if (root.ValueKind == JsonValueKind.Object && root.TryGetProperty("expenses", out var arr))
                 {
-                    if (doc.RootElement.TryGetProperty("expenses", out var arr))
-                    {
-                        expenses = JsonSerializer.Deserialize<List<Transaction>>(
-                            arr.GetRawText(),
-                            new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
-                        ) ?? new List<Transaction>();
-                        expenses.ForEach(t => t.IsExpense = true);
-                    }
+                    expenses = JsonSerializer.Deserialize<List<Transaction>>(arr.GetRawText(), options)
+                               ?? new List<Transaction>();
                 }
+                else if (root.ValueKind == JsonValueKind.Array)
+                {
+                    expenses = JsonSerializer.Deserialize<List<Transaction>>(json, options)
+                               ?? new List<Transaction>();
+                }
+
+                expenses.ForEach(t => t.IsExpense = true);
             }
 
-            var incomes = new List<Transaction>();
-            var incResp = await _http.GetAsync("api/income/summary");
+            // --- INCOMES ---
+            List<Transaction> incomes = new List<Transaction>();
+            var incResp = await _http.GetAsync("api/income/");
             if (incResp.IsSuccessStatusCode)
             {
-                var j = await incResp.Content.ReadAsStringAsync();
-                using (var doc = JsonDocument.Parse(j))
+                var json = await incResp.Content.ReadAsStringAsync();
+                var doc = JsonDocument.Parse(json);
+                var root = doc.RootElement;
+
+                if (root.ValueKind == JsonValueKind.Object && root.TryGetProperty("incomes", out var arr))
                 {
-                    if (doc.RootElement.TryGetProperty("incomes", out var arr))
-                    {
-                        incomes = JsonSerializer.Deserialize<List<Transaction>>(
-                            arr.GetRawText(),
-                            new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
-                        ) ?? new List<Transaction>();
-                        incomes.ForEach(t => t.IsExpense = false);
-                    }
+                    incomes = JsonSerializer.Deserialize<List<Transaction>>(arr.GetRawText(), options)
+                              ?? new List<Transaction>();
                 }
+                else if (root.ValueKind == JsonValueKind.Array)
+                {
+                    incomes = JsonSerializer.Deserialize<List<Transaction>>(json, options)
+                              ?? new List<Transaction>();
+                }
+
+                incomes.ForEach(t => t.IsExpense = false);
             }
 
+            // Merge, sort, render
             var all = expenses
                 .Concat(incomes)
                 .OrderByDescending(t => t.Date)
@@ -244,7 +261,6 @@ namespace login.Tabs
 
         private Guna2Panel CreateCard(Transaction t)
         {
-            // resolve category
             var cat = _categories.FirstOrDefault(c => c.CategoryId == t.CategoryId);
             Color dotColor = Color.Gray;
             string catName = "Unknown";
@@ -254,10 +270,9 @@ namespace login.Tabs
                 try { dotColor = ColorTranslator.FromHtml(cat.Color); } catch { }
             }
 
-            // choose description text
             string desc = !string.IsNullOrEmpty(t.Description) ? t.Description : (t.Descr ?? "");
 
-            // build icon
+            // Build icon
             var iconBmp = new Bitmap(24, 24);
             using (Graphics g = Graphics.FromImage(iconBmp))
             {
@@ -281,7 +296,7 @@ namespace login.Tabs
                 Margin = new Padding(0, 0, 0, 10)
             };
 
-            // icon
+            // Icon
             var pic = new PictureBox
             {
                 Image = iconBmp,
@@ -295,7 +310,7 @@ namespace login.Tabs
             int w = panel.ClientSize.Width;
             int h = panel.ClientSize.Height;
 
-            // description label
+            // Description
             var lblDesc = new Label
             {
                 Text = desc,
@@ -307,7 +322,7 @@ namespace login.Tabs
             };
             panel.Controls.Add(lblDesc);
 
-            // category dot (to the right of desc), centered vertically
+            // Category dot
             var catDot = new Panel
             {
                 Size = new Size(9, 9),
@@ -322,7 +337,7 @@ namespace login.Tabs
             };
             panel.Controls.Add(catDot);
 
-            // category label (right of dot), same vertical center
+            // Category name
             var lblCat = new Label
             {
                 Text = catName,
@@ -335,7 +350,7 @@ namespace login.Tabs
             lblCat.Location = new Point(catDot.Right + 4, lblY);
             panel.Controls.Add(lblCat);
 
-            // amount label
+            // Amount
             string amtText = (t.IsExpense ? "-" : "+") + $"{Math.Abs(t.Amount):0.00}";
             var lblAmt = new Label
             {
@@ -350,7 +365,7 @@ namespace login.Tabs
             lblAmt.Location = new Point(w - aw - 12, 6);
             panel.Controls.Add(lblAmt);
 
-            // date label
+            // Date
             string ds = t.Date.Year == DateTime.Now.Year
                 ? t.Date.ToString("MMM d")
                 : t.Date.ToString("MMM d, yyyy");

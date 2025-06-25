@@ -1,22 +1,33 @@
-﻿using System;
+﻿using Guna.UI2.WinForms;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Net.Http;
 using System.Windows.Forms;
-using Guna.UI2.WinForms;
 using login.Helpers;
 
 namespace login.Tabs
 {
     public class SettingsPanel : Form
     {
+        // Same palette as Expenses_list
+        private readonly Color BackgroundColor = Color.FromArgb(18, 20, 20);
+        private readonly Color CardColor = Color.FromArgb(32, 34, 35);
+        private readonly Color TextPrimary = Color.White;
+        private readonly Color TextSecondary = Color.FromArgb(180, 180, 180);
+        private readonly Color AccentSave = Color.FromArgb(60, 180, 100);
+        private readonly Color AccentLogout = Color.FromArgb(220, 60, 60);
+
         private readonly HttpClient _http;
         private readonly ClientSettings _settings;
-        private Guna2TextBox baseUrlBox;
 
-        public SettingsPanel(HttpClient http)
+        private Guna2TextBox baseUrlBox;
+        private Guna2Button saveBtn;
+        private Guna2Button logoutBtn;
+
+        public SettingsPanel(HttpClient httpClient)
         {
-            _http = http;
+            _http = httpClient;
             _settings = ClientSettings.Load();
             InitializeComponent();
             baseUrlBox.Text = _settings.ApiBaseUrl;
@@ -24,130 +35,108 @@ namespace login.Tabs
 
         private void InitializeComponent()
         {
-            // ── Form ────────────────────────────────────────────────────────────────
-            this.Text = "Settings";
-            this.BackColor = Color.FromArgb(18, 20, 20);
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.ClientSize = new Size(900, 650);
+            // Form setup
+            Text = "Settings";
+            BackColor = BackgroundColor;
+            FormBorderStyle = FormBorderStyle.None;
+            Size = new Size(600, 200);
 
-            // ── Container ───────────────────────────────────────────────────────────
+            // Outer panel for rounded-corner card look
             var container = new Guna2Panel
             {
                 Dock = DockStyle.Fill,
-                Padding = new Padding(20),
-                FillColor = Color.FromArgb(24, 26, 27),
-                BorderRadius = 10,
-                BorderThickness = 1,
-                BorderColor = Color.FromArgb(40, 40, 40),
+                FillColor = CardColor,
+                BorderRadius = 16
             };
-            this.Controls.Add(container);
-
-            // ── Header ──────────────────────────────────────────────────────────────
-            var header = new Label
-            {
-                Text = "Settings",
-                Font = new Font("Segoe UI Semibold", 16, FontStyle.Bold),
-                ForeColor = Color.White,
-                Dock = DockStyle.Top,
-                Height = 30,
-                TextAlign = ContentAlignment.MiddleLeft
-            };
-            container.Controls.Add(header);
-
-            // ── Two-column table for label + textbox ────────────────────────────────
-            var table = new TableLayoutPanel
-            {
-                ColumnCount = 2,
-                RowCount = 1,
-                Dock = DockStyle.Top,
-                AutoSize = true,
-                Margin = new Padding(0, 10, 0, 20)
-            };
-            table.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100));
-            table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
-            container.Controls.Add(table);
+            Controls.Add(container);
 
             // Label
             var lbl = new Label
             {
                 Text = "API Base URL",
-                Font = new Font("Segoe UI", 9),
-                ForeColor = Color.LightGray,
-                TextAlign = ContentAlignment.MiddleLeft,
-                Dock = DockStyle.Fill
+                Font = new Font("Segoe UI", 9, FontStyle.Regular),
+                ForeColor = TextSecondary,
+                Location = new Point(30, 30),
+                AutoSize = true,
+                BackColor = Color.Transparent
             };
-            table.Controls.Add(lbl, 0, 0);
+            container.Controls.Add(lbl);
 
-            // TextBox
+            // Text box
             baseUrlBox = new Guna2TextBox
             {
-                PlaceholderText = "https://api.example.com",
+                Location = new Point(30, 55),
+                Size = new Size(540, 36),
                 BorderRadius = 8,
-                BorderThickness = 1,
-                BorderColor = Color.FromArgb(67, 79, 82),
-                FillColor = Color.FromArgb(18, 20, 20),
-                ForeColor = Color.White,
-                Dock = DockStyle.Fill,
-                Margin = new Padding(10, 0, 0, 0),
-                Height = 36
+                FillColor = BackgroundColor,
+                ForeColor = TextPrimary,
+                PlaceholderText = "https://api.yourservice.com"
             };
-            table.Controls.Add(baseUrlBox, 1, 0);
+            container.Controls.Add(baseUrlBox);
 
-            // ── Button row ─────────────────────────────────────────────────────────
-            var buttons = new FlowLayoutPanel
-            {
-                FlowDirection = FlowDirection.RightToLeft,
-                Dock = DockStyle.Bottom,
-                AutoSize = true,
-                WrapContents = false
-            };
-            container.Controls.Add(buttons);
-
-            // Logout
-            var logoutBtn = new Guna2Button
-            {
-                Text = "Logout",
-                Size = new Size(100, 36),
-                FillColor = Color.FromArgb(92, 26, 26),
-                BorderColor = Color.FromArgb(112, 36, 36),
-                BorderRadius = 8,
-                Font = new Font("Segoe UI", 9),
-                Margin = new Padding(0, 0, 10, 0),
-                Cursor = Cursors.Hand
-            };
-            logoutBtn.Click += (s, e) =>
-            {
-                if (File.Exists("auth.token")) File.Delete("auth.token");
-                Application.Exit();
-            };
-            buttons.Controls.Add(logoutBtn);
-
-            // Save
-            var saveBtn = new Guna2Button
+            // Save button
+            saveBtn = new Guna2Button
             {
                 Text = "Save",
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
+                Location = new Point(30, 110),
                 Size = new Size(100, 36),
-                FillColor = Color.FromArgb(20, 24, 26),
-                BorderColor = Color.FromArgb(39, 42, 44),
                 BorderRadius = 8,
-                Font = new Font("Segoe UI", 9),
-                Cursor = Cursors.Hand
+                FillColor = AccentSave,
+                ForeColor = Color.White
             };
-            saveBtn.Click += (s, e) =>
+            saveBtn.Click += SaveBtn_Click;
+            container.Controls.Add(saveBtn);
+
+            // Logout button
+            logoutBtn = new Guna2Button
             {
-                _settings.ApiBaseUrl = baseUrlBox.Text.Trim();
-                _settings.Save();
-                if (Uri.TryCreate(_settings.ApiBaseUrl, UriKind.Absolute, out var uri))
-                {
-                    _http.BaseAddress = uri;
-                    Cards.Show("Success", "Settings saved.", "OK");
-                }
-                else
-                {
-                    Cards.Show("Error", "Invalid URL.", "OK");
-                }
+                Text = "Logout",
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
+                Location = new Point(150, 110),
+                Size = new Size(100, 36),
+                BorderRadius = 8,
+                FillColor = AccentLogout,
+                ForeColor = Color.White
             };
-            buttons.Controls.Add(saveBtn);
+            logoutBtn.Click += LogoutBtn_Click;
+            container.Controls.Add(logoutBtn);
+        }
+
+        private void SaveBtn_Click(object sender, EventArgs e)
+        {
+            var newUrl = baseUrlBox.Text.Trim();
+            _settings.ApiBaseUrl = newUrl;
+            _settings.Save();
+
+            if (Uri.TryCreate(newUrl, UriKind.Absolute, out var uri))
+            {
+                _http.BaseAddress = uri;
+                MessageBox.Show(
+                    "Settings saved.",
+                    "Success",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Invalid URL.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
+        }
+
+        private void LogoutBtn_Click(object sender, EventArgs e)
+        {
+            var tokenFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "auth.token");
+            if (File.Exists(tokenFile))
+                File.Delete(tokenFile);
+
+            Application.Exit();
         }
     }
 }
