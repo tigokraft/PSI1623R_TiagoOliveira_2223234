@@ -56,7 +56,7 @@ public class AuthController : ControllerBase
         {
             UserId = newUser.UserId,
             CategoryName = "goal",
-            Color = "0,128,0"
+            Color = "#25be4f"
         };
 
         _context.Categories.Add(goalCategory);

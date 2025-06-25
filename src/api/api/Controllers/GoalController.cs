@@ -84,7 +84,7 @@ namespace FinSync.Controllers
                 {
                     UserId = userId.Value,
                     CategoryName = "goal",
-                    Color = "0,128,0"
+                    Color = "#25be4f"
                 };
                 _context.Categories.Add(goalCategory);
                 await _context.SaveChangesAsync();
