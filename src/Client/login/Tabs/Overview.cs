@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using login.Helpers;
 using login.Tabs;                   // ← for Expenses_list
-using OxyPlot.WindowsForms;
 
 namespace login.Tabs
 {
@@ -31,6 +30,7 @@ namespace login.Tabs
             _http = httpClient;
 
             ChartPanel.BackColor = Color.FromArgb(16, 20, 20);
+            ChartPanel1.BackColor = Color.FromArgb(16, 20, 20);
             ExpensesPanel.BackColor = Color.FromArgb(16, 20, 20);
 
             Loader();
@@ -54,37 +54,33 @@ namespace login.Tabs
             var expenses = new List<Expenses_list.Transaction>();
             var incomes = new List<Expenses_list.Transaction>();
 
-            HttpResponseMessage expResp = await _http.GetAsync("api/expense/summary");
+            var expResp = await _http.GetAsync("api/expense/summary");
             if (expResp.IsSuccessStatusCode)
             {
                 string j = await expResp.Content.ReadAsStringAsync();
-                using (JsonDocument doc = JsonDocument.Parse(j))
+                var doc = JsonDocument.Parse(j);
+                if (doc.RootElement.TryGetProperty("expenses", out var arr))
                 {
-                    if (doc.RootElement.TryGetProperty("expenses", out var arr))
-                    {
-                        expenses = JsonSerializer.Deserialize<List<Expenses_list.Transaction>>(
-                            arr.GetRawText(),
-                            new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
-                        ) ?? new List<Expenses_list.Transaction>();
-                        expenses.ForEach(t => t.IsExpense = true);
-                    }
+                    expenses = JsonSerializer.Deserialize<List<Expenses_list.Transaction>>(
+                        arr.GetRawText(),
+                        new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
+                    ) ?? new List<Expenses_list.Transaction>();
+                    expenses.ForEach(t => t.IsExpense = true);
                 }
             }
 
-            HttpResponseMessage incResp = await _http.GetAsync("api/income/summary");
+            var incResp = await _http.GetAsync("api/income/summary");
             if (incResp.IsSuccessStatusCode)
             {
                 string j = await incResp.Content.ReadAsStringAsync();
-                using (JsonDocument doc = JsonDocument.Parse(j))
+                var doc = JsonDocument.Parse(j);
+                if (doc.RootElement.TryGetProperty("incomes", out var arr))
                 {
-                    if (doc.RootElement.TryGetProperty("incomes", out var arr))
-                    {
-                        incomes = JsonSerializer.Deserialize<List<Expenses_list.Transaction>>(
-                            arr.GetRawText(),
-                            new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
-                        ) ?? new List<Expenses_list.Transaction>();
-                        incomes.ForEach(t => t.IsExpense = false);
-                    }
+                    incomes = JsonSerializer.Deserialize<List<Expenses_list.Transaction>>(
+                        arr.GetRawText(),
+                        new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
+                    ) ?? new List<Expenses_list.Transaction>();
+                    incomes.ForEach(t => t.IsExpense = false);
                 }
             }
 
@@ -96,7 +92,7 @@ namespace login.Tabs
                 .OrderBy(d => d)
                 .ToList();
 
-            // X-axis labels: show only first, middle, last
+            // X-axis labels: only first, middle, last
             string[] xLabels = allDates
                 .Select((d, i) =>
                     i == 0
@@ -120,14 +116,20 @@ namespace login.Tabs
                     .Sum(tx => tx.Amount))
                 .ToArray();
 
-            // 6) Render the chart
-            var chartPanel = new Charts().SetupChart(incVals, expVals, xLabels);
-            var chartPanel1 = new Charts().SetupChart(incVals, expVals, xLabels);
-            chartPanel.Dock = DockStyle.Fill;
+            // 6) Render the two charts
+            var chartHelper = new Charts();
+
+            // Income chart
+            var incomePanel = chartHelper.SetupIncomeChart(incVals, xLabels);
+            incomePanel.Dock = DockStyle.Fill;
             ChartPanel.Controls.Clear();
-            ChartPanel.Controls.Add(chartPanel);
+            ChartPanel.Controls.Add(incomePanel);
+
+            // Expense chart
+            var expensePanel = chartHelper.SetupExpenseChart(expVals, xLabels);
+            expensePanel.Dock = DockStyle.Fill;
             ChartPanel1.Controls.Clear();
-            ChartPanel1.Controls.Add(chartPanel1);
+            ChartPanel1.Controls.Add(expensePanel);
         }
 
         public async Task<decimal> GetBalanceAsync()
