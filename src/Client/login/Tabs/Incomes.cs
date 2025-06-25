@@ -138,7 +138,7 @@ namespace login.Tabs
         private async Task LoadIncomes()
         {
             _categories = await CategoriesList.GetCategoriesAsync(_http);
-            var resp = await _http.GetAsync("api/income/summary");
+            var resp = await _http.GetAsync("api/income");
             if (!resp.IsSuccessStatusCode)
             {
                 MessageBox.Show($"Failed loading incomes: {resp.StatusCode}");
@@ -146,8 +146,7 @@ namespace login.Tabs
             }
             var json = await resp.Content.ReadAsStringAsync();
             var opts = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-            var wrapper = JsonSerializer.Deserialize<IncomeResponse>(json, opts);
-            _rawIncomes = wrapper?.Incomes ?? new List<Income>();
+            _rawIncomes = JsonSerializer.Deserialize<List<Income>>(json, opts) ?? new List<Income>();
 
             SetupCategories();
             RefreshList();
