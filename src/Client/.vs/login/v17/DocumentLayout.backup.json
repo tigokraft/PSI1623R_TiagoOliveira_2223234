@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\2223234\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|c:\\users\\2223234\\downloads\\psi1623r_tiagooliveira_2223234\\src\\client\\login\\helpers\\overlays.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|solutionrelative:login\\helpers\\overlays.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|c:\\users\\2223234\\downloads\\psi1623r_tiagooliveira_2223234\\src\\client\\login\\tabs\\goals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|solutionrelative:login\\tabs\\goals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|c:\\users\\2223234\\downloads\\psi1623r_tiagooliveira_2223234\\src\\client\\login\\helpers\\tasks.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|solutionrelative:login\\helpers\\tasks.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|c:\\users\\2223234\\downloads\\psi1623r_tiagooliveira_2223234\\src\\client\\login\\tabs\\goals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|solutionrelative:login\\tabs\\goals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|c:\\users\\2223234\\downloads\\psi1623r_tiagooliveira_2223234\\src\\client\\login\\tabs\\overview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -17,6 +17,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|c:\\users\\2223234\\downloads\\psi1623r_tiagooliveira_2223234\\src\\client\\login\\helpers\\charts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|solutionrelative:login\\helpers\\charts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|c:\\users\\2223234\\downloads\\psi1623r_tiagooliveira_2223234\\src\\client\\login\\tabs\\overview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D0D527A2-0235-4C8A-9A19-C69A406155C7}|login\\Client.csproj|solutionrelative:login\\tabs\\overview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,32 +30,44 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Tasks.cs",
-              "DocumentMoniker": "C:\\Users\\2223234\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Helpers\\Tasks.cs",
-              "RelativeDocumentMoniker": "login\\Helpers\\Tasks.cs",
-              "ToolTip": "C:\\Users\\2223234\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Helpers\\Tasks.cs",
-              "RelativeToolTip": "login\\Helpers\\Tasks.cs",
-              "ViewState": "AgIAAGoAAAAAAAAAAAAewHgAAAAcAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "Goals.cs",
+              "DocumentMoniker": "C:\\Users\\2223234\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Tabs\\Goals.cs",
+              "RelativeDocumentMoniker": "login\\Tabs\\Goals.cs",
+              "ToolTip": "C:\\Users\\2223234\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Tabs\\Goals.cs",
+              "RelativeToolTip": "login\\Tabs\\Goals.cs",
+              "ViewState": "AgIAAOwAAAAAAAAAAAAuwAoBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-25T09:18:38.54Z",
+              "WhenOpened": "2025-06-25T11:19:13.862Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Overlays.cs",
-              "DocumentMoniker": "C:\\Users\\2223234\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Helpers\\Overlays.cs",
-              "RelativeDocumentMoniker": "login\\Helpers\\Overlays.cs",
-              "ToolTip": "C:\\Users\\2223234\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Helpers\\Overlays.cs",
-              "RelativeToolTip": "login\\Helpers\\Overlays.cs",
-              "ViewState": "AgIAAI8BAAAAAAAAAAAxwJ8BAAAQAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "Goals.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\2223234\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Tabs\\Goals.cs",
+              "RelativeDocumentMoniker": "login\\Tabs\\Goals.cs",
+              "ToolTip": "C:\\Users\\2223234\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Tabs\\Goals.cs [Design]",
+              "RelativeToolTip": "login\\Tabs\\Goals.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-25T09:18:27.088Z",
+              "WhenOpened": "2025-06-25T11:19:11.792Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Charts.cs",
+              "DocumentMoniker": "C:\\Users\\2223234\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Helpers\\Charts.cs",
+              "RelativeDocumentMoniker": "login\\Helpers\\Charts.cs",
+              "ToolTip": "C:\\Users\\2223234\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Helpers\\Charts.cs",
+              "RelativeToolTip": "login\\Helpers\\Charts.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAiwEkAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-25T10:43:46.071Z",
               "EditorCaption": ""
             },
             {
@@ -62,23 +78,22 @@
               "RelativeDocumentMoniker": "login\\Tabs\\Overview.cs",
               "ToolTip": "C:\\Users\\2223234\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Tabs\\Overview.cs",
               "RelativeToolTip": "login\\Tabs\\Overview.cs",
-              "ViewState": "AgIAAJoAAAAAAAAAAAAuwLgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-25T08:56:55.023Z",
+              "WhenOpened": "2025-06-25T10:40:27.102Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Charts.cs",
-              "DocumentMoniker": "C:\\Users\\2223234\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Helpers\\Charts.cs",
-              "RelativeDocumentMoniker": "login\\Helpers\\Charts.cs",
-              "ToolTip": "C:\\Users\\2223234\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Helpers\\Charts.cs",
-              "RelativeToolTip": "login\\Helpers\\Charts.cs",
-              "ViewState": "AgIAAEYAAAAAAAAAAAAuwGQAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "Overview.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\2223234\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Tabs\\Overview.cs",
+              "RelativeDocumentMoniker": "login\\Tabs\\Overview.cs",
+              "ToolTip": "C:\\Users\\2223234\\Downloads\\PSI1623R_TiagoOliveira_2223234\\src\\Client\\login\\Tabs\\Overview.cs [Design]",
+              "RelativeToolTip": "login\\Tabs\\Overview.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-25T07:58:20.374Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-25T10:40:26.213Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }
