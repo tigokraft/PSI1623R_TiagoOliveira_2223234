@@ -47,10 +47,21 @@ public class AuthController : ControllerBase
             PasswordHash = PasswordHelper.HashPassword(request.Password),
             Role = "user"
         };
-    
+
         _context.Users.Add(newUser);
         _context.SaveChanges();
-    
+
+        // Create default "goal" category for the new user
+        var goalCategory = new Category
+        {
+            UserId = newUser.UserId,
+            CategoryName = "goal",
+            Color = "0,128,0"
+        };
+
+        _context.Categories.Add(goalCategory);
+        _context.SaveChanges();
+
         var user = _context.Users.FirstOrDefault(u => u.Username == request.Username);
         var token = GenerateJwtToken(user);
         return Ok(new
