@@ -138,7 +138,7 @@ namespace login.Tabs
         {
             _categories = await CategoriesList.GetCategoriesAsync(_http);
 
-            var resp = await _http.GetAsync("api/expense/summary");
+            var resp = await _http.GetAsync("api/expense");
             if (!resp.IsSuccessStatusCode)
             {
                 MessageBox.Show($"Failed loading expenses: {resp.StatusCode}");
@@ -147,8 +147,7 @@ namespace login.Tabs
 
             var json = await resp.Content.ReadAsStringAsync();
             var opts = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-            var wrapper = JsonSerializer.Deserialize<ExpenseResponse>(json, opts);
-            _rawExpenses = wrapper?.Expenses ?? new List<Expense>();
+            _rawExpenses = JsonSerializer.Deserialize<List<Expense>>(json, opts) ?? new List<Expense>();
 
             SetupCategories();
             RefreshList();
