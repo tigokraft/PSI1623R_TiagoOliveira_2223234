@@ -137,7 +137,11 @@ namespace login.Helpers
                 BorderThickness = 2
             };
             btn1.HoverState.BorderColor = Color.FromArgb(100, 180, 255);
-            btn1.Click += (sender, e) => this.Close();
+            btn1.Click += (sender, e) =>
+            {
+                this.DialogResult = btn1.DialogResult;  // e.g. DialogResult.OK
+                this.Close();
+            };
             btn1.ShadowDecoration.Enabled = true;
             contentPanel.Controls.Add(btn1);
             this.AcceptButton = btn1;
@@ -159,7 +163,11 @@ namespace login.Helpers
                     BorderThickness = 2
                 };
                 btn2.HoverState.BorderColor = Color.FromArgb(255, 90, 90);
-                btn2.Click += (sender, e) => this.Close();
+                btn2.Click += (sender, e) =>
+                {
+                    this.DialogResult = btn2.DialogResult;  // e.g. DialogResult.No
+                    this.Close();
+                };
                 btn2.ShadowDecoration.Enabled = true;
                 contentPanel.Controls.Add(btn2);
                 this.CancelButton = btn2;

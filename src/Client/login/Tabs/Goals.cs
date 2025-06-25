@@ -14,7 +14,7 @@ namespace login.Tabs
 {
     public partial class Goals : Form
     {
-        // DTO matching GET /api/goal
+        // DTO matching your GET /api/goal response
         private class GoalDto
         {
             public int GoalId { get; set; }
@@ -26,7 +26,7 @@ namespace login.Tabs
 
         private readonly HttpClient _http;
 
-        // Colors for your progress bars
+        // Colors for the progress bars
         private readonly Color[] _progressColors = new[]
         {
             Color.FromArgb(52, 152, 219),
@@ -42,23 +42,31 @@ namespace login.Tabs
             FormBorderStyle = FormBorderStyle.None;
             _http = http;
 
-            // Wire up your toolbar buttons
-            AddBtn.Click += async (s, e) => await Overlays.GoalOverlay(this, _http);
-            closeapp.Click += (s, e) => Application.Exit();
-
-            // Whenever the form resizes, re‐layout the cards
+            // Re-render on resize so panels fill width
             this.Resize += (s, e) => _ = ListLoader();
 
             // Initial load
             _ = ListLoader();
         }
 
+        // Designer‐wired: when the “+ Add Goal” button is clicked
+        private async void AddBtn_Click(object sender, EventArgs e)
+        {
+            await Overlays.GoalOverlay(this, _http);
+        }
+
+        // Designer‐wired: when the “X” close button is clicked
+        private void closeapp_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
         /// <summary>
-        /// Fetches goals and renders each as its own panel on the form.
+        /// Fetches goals from the API and renders each as its own panel.
         /// </summary>
         public async Task ListLoader()
         {
-            // 1) Remove any old goal panels
+            // Remove old goal panels
             var oldCards = Controls
                 .OfType<Guna2Panel>()
                 .Where(p => p.Tag as string == "goalCard")
@@ -69,7 +77,7 @@ namespace login.Tabs
                 old.Dispose();
             }
 
-            // 2) Call your API
+            // Call GET /api/goal
             HttpResponseMessage resp;
             try
             {
@@ -82,11 +90,11 @@ namespace login.Tabs
             }
             if (!resp.IsSuccessStatusCode)
             {
-                MessageBox.Show($"API error: {resp.StatusCode}");
+                MessageBox.Show($"API returned {resp.StatusCode}");
                 return;
             }
 
-            var json = await resp.Content.ReadAsStringAsync();
+            string json = await resp.Content.ReadAsStringAsync();
             List<GoalDto> goals;
             try
             {
@@ -95,11 +103,11 @@ namespace login.Tabs
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"JSON parse error: {ex.Message}");
+                MessageBox.Show($"Failed to parse JSON: {ex.Message}");
                 return;
             }
 
-            // 3) Render each goal as a panel
+            // Stack them under the toolbar
             int y = Math.Max(AddBtn.Bottom, closeapp.Bottom) + 20;
             int idx = 0;
             foreach (var g in goals)
@@ -112,22 +120,22 @@ namespace login.Tabs
         }
 
         /// <summary>
-        /// Creates one Guna2Panel representing a goal.
+        /// Builds one Guna2Panel for a single goal, with expand/collapse Add-Money UI.
         /// </summary>
         private Guna2Panel CreateGoalCard(GoalDto g, int index)
         {
-            // pick a color and compute %
+            // Pick a color and compute percent
             Color color = _progressColors[index % _progressColors.Length];
-            int pct = (g.TargetAmount > 0)
+            int pct = (g.TargetAmount > 0m)
                 ? (int)Math.Round((double)g.CurrentSaved / (double)g.TargetAmount * 100)
                 : 0;
             pct = Math.Max(0, Math.Min(100, pct));
 
-            const int baseHeight = 120;
+            const int BaseHeight = 120;
             var card = new Guna2Panel
             {
                 Tag = "goalCard",
-                Size = new Size(ClientSize.Width - 40, baseHeight),
+                Size = new Size(ClientSize.Width - 40, BaseHeight),
                 FillColor = Color.FromArgb(32, 34, 37),
                 BorderColor = Color.FromArgb(50, 50, 50),
                 BorderThickness = 1,
@@ -136,7 +144,7 @@ namespace login.Tabs
                 Padding = new Padding(20)
             };
 
-            // Title label
+            // Title
             var lblTitle = new Label
             {
                 Text = g.Name,
@@ -147,7 +155,7 @@ namespace login.Tabs
             };
             card.Controls.Add(lblTitle);
 
-            // Horizontal progress bar
+            // Horizontal progress
             var prog = new Guna2ProgressBar
             {
                 Height = 12,
@@ -172,7 +180,7 @@ namespace login.Tabs
             };
             card.Controls.Add(lblSaved);
 
-            // Circular percent
+            // Circular percent indicator
             var circ = new Guna2CircleProgressBar
             {
                 Size = new Size(60, 60),
@@ -193,19 +201,20 @@ namespace login.Tabs
             );
             card.Controls.Add(circ);
 
-            // Expand/collapse “Add Money” UI
+            // Expand / collapse "Add Money" UI
             Action toggle = null;
             toggle = async () =>
             {
-                var existing = card.Controls.Find("addMoneyContainer", false).FirstOrDefault();
-                if (existing != null)
+                var old = card.Controls
+                    .Find("addMoneyContainer", false)
+                    .FirstOrDefault();
+                if (old != null)
                 {
-                    card.Controls.Remove(existing);
-                    card.Height = baseHeight;
+                    card.Controls.Remove(old);
+                    card.Height = BaseHeight;
                     return;
                 }
 
-                // build the “Add Money” row
                 int y0 = lblSaved.Bottom + 10;
                 var container = new Panel
                 {
@@ -246,8 +255,8 @@ namespace login.Tabs
                         return;
                     }
                     var dto = new { Amount = amt };
-                    var json2 = JsonSerializer.Serialize(dto);
-                    using (var content2 = new StringContent(json2, Encoding.UTF8, "application/json"))
+                    var body = JsonSerializer.Serialize(dto);
+                    using (var content2 = new StringContent(body, Encoding.UTF8, "application/json"))
                     {
                         var r2 = await _http.PostAsync($"api/goal/{g.GoalId}/save", content2);
                         if (!r2.IsSuccessStatusCode)
@@ -263,7 +272,7 @@ namespace login.Tabs
                 card.Height = y0 + container.Height + 20;
             };
 
-            // Attach toggle to card and all its children
+            // Hook the toggle on click for the card and its children
             card.Click += (s, e) => toggle();
             foreach (Control c in card.Controls)
                 c.Click += (s, e) => toggle();
