@@ -230,7 +230,7 @@
       <DependentUpon>Overview.cs</DependentUpon>
     </Compile>
     <Compile Include="Tabs\SettingsPanel.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <EmbeddedResource Include="ForgotPwd.resx">
       <DependentUpon>ForgotPwd.cs</DependentUpon>

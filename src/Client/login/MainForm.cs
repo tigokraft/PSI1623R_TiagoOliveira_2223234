@@ -97,7 +97,6 @@ namespace login
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             var settings = new SettingsPanel(_http);
-            settings.TopLevel = false;
             former.Controls.Clear();
             former.Controls.Add(settings);
             settings.Dock = DockStyle.Fill;
