@@ -30,6 +30,7 @@
         {
             this.AddBtn = new Guna.UI2.WinForms.Guna2Button();
             this.closeapp = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // AddBtn
@@ -73,17 +74,31 @@
             this.closeapp.TabIndex = 19;
             this.closeapp.Click += new System.EventHandler(this.closeapp_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Transparent;
+            this.label2.Location = new System.Drawing.Point(25, 30);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 24);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "Goals";
+            // 
             // Goals
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.ClientSize = new System.Drawing.Size(884, 611);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.closeapp);
             this.Controls.Add(this.AddBtn);
             this.Name = "Goals";
             this.Text = "Goals";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -91,5 +106,6 @@
 
         private Guna.UI2.WinForms.Guna2Button AddBtn;
         private Guna.UI2.WinForms.Guna2ControlBox closeapp;
+        private System.Windows.Forms.Label label2;
     }
 }

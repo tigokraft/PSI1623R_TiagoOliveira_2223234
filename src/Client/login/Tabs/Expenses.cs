@@ -294,7 +294,7 @@ namespace login.Tabs
                     ForeColor = Color.White,
                     BackColor = Color.Transparent,
                     AutoSize = true,
-                    Location = new Point(dot.Right + 5, (tag.Height - 5) / 2)
+                    Location = new Point(dot.Right + 5, (tag.Height - 12) / 2)
                 };
                 tag.Controls.Add(lblCatText);
                 tag.Width = lblCatText.Right + 5;

@@ -27,7 +27,11 @@ namespace login.Tabs
 
         public class IncomeResponse
         {
-            [JsonPropertyName("incomes")]
+            [JsonPropertyName("isRecurringSource")]
+            public bool? Recurring { get; set; }
+
+            [JsonPropertyName("recurrenceType")]
+            public string RecurrenceType { get; set; }
             public List<Income> Incomes { get; set; }
         }
 
@@ -164,7 +168,7 @@ namespace login.Tabs
             if (cmbMonths.SelectedIndex > 0)
             {
                 var sel = cmbMonths.SelectedItem.ToString();
-                if (DateTime.TryParseExact(sel, "MMMM yyyy", null, System.Globalization.DateTimeStyles.None, out var dt))
+                if (DateTime.TryParseExact(sel, "MMMM yyyy", new System.Globalization.CultureInfo("en-US"), System.Globalization.DateTimeStyles.None, out var dt))
                     filtered = filtered.Where(x => x.Date.Month == dt.Month && x.Date.Year == dt.Year).ToList();
             }
 
@@ -276,7 +280,7 @@ namespace login.Tabs
                     ForeColor = Color.White,
                     BackColor = Color.Transparent,
                     AutoSize = true,
-                    Location = new Point(dot.Right + 5, (categoryTagPanel.MinimumSize.Height - 5) / 2)
+                    Location = new Point(dot.Right + 5, (categoryTagPanel.Height / 4 - 2))
                 };
                 categoryTagPanel.Controls.Add(catTextLabel);
                 categoryTagPanel.Width = catTextLabel.Right + 5;
