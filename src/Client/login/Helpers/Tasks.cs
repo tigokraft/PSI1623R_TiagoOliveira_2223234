@@ -113,6 +113,7 @@ namespace login.Helpers
         public static async Task<bool> PostIncome
         (
             decimal amount,
+            string date,
             string description,
             bool isRecurring,
             string recurrence,
@@ -124,7 +125,7 @@ namespace login.Helpers
             var payload = new
             {
                 amount = amount,
-                date = DateTime.Now,
+                date = date,
                 descr = description,
                 isRecurring = isRecurring,
                 recurrence = recurrence,

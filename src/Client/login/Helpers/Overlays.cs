@@ -20,177 +20,185 @@ public static class Overlays
     /// <summary>
     /// Shows the "Add/Edit Income" overlay with a horizontal scrollable category selector.
     /// </summary>
+    // In your Overlays class:
     public static async Task IncomeOverlay(Form parentForm, HttpClient _http, Incomes.Income incomeToEdit = null)
     {
         await Task.Yield();
 
-        // OVERLAY PANEL
+        // ── Layout constants ────────────────────────────────────────────────
+        const int W = 380, H = 580;
+        const int MarginX = 25;
+        const int ControlWidth = 330;
+        const int Gap = 15;
+        const int LabelGap = 4;
+        int currY = 20;
+
+        // ── Overlay container ──────────────────────────────────────────────
         var overlay = new Guna2Panel
         {
-            BorderRadius = 10,
-            BorderThickness = 1,
-            BorderColor = Color.FromArgb(40, 40, 40),
+            Name = "IncomeOverlay",
+            Size = new Size(W, H),
+            Location = new Point((parentForm.ClientSize.Width - W) / 2, 30),
             FillColor = Color.FromArgb(18, 20, 20),
-            Size = new Size(350, 500),
-            Location = new Point((parentForm.ClientSize.Width - 350) / 2, 50),
+            BorderColor = Color.FromArgb(40, 40, 40),
+            BorderThickness = 1,
+            BorderRadius = 10,
             Anchor = AnchorStyles.Top,
-            Name = "IncomeOverlay"
+            AutoScroll = true       // enable scrolling if content overflows
         };
+        overlay.SuspendLayout();
 
-        // TITLE
-        var titleLabel = new Label
+        // ── Close button ───────────────────────────────────────────────────
+        var btnClose = new Guna2ImageButton
+        {
+            Image = login.Properties.Resources.close,
+            Size = new Size(30, 30),
+            Location = new Point(W - 40, 10),
+            BackColor = Color.Transparent
+        };
+        btnClose.Click += (s, e) => parentForm.Controls.Remove(overlay);
+        overlay.Controls.Add(btnClose);
+
+        // ── Title ──────────────────────────────────────────────────────────
+        var title = new Label
         {
             Text = incomeToEdit == null ? "Add Income" : "Edit Income",
             ForeColor = Color.White,
             Font = new Font("Segoe UI", 12, FontStyle.Bold),
-            Location = new Point(20, 20),
+            Location = new Point(MarginX, currY),
             AutoSize = true
         };
+        overlay.Controls.Add(title);
+        currY += title.Height + Gap;
 
-        // DESCRIPTION
-        var descrBox = new Guna2TextBox
+        // Helper to add label + control
+        Label MakeLabel(string text)
         {
-            PlaceholderText = "Description",
-            Size = new Size(300, 40),
-            Location = new Point(25, 60),
+            var lbl = new Label
+            {
+                Text = text,
+                ForeColor = Color.White,
+                Font = new Font("Segoe UI", 9),
+                Location = new Point(MarginX, currY),
+                AutoSize = true
+            };
+            overlay.Controls.Add(lbl);
+            currY += lbl.Height + LabelGap;
+            return lbl;
+        }
+
+        Guna2TextBox MakeTextBox(string placeholder)
+        {
+            var txt = new Guna2TextBox
+            {
+                PlaceholderText = placeholder,
+                Size = new Size(ControlWidth, 40),
+                Location = new Point(MarginX, currY),
+                BorderColor = Color.FromArgb(67, 79, 82),
+                FillColor = Color.FromArgb(18, 20, 20),
+                ForeColor = Color.White,
+                BorderRadius = 10
+            };
+            overlay.Controls.Add(txt);
+            currY += txt.Height + Gap;
+            return txt;
+        }
+
+        // ── Description ───────────────────────────────────────────────────
+        MakeLabel("Description");
+        var txtDesc = MakeTextBox("e.g. Salary, Bonus…");
+
+        // ── Amount ────────────────────────────────────────────────────────
+        MakeLabel("Amount");
+        var txtAmt = MakeTextBox("0.00");
+
+        // ── Date occurred ─────────────────────────────────────────────────
+        MakeLabel("Date");
+        var datePicker = new Guna2DateTimePicker
+        {
+            Format = DateTimePickerFormat.Short,
+            Value = DateTime.Now,
+            Size = new Size(ControlWidth, 40),
+            Location = new Point(MarginX, currY),
             BorderColor = Color.FromArgb(67, 79, 82),
             FillColor = Color.FromArgb(18, 20, 20),
             ForeColor = Color.White,
             BorderRadius = 10
         };
+        overlay.Controls.Add(datePicker);
+        currY += datePicker.Height + Gap;
 
-        // AMOUNT
-        var amountBox = new Guna2TextBox
-        {
-            PlaceholderText = "Amount",
-            Size = new Size(300, 40),
-            Location = new Point(25, 110),
-            BorderColor = Color.FromArgb(67, 79, 82),
-            FillColor = Color.FromArgb(18, 20, 20),
-            ForeColor = Color.White,
-            BorderRadius = 10
-        };
-
-        // RECURRING
+        // ── Recurring toggle ──────────────────────────────────────────────
         var recurringChk = new Guna2CheckBox
         {
             Text = "Recurring",
-            Size = new Size(300, 30),
-            Location = new Point(25, 160),
+            Size = new Size(ControlWidth, 30),
+            Location = new Point(MarginX, currY),
             ForeColor = Color.White,
-            CheckedState =
-            {
-                FillColor = Color.FromArgb(67, 79, 82),
-                BorderColor = Color.FromArgb(67, 79, 82)
-            },
-            UncheckedState =
-            {
-                FillColor = Color.FromArgb(125, 137, 149),
-                BorderColor = Color.FromArgb(67, 79, 82)
-            },
-            Font = new Font("Segoe UI", 9)
+            Font = new Font("Segoe UI", 9),
+            CheckedState = { FillColor = Color.FromArgb(67, 79, 82), BorderColor = Color.FromArgb(67, 79, 82) },
+            UncheckedState = { FillColor = Color.FromArgb(125, 137, 149), BorderColor = Color.FromArgb(67, 79, 82) }
         };
+        overlay.Controls.Add(recurringChk);
+        currY += recurringChk.Height + Gap;
+
+        // Recurrence type
+        MakeLabel("Recurrence");
         var recurrenceCombo = new Guna2ComboBox
         {
             Items = { "Weekly", "Monthly", "Yearly" },
-            Size = new Size(300, 40),
-            Location = new Point(25, 195),
+            Size = new Size(ControlWidth, 40),
+            Location = new Point(MarginX, currY),
             BorderColor = Color.FromArgb(67, 79, 82),
             FillColor = Color.FromArgb(18, 20, 20),
             ForeColor = Color.White,
-            BorderRadius = 10
+            BorderRadius = 10,
+            Visible = false
         };
+        overlay.Controls.Add(recurrenceCombo);
+        currY += recurrenceCombo.Height + Gap;
+
+        // End date
+        MakeLabel("End Date");
         var endDatePicker = new Guna2DateTimePicker
         {
-            Size = new Size(300, 40),
-            Location = new Point(25, 245),
+            Format = DateTimePickerFormat.Short,
+            Value = DateTime.Now,
+            Size = new Size(ControlWidth, 40),
+            Location = new Point(MarginX, currY),
             BorderColor = Color.FromArgb(67, 79, 82),
             FillColor = Color.FromArgb(18, 20, 20),
             ForeColor = Color.White,
-            BorderRadius = 10
+            BorderRadius = 10,
+            Visible = false
         };
+        overlay.Controls.Add(endDatePicker);
+        currY += endDatePicker.Height + Gap;
 
-        bool isRecurring = false;
-        recurrenceCombo.Visible = false;
-        endDatePicker.Visible = false;
-        recurringChk.CheckedChanged += (s, ev) =>
+        bool isRec = false;
+        recurringChk.CheckedChanged += (s, e) =>
         {
-            isRecurring = recurringChk.Checked;
-            recurrenceCombo.Visible = isRecurring;
-            endDatePicker.Visible = isRecurring;
-            if (!isRecurring)
+            isRec = recurringChk.Checked;
+            recurrenceCombo.Visible = endDatePicker.Visible = isRec;
+            if (!isRec)
             {
                 recurrenceCombo.SelectedIndex = -1;
                 endDatePicker.Value = DateTime.Now;
             }
         };
 
-        // CLOSE BUTTON
-        var closeBtn = new Guna2ImageButton
-        {
-            Image = login.Properties.Resources.close,
-            Size = new Size(30, 30),
-            Location = new Point(overlay.Width - 40, 10),
-            ForeColor = Color.Transparent
-        };
-        closeBtn.Click += (s, ev) => parentForm.Controls.Remove(overlay);
+        // ── Category selector ─────────────────────────────────────────────
+        MakeLabel("Category");
 
-        // 1) Fetch and track selection
-        int selectedCategoryId = -1;
-        var categories = await CategoriesList.GetCategoriesAsync(_http);
-
-        // ---------------- CONTEXT MENU STRIP for Categories ------------------
-        var catContextMenu = new ContextMenuStrip();
-        var editCatItem = new ToolStripMenuItem("Edit Category");
-        var deleteCatItem = new ToolStripMenuItem("Delete Category");
-        catContextMenu.Items.AddRange(new ToolStripItem[] { editCatItem, deleteCatItem });
-
-        editCatItem.Click += async (s, e) =>
-        {
-            int categoryId = (int)catContextMenu.Tag;
-            var cat = categories.FirstOrDefault(c => c.CategoryId == categoryId);
-            if (cat == null)
-            {
-                Cards.Show("Error", "Category not found.", "OK");
-                return;
-            }
-            await EditCategoryOverlay(parentForm, _http, cat.CategoryId, cat.CategoryName, cat.Color);
-            parentForm.Controls.Remove(overlay); // Remove old overlay after editing
-        };
-
-        deleteCatItem.Click += async (s, e) =>
-        {
-            int categoryId = (int)catContextMenu.Tag;
-            var confirm = Cards.Show("Delete Category", "This will delete the category. Continue?", "OK");
-            if (confirm == DialogResult.OK)
-            {
-                var resp = await _http.DeleteAsync($"api/category/{categoryId}");
-                if (resp.IsSuccessStatusCode)
-                {
-                    Cards.Show("Success", "Category deleted.", "OK");
-                    parentForm.Controls.Remove(overlay);
-                    await IncomeOverlay(parentForm, _http);
-                }
-                else
-                {
-                    Cards.Show("Error", "Failed to delete category.", "OK");
-                }
-            }
-        };
-        // ------------------------------------------------------
-
-        // 2) Mask panel (clips its child)
         var maskPanel = new Guna2Panel
         {
-            Size = new Size(300, 40),
-            Location = new Point(25, 295),
-            BackColor = Color.FromArgb(18, 20, 20),
+            Size = new Size(ControlWidth, 40),
+            Location = new Point(MarginX, currY),
+            FillColor = Color.FromArgb(18, 20, 20),
             BorderRadius = 10,
             ShadowDecoration = { Enabled = false }
         };
-
-        // 3) Inner FlowLayoutPanel (auto-sized row)
-        var inner = new FlowLayoutPanel
+        var innerFlow = new FlowLayoutPanel
         {
             Location = Point.Empty,
             AutoSize = true,
@@ -198,13 +206,66 @@ public static class Overlays
             WrapContents = false,
             BackColor = Color.Transparent
         };
+        maskPanel.Controls.Add(innerFlow);
+        overlay.Controls.Add(maskPanel);
+        currY += maskPanel.Height + LabelGap;
 
-        // 4) Build each pill
+        var hScroll = new Guna2HScrollBar
+        {
+            Location = new Point(MarginX, currY),
+            Size = new Size(ControlWidth, 6),
+            Minimum = 0,
+            LargeChange = ControlWidth,
+            FillColor = Color.FromArgb(40, 40, 40),
+            ThumbColor = Color.FromArgb(100, 100, 100),
+            BorderRadius = 3
+        };
+        Action updateMax = () =>
+        {
+            innerFlow.PerformLayout();
+            hScroll.Maximum = Math.Max(0, innerFlow.Width - maskPanel.Width);
+        };
+        innerFlow.ControlAdded += (s, e) => updateMax();
+        innerFlow.ControlRemoved += (s, e) => updateMax();
+        hScroll.Scroll += (s, e) => innerFlow.Left = -e.NewValue;
+        overlay.Controls.Add(hScroll);
+        currY += hScroll.Height + Gap;
+
+        // fetch & build categories
+        int selectedCategoryId = -1;
+        var categories = await CategoriesList.GetCategoriesAsync(_http);
+        var catMenu = new ContextMenuStrip();
+        var miEdit = new ToolStripMenuItem("Edit Category");
+        var miDel = new ToolStripMenuItem("Delete Category");
+        catMenu.Items.AddRange(new[] { miEdit, miDel });
+
+        miEdit.Click += async (s, e) =>
+        {
+            int cid = (int)catMenu.Tag;
+            var cat = categories.First(c => c.CategoryId == cid);
+            await EditCategoryOverlay(parentForm, _http, cid, cat.CategoryName, cat.Color);
+            parentForm.Controls.Remove(overlay);
+        };
+        miDel.Click += async (s, e) =>
+        {
+            int cid = (int)catMenu.Tag;
+            if (Cards.Show("Delete Category", "This will delete the category. Continue?", "OK") == DialogResult.OK)
+            {
+                var resp = await _http.DeleteAsync($"api/category/{cid}");
+                if (resp.IsSuccessStatusCode)
+                {
+                    Cards.Show("Success", "Deleted.", "OK");
+                    parentForm.Controls.Remove(overlay);
+                    await IncomeOverlay(parentForm, _http);
+                }
+                else Cards.Show("Error", "Failed deleting.", "OK");
+            }
+        };
+
         foreach (var cat in categories)
         {
             int dot = 12;
             int textW = TextRenderer.MeasureText(cat.CategoryName, new Font("Segoe UI", 9)).Width;
-
             var btn = new Guna2Button
             {
                 Text = cat.CategoryName,
@@ -219,14 +280,9 @@ public static class Overlays
             };
             btn.CheckedState.FillColor = Color.FromArgb(60, 60, 60);
             btn.CheckedState.ForeColor = Color.White;
-
-            // draw the color-dot
             var bmp = new Bitmap(dot, dot);
             using (var g = Graphics.FromImage(bmp))
-            {
-                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
                 g.FillEllipse(new SolidBrush(ColorTranslator.FromHtml(cat.Color)), 0, 0, dot, dot);
-            }
             btn.Image = bmp;
             btn.ImageSize = new Size(dot, dot);
             btn.ImageAlign = HorizontalAlignment.Left;
@@ -236,23 +292,20 @@ public static class Overlays
             {
                 if (btn.Checked) selectedCategoryId = (int)btn.Tag;
             };
-
-            // ----------- Right-click context menu logic -------------
             btn.MouseUp += (s, e) =>
             {
                 if (e.Button == MouseButtons.Right)
                 {
-                    catContextMenu.Tag = btn.Tag;
-                    catContextMenu.Show(btn, new Point(e.X, e.Y));
+                    catMenu.Tag = btn.Tag;
+                    catMenu.Show(btn, new Point(e.X, e.Y));
                 }
             };
-            // --------------------------------------------------------
 
-            inner.Controls.Add(btn);
+            innerFlow.Controls.Add(btn);
         }
 
-        // 5) The “+” button must live in that same row
-        var plusBtn = new Guna2Button
+        // “+” button
+        var plus = new Guna2Button
         {
             Text = "+",
             AutoRoundedCorners = true,
@@ -263,92 +316,39 @@ public static class Overlays
             Font = new Font("Segoe UI", 12, FontStyle.Bold),
             Margin = new Padding(10, 0, 10, 0)
         };
-        plusBtn.Click += async (s, e) =>
+        plus.Click += async (s, e) =>
         {
             parentForm.Controls.Remove(overlay);
             await CategoryOverlay(parentForm, _http);
         };
-        inner.Controls.Add(plusBtn);
+        innerFlow.Controls.Add(plus);
 
-        // 6) Put inner into mask
-        maskPanel.Controls.Add(inner);
-
-        // 7) Slim Guna scrollbar underneath
-        var hScroll = new Guna2HScrollBar
-        {
-            Location = new Point(maskPanel.Left, maskPanel.Bottom + 4),
-            Size = new Size(maskPanel.Width, 6),
-            Minimum = 0,
-            LargeChange = maskPanel.Width,
-            FillColor = Color.FromArgb(40, 40, 40),
-            ThumbColor = Color.FromArgb(100, 100, 100),
-            BorderRadius = 3
-        };
-        Action updateMax = () =>
-        {
-            inner.PerformLayout();
-            hScroll.Maximum = Math.Max(0, inner.Width - maskPanel.Width);
-        };
-        inner.ControlAdded += (s, e) => updateMax();
-        inner.ControlRemoved += (s, e) => updateMax();
-        hScroll.Scroll += (s, e) => inner.Left = -e.NewValue;
-
-        updateMax(); // Initial max update
-
-        // 8) Add both to your overlay
-        overlay.Controls.Add(maskPanel);
-        overlay.Controls.Add(hScroll);
-
-        // ─── ADD / EDIT INCOME BUTTON ───────────────────────────────────────
-        var createBtn = new Guna2Button
+        // ── Save/Add button ───────────────────────────────────────────────
+        var btnSave = new Guna2Button
         {
             Text = incomeToEdit == null ? "Add Income" : "Save Changes",
-            Size = new Size(300, 50),
-            Location = new Point(25, overlay.Bottom - 140),
+            Size = new Size(ControlWidth, 50),
+            Location = new Point(MarginX, currY),
             FillColor = Color.FromArgb(20, 24, 26),
             BorderColor = Color.FromArgb(39, 42, 44),
             BorderRadius = 10,
             BorderThickness = 1,
             Font = new Font("Segoe UI", 9)
         };
+        overlay.Controls.Add(btnSave);
 
-        // ── PREFILL FIELDS IF EDITING ─────────────────────
-        if (incomeToEdit != null)
+        btnSave.Click += async (s, ev) =>
         {
-            descrBox.Text = incomeToEdit.Descr;
-            amountBox.Text = incomeToEdit.Amount.ToString("0.##");
-            // Find and select the right category
-            foreach (Guna2Button catBtn in inner.Controls.OfType<Guna2Button>())
-            {
-                if (catBtn.Tag is int catId && catId == incomeToEdit.CategoryId)
-                {
-                    catBtn.Checked = true;
-                    selectedCategoryId = catId;
-                    break;
-                }
-            }
-        }
-
-        // ── BUTTON CLICK HANDLER ───────────────────────────
-        createBtn.Click += async (s, ev) =>
-        {
-            var description = descrBox.Text.Trim();
-            var amountText = amountBox.Text.Trim();
-
-            // Hard validation, all required!
-            if (string.IsNullOrEmpty(description))
+            var desc = txtDesc.Text.Trim();
+            var amtTxt = txtAmt.Text.Trim();
+            if (string.IsNullOrEmpty(desc))
             {
                 Cards.Show("Validation Error", "Description is required.", "OK");
                 return;
             }
-            if (string.IsNullOrEmpty(amountText))
+            if (!decimal.TryParse(amtTxt, out var amt) || amt <= 0)
             {
-                Cards.Show("Validation Error", "Amount is required.", "OK");
-                return;
-            }
-            if (!decimal.TryParse(amountText, out var amount) || amount <= 0)
-            {
-                Cards.Show("Validation Error", "Amount must be a positive number.", "OK");
+                Cards.Show("Validation Error", "Amount must be positive.", "OK");
                 return;
             }
             if (selectedCategoryId == -1)
@@ -356,71 +356,62 @@ public static class Overlays
                 Cards.Show("Validation Error", "Select a category.", "OK");
                 return;
             }
-
-            bool isRec = recurringChk.Checked;
-            string recurrence = recurrenceCombo.SelectedItem?.ToString();
-            if (isRec && string.IsNullOrEmpty(recurrence))
+            if (isRec && recurrenceCombo.SelectedIndex < 0)
             {
-                Cards.Show("Validation Error", "Choose a recurrence type.", "OK");
+                Cards.Show("Validation Error", "Choose recurrence.", "OK");
                 return;
             }
-            string endDate = isRec ? endDatePicker.Value.ToString("yyyy-MM-dd") : DateTime.Now.ToString("yyyy-MM-dd");
 
+            string dateStr = datePicker.Value.ToString("yyyy-MM-dd");
+            string recStr = isRec ? recurrenceCombo.SelectedItem.ToString() : "";
+            string endDateStr = isRec ? endDatePicker.Value.ToString("yyyy-MM-dd") : DateTime.Now.ToString("yyyy-MM-dd");
             bool success = false;
+
             if (incomeToEdit == null)
             {
-                // ADD NEW
                 success = await Tasks.PostIncome(
-                    amount,
-                    description,
+                    amt,
+                    dateStr,
+                    desc,
                     isRec,
-                    isRec ? recurrence : "",
-                    endDate,
+                    recStr,
+                    endDateStr,
                     _http,
                     selectedCategoryId
                 );
             }
             else
             {
-                // UPDATE
                 var payload = new
                 {
                     incomeToEdit.IncomeId,
-                    Amount = amount,
-                    Descr = description,
-                    Date = incomeToEdit.Date, // Or allow edit if you want
+                    Amount = amt,
+                    Descr = desc,
+                    Date = dateStr,
                     CategoryId = selectedCategoryId
                 };
                 var json = JsonSerializer.Serialize(payload);
-                using (var content = new StringContent(json, Encoding.UTF8, "application/json"))
-                {
-                    var resp = await _http.PutAsync($"api/income/{incomeToEdit.IncomeId}", content);
-                    success = resp.IsSuccessStatusCode;
-                    if (!success)
-                        Cards.Show("Error", $"Error updating income: {resp.StatusCode}", "OK");
-                }
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var resp = await _http.PutAsync($"api/income/{incomeToEdit.IncomeId}", content);
+                success = resp.IsSuccessStatusCode;
+                if (!success)
+                    Cards.Show("Error", $"Error updating income: {resp.StatusCode}", "OK");
             }
 
             if (success)
             {
                 parentForm.Controls.Remove(overlay);
-                if (parentForm is Incomes incomesForm)
-                {
-                    await incomesForm.InvokeAsync(() => incomesForm.ListLoader());
-                }
+                if (parentForm is Incomes incForm)
+                    await incForm.InvokeAsync(() => incForm.ListLoader());
             }
         };
 
-        // ASSEMBLE CONTROLS
-        overlay.Controls.AddRange(new Control[]
-        {
-            titleLabel, descrBox, amountBox, recurringChk,
-            recurrenceCombo, endDatePicker, closeBtn
-        });
-        overlay.Controls.Add(createBtn);
+        overlay.ResumeLayout();
         parentForm.Controls.Add(overlay);
         overlay.BringToFront();
     }
+
+
 
     /// <summary>
     /// Shows the "Add Category" overlay.

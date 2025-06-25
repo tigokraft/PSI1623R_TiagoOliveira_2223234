@@ -1,130 +1,99 @@
 ﻿using System.Drawing;
 using System.Linq;
+using System.Windows.Forms;
 using Guna.UI2.WinForms;
-using OxyPlot;
-using OxyPlot.Axes;
-using OxyPlot.Series;
-using OxyPlot.WindowsForms;
+using LiveChartsCore;
+using LiveChartsCore.Measure;
+using LiveChartsCore.SkiaSharpView;
+using LiveChartsCore.SkiaSharpView.Painting;
+using LiveChartsCore.SkiaSharpView.WinForms;
+using SkiaSharp;
 
 namespace login.Helpers
 {
     internal class Charts
     {
         /// <summary>
-        /// Renders a panel with your Income/Expenses chart.
+        /// Renders a panel with income/expense lines that auto-scale,
+        /// zoom/pan, rotate labels, and show default tooltips.
         /// </summary>
-        /// <param name="incValues">Income amounts aligned by index.</param>
-        /// <param name="expValues">Expense amounts aligned by index.</param>
-        /// <param name="xLabels">Category labels for X-axis (same length).</param>
         public Guna2Panel SetupChart(double[] incValues, double[] expValues, string[] xLabels)
         {
-            // 1) Container with border
+            // 1) Container styling
             var container = new Guna2Panel
             {
-                Dock = System.Windows.Forms.DockStyle.Fill,
+                Dock = DockStyle.Fill,
                 FillColor = Color.FromArgb(16, 20, 20),
                 BorderColor = Color.FromArgb(60, 60, 60),
                 BorderThickness = 1,
                 BorderRadius = 6
             };
 
-            // 2) PlotView host
-            var plotView = new PlotView
+            // 2) Chart control
+            var chart = new CartesianChart
             {
-                Dock = System.Windows.Forms.DockStyle.Fill,
-                BackColor = Color.FromArgb(16, 20, 20)
+                Dock = DockStyle.Fill,
+                BackColor = Color.FromArgb(16, 20, 20),
+                // enable both X and Y zoom/pan
+                ZoomMode = ZoomAndPanMode.X | ZoomAndPanMode.Y
             };
-            container.Controls.Add(plotView);
+            container.Controls.Add(chart);
 
-            // 3) Build model
-            var model = new PlotModel
+            // 3) calculate axis limits (10% padding)
+            double yMax = new[] { incValues.Max(), expValues.Max() }.Max() * 1.1;
+            double xMax = xLabels.Length - 1;
+
+            // 4) series definitions
+            chart.Series = new ISeries[]
             {
-                Background = OxyColors.Transparent,
-                PlotAreaBackground = OxyColors.Transparent,
-                IsLegendVisible = false
+                new LineSeries<double>(incValues)
+                {
+                    Fill        = new SolidColorPaint(new SKColor(50,220,180,60)),
+                    Stroke      = new SolidColorPaint(new SKColor(50,220,180)) { StrokeThickness = 2 },
+                    GeometrySize = 0,
+                    ZIndex      = 0
+                },
+                new LineSeries<double>(expValues)
+                {
+                    Fill        = new SolidColorPaint(new SKColor(220,100,90,60)),
+                    Stroke      = new SolidColorPaint(new SKColor(220,100,90)) { StrokeThickness = 2 },
+                    GeometrySize = 0,
+                    ZIndex      = 0
+                }
             };
 
-            // 4) Convert arrays to DataPoints
-            var incPts = incValues
-                .Select((val, idx) => new DataPoint(idx, val))
-                .ToList();
-            var expPts = expValues
-                .Select((val, idx) => new DataPoint(idx, val))
-                .ToList();
-
-            // 5) Income area fill
-            var incArea = new AreaSeries
+            // 5) X-axis: categories, rotated labels, subtle baseline ticks
+            chart.XAxes = new Axis[]
             {
-                Color = OxyColors.Transparent,
-                Fill = OxyColor.FromArgb(60, 50, 220, 180)
+                new Axis
+                {
+                    MinLimit        = 0,
+                    MaxLimit        = xMax,
+                    Labels          = xLabels,
+                    TextSize        = 10,
+                    LabelsPaint     = new SolidColorPaint(SKColors.White),
+                    LabelsRotation  = 45,
+                    SeparatorsPaint = null, // no vertical grid
+                    TicksPaint      = new SolidColorPaint(new SKColor(255,255,255,80)) { StrokeThickness = 1 },
+                    MinStep         = 1
+                }
             };
-            incArea.Points.AddRange(incPts);
-            incArea.Points2.AddRange(incPts.Select(p => new DataPoint(p.X, 0)));
-            model.Series.Add(incArea);
 
-            // 6) Income outline
-            var incLine = new LineSeries
+            // 6) Y-axis: dollar labels + horizontal grid
+            chart.YAxes = new Axis[]
             {
-                Color = OxyColor.FromRgb(50, 220, 180),
-                StrokeThickness = 2,
-                MarkerType = MarkerType.None
+                new Axis
+                {
+                    MinLimit        = 0,
+                    MaxLimit        = yMax,
+                    TextSize        = 10,
+                    LabelsPaint     = new SolidColorPaint(SKColors.White),
+                    Labeler         = value => $"${value:0}",
+                    SeparatorsPaint = new SolidColorPaint(new SKColor(255,255,255,30)) { StrokeThickness = 1 },
+                    TicksPaint      = null // no vertical tick marks
+                }
             };
-            incLine.Points.AddRange(incPts);
-            model.Series.Add(incLine);
 
-            // 7) Expense area fill
-            var expArea = new AreaSeries
-            {
-                Color = OxyColors.Transparent,
-                Fill = OxyColor.FromArgb(60, 220, 100, 90)
-            };
-            expArea.Points.AddRange(expPts);
-            expArea.Points2.AddRange(expPts.Select(p => new DataPoint(p.X, 0)));
-            model.Series.Add(expArea);
-
-            // 8) Expense outline
-            var expLine = new LineSeries
-            {
-                Color = OxyColor.FromRgb(220, 100, 90),
-                StrokeThickness = 2,
-                MarkerType = MarkerType.None
-            };
-            expLine.Points.AddRange(expPts);
-            model.Series.Add(expLine);
-
-            // 9) X-axis with subtle baseline
-            var xAxis = new CategoryAxis
-            {
-                Position = AxisPosition.Bottom,
-                TextColor = OxyColors.White,
-                FontSize = 10,
-                AxislineColor = OxyColor.FromArgb(80, 255, 255, 255),
-                AxislineThickness = 1,
-                MajorGridlineStyle = LineStyle.None,
-                MinorGridlineStyle = LineStyle.None,
-                TickStyle = OxyPlot.Axes.TickStyle.None
-            };
-            foreach (var lbl in xLabels)
-                xAxis.Labels.Add(lbl);
-            model.Axes.Add(xAxis);
-
-            // 10) Y-axis: horizontal grid + $ formatter
-            var yAxis = new LinearAxis
-            {
-                Position = AxisPosition.Left,
-                Minimum = 0,
-                TextColor = OxyColors.White,
-                FontSize = 10,
-                AxislineColor = OxyColors.Transparent,
-                MajorGridlineStyle = LineStyle.Solid,
-                MajorGridlineColor = OxyColor.FromArgb(30, 255, 255, 255),
-                MinorGridlineStyle = LineStyle.None,
-                LabelFormatter = v => $"${v:0}"
-            };
-            model.Axes.Add(yAxis);
-
-            // 11) Attach
-            plotView.Model = model;
             return container;
         }
     }
