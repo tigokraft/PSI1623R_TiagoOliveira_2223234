@@ -28,7 +28,7 @@ namespace login.Tabs
             this.Text = "Settings";
             this.BackColor = Color.FromArgb(18, 20, 20);
             this.FormBorderStyle = FormBorderStyle.None;
-            this.ClientSize = new Size(600, 260);
+            this.ClientSize = new Size(900, 650);
 
             // ── Container ───────────────────────────────────────────────────────────
             var container = new Guna2Panel

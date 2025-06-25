@@ -38,6 +38,7 @@
             this.ChartPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.ExpensesPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.closeapp = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.ChartPanel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2GradientPanel1.SuspendLayout();
             this.guna2GradientPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -142,10 +143,10 @@
             // ChartPanel
             // 
             this.ChartPanel.ForeColor = System.Drawing.Color.Transparent;
-            this.ChartPanel.Location = new System.Drawing.Point(500, 80);
+            this.ChartPanel.Location = new System.Drawing.Point(500, 350);
             this.ChartPanel.Name = "ChartPanel";
             this.ChartPanel.ShadowDecoration.Parent = this.ChartPanel;
-            this.ChartPanel.Size = new System.Drawing.Size(360, 465);
+            this.ChartPanel.Size = new System.Drawing.Size(360, 250);
             this.ChartPanel.TabIndex = 14;
             // 
             // ExpensesPanel
@@ -157,7 +158,7 @@
             this.ExpensesPanel.Location = new System.Drawing.Point(30, 200);
             this.ExpensesPanel.Name = "ExpensesPanel";
             this.ExpensesPanel.ShadowDecoration.Parent = this.ExpensesPanel;
-            this.ExpensesPanel.Size = new System.Drawing.Size(440, 345);
+            this.ExpensesPanel.Size = new System.Drawing.Size(440, 400);
             this.ExpensesPanel.TabIndex = 13;
             this.ExpensesPanel.UseTransparentBackground = true;
             // 
@@ -171,7 +172,7 @@
             this.closeapp.HoverState.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
             this.closeapp.HoverState.Parent = this.closeapp;
             this.closeapp.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(160)))), ((int)(((byte)(160)))));
-            this.closeapp.Location = new System.Drawing.Point(850, 3);
+            this.closeapp.Location = new System.Drawing.Point(845, 0);
             this.closeapp.Name = "closeapp";
             this.closeapp.PressedColor = System.Drawing.Color.Transparent;
             this.closeapp.ShadowDecoration.Parent = this.closeapp;
@@ -179,12 +180,22 @@
             this.closeapp.TabIndex = 18;
             this.closeapp.Click += new System.EventHandler(this.closeapp_Click);
             // 
+            // ChartPanel1
+            // 
+            this.ChartPanel1.ForeColor = System.Drawing.Color.Transparent;
+            this.ChartPanel1.Location = new System.Drawing.Point(500, 80);
+            this.ChartPanel1.Name = "ChartPanel1";
+            this.ChartPanel1.ShadowDecoration.Parent = this.ChartPanel1;
+            this.ChartPanel1.Size = new System.Drawing.Size(360, 250);
+            this.ChartPanel1.TabIndex = 15;
+            // 
             // Overview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.ClientSize = new System.Drawing.Size(884, 561);
+            this.ClientSize = new System.Drawing.Size(884, 611);
+            this.Controls.Add(this.ChartPanel1);
             this.Controls.Add(this.closeapp);
             this.Controls.Add(this.ChartPanel);
             this.Controls.Add(this.ExpensesPanel);
@@ -214,5 +225,6 @@
         private Guna.UI2.WinForms.Guna2Panel ChartPanel;
         private Guna.UI2.WinForms.Guna2Panel ExpensesPanel;
         private Guna.UI2.WinForms.Guna2ControlBox closeapp;
+        private Guna.UI2.WinForms.Guna2Panel ChartPanel1;
     }
 }

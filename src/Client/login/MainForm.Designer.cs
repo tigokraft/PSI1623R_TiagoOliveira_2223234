@@ -80,7 +80,7 @@ namespace login
             this.panel1.Location = new System.Drawing.Point(-1, -1);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(201, 601);
+            this.panel1.Size = new System.Drawing.Size(201, 651);
             this.panel1.TabIndex = 0;
             // 
             // IncomeBtn
@@ -117,7 +117,7 @@ namespace login
             this.guna2Button1.HoverState.Parent = this.guna2Button1;
             this.guna2Button1.Image = global::login.Properties.Resources.settings;
             this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button1.Location = new System.Drawing.Point(12, 550);
+            this.guna2Button1.Location = new System.Drawing.Point(12, 600);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
             this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
@@ -226,7 +226,7 @@ namespace login
             this.former.Location = new System.Drawing.Point(200, 0);
             this.former.Name = "former";
             this.former.ShadowDecoration.Parent = this.former;
-            this.former.Size = new System.Drawing.Size(900, 600);
+            this.former.Size = new System.Drawing.Size(900, 650);
             this.former.TabIndex = 8;
             // 
             // MainForm
@@ -234,7 +234,7 @@ namespace login
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.ClientSize = new System.Drawing.Size(1100, 600);
+            this.ClientSize = new System.Drawing.Size(1100, 650);
             this.Controls.Add(this.former);
             this.Controls.Add(this.guna2ControlBox1);
             this.Controls.Add(this.panel2);

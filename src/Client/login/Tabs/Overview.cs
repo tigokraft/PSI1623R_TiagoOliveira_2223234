@@ -122,9 +122,12 @@ namespace login.Tabs
 
             // 6) Render the chart
             var chartPanel = new Charts().SetupChart(incVals, expVals, xLabels);
+            var chartPanel1 = new Charts().SetupChart(incVals, expVals, xLabels);
             chartPanel.Dock = DockStyle.Fill;
             ChartPanel.Controls.Clear();
             ChartPanel.Controls.Add(chartPanel);
+            ChartPanel1.Controls.Clear();
+            ChartPanel1.Controls.Add(chartPanel1);
         }
 
         public async Task<decimal> GetBalanceAsync()
