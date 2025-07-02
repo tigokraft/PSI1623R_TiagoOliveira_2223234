@@ -1,4 +1,6 @@
-# PSI1623R_TiagoOliveira_2223234
+# PSI1623R_TiagoOliveira_2223234 | FinSync
+
+![FinSync](https://raw.githubusercontent.com/tigokraft/PSI1623R_TiagoOliveira_2223234/refs/heads/main/docs/Screenshot%202025-07-02%20091505.png)
 
 Aplicação de gestão financeira pessoal, composta por:
 
