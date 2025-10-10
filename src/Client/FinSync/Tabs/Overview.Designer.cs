@@ -90,11 +90,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Inter SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Transparent;
             this.label2.Location = new System.Drawing.Point(25, 30);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 27);
+            this.label2.Size = new System.Drawing.Size(97, 24);
             this.label2.TabIndex = 11;
             this.label2.Text = "Overview";
             // 
@@ -134,11 +134,12 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.Transparent;
-            this.label4.Location = new System.Drawing.Point(35, 13);
+            this.label4.Location = new System.Drawing.Point(76, 13);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(135, 17);
+            this.label4.Size = new System.Drawing.Size(50, 17);
             this.label4.TabIndex = 0;
-            this.label4.Text = "Spent This Month";
+            this.label4.Text = "Spent";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // ChartPanel
             // 
